@@ -1,0 +1,102 @@
+﻿@model Infrastructure.HelpingModel.API.Availability
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares :" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/Mobile/_BookingPathLayout.cshtml";
+    int affiliateId = 0;
+    if (ViewBag.AffiliateId != null)
+    {
+        if (int.TryParse(ViewBag.AffiliateId.ToString(), out affiliateId) && affiliateId == 0)
+        {
+            affiliateId = Utility.PortalSettings.PortalId;
+        }
+    }
+}
+@{Html.RenderPartial("~/views/flights/mobile/partial/_FlightListingSearchEngine.cshtml", Model.Factes.Search);}
+<div id="divfltr">
+
+</div>
+<div id="contentCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" id="GetContract">
+                @{
+                    Html.RenderPartial("~/views/flights/mobile/partial/_AvailabilityRight.cshtml", Model.Factes.Search);
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flightDetailWrapper">
+</div>
+@{Html.RenderPartial("~/views/flights/mobile/partial/_ListingIdlePopup.cshtml");}
+<div class="page_loading" id="loadingDiv" style="display:none;">
+    <div class="loading_block">
+        <div class="loading-icon">
+            <div class="loading-circle"></div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/m-searchengin-js")
+    @Scripts.Render("~/bundles/m-listing-js")
+    <script type="text/javascript">
+      $("#flights").css('display', "none");
+      function doAjax() {
+            $.ajax({
+                type: 'POST',
+                url: '@string.Format("{0}flights/issearchcompletetwosteps/{1}", Utility.PortalSettings.DomainUrl,Model.Factes.Search.SearchGuidId)',
+                success: function (response)
+                {
+
+                    if (response != null && !response.IsContextExist) {
+                        window.location.assign("@Utility.PortalSettings.DomainUrl");
+
+                    } else if (response != null && response.IsContextExist && response.IsRequestCompleted) {
+                        $("#divfltr").html(response.HtmlResponseLeft);
+                        $("#GetContract").html(response.HtmlResponse);
+
+                        applyJquery();
+                        $("#flights").css('display', "block");
+                    } else {
+                        doAjax();
+                    }
+                },
+                complete: function (data) {
+
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+
+        doAjax();
+    </script>
+    <script>
+        $(function () {
+            $(".slider-range").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [82, 580],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+
+        });
+
+        $(document).ready(function () {
+            $(".click_div").click(function () {
+                $(this).next().show();
+                $(".mobile_overlay").css("height", "100%");
+            });
+        });
+    </script>
+}
+

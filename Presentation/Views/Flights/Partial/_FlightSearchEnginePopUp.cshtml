@@ -1,0 +1,83 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+
+
+<div class="traveler_main">
+    <div class="travllerBox" style="display: none;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="guestBox">
+                    <div class="head"><span id="tpax">@Model.TotalPax()</span> Traveler</div>
+
+                    <!--Adult-->
+                    <div class="add-traveler">
+                        <span class="travelers__options">
+                            <input type="hidden" class="Adult inputbalnk" name="Adult" id="Adult" value="@Model.Adult" />
+                            <a class="remove @string.Format("{0}",Model.Adult==1?"disable":"")" onclick="searchengine.decrement('Adult')"><i class="fa fa-minus"></i></a> <strong class="number Adult">@Model.Adult</strong><a class="add" onclick="searchengine.increment('Adult')"><i class="fa fa-plus"></i></a>
+                        </span>
+                        Adult
+                    </div>
+
+                    <div class="add-traveler">
+                        <span class="travelers__options">
+                            <input type="hidden" class="Child inputbalnk" name="Child" id="Child" value="@Model.Child" />
+                            <a class="remove @string.Format("{0}",Model.Child==0?"disable":"") " onclick="searchengine.decrement('Child')"><i class="fa fa-minus"></i></a><strong class="number Child">@Model.Child</strong><a class="add" onclick="searchengine.increment('Child')"><i class="fa fa-plus"></i></a>
+                        </span>
+                        Children <small>(2-11)</small>
+                    </div>
+
+                    <!--Infant-->
+                    <div class="add-traveler">
+                        <span class="travelers__options">
+                            <input type="hidden" name="InfantOnLap" id="InfantOnLap" value="@Model.InfantOnLap" />
+                            <a class="remove @string.Format("{0}",Model.InfantOnLap==0?"disable":"")" onclick="searchengine.decrement('InfantOnLap')"><i class="fa fa-minus"></i></a><strong class="number InfantOnLap">@Model.InfantOnLap</strong><a class="add" onclick="searchengine.increment('InfantOnLap')"><i class="fa fa-plus"></i></a>
+                        </span>
+                        Infant <small>(on lap)</small>
+                    </div>
+
+                    <!--Infant with seat-->
+                    <div class="add-traveler">
+                        <span class="travelers__options">
+                            <input type="hidden" name="InfantOnSeat" id="InfantOnSeat" value="@Model.InfantOnSeat" />
+                            <a class="remove @string.Format("{0}",Model.InfantOnSeat==0?"disable":"")" onclick="searchengine.decrement('InfantOnSeat')"><i class="fa fa-minus"></i></a><strong class="number InfantOnSeat">@Model.InfantOnSeat</strong><a class="add" onclick="searchengine.increment('InfantOnSeat')"><i class="fa fa-plus"></i></a>
+                        </span>
+                        Infant <small>(on seat)</small>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="head">Cabin Class</div>
+
+                <ul class="classType inputSet">
+                    <li><label><input type="radio" name="Cabin" value="@CabinType.Economy" @string.Format("{0}", Model.Cabin == CabinType.Economy ? " checked " : "")><span>Economy </span> </label></li>
+                    <li><label><input type="radio" name="Cabin" value="@CabinType.PremiumEconomy" @string.Format("{0}", Model.Cabin == CabinType.PremiumEconomy ? " checked " : "")><span>Premium Economy</span> </label></li>
+                    <li><label><input type="radio" name="Cabin" value="@CabinType.Business" @string.Format("{0}", Model.Cabin == CabinType.Business ? " checked " : "")><span>Business</span> </label></li>
+                    <li><label><input type="radio" name="Cabin" value="@CabinType.First" @string.Format("{0}", Model.Cabin == CabinType.First ? " checked " : "")><span>First</span> </label></li>
+                </ul>
+
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="unaccompined">
+                    <a href="javascript:void(0);" class="clickunaccompanied"><i class="bi bi-info-circle"></i> Unaccompanied Minor</a>
+
+                    <div class="tooltip-new openunaccompanied">
+                        <!-- <i class="bi bi-x-circle closeunaccompanied"></i> -->
+                        Booking flights for an unaccompanied minor? some airlines have restrictions on children under the age of 18 years
+                        traveling alone. If you have any questions, please
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6">  <a href="javascript:void(0);" class="done_Btn">Done</a></div>
+        </div>
+    </div>
+    <!--  \ Traveller Box / -->
+</div>

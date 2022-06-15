@@ -1,0 +1,159 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure;
+<div id="searchPopup">
+    <div id="orginPopup" class="overlay2 popupSearch" style="display: none;">
+        <div class="searchHead">
+            <div class="searchHeadTop">
+                <span class="ToFromMsg">Where are you leaving from?</span>
+                <div class="closebtn3" onclick="searchengine.hidePopup('orginPopup')">&times;</div>
+            </div>
+            <div class="searchTab">
+                <div class="searchTabList">
+                    <div class="from active">
+                        <div class="airport-code"><b>FROM</b><span class="airport-details fromValue"></span></div>
+                    </div>
+                    <div class="to"><div class="airport-code"><b>TO</b><span class="airport-details toValue"></span></div></div>
+                </div>
+            </div>
+        </div>
+            <div class="hegt_dart_deprat"></div>
+        <div class="searchTabContent hidden" id="from">
+            <input type="text" class="search12 searchTextInput" placeholder="" id="OriginSearchpopup" />
+            <div class="col-xs-12">
+            </div>
+        </div>
+        <div class="searchTabContent hidden" id="to">
+            <input type="text" class="search12 searchTextInput" placeholder="" id="DestinationSearchPopup" />
+            <div class="col-xs-12">
+            </div>
+        </div>
+    </div>
+    <div id="departPopup" class="overlay2 popupSearch" style="display: none;">
+        <div class="">
+            <div class="searchHead">
+                <div class="searchHeadTop">
+                   Select depart date
+                    <div class="closebtn3" onclick="searchengine.hidePopup('departPopup')">&times;</div>
+                </div>
+            </div>
+            <div class="hegt_dart_deprat2"></div>
+            <div class="overlay-content2">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div id='inline1'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="returnPopup" class="overlay2 popupSearch" style="display: none;">
+            <div class="searchHead">
+                <div class="searchHeadTop">
+                    <span class="Departure"></span> - Select return date
+                    <div class="closebtn3" onclick="searchengine.hidePopup('returnPopup')">&times;</div>
+                </div>
+            </div>
+                <div class="hegt_dart_deprat2"></div>
+            <div class="overlay-content2">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div id='inline2'></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="travelersPopup" class="overlay2 popupSearch" style="display: none;">
+        <div class="searchHead">
+            <div class="searchHeadTop">
+                Travelers
+                <div class="closebtn3" onclick="searchengine.hidePopup('travelersPopup')">&times;</div>
+            </div>
+        </div>
+        <div class="hegt_dart_deprat2"></div>
+        <div class="overlay-content2">
+            <div class="col-md-12">
+                <div class="pax-details be-dropdown w300 flight_passengerBox">
+                    <div data-flightagegroup="adult" class="iePasenger clearfix">
+                        <div data-flightagegroup="adult" class="pax-limit clearfix col-x-fluid w100">
+                            <span class="pax-title">
+                                <span><input type="text" class="Adult inputbalnk" name="Adult" id="Adult" value="@Model.Adult" /> Adult</span>
+                                <span style="display: none;">s</span>
+                            </span>
+                            <div class="dd ddcommon borderRadius ddSpinnerMain">
+                                <div class="ddTitle borderRadiusTp">
+                                    <span class="ddSpinnerPlus" onclick="searchengine.increment('Adult')"></span>
+                                    <span class="ddSpinnerMinus" onclick="searchengine.decrement('Adult')"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-flightagegroup="child" class="pax-limit clearfix col-x-fluid w100">
+                            <span class="pax-title">
+                                <span><input type="text" class="Child inputbalnk" name="Child" id="Child" value="@Model.Child" />  Child</span>
+                                <span style="display: none;">ren</span>
+                                <span class="light-grey">2-12 YRS</span>
+                            </span>
+                            <div class="dd ddcommon borderRadius ddSpinnerMain">
+                                <div class="ddTitle borderRadiusTp">
+                                    <span class="ddSpinnerPlus" onclick="searchengine.increment('Child')"></span>
+                                    <span class="ddSpinnerMinus" onclick="searchengine.decrement('Child')"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-flightagegroup="infant" class="pax-limit clearfix col-x-fluid w100 mr0">
+                            <span class="pax-title">
+                                <span><input type="text" class="InfantOnLap inputbalnk" name="InfantOnLap" id="InfantOnLap" value="@Model.InfantOnLap" /> Infant</span>
+                                <span style="display: none;">s</span>
+                                <span class="light-grey">(on lap under 2) </span>
+                            </span>
+                            <div class="dd ddcommon borderRadius ddSpinnerMain">
+                                <div class="ddTitle borderRadiusTp">
+                                    <span class="ddSpinnerPlus" onclick="searchengine.increment('InfantOnLap')"></span>
+                                    <span class="ddSpinnerMinus" onclick="searchengine.decrement('InfantOnLap')"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-flightagegroup="infantseat" class="pax-limit clearfix col-x-fluid w100 mr0">
+                            <span class="pax-title">
+                                <span><input type="text" class="InfantOnSeat inputbalnk" name="InfantOnSeat" id="InfantOnSeat" value="@Model.InfantOnSeat" /> Infant</span>
+                                <span style="display: none;">s</span>
+                                <span class="light-grey">(on seat under 2) </span>
+                            </span>
+                            <div class="dd ddcommon borderRadius ddSpinnerMain">
+                                <div class="ddTitle borderRadiusTp">
+                                    <span class="ddSpinnerPlus" onclick="searchengine.increment('InfantOnSeat')"></span>
+                                    <span class="ddSpinnerMinus" onclick="searchengine.decrement('InfantOnSeat')"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="be-ddn-footer "><span class="done paxFilterDone" onclick="searchengine.hidePopup('travelersPopup')">Done</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="classPopup" class="overlay2 popupSearch" style="display: none;">
+            <div class="searchHead">
+                <div class="searchHeadTop">
+                    Class
+                    <div class="closebtn3" onclick="searchengine.hidePopup('classPopup'); searchengine.setCabin();">&times;</div>
+                </div>
+            </div>
+        <div class="hegt_dart_deprat2"></div>
+            <div class="overlay-content2">
+                <div class="col-md-12">
+                    <div class="btn-grou radiobutton classType cabinType" data-toggle="buttons">
+                        <label class="btn btn-default form-check-label @string.Format("{0}", Model.Cabin == CabinType.EconomyCoach ? "active" : "")">
+                            <input class="form-check-input" type="radio" name="Cabin" value="2" style="height: auto;" @string.Format("{0}", Model.Cabin == CabinType.EconomyCoach ? "checked" : "checked") >Economy
+                        </label>
+                        <label class="btn btn-default  form-check-label @string.Format("{0}", Model.Cabin == CabinType.Business ? "active" : "")" @string.Format("{0}", Model.Cabin == CabinType.Business ? "checked" : "")>
+                            <input class="form-check-input" type="radio" name="Cabin" value="4" style="height: auto;">Business
+                        </label>
+                        <label class="btn btn-default  form-check-label @string.Format("{0}", Model.Cabin == CabinType.First ? "active" : "")" @string.Format("{0}", Model.Cabin == CabinType.First ? "checked" : "")>
+                            <input class="form-check-input" type="radio" name="Cabin" value="6" style="height: auto;">First
+                        </label>
+                    </div>
+                    <div class="be-ddn-footer "><span class="done paxFilterDone" onclick="searchengine.hidePopup('classPopup');searchengine.setCabin()">Done</span></div>
+                </div>
+            </div>
+    </div>
+</div>

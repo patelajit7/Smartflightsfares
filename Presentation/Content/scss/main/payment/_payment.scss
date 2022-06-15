@@ -1,0 +1,511 @@
+@import 'flight-itenary';
+@import 'price-detail';
+.payment__wrapper {
+    @include boxshadow;
+    padding: 20px;
+    @include breakpoint(sm) {
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+    .payment__stepBox {
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        @include breakpoint(sm) {
+            background: #ECF0FF;
+            width: auto;
+            margin: 0 -15px 18px -15px;
+            padding: 10px 10px 0 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0px;
+            li {
+                font-size: 16px;
+                color: #878787;
+                cursor: pointer;
+                padding-bottom: 8px;
+                position: relative;
+                @include breakpoint(sm) {
+                    font-size: 14px;
+                }
+                i {
+                    position: relative;
+                    top: -3px;
+                    margin-right: 2px;
+                }
+                &:before {
+                    content: '';
+                    height: 2px;
+                    position: absolute;
+                    left: 0px;
+                    bottom: -1px;
+                    transition: all 0.5s;
+                    width: 0px;
+                    display: block;
+                    background: $primary;
+                }
+                &.active:before {
+                    width: 100%;
+                    color: $secondary;
+                }
+                &:hover,
+                &.active {
+                    color: #393939;
+                }
+                &.complete {
+                    color: $highlight;
+                    @include breakpoint(sm) {
+                        color: #6074D4;
+                    }
+                }
+                &.complete:hover:before {
+                    width: 0px;
+                }
+            }
+        }
+    }
+    /*Setp box End*/
+    .bottom__row {
+        padding: 18px 0;
+        border-top: 1px solid #ccc;
+        overflow: hidden;
+        @include breakpoint(sm) {
+            padding: 12px 0;
+            background: $white;
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            z-index: 1;
+        }
+        .continue__button {
+            cursor: pointer;
+            background: $button-bg;
+            color: $white;
+            padding: 12px 38px;
+            float: right;
+            font-weight: 600;
+            border-radius: 3px;
+             text-decoration:none;
+            @include breakpoint(sm) {
+                float: none;
+                margin: 0px auto;
+                width: 90%;
+                display: block;
+                font-size: 18px;
+                text-align: center;
+            }
+            &.confirm {
+                padding: 12px 30px;
+                font-size: 17px;
+                background: #088d0c;
+                text-align: center;
+                @include breakpoint(sm) {
+                    padding: 9px 20px;
+                }
+                i {
+                    margin-right: 3px;
+                }
+                &:hover {
+                    background: #007001;
+                }
+                span {
+                    display: block;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                }
+            }
+            &:hover {
+                background: $button-bg-hover;
+                text-decoration: none;
+            }
+        }
+    }
+    .payment__wrapper .loder__row {
+        @include breakpoint(sm) {
+            padding: 12px 0;
+            background: $white;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            z-index: 1;
+        }
+    }
+    /*Radio*/
+    .adultType {
+        list-style: none;
+        padding: 0px;
+        margin-bottom: 10px;
+        @include breakpoint(sm) {
+            margin-bottom: 0px;
+        }
+        li {
+            display: inline-block;
+            padding-right: 30px;
+            font-size: 14px;
+            label {
+                cursor: pointer;
+                font-weight: 600;
+            }
+        }
+    }
+    /*travelerBox box*/
+    .travelerBox {
+        padding-top: 20px;
+        @include breakpoint(sm) {
+            padding-top: 0px;
+        }
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 11px;
+            color: #4B4B4B;
+        }
+        p {
+            color: #5D5D5D;
+        }
+        .travel_deal_checkbox {
+            margin-top: 27px;
+            width: 60%;
+            label {
+                line-height: 19px;
+            }
+        }
+        .traveler_block {
+            border-top: 1px solid #ccc;
+            margin-bottom: 30px;
+            padding-top: 30px;
+            @include breakpoint(sm) {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin-bottom: 0px;
+            }
+            &:first-child {
+                border: none;
+                margin-top: 0px;
+                padding-top: 0px;
+            }
+        }
+    }
+    /*Payment box*/
+    .paymentBox {
+        padding-top: 20px;
+        @include breakpoint(sm) {
+            padding-top: 0px;
+        }
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 11px;
+            color: #4B4B4B;
+        }
+        .hr-line {
+            border-top: 1px solid #ccc;
+            margin-top: 30px;
+            padding-top: 30px;
+        }
+        .card__zoom {
+            margin-top: 34px;
+        }
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    /*Form start */
+    .form__block {
+        .select-class {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            &:before {
+                content: "\f107";
+                font-family: fontawesome;
+                font-size: 23px;
+                color: #333;
+                font-weight: 700;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                pointer-events: none;
+                padding: 7px 10px 0 0;
+                background: $white;
+            }
+        }
+        .form-control {
+            padding: 12px;
+            border-radius: 0px;
+            background: $white;
+            @include breakpoint(sm) {
+                padding: 9px 12px;
+            }
+            &:focus {
+                border-color: $secondary;
+                box-shadow: 0 3px 6px #e0e4f9;
+            }
+        }
+        select.form-control:not([size]):not([multiple]) {
+            height: auto;
+        }
+        .is-error {
+            position: relative;
+            color: $primary;
+            color: red;
+            .form-control {
+                border-color: red;
+            }
+            .icon {
+                position: absolute;
+                top: 13px;
+                right: 10px;
+                color: red;
+            }
+        }
+        .is-success,
+        .is-sucess {
+            position: relative;
+            .form-control {
+                border-color: $secondary;
+            }
+            .icon {
+                position: absolute;
+                top: 13px;
+                right: 10px;
+                color: $highlight;
+            }
+        }
+        .dob_calendar {
+            position: absolute;
+            right: 11px;
+            top: 6px;
+            font-size: 25px;
+            color: $secondary;
+            pointer-events: none;
+            cursor: pointer;
+        }
+    }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    /*Form end */
+    /*Bottom*/
+    .bottom_text {
+        font-size: 13px;
+        padding: 20px 0;
+        color: #6B6B6B;
+        line-height: 21px;
+        p {
+            a {
+                color: $primary;
+                text-decoration: none;
+            }
+        }
+        label {
+            float: left;
+        }
+    }
+    /*Card payment*/
+    input.cc-number.visa {
+        background: url(#{$imagePath}payment/visa.png) 99% center no-repeat;
+    }
+    input.cc-number.amex {
+        background: url(#{$imagePath}payment/american.png) 99% center no-repeat;
+    }
+    input.cc-number.discover {
+        background: url(#{$imagePath}payment/discover.png) 99% center no-repeat;
+    }
+    input.cc-number.mastercard {
+        background: url(#{$imagePath}payment/master.png) 99% center no-repeat;
+    }
+}
+
+
+/*payment wrapper end*/
+
+.payment__top {
+    padding-bottom: 20px;
+    .go__back {
+        color: #333;
+        font-weight: 600;
+         text-decoration:none;
+        i {
+            font-size: 16px;
+            font-weight: 700;
+            margin-right: 3px;
+        }
+        &:hover {
+            text-decoration: none;
+            color: $primary;
+        }
+    }
+    .secure__Box {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li {
+            padding-left: 43px;
+            position: relative;
+            line-height: 17px;
+            i {
+                position: absolute;
+                left: 0px;
+                top: -3px;
+                font-size: 28px;
+                color: $primary;
+            }
+        }
+    }
+}
+
+.mobile_go_back {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: $white;
+    width: 45px;
+    height: 42px;
+    margin: 0px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.formlabel {
+    margin-bottom: 0.5rem;
+}
+
+@include breakpoint(sm) {
+    .form-group {
+        margin-bottom: 0px;
+    }
+    .formlabel {
+        margin-top: 12px;
+        margin-bottom: 3px;
+    }
+}
+
+
+/*DOB Calendar*/
+
+
+/*Loader Start*/
+
+.page_loading {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    .loading_block {
+        background: $white;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .loading-icon {
+        background: url(../../images/icons/flights-blue.svg) no-repeat center center;
+        width: 94px;
+        height: 94px;
+        line-height: 90px;
+        border-radius: 50%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .loading-circle {
+        border: 3px solid #dddddd;
+        border-radius: 50%;
+        border-top: 5px solid $primary;
+        width: 90px;
+        height: 90px;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        border-width: 5px;
+    }
+    p {
+        margin: 0px;
+        padding: 0px;
+        line-height: 25px;
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dot span {
+    font-size: 50px;
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+.dot span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.dot span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: .2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+
+/*Loader End*/
+
+.review_policy {
+    border: 1px solid #4dc0ff;
+    padding: 13px 12px 12px 37px;
+    font-size: 14px;
+    line-height: 25px;
+    i {
+        position: absolute;
+        left: 10px;
+        top: 16px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,90 @@
+﻿@using Common
+@using Infrastructure;
+@{
+    int aff = Utility.GetAffiliateId(Request);
+    PagePopupType pagePopupType = CamapignInfo.GetPagePopupType(Request);
+    switch (pagePopupType)
+    {
+        case PagePopupType.FocusCall:
+            if (Common.Utility.PortalSettings.ResponseTagAffiliates.Contains(aff))
+            {
+                <div style="height:96px;"></div>
+                <div class="PhnStrinMbl">
+                    <span class="CallImg">
+                        <img src="~/Images/callPhnMbl.jpg" alt="call" />
+                    </span>
+
+                    <div class="phnRigh">
+                        <p class="PnloneyFlt"><span>$25 OFF</span> Call Now</p>
+                        <a onclick="rTapClickToCall(359597)" id="@ViewBag.AffiliateId" class="call-mBottom rTapNumber359597">
+                            @ViewBag.TollFreeNumber
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="height:96px;"></div>
+                <div class="PhnStrinMbl">
+                    <span class="CallImg">
+                        <img src="~/Images/callPhnMbl.jpg" alt="call" />
+                    </span>
+                    <div class="phnRigh">
+                        <p class="PnloneyFlt"><span>$25 OFF</span> Call Now</p>
+                        <a href="tel:@ViewBag.TollFreeNumber" id="@ViewBag.AffiliateId" class="call-mBottom">
+                            @ViewBag.TollFreeNumber
+                        </a>
+                    </div>
+                </div>
+            }
+
+            break;
+        case PagePopupType.FocusCallnBooking:
+            @Html.Partial("~/views/shared/mobile/partial/_affiliatefooterstrip.cshtml")
+            break;
+        //case PagePopupType.FocusCallCallnBooking:
+
+        //    break;
+        default:
+            if (Utility.IsShowMetaSearchMobile(aff.ToString()))
+            {
+                @Html.Partial("~/views/shared/mobile/partial/_affiliatefooterstrip.cshtml")
+            }
+            else
+            {
+                <div class="fotoerHeight"></div>
+                <div class="call_icon_mbl_ind">
+                    <div class="flt_fx_strip">
+                        @Html.Raw("Book Online or Call Us 24X7 ")
+                    </div>
+
+                    <div class="call-bg">
+                        <p>
+                            @if (!Utility.PortalSettings.ResponseTagAffiliates.Contains(aff))
+                            {
+                                <a href="tel:@ViewBag.TollFreeNumber" id="@ViewBag.AffiliateId" class="call-mBottom">
+                                    @ViewBag.TollFreeNumber
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="@ViewBag.AffiliateId" class="call-mBottom splitnumber rTapNumber359597" onclick="rTapClickToCall(359597)">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                            }
+                        </p>
+                        <div class="cl_nw">
+                            @if (!Utility.PortalSettings.ResponseTagAffiliates.Contains(aff))
+                            {
+                                <a href="tel:@ViewBag.TollFreeNumber" id="@ViewBag.AffiliateId" class="call-mBottom"></a>
+                            }
+                            else
+                            {
+                                <a id="@ViewBag.AffiliateId" class="call-mBottom" onclick="rTapClickToCall(359597)"></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            break;
+    }
+}

@@ -1,0 +1,146 @@
+﻿@model Infrastructure.HelpingModel.API.AirMatrixMain
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+@if (Model != null)
+{
+
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+
+
+    <div class="matrixBox">
+        <div class="row  d-none d-md-block">
+            <div class="col-sm-12">
+                <div class="matrix__wrap">
+                    <!-- Aside -->
+                    <div class="matrix__aside">
+                        <div class="matrix__box-lg matrixdisabled text-left d-flex">
+                            Show All Fares
+                        </div>
+                        @if (Model.IsNonStopPlusOne())
+                        {
+                            if (Model.StopsType == StopsType.NonStop)
+                            {
+                                <div class="matrix__box text-left">
+                                    Non stop <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                                </div>
+                            }
+                            if (Model.StopsType == StopsType.NonNOneStop)
+                            {
+                                <div class="matrix__box text-left">
+                                    Non Stop/1 Stop <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                                </div>
+                            }
+                        }
+
+                        @if (Model.IsMultiStop())
+                        {
+                            <div class="matrix__box text-left">
+                                1+ Stop <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Slider -->
+                    <div class="matrix__slider">
+                        @foreach (AirlineMatrixColumn item in Model.AirlineMatrixList)
+                        {
+                            string cType = "";
+                            if (item.IsNonStop && item.IsMultiStop)
+                            {
+                                cType = string.Format("{0}-0|{1}-1", (int)item.NonContractType, (int)item.MultiContractType);
+                            }
+                            else if (item.IsNonStop)
+                            {
+                                cType = string.Format("{0}-0", (int)item.NonContractType);
+                            }
+                            else
+                            {
+                                cType = string.Format("{0}-1", (int)item.MultiContractType);
+                            }
+                            <div class="items">
+                                <div title="@string.Format("{0}", item.AirlineInfo.Name)" class="matrix__box-lg" onclick="contractFilter.SetapplyMatrixFilter('@string.Format("{0}|{1}", item.AirlineInfo.Code, (item.IsMultipleAirline ? 1 : 0))','@cType','true')">
+                                    @if (item.IsMultipleAirline)
+                                    {
+                                        <img src="/Images/icons/multi-airlines.png" alt="multiple airlines" title="multiple airlines" class="multiairline" />
+                                    }
+                                    <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.AirlineInfo.Code)" alt="@item.AirlineInfo.Code logo" class="matrix__logo" title="@string.Format("{0}", item.AirlineInfo.Name)" /><div class="matrix__airline-name" title="@string.Format("{0}", item.AirlineInfo.Name)">@item.AirlineInfo.Name</div>
+                                </div>
+                                @if (Model.IsNonStopPlusOne())
+                                {
+
+                                    switch (Model.StopsType)
+                                    {
+                                        case StopsType.NonStop:
+                                            if (item.IsNonStop)
+                                            {
+                                                <div onclick="contractFilter.SetapplyMatrixFilter('@string.Format("{0}|{1}", item.AirlineInfo.Code, (item.IsMultipleAirline ? 1 : 0))','@((int)item.NonContractType)-0','false')" class="matrix__box"><span class="chgWithCurrency" default-price="@item.NonStopFare">@string.Format("{0}{1}", currencyMaster.CurrencySymbol, Math.Truncate(item.NonStopFare * currencyMaster.CurrencyPrice))</span> <sup class="chgCurrencySub" default-price="@item.NonStopFare">@String.Format("{0:#.00}", ((item.NonStopFare * currencyMaster.CurrencyPrice) - Convert.ToSingle(Math.Truncate(item.NonStopFare * currencyMaster.CurrencyPrice))))</sup></div>
+
+                                            }
+                                            else
+                                            {
+                                                <div class="matrix__box matrixdisabled">--</div>
+                                            }
+                                            break;
+                                        case StopsType.NonNOneStop:
+                                            if (item.IsNonStop)
+                                            {
+                                                <div class="matrix__box" onclick="contractFilter.SetapplyMatrixFilter('@string.Format("{0}|{1}", item.AirlineInfo.Code, (item.IsMultipleAirline ? 1 : 0))','@((int)item.NonContractType)-0','false')"><span class="chgWithCurrency" default-price="@item.NonStopFare">@string.Format("{0}{1}", currencyMaster.CurrencySymbol, Math.Truncate(item.NonStopFare * currencyMaster.CurrencyPrice))</span> <sup class="chgCurrencySub" default-price="@item.NonStopFare">@String.Format("{0:#.00}", ((item.NonStopFare * currencyMaster.CurrencyPrice) - Convert.ToSingle(Math.Truncate(item.NonStopFare * currencyMaster.CurrencyPrice))))</sup></div>
+
+                                            }
+                                            else
+                                            {
+                                                <div class="matrix__box matrixdisabled">--</div>
+                                            }
+                                            break;
+
+                                        default:
+
+                                            break;
+                                    }
+                                }
+                                @if (Model.IsMultiStop())
+                                {
+                                    if (item.IsMultiStop)
+                                    {
+                                        <div class="matrix__box" onclick="contractFilter.SetapplyMatrixFilter('@string.Format("{0}|{1}", item.AirlineInfo.Code, (item.IsMultipleAirline ? 1 : 0))','@((int)item.MultiContractType)-1','false')"><span class="chgWithCurrency" default-price="@item.MultiStopFare">@string.Format("{0}{1}", currencyMaster.CurrencySymbol, Math.Truncate(item.MultiStopFare * currencyMaster.CurrencyPrice))</span> <sup class="chgCurrencySub" default-price="@item.MultiStopFare">@String.Format("{0:#.00}", ((item.MultiStopFare * currencyMaster.CurrencyPrice) - Convert.ToSingle(Math.Truncate(item.MultiStopFare * currencyMaster.CurrencyPrice))))</sup></div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="matrix__box matrixdisabled">--</div>
+                                    }
+                                }
+
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @*<div class="col-lg-9 col-md-12">
+                <div class="disclaimer d-none d-md-block">
+                    <strong>Note:</strong> All Fares displayed are quoted in <span class="chgtype">@currencyMaster.CurrencyType</span> , incl. taxes & fees and our service fees. Additional <a href="#" class="text-link-red">baggage fees</a> may as per the airline policies. Some flights displayed may be for alternate dates and/or airports.
+
+                </div>
+
+                <div class="disclaimer d-md-none d-block">
+                    <strong>Note:</strong> All Fares displayed are quoted in <span class="chgtype">@currencyMaster.CurrencyType</span> ,<span class="collapse" id="info_note" style="height: 0;">incl. taxes & fees and our service fees. Additional <a href="#" class="text-link-red">baggage fees</a> may as per the airline policies. Some flights displayed may be for alternate dates and/or airports. </span>
+                    <a class="learn-more" data-toggle="collapse" href="#info_note" role="button">Read More</a>
+
+                </div>
+            </div>*@
+            <div class="col-lg-13 col-md-12 text-end"><img src="/Images/icons/multi-airlines.png" alt="multiple airlines" title="multiple airlines" class="multiairline" /> Multiple Airlines </div>
+        </div>
+    </div>
+
+
+}
+
+
+

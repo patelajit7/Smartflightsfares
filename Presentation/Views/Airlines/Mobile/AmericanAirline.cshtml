@@ -1,0 +1,163 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest American Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/aa.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+                
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>American Airlines </strong> Flights </h3>
+                        <p>Unpublished Farehub and American Airlines provide you with instant access to the most comprehensive variety of accessible pricing for booking a trip with American Airlines. It comes with a variety of travel benefits, including upgrade eligibility and change flexibility. You'll earn points on all of our award-winning flights through AAdvantage, our frequent flyer programme, which you can then use to get even more discounts. When you book a flight with American Airlines via Unpublished Farehub, you'll get our guaranteed lowest price.</p>
+                        <p>Book Your Next Trip With American Airlines, North America's Best Airline. The CleanCare+ service, as well as increased health and safety procedures, are provided by American Airlines. Make a reservation directly online. Use Frequent Flyer Miles to save money right away. Over the internet, check-in is straightforward and quick. When buying tickets with American Airlines, you may choose from a variety of flexible pricing.</p>
+                        <p>American Airlines, Inc. (AA or AAL) is a prominent American airline based in Fort Worth, Texas, in the Dallas–Fort Worth metropolitan area. When it comes to fleet size, scheduled passenger miles, and revenue passenger mile, it is the largest airline in the world. </p>
+                        <p>With almost 6,800 flights each day to nearly 350 destinations in more than 50 countries, American, along with its regional partners, maintains a vast international and domestic network. American Airlines is a founding member of the Oneworld airline alliance, the world's third biggest airline alliance.</p>
+                        <p>Book a flight with American Airlines and Unpublished Farehub and find ideas for your next vacation or the best airline deals, whether you're flying for business or pleasure. Start arranging your vacation today by comparing low-cost flights to our most popular locations.</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <h4>Book a flight with American Airlines</h4>
+                    <p>Book American Airlines flights with ease. To book your American Airlines reservation, please call . Get in touch with a customer service team that is accessible 24 hours a day, 7 days a week, with an average turnaround time of less than 30 seconds. Book your flight tickets and confirm your travel with American Airlines at no hidden fees or taxes.</p>
+                    <h4>A Simple and Inexpensive Guide For Booking A Flight With American Airlines and Unpublished Farehub</h4>
+                    <p>Unpublished Farehub has put together a simple step-by-step guide to make purchasing plane tickets as straightforward as possible. Continue reading to learn how to book a flight with American Airlines in a timely and cost-effective manner.</p>
+
+                    <ul class="list w_50">
+                        <li>Log in to your Unpublished Farehub account to get the most out of your visit and save up to 40% on your tickets.</li>
+                        <li>Enter your departure and arrival destinations on the American Airlines flight booking page. Unpublished Farehub offers a variety of flight options based on your preferences, including one-way, round-trip, and multi-city trips.</li>
+                        <li>Then input the dates you want to go and return, along with a few additional factors like the amount of tickets you want to buy.</li>
+                        <li>Type the dates you would like to leave and return, as well as a few other details like the number of tickets you want to buy.</li>
+                        <li>Finally, you'll see all of the American Airlines flight reservations that are available based on your choices.</li>
+                        <li>Select the American Airlines flight that best meets your budget and pricing needs, then finish the payment procedure to complete your American Airlines reservation.</li>
+                        <li>When you book an American Airlines trip via Unpublished Farehub, you'll get immediate access to a variety of seasonal deals and discounts, as well as low-cost options.</li>
+                        <li>Your American Airlines flight tickets will be emailed to your authorised email address and phone number as soon as you finish the ticket transaction.</li>
+                    </ul>
+
+                    <h4>Best Practices while booking a flight with American Airlines</h4>
+                    <p>Unpublished Farehub promises you a pleasant and unforgettable journey with American Airlines. To get the most out of Unpublished Farehub and your holiday trip, follow these tips and ideas.</p>
+
+                    <ul class="list w_50">
+                        <li>Double-check your American Airlines reservations at least a few weeks ahead of time. When there is little demand for a ticket, you may simply take advantage of heavily discounted rates and fly for a fraction of the price.</li>
+                        <li>Maintain as much flexibility as possible with your vacation dates. It's rare for a flight's price to rise on specific days. You may utilise flexible dates to compare flight tickets and get the cheapest offer. Use the appropriate credit cards to get excellent discounts on American Airlines Flights.</li>
+                        <li>To never miss out on the newest American Airlines Flight Tickets discounts and seasonal deals, register with Unpublished Farehub and switch on notification alerts.</li>
+                        <li>When booking a ticket, take advantage of American Airlines' award-winning lounges and in-flight entertainment selections.</li>
+                    </ul>
+
+                    <h4>American Airlines Cabin Services</h4>
+                    <p>When buying an American Airlines flight, Unpublished Farehub offers a variety of American Airlines airline booking packages and discounts that will transport you to one of the many cabin experiences available. We guarantee that you will have 24 hour, 7 day a week access to customer assistance for any concerns you may have throughout the airline reservation process. We also provide in-flight support and make every effort to make your travel as pleasant as possible.</p>
+                    <h5>American Airlines - Flagship First</h5>
+                    <p>Booking a flight with American Airlines provides you chairs that are completely flat and provide direct aisle access. Flagship First, like the airline's other premium cabins, offers more food and beverage options, bigger seats, and access to lounges at select airports.</p>
+                    <h5>American Airlines - Flagship Business</h5>
+                    <p>American's international and transcontinental business class offering is known as Flagship Business. All of the Flagship Business seats are completely flat.</p>
+                    <h5>American Airlines - Domestic First Class</h5>
+                    <p>On every domestically configured aeroplanes, First Class is available. On all flights, drinks and alcohol are available, as well as complimentary snacks on flights over 900 miles and meals on flights over 2,200 miles.</p>
+                    <h5>Premium Economy</h5>
+                    <p>You American Airlines reservations in Premium Economy would get you seats that are broader and have more amenities than Main Class seats (American's economy cabin). Premium Economy passengers receive two free checked bags, priority boarding, and improved food and beverage service, including complimentary alcohol. American Airlines was the first U.S. airline to provide a four-cabin aircraft with this offering.</p>
+                    <h5>Main Cabin Extra</h5>
+                    <p>It's accessible on the majority of the mainline fleet as well as American Eagle regional planes with more than 50 passengers. Extra seats in the Main Cabin have a higher pitch than the Main Cabin seats, as well as complimentary alcoholic beverages.</p>
+                    <h5>Main Cabin</h5>
+                    <p>If you book a flight with American Airlines in the Main Cabin coach, you get American Airlines's economy product, which is available on all of the company's mainline and regional aircraft. American also provides Basic Economy, the airline's cheapest main cabin rate, on select itineraries. </p>
+                    <p>Basic Economy is available in the main cabin, however there are certain limitations. These limitations include waiting for a seat assignment until check-in, no upgrades or refunds, and boarding with the last group. Basic Economy customers could only bring one personal item on board at first, but American later changed its policy to allow for a carry-on bag.</p>
+                    <h4>American Airlines Reward and Lounge Services Programmes</h4>
+                    <h5>AAdvantage</h5>
+                    <p>If you choose to book a flight with American Airlines, you may use miles from its flagship programme AAdvantage to redeem tickets, upgrade service class, or get free or reduced car rentals, hotel stays, goods, and other items and services through the program's partners. </p>
+                    <p>If you make American Airlines flight reservations often and are one of the most active members, then you would be designated a AAdvantage Gold, AAdvantage Platinum, AAdvantage Platinum Pro, and AAdvantage Executive Platinum elite member, with benefits such as separate check-in, priority upgrading, and standby processing, or free upgrades, according on the number and expense of travel booked. You will also get comparable benefits from AA's partner airlines, especially those in the oneworld alliance.</p>
+                    <h4>American Airlines Flight Booking FAQs</h4>
+                    <h5>What is the most efficient method for reducing the cost of American Airlines reservations?</h5>
+                    <p>Unpublished Farehub has a variety of seasonal specials and discounts on American Airlines ticket reservations and bookings, with savings ranging from 10% to 40% off. Sign up for Unpublished Farehub's email notifications to stay up to date on special offers including Black Friday and Cyber Monday deals. You may use this to stay up to date on the latest discounts and deals when booking a flight with American Airlines or Unpublished Farehub..</p>
+                    <h5>What documents must I carry with me if I want to enter the United States?</h5>
+                    <p>You'll need a passport that's valid for at least six months after your arrival date if you're not a US citizen. You'll need a visa or a visa waiver to enter the country. Visit the US government's website for the most up-to-date information on the visa you'll require.</p>
+                    <h5>What other options do I have for purchasing an American Airlines ticket?</h5>
+                    <p>To double-check your travel information, go into your Unpublished Farehub account and use the airline confirmation number provided. You have the option of picking your favourite seat when booking an American Airlines ticket. You may then choose your seats and pay with cash or Miles.</p>
+                    <h5>Is it possible to change my flight when less than 24 hours have passed after I booked it?</h5>
+                    <p>You have up to 24 hours before your journey to make changes to your flight details and reservations. Confirming a American Airlines ticket with Unpublished Farehub is simple and fast, owing to a 24-hour helpline that guarantees client pleasure and has minimal wait time.</p>
+                    <h5>Do American Airlines follow COVID safety regulations accurately?</h5>
+                    <p>Booking a flight with American Airlines is a perfectly safe and secure process. American Airlines goes to considerable measures to guarantee that its customers have a comfortable and safe journey. The plane is sanitised on a regular basis, and the air filters on board guarantee that the cabin is kept clean. Hand sanitizer and antibacterial soap are also provided to each diner. Each customer is also given hand sanitizer and is required to wear protective gear.</p>
+                    <h4>American Airlines Domestic Flights Service</h4>
+                    <p>When booking a vacation with American Airlines, use Unpublished Farehub to obtain the best and most substantial discounts and seasonal deals. American Airlines is the airline with the most nonstop flights on the most routes between the United States and Canada. It is open around the clock, seven days a week, and serves 28 domestic destinations. The following are some of the most common domestic flights and destinations.</p>
+                    <ul class="list w_50">
+                        <li>American Airlines flights to Boston</li>
+                        <li>American Airlines flights to California</li>
+                        <li>American Airlines flights to New York</li>
+                    </ul>
+                    <h5>American Airlines International Flights Service</h5>
+                    <p>Unpublished Farehub and American Airlines flights are among the most popular airline services among international travellers due to their numerous perks. With over 81 destinations on six continents, American Airlines is the country's largest domestic and international airline. Find the greatest airline tickets and deals to the world's most popular locations. The following are the most popular travel destinations:</p>
+                    <ul class="list w_50">
+                        <li>American Airlines flights to Sydney</li>
+                        <li>American Airlines flights to Toronto</li>
+                        <li>American Airlines flights to Beijing</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}
+
+
+
+
+

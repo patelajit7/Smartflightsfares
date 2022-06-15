@@ -1,0 +1,57 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+<div class="resultsBox">
+
+    <div class="results-skeleton-content"></div>
+    <div class="loadingBox">
+        <div class="mid__loading">
+
+            <div class="loading_block midloader">
+                <div class="loading-icon">
+                    <div class="loading-circle"></div>
+                </div>
+                <div class="block">
+                    <div class="left">
+                        <span class="city__code text-right">
+                            @Model.Origin
+                            <small class="ng-binding">@Model.DestCountry</small>
+                        </span>
+                        <img src="~/images/mobile/icons/plane-red.svg" class="flight__icon" alt="">
+                        <span class="city__code">
+                            @Model.Destination
+                            <small>@Model.DestCountry</small>
+                        </span>
+
+                    </div>
+
+                    @if (Model.TripType == TripType.ROUNDTRIP)
+                    {
+                        <div class="right">
+                            @Model.Departure.ToString("ddd, MMM dd")<span> - </span> @((Model.Return ?? DateTime.Now).ToString("ddd, MMM dd"))<br>@Model.TotalPax()&nbsp;Traveler, @Utility.GetEnumDescription(Model.Cabin)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="right">
+                            @Model.Departure.ToString("ddd, MMM dd") <br>@Model.TotalPax()&nbsp;Traveler, @Utility.GetEnumDescription(Model.Cabin)
+                        </div>
+                    }
+                </div>
+                <div class="head text-center">Searching cheapest flights for <span class="dot">you<span>.</span><span>.</span><span>.</span></span></div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="results-skeleton-content"></div>
+</div>
+
+<div class="repeat_results">
+    <div class="resultsBox">
+        <div class="results-skeleton-content"></div>
+        <div class="results-skeleton-content"></div>
+    </div>
+</div>

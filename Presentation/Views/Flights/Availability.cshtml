@@ -1,0 +1,83 @@
+﻿@model Infrastructure.HelpingModel.API.Availability
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares :" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_BookingPathLayout.cshtml";
+}
+<div class="all_results" style="display:block;">
+    @{Html.RenderPartial("~/views/flights/partial/_FlightListingSearchEngine.cshtml", Model.Factes.Search);}
+    <div class="clearfix"></div>
+    <div id="resultsCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" id="GetContract">
+                    @{Html.RenderPartial("~/views/flights/partial/_AvailabilityRight.cshtml", Model.Factes.Search);}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@{Html.RenderPartial("~/views/flights/partial/_ListingIdlePopup.cshtml");}
+@if (Utility.Settings.IsSentItineraryEnable)
+{
+    { Html.RenderPartial("~/views/flights/partial/_SentItineraryPopup.cshtml"); }
+
+}
+
+<div class="midLoading" id="loadingDiv" style="display:none;">
+    <div class="loading-icon">
+        <div class="loading-circle"></div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")
+    <script type="text/javascript">
+            function doAjax() {
+                $.ajax({
+                    type: 'POST',
+                    url: '@string.Format("{0}flights/issearchcompletetwosteps/{1}", Utility.PortalSettings.DomainUrl,Model.Factes.Search.SearchGuidId)',
+                    success: function (response)
+                    {
+                        if (response != null && !response.IsContextExist) {
+                            window.location.assign("@Utility.PortalSettings.DomainUrl");
+
+                        } else if (response != null && response.IsContextExist && response.IsRequestCompleted) {
+
+                            $("#GetContract").html(response.HtmlResponseLeft);
+                            $("#GetContract").append(response.HtmlResponse);
+
+                            //setTimeout(function () {
+                            //     $('#listingPopup').modal('show')
+                            //}, 10000);
+                            //$("#btnClose_resl").click(function (e) {
+                            //    HideDialog();
+                            //    e.preventDefault();
+                            //});
+
+                            //function HideDialog() {
+                            //    $("#listingPopup").fadeOut(300);
+                            //}
+                            applyJquery();
+                        } else {
+                            doAjax();
+                        }
+
+                    },
+                    complete: function (data) {
+
+                    },
+                    beforeSend: function () {
+
+                    }
+                });
+            }
+
+            doAjax();
+    </script>
+
+}

@@ -1,0 +1,73 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to Amsterdam Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+@section headerSection{
+    @*@Styles.Render("~/content/searchengine")*@
+}
+
+<div id="bannerCntr" style="background-image:url(/images/city-banner/jpn.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Japan Flight Fare</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-md-12">
+                   
+                    <div class="content">
+                        <h3 class="page__title"><strong>Japan</strong> Tourism</h3>
+                        <p>Japan is a sovereign republic located in Eastern Asia. It is recognised for its busy towns, royal palaces, national parks, and several well-built temples. Tokyo, the country's capital, is a popular tourist destination with hundreds of skyscrapers. There's much to do in Japan, from adventurous sports to beach relaxation and discovering the true beauty of Japanese architecture.</p>
+                        <p>Book your Japan trip reservations today and experience how Tokyo, Japan's capital, is a mash-up in every way. This city is noted for its technical brilliance, eccentric pop culture, and devotion to tradition all at the same time. It is definitely the perfect spot for any traveller seeking diversity and adventure, since each locale has something unique to offer. With its odd technical advancements and virtual culture, the city isn't just about sleek business suits and traditional kimonos; it's also a vibrant pop culture phenomenon for developers, gamers and anime lovers alike.</p>
+                        <p>Get the chance to visit the Tokyo Skytree, Tokyo Tower, Harajuku and Shibuya retail areas, the historic Meiji and Sensoji Shrines, and, of course, the cherry blossom blooms in April, some of the most popular tourist attractions in Tokyo.</p>
+                        <p>Apart from these, your Japan trip reservations put you right in the middle of the little pockets of distinct culture, technology, and cuisine that are present in Tokyo and usually go overlooked by the general public. The Kabukicho entertainment district features an unusual robot restaurant, Roppongi is known for its nightlife, and Shinjuku offers vampire and maid cosplay cafés. Pokemon Centres in Ikebukuro and Shibuya, as well as frequent anime gatherings, cater to all gamers and visual culture fanatics.</p>
+                        <p>Confirm your Japan reservations today and visit Kyoto, Japan's former capital, known for its rich and fascinating cultural origins. Kyoto, which is surrounded on three sides by mountains, is an exceptionally serene location packed with over a thousand temples, remnants of ancient Japanese culture, and seasonal gardens. Kyoto not only features beautiful Japanese architecture and traditional geishas, but it also has a broad choice of cuisine that would satisfy even the most seasoned foodie. The countryside is dotted with large temples, and every street has something unique to offer, such as a secret ramen restaurant or a traditional Japanese home. It is one of Japan's most bicycle-friendly cities, providing travellers with several options to discover Kyoto.</p>
+                        <p>Osaka, Japan's second-largest city, is a unique blend of ultra-modern Tokyo and ancient Kyoto, with its own distinct personality, which you’ll get to experience first hand soon after booking your Japan reservations. Osaka offers it all: Universal Studios, tens of thousands of arcades and pachinko machines, cultural relics, and lovely riversides. However, cuisine is what Osaka is most known for. Osaka's streets offer a beautiful flavour of Japan, with traditional Japanese restaurants along every street and Osaka being the birthplace of sushi conveyor belts.</p>
+                        <p>Food is highly important in Osaka's culture, and they take it very seriously—so if any tourist wants to have the best gastronomical Japanese experience, Osaka is the place to go. Osaka also boasts a vibrant nightlife, with the city coming alive with lights and neon signs that add to the city's overall appeal. Osaka's street bustle, gaming centres, arcades, and little lit-up streets and alleyways are best appreciated at night.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}
+
+
+
+
+

@@ -1,0 +1,187 @@
+﻿@model Infrastructure.HelpingModel.API.BookingDetail
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@using Business
+@using Infrastructure.HelpingModel
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+
+<div class="payment_block hr-line">
+    <h2 class="page__title"><strong>Payment</strong> Details</h2>
+
+    <p>All card information is fully encrypted, secure and protected.</p>
+    <div class="form__block">
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="formlabel">Card number <i class="required_star">*</i></label>
+                <div id="div_error_CardNumber">
+                    @Html.HiddenFor(model => model.BillingDetails.CardType)
+                    @Html.TextBoxFor(model => model.BillingDetails.CardNumber, new { placeholder = "Credit / Debit Card Number", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control cc-number", value = "", @onblur = "onBlurPaymentDetails(this,'cardnumber');", @maxlength = 20 })
+                    <i id="i_error_CardNumber"></i>
+                    <div class=" mt-2" id="error_CardNumber"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="mt-sm-1 mb-sm-0">Available payment methods</label>
+                <img src="~/images/mobile/payment/card.png" alt="" class="mt-1" />
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="formlabel">Card holder’s name <i class="required_star">*</i></label>
+                <div id="div_error_CCHolderName">
+                    @Html.TextBoxFor(model => model.BillingDetails.CCHolderName, new { placeholder = "Card Holder's Name", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @onkeydown = "return lettersWithSpaceWithApostOnly(event);", @onblur = "getValidPaxName(this);onBlurPaymentDetails(this,'ccholdername');", @maxlength = 50 })
+                    <i id="i_error_CCHolderName"></i>
+                    <div class=" mt-2" id="error_CCHolderName"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col">
+                        <label class="formlabel">Month <i class="required_star">*</i></label>
+                        <div id="div_error_ExpiryMonth">
+                            <div class="select-class">
+                                @Html.DropDownListFor(model => model.BillingDetails.ExpiryMonth, new SelectList(new List<Object> {
+                                                                     new { value = 0,  text = "Month" },
+                                                                     new { value = 1,  text = "01 - January"},
+                                                                     new { value = 2,  text = "02 - February"},
+                                                                     new { value = 3,  text = "03 - March"},
+                                                                     new { value = 4,  text = "04 - April"},
+                                                                     new { value = 5,  text = "05 - May"},
+                                                                     new { value = 6,  text = "06 - June"},
+                                                                     new { value = 7,  text = "07 - July"},
+                                                                     new { value = 8,  text = "08 - August"},
+                                                                     new { value = 9,  text = "09 - September"},
+                                                                     new { value = 10, text = "10 - October"},
+                                                                     new { value = 11, text = "11 - November"},
+                                                                     new { value = 12, text = "12 - December"}
+                                                                 }, "value", "text", 0), new { @onblur = "onBlurPaymentDetails(this,'expirymonth');", @class = "form-control" })
+                                <div class=" mt-2" id="error_ExpiryMonth"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col p-0">
+                        <label class="formlabel">Year <i class="required_star">*</i></label>
+                        <div id="div_error_ExpiryYear">
+                            <div class="select-class">
+                                @Html.DropDownListFor(model => model.BillingDetails.ExpiryYear, StaticData.GetCreditCardExpityYear(), new { @onblur = "onBlurPaymentDetails(this,'expiryyear');", @class = "form-control" })
+                                <div class=" mt-2" id="error_ExpiryYear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label class="formlabel">CVV <i class="required_star">*</i></label>
+                        <div id="div_error_CVVNumber">
+                            @Html.TextBoxFor(model => model.BillingDetails.CVVNumber, new { placeholder = "CCV", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @onkeypress = "return isNumeric(event);", @onblur = "onBlurPaymentDetails(this,'cvv');", @maxlength = 4 })
+                            <i id="i_error_CVVNumber"></i>
+                            <div class=" mt-2" id="error_CVVNumber"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card__zoom">
+                    <i class="bi bi-exclamation-circle icon"></i> 3-4 Digit Number on your card
+                    <div class="cardInfoTooltip">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="~/Images/master_card-image.png" alt="">
+                                <div class="content">
+                                    <strong>For Visa, MasterCard, Discover, Diner Club and Carte Blanche:</strong>
+
+                                    <p>The Verification number is the 3-Digit number located on the front of the credit card.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <img src="~/Images/american_card-image.png" alt="">
+                                <div class="content">
+                                    <strong>For American Express</strong>
+
+                                    <p>The Verification number is the 4-Digit number located on the front of the credit card.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="billing_block hr-line">
+    <h4 class="page__title"><strong>Billing</strong> Details</h4>
+    <p>As per Bank records or credit card company</p>
+    <div class="form__block">
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <div id="div_error_ExpiryYear"></div>
+                <label class="formlabel"> Country <i class="required_star">*</i></label>
+                <div id="div_error_ExpiryYear">
+                    <div class="select-class">
+                        @Html.DropDownListFor(model => model.BillingDetails.Country, StaticData.GetCountries(), new { @onblur = "onBlurValidateBilling(this,'country');", @class = "form-control" })
+                        <div class=" mt-2" id="error_ExpiryYear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="formlabel">Address <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_AddressLine1">
+                    @Html.TextBoxFor(m => m.BillingDetails.AddressLine1, new { @onblur = "onBlurValidateBilling(this,'addressline1');", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @maxlength = 100 })
+                    <i id="i_error_BillingDetails_AddressLine1"></i>
+                    <div class=" mt-2" id="error_BillingDetails_AddressLine1"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="formlabel">City town <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_City">
+                    @Html.TextBoxFor(m => m.BillingDetails.City, new { placeholder = "City town", @AutoComplete = "off", @class = "form-control", @onblur = "getValidPaxName(this);onBlurValidateBilling(this,'city');", @maxlength = 70 })
+                    <i id="i_error_BillingDetails_City"></i>
+                    <div class=" mt-2" id="error_BillingDetails_City"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="formlabel">State/Province <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_State">
+                    <div class="select-class" id="divState">
+                        @Html.DropDownListFor(model => model.BillingDetails.State, StaticData.GetStates(Model.BillingDetails.Country), new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.BillingDetails.StateName, new { @onblur = "onBlurValidateBilling(this,'statename');", placeholder = "State/Province", @AutoComplete = "off", @class = "form-control", @maxlength = 70 })
+                    </div>
+                    <i id="i_error_BillingDetails_State"></i>
+                    <div class=" mt-2" id="error_BillingDetails_State"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="formlabel">Postal Code <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_ZipCode">
+                    @Html.TextBoxFor(m => m.BillingDetails.ZipCode, new { @onkeydown = "return lettersWithCharOnly(event);", @onblur = "onBlurValidateBilling(this,'zipcode');", placeholder = "Zip", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @maxlength = "10" })
+                    <i id="i_error_BillingDetails_ZipCode"></i>
+                    <div class=" mt-2" id="error_BillingDetails_ZipCode"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

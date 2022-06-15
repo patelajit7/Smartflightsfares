@@ -1,0 +1,170 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Alaska Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/as.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Alaska Airlines</strong> Flights </h3>
+                        <p>Unpublished Farehub and Alaska Airlines provide you with instant access to the most comprehensive variety of low-cost Alaska Airline Flight Booking options. It comes with a variety of travel benefits, including upgrade eligibility and change flexibility. You can earn points on all of our award-winning flights through our frequent flyer programme, which you can then redeem for further discounts. When you book a Flight with Alaska  through Unpublished Farehub, you will receive our lowest price guarantee.</p>
+                        <p>When you purchase Alaska Airlines tickets with Unpublished Farehub, you'll be able to take advantage of a variety of fantastic deals and discounts. Alaska Airlines flies to a variety of major tourist sites in the United States, as well as a number of international destinations.</p>
+                        <p>Alaska Airlines is a large American airline based in SeaTac, Washington, which is part of the Seattle metropolitan region. In terms of fleet size, scheduled passengers carried, and number of destinations serviced, it is the sixth biggest airline in the United States. Alaska Airlines, in collaboration with its local partners Horizon Air and SkyWest Airlines, operates an extensive domestic transport network, largely linking the Pacific Northwest, West Coast, and Alaska to more than hundred destinations in the United States, Hawaii, Belize, Canada, Costa Rica, and Mexico. </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <h4>Book a flight with Alaska Airlines</h4>
+                    <p>Make your Alaska Airlines flight booking now. Please contact us at our toll-free number <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a> to book your Alaska Airlines flight. Enjoy a customer care team that is available 24 hours a day, 7 days a week, with wait times as low as 30 seconds. Make a Alaska Airlines reservation through Unpublished Farehub and book a flight with no hidden fees.</p>
+                    <h5>Booking Alaska Airlines and Unpublished Farehub Flights: A Step-by-Step Guide</h5>
+                    <p>We've put up a quick step-by-step guide to make booking with Alaska Airlines as easy as possible. Continue reading to find out how to book a Alaska Airlines flight in a timely and cost-effective manner.</p>
+                    <ul class="list w_50">
+                        <li>To get the most out of your Unpublished Farehub experience and save up to 40% on your tickets, log in to your account.</li>
+                        <li>Enter your departure and arrival destinations on the Alaska Airlines flight booking page.</li>
+                        <li>Unpublished Farehub offers a number of flight options, including one-way, round-trip, and multi-city trips, depending on your needs.</li>
+                        <li>Then, fill in your departure and return dates, as well as some further details like the quantity of tickets you want to buy.</li>
+                        <li>Finally, based on your preferences, you'll see all of the Alaska Airlines flights that are available.</li>
+                        <li>Choose the Alaska Airlines flight that best fits your budget and schedule, then complete the payment process to complete your Alaska Airlines reservation.</li>
+                        <li>When you book a Alaska Airlines trip via Unpublished Farehub, you'll be able to take advantage of a variety of seasonal deals and discounts, as well as low-cost flights.</li>
+                        <li>When you finish the transaction, your Alaska Airlines flight tickets will be emailed to the email address and phone number you supplied.</li>
+                    </ul>
+                    <h5>Some things to remember when booking a flight with Alaska Airlines</h5>
+                    <ul class="list w_50">
+                        <li>Cuisine of the region: It's always a good idea to learn a little about the cuisine provided while visiting a new area. Food in the United States of America, for example, is influenced by the many ethnic backgrounds of its citizens. In Chicago, get deep-dish pizza; in New York, order bagels; and in the southern regions, order BBQ.</li>
+                        <li>Sockets and Plugs: Knowing how to use the sockets and plugs at a foreign holiday area is one of the most important things a traveller should know. Plug sockets A and B are used in the United States. The standard voltage is 120 V, with a 60 Hz frequency. Make sure you have an adaptor on hand if you'll need one.</li>
+                        <li>Money: If one wants to get the most out of a trip, he or she should be conversant with the destination country's money. The dollar, for example, is the official currency of the United States (USD). Credit and debit cards, as well as cash, are accepted by the majority of eateries.</li>
+                        <li>Customs and culture: Learning about the customs and culture of a location is a good habit to acquire. In the United States, tipping is common, with roughly 10% added to the total in restaurants and pubs. Taxi drivers and hotel employees are also expected to tip.</li>
+                    </ul>
+                    <h4>Booking a flight with Alaska Airlines: Best Practices</h4>
+                    <p>Unpublished Farehub will make tremendous efforts to make your Alaska Airlines flight reservation a pleasant and memorable one. Follow these tips and recommendations to get the most out of Unpublished Farehub and your adventure.</p>
+                    <ul class="list w_50">
+                        <li>When flying with Alaska Airlines, take advantage of the award-winning lounges and in-flight entertainment selections.</li>
+                        <li>Register with Unpublished Farehub and turn on notifications to guarantee you don't miss out on the best Alaska Airlines Flight Tickets offers.</li>
+                        <li>Make your vacation dates as flexible as possible. It's unusual for the price of a flight to increase on certain days. You can check flight rates and choose the lowest alternative by changing the dates. To save the most money, use the credit cards that provide the most discounts on Etihad airline bookings.</li>
+                        <li>Book your Alaska Airlines flight at least a couple weeks in advance. You may receive significantly reduced airfares and fly for a fraction of the price when there is limited demand for a flight.</li>
+                    </ul>
+                    <h4>Alaska Airlines Cabin Services</h4>
+                    <h5>Main Cabin</h5>
+                    <p>All mainline and regional Alaska Airlines reservations provide First Class service. Priority boarding, complimentary hot meals, alcoholic drinks, towel service, and snacks are all included in First Class. The seating is arranged in a 2-2 layout with recliner-style chairs.</p>
+                    <h5>Premium Cabin</h5>
+                    <p>Premium Class service is provided on all mainline and jet regional flights. It's in the economy cabin's first few rows and has a 35" seat pitch.</p>
+                    <p>Priority boarding, gratis premium food, and complimentary alcoholic drinks are all provided to passengers. Fresh food may be obtained if needed. </p>
+                    <p>Premium Class seats can be paid at the time of booking or granted as a complimentary upgrade to Alaska's Mileage Plan reward program's elite fliers.</p>
+                    <h5>Main Cabin</h5>
+                    <p>Booking a flight in Alaska's economy class is known as a Main Cabin journey. Passengers in the main cabin enjoy complimentary food and non-alcoholic beverages. There are also fresh meals, alcoholic beverages, and other snacks for sale. Every seat in the Main Cabin on mainline aircraft has a USB and power outlet.</p>
+                    <h4>Alaska Airlines In Flight Meals and Beverages</h4>
+                    <p>Passengers in the first class cabin receive complimentary meals or light snacks. The airline provides several "Picnic Packs" for a fee in coach/economy class on all flights as part of the buy on board programme. </p>
+                    <p>Alaska Airlines has recently begun serving coffee from Starbucks, a Seattle-based firm, on all of its flights, and has revised most of its first-class menu to reflect the airline's west coast presence. </p>
+                    <p>Oregon's own Salt and Straw Carmel Ribbon Ice Cream, Breakfast Smoothie Shots, Teavana full-leaf teas, and Starbucks coffee are among the new additions. Some of the new features include the ability to order meals before to their travel so that their meal is ready when they arrive.</p>
+                    <h4>Alaska Airlines In Flight Entertainment</h4>
+                    <p>The World Airline Entertainment Association (WAEA) has honoured Alaska Airlines for having a "history first" in inflight entertainment by providing the first portable, hard-drive-based audio-video-on-demand (AVOD) devices that transmit a selection of film, TV, and radio programming in October 2003. </p>
+                    <p>These players may be rented for a cost on most long-haul flights, while they are complimentary for First Class customers. In-flight Wi-Fi and streaming entertainment are available on all Alaska Airlines planes. </p>
+                    <p>All passengers pay a price for internet access, which varies according on the length of the journey. Electronic chatting and streaming entertainment are also free.</p>
+                    <h4>Alaska Airlines Frequent Flyer Programme</h4>
+                    <p>Mileage Plan is Alaska Airlines' and subsidiary Horizon Air's frequent-flyer programme. Members of all three main airline alliances (Oneworld, SkyTeam, and Star Alliance), as well as some unaffiliated carriers, are among the program's airline partners. </p>
+                    <p>There is no membership cost for the Mileage Plan, and one-way redemption is allowed; collected miles expire after two years of inactivity.</p>
+                    <h5>Club 49</h5>
+                    <p>Alaska Airlines has created Club 49, which is reserved to Mileage Plan members who live in Alaska. Free checked luggage and electronic reminders about fare bargains and reductions are among the perks. </p>
+                    <p>There is no cost to join the program, and memberships are good for a year before they must be renewed.</p>
+                    <h4>Alaska Airlines Flight Booking FAQs</h4>
+                    <h5>Is it possible to alter my flight after booked it less than 24 hours?</h5>
+                    <p>You can make changes to your flight information up to 24 hours before your trip. Your Alaska Airlines ticket buying will be straightforward and quick thanks to Unpublished Farehub's 24-hour hotline, which ensures customer satisfaction and has little to no wait time.</p>
+                    <h5>Is Alaska Airlines compliant with COVID regulations?</h5>
+                    <p>Booking a flight with Alaska Airlines is a 100% safe and secure process. Alaska Airlines makes significant safety precautions to ensure that its passengers have a pleasant flying experience. The plane is sanitised on a regular basis, and the air filters on board guarantee that the flight's interiors are kept clean.</p>
+                    <h5>Is it possible to change my flight when less than 24 hours have passed after I booked it?</h5>
+                    <p>With Unpublished Farehub, changing flights is straightforward and quick. Unpublished Farehub is here to assist you and guarantee you receive the greatest value if your travel plans change or you need to modify the date of your tickets.</p>
+                    <h5>What documents must I carry with me if I want to enter the United States?</h5>
+                    <p>You'll need a passport that's valid for at least six months after your arrival date if you're not a US citizen. You'll need a visa or a visa waiver to enter the country. Visit the US government's website for the most up-to-date information on the visa you'll require.</p>
+                    <h5>Is there anything I can do to earn a Alaska Airlines discount?</h5>
+                    <p>Seasonal deals and discounts on Alaska Airlines flight tickets and reservations are available through Unpublished Farehub, with savings of up to 40%. Sign up for Unpublished Farehub's email notifications to stay up to date on special offers including Black Friday and Cyber Monday deals. You may use this to stay up to date on the latest discounts and deals when booking a flight with Alaska Airlines or Unpublished Farehub.</p>
+                    <h5>What alternatives do I have when it comes to picking seats on Alaska Airlines flights?</h5>
+                    <p>To double-check your travel information, go into your Unpublished Farehub account and utilise the flight confirmation number provided. When purchasing a Alaska Airlines ticket, you have the option of picking your favourite seat.</p>
+                    <h4>Alaska Airlines Domestic Flights Service</h4>
+                    <p>If you're looking to book a Alaska Airlines flight, use Unpublished Farehub to get the best prices and seasonal discounts. Alaska Airlines flies to more than 115 destinations across the United States, ensuring that your next vacation is one to remember. The following are some of our most popular and frequently searched flight booking locations.</p>
+
+                    <ul class="list w_50">
+                        <li>Alaska Airlines flights to Dallas</li>
+                        <li>Alaska Airlines flights to El Paso</li>
+                        <li>Alaska Airlines flights to New York</li>
+                    </ul>
+                    <h4>Alaska Airlines International Flights Service</h4>
+                    <p>With new nonstop international flights from our West Coast hubs and airports, Alaska Airlines and our other oneworld member airlines – including American Airlines, British Airways, Finnair, and Iberia – are ready to take you there this summer. They have a large fleet that provides a comfortable and elegant journey. For your convenience, we've compiled a list of some of the most popular international travel locations and airlines.</p>
+                    <ul class="list w_50">
+                        <li>Alaska Airlines flights to Honolulu</li>
+                        <li>Alaska Airlines flights to Mexico City</li>
+                        <li>Alaska Airlines flights to Miami</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}
+
+
+
+
+

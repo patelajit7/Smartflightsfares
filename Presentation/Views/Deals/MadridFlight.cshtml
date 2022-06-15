@@ -1,0 +1,596 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to madrid Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+@section headerSection{
+    @Styles.Render("~/content/searchengine")
+}
+<div class="engine-home madrid-banner">
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="cheap-flight-head"> Flight to Madrid </h3>
+                </div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+    </div>
+</div>
+<div class="wrpr-box mt-5 mb-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="common-head mt-sm-4 mb-sm-3 mt-2 ">
+                    <h3>Heading of Flight to Madrid</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="wrpr-cnt">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+                    </p>
+                    <h3>
+                        Why do we use it?
+                    </h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="destinamtin-img">
+                    <img src="~/Images/madrid-box.jpg" alt="Madrid" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<section class="destination-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="common-head mt-sm-4 mb-sm-5 mt-2 mb-3">
+                    <p>Unpublished Farehub Special</p>
+                    <h3>
+                        Flight to Madrid from US
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="desti-deal">
+                    <div class="deal-loc">
+                        <div class="dest">
+                            <h3>LAS</h3>
+                            <p> APR 28</p>
+                        </div>
+                        <span class="exchane">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                            </svg>
+                        </span>
+                        <div class="dest text-right">
+                            <h3>LAX</h3>
+                            <p>
+                                APR 28
+                            </p>
+                        </div>
+                    </div>
+                    <div class="deal-price">
+                        <p>
+                            Starts From
+                        </p>
+                        <h3>
+                            <span class="sub chgCurrency">$</span>
+                            <span class="main chgCurrencyTwo">548</span>
+                            <span class="sub chgCurrencySub">99</span>
+                        </h3>
+
+                        <p>
+                            Per Person
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+@{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+@{Html.RenderPartial("~/views/home/partial/_TopDestination.cshtml");}
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}
+
+
+
+
+

@@ -1,0 +1,168 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Air France Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/af.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+ 
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Air France </strong> Flights </h3>
+                        <p>Unpublished Farehub and Air France give you immediate access to the most extensive range of affordable rates for booking an Air France flight. It includes a number of travel perks, such as upgrade eligibility and change flexibility. Through our frequent flyer programme, you can collect points on all of our award-winning flights, which you can then use to obtain even more savings. When you book a flight with Air France via Unpublished Farehub, you'll get our lowest price guaranteed.</p>
+                        <p>Air France is France's national airline, with headquarters in Tremblay-en-France. Charles de Gaulle Airport serves as the airline's worldwide hub, with Orly Airport serving as the principal domestic hub. Air France's corporate offices, which were once located in Montparnasse, Paris, are now housed on the grounds of Charles de Gaulle Airport, which is located north of Paris. </p>
+                        <p>Booking a flight with Air France and Unpublished Farehub grants you trips to 36 locations in France and passengers and freight routes to 175 destinations in 78 countries. </p>
+                        <p>Whether you're going for business or pleasure, book a trip with Air France and Unpublished Farehub to get inspiration for your next holiday or the finest airline prices. Compare low-cost flights to our most popular destinations to start planning your holiday now.</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Book a flight with Air France</h4>
+                    <p>It's simple to book Air France flights. Please contact ____ to arrange your Air France reservation. Contact our customer care team that is available 24 hours a day, 7 days a week, with a response time of less than 30 seconds on average. With Air France and Unpublished Farehub, you can book your airline tickets and finalise your vacation plans with no hidden fees or taxes.</p>
+                    <h4>A Simple Manual For Booking A Flight With Air France and Unpublished Farehub</h4>
+                    <p>Unpublished Farehub has compiled a simple step-by-step guide to make buying aircraft tickets as simple as possible. Continue reading to find out how to book a flight with Air France quickly and affordably.</p>
+                    <ul class="list w_50">
+                        <li>To get the most out of your visit and save up to 40% on your tickets, log in to your Unpublished Farehub account.</li>
+                        <li>On the Air France flight booking page, enter your departure and arrival locations. Unpublished Farehub offers a number of flight options, including one-way, round-trip, and multi-city itineraries, based on your interests.</li>
+                        <li>Then enter your departure and return dates, as well as a few other details such as the number of tickets you wish to purchase.</li>
+                        <li>Fill in the departure and return dates, as well as a few other details like the quantity of tickets you wish to purchase.</li>
+                        <li>Finally, based on your selections, you'll see all of the Air France flight reservations that are available.</li>
+                        <li>Choose the Air France flight that best fits your budget and schedule, then complete the payment process to complete your Air France reservation.</li>
+                        <li>When you purchase an Air France flight via Unpublished Farehub, you'll have direct access to a range of seasonal promotions, discounts, and low-cost alternatives.</li>
+                        <li>As soon as you complete the ticket transaction, your Air France flight tickets will be emailed to your authorised email address and phone number.</li>
+
+                    </ul>
+                    <h4>Best Practices while booking a flight with Air France</h4>
+                    <p>With Air France, Unpublished Farehub offers you a comfortable and unforgettable journey. Follow these suggestions and ideas to get the most out of Unpublished Farehub and your holiday trip.</p>
+                    <ul class="list w_50">
+                        <li>At least a few weeks ahead of time, double-check your Air France bookings. You may simply take advantage of significantly discounted rates and travel for a fraction of the price when there is minimal demand for a ticket.</li>
+                        <li>Maintain as much flexibility with your vacation dates as feasible. It's unusual for the price of a flight to increase on specified days. Flexible dates may be used to compare flight tickets and get the best deal. Get great deals on Air France flights by using the right credit cards.</li>
+                        <li>Register with Unpublished Farehub and turn on notification notifications to never miss out on the latest Air France Flight Tickets discounts and seasonal offers.</li>
+                        <li>Take advantage of Air France's award-winning lounges and in-flight entertainment options when buying a ticket.</li>
+
+                    </ul>
+                    <h4>Air France Cabin Services</h4>
+                    <p>Unpublished Farehub provides a choice of Air France airline ticket packages and discounts that will transport you to one of the different cabin experiences accessible when purchasing an Air France journey. We ensure that you will have access to customer service 24 hours a day, 7 days a week for any questions you may have during the airline reservation process. We also offer in-flight assistance and strive to make your journey as comfortable as possible.</p>
+
+                    <h5>Air France - La Premiere</h5>
+                    <p>Booking a flight with Air France in the Premiere suite provides you wood and leather chairs of cabin that recline 180 degrees, making two-metre long beds. A 10.4" touchscreen personal screen with interactive gaming and audio video on demand, a privacy divider, automassage function, reading light, storage drawer, noise-cancelling headphones, personal telephone, and laptop power connections are all included in each seat. </p>
+                    <p>Apart from that, a customised coat service, pure merino wool blanket, a "boudoir-style" pillow, and a travel box with Biologique Recherche facial and body care items to nourish and rejuvenate the skin are also offered to each traveller. </p>
+                    <p>Your Air France flight tickets also grant you access to a mattress, duvet, hypoallergenic feather pillow, sleepwear, a shoe dust bag, and a pair of slippers, which are all included in the turndown service. Chef Guy Martin's entrées are available as a la carte on-demand meal options. </p>
+
+                    <h5>Air France - Business</h5>
+                    <p>Air France’s Business cabin takes you on a trip to your chosen vacation while never compromising on your comfort and entertainment. Passengers receive angled lie-flat chairs that recline to a length of two metres. A 10.4" touchscreen TV monitor with interactive gaming and AVOD, a reading light, a personal telephone, and laptop power connections are included in each seat. Three-course dinners with cheese service are available, while an expedited menu is available immediately after takeoff.</p>
+                    <p>You have the power to choose from over 1,000 hours of entertainment in a totally updated user experience that is available in 12 languages. It has a touchscreen remote control, USB port, universal electrical outlet, new noise cancelling headphones, privacy screen, an Air France logo cushioned headboard, a duvet with XXL feather down pillow, a large storage space and an adjustable headrest. </p>
+                    <h5>Air France - Premium Economy</h5>
+                    <p>On booking a flight in Air France’s Premium Economy, passengers benefit from double luggage allowance, priority airport services, lounge access, and more frequent flyer miles. Sennheiser noise-cancelling headphones, an amenity kit (featuring socks, eye mask, toothbrush & toothpaste, and earplugs), improved blankets, and an enhanced meal service with a second hot meal, candies, and ice cream, all served with real glass and metal cutlery, are among the business class amenities on board. </p>
+                    <p>From June 2014, a new enhanced Premium Economy seat with the same shell was introduced on Boeing 777 aircraft, with more padding and a better foot rest, enhancing customer comfort.</p>
+                    <h5>Air France - Economy</h5>
+                    <p>When you make your Air France Economy Flight Ticket reservations through Unpublished Farehub, you get an assured entry to a world of comfort that is not often seen in economy reservations. </p>
+                    <p>All of Air France's long-haul aircraft is equipped with winged headrests, a personal telephone, and a touchscreen TV display with AVOD Interactive Entertainment System. On long-haul flights, a menu with two options is given. Airbus A320 family aircraft with various seating layouts offer short and medium haul Economy routes. Air France is one of the few airlines that offers winged headrests in both first and business class on short and medium-haul flights. </p>
+                    <p>A snack is supplied on short-haul flights, while a three-course cold dinner is served on medium-haul flights. All flights include complimentary alcoholic beverages, including champagne.</p>
+                    <h4>Air France Reward and Lounge Services Programmes</h4>
+                    <h5>In Flight Catering</h5>
+                    <p>Guy Martin, chef of Le Grand Vefour, a Michelin three-star restaurant in Paris, devised Air France's first-class menu for La Première. Hors d'oeuvres, entrées, a bread basket, and cheeses are on the menu, as well as a dessert cart with pastries, petit fours, and tartlets. Passengers in all classes receive complimentary champagne and refreshments on long-haul flights operated by Air France.</p>
+                    <h5>In Flight Entertainment</h5>
+                    <p>On all long-haul Air France flights, Audio Video on Demand (AVOD) is available in all cabins. Multiple channels of film, audio, music, and games are available on the in-flight entertainment system. The airline's in-flight magazine, Air France Magazine, is available at each seat, while Air France Madame, a fashion luxury magazine with a feminine viewpoint, is available in the La Première and Business cabins and lounges. </p>
+                    <p>All films are available in English, Spanish, and French on all flights. Selected films are also accessible in Chinese, Japanese, Hindi, and Korean on all flights. Berlitz International language classes are available through the airline's in-flight entertainment system.</p>
+                    <h5>Frequent Flyer Programme</h5>
+                    <p>Flying Blue, Air France’s frequent flyer programme, rewards members points based on miles flown and service class. The programme is completely free to join. Standard (Explorer), Elite (Silver), and Elite Plus (Gold and Platinum) statuses are available in the programme. The Explorer level is the first one you get when you start using the application. Achieving elite rank requires accumulating a particular amount of kilometres in a calendar year.</p>
+                    <h4>Air France Flight Booking FAQs</h4>
+                    <h5>What is the menu served on Air France flights?</h5>
+                    <p>Guy Martin, chef of Le Grand Vefour, a Michelin three-star restaurant in Paris, devised Air France's first-class menu for La Première. Hors d'oeuvres, entrées, a bread basket, and cheeses are on the menu, as well as a dessert cart with pastries, petit fours, and tartlets. </p>
+                    <h5>Do passengers get free drinks and food on booking a flight with Air France?</h5>
+                    <p> Passengers in all classes receive complimentary champagne and refreshments on long-haul flights operated by Air France.</p>
+                    <h5>What is the most effective way to save money on Air France reservations?</h5>
+                    <p>Seasonal offers and discounts on Air France ticket reservations and bookings are available via Unpublished Farehub, with savings ranging from 10% to 40% off. To remain up to speed on special discounts, such as Black Friday and Cyber Monday bargains, sign up for Unpublished Farehub's email notifications. When buying a flight with Air France or Unpublished Farehub, you may utilise this to remain up to date on the newest discounts and specials.</p>
+                    <h5>How can I use frequent flyer miles to purchase a flight with Air France?</h5>
+                    <p>To get started, log in to your Flying Blue account or join the Flying Blue programme as a new member.</p>
+                    <p>Choose the option to book a flight from the drop-down menu. Select flights that accept Flying Blue miles as a payment method.</p>
+                    <p>On the following page of the trip summary, choose Pay with Miles. Provide all of your contact details to complete the reservation.</p>
+                    <h5>What documents do I need to bring with me if I wish to enter the US?</h5>
+                    <p>If you're not a US citizen, you'll need a passport that's valid for at least six months after your arrival date. To enter the nation, you'll need a visa or a visa waiver. For the most up-to-date details on the visa you'll need, go to the US government's website.</p>
+                    <h5>What are my alternative choices for buying an Air France ticket?</h5>
+                    <p>Go into your Unpublished Farehub account and use the airline confirmation number supplied to double-check your flight information. When ordering an Air France ticket, you have the option of selecting your preferred seat. After that, you may select your seats and pay with cash or Miles.</p>
+                    <h5>Is it possible to change my flight once it has been booked for less than 24 hours?</h5>
+                    <p>Changes to your flight information and reservations can be made up to 24 hours before your departure. Confirming an Air France ticket with Unpublished Farehub is straightforward and quick, thanks to a 24-hour hotline that ensures customer satisfaction and has a short hold time.</p>
+                    <h5>Is Air France abiding with COVID safety regulations?</h5>
+                    <p>The procedure of booking a flight with Air France is completely safe and secure. Air France goes to great lengths to ensure that its passengers enjoy a pleasant and safe experience. The plane is sanitised on a regular basis, and the interior is maintained clean thanks to the air filters on board. Each diner is also given hand sanitizer and antibacterial soap. Customers are also provided hand sanitizer and must wear protective clothing.</p>
+                    <h4>Air France Domestic Flights Service</h4>
+                    <p>Use Unpublished Farehub to get the finest and most substantial discounts and seasonal promotions when booking a holiday with Air France. Air France has the most nonstop flights between the United States and Canada on the most routes. It is open seven days a week, 24 hours a day, and serves 10 destinations in the US. Some of the most popular domestic flights and destinations are listed below.</p>
+                    <ul class="list w_50">
+                        <li>Air France flights to Boston</li>
+                        <li>Air France flights to Seattle</li>
+                        <li>Air France flights to Dallas</li>
+                    </ul>
+                    <h4>Air France International Flights Service</h4>
+                    <p>Due to its various benefits, Unpublished Farehub and Air France flights are among the most popular airline services among international travellers. It travels to 175 destinations all over the world and 36 domestic destinations in France. Find the best airline tickets and prices to the most popular destinations across the world. The most popular travel locations are as follows:</p>
+                    <ul class="list w_50">
+                        <li>Air France flights to Sydney</li>
+                        <li>Air France flights to Toronto</li>
+                        <li>Air France flights to Beijing</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}

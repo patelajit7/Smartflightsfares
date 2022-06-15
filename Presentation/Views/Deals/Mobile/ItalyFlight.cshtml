@@ -1,0 +1,76 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Flight to Italy Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Italy Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="content">
+                        <h3 class="page__title"><strong>Italy</strong> Tourism</h3>
+                        <p>Italy is a European country with 20 distinct regions, each with its own rich history, culture, and traditions. It is the birthplace of the Renaissance and the birthplace of world-famous figures such as Leonardo Da Vinci, Michelangelo, Marco Polo, and Christopher Columbus. The amazing cuisine that you may eat here is the cherry on top.</p>
+                        <p>A trip to Italy is incomplete without a trip to Venice. Make your Italy trip reservations today and find yourself in Venice, one of the most magical cities in the world. Gondola rides and interconnecting canals make this a lovely city. This city is gorgeous and spectacular because it combines romance and culture in equal measure. This location is unlike anything you've ever seen before, even if you've seen it in movies and images; it is completely surreal. Visit St. Markis Square, Academia Gallery, and San Giorgio Maggiore. In this gorgeous city, water glistens everywhere, with canals where the streets should be. Venice is a land of art, history, enchantment, tradition, and variety that is both romantic and wonderfully chaotic.</p>
+                        <p>Book your Italy ticket reservations and get transported to Rome, Italy's capital. It is a complex metropolis steeped in a rich cultural heritage. In the remains of the Colosseum, you can glimpse the grandeur and majesty of the once-mighty Roman empire, or marvel at the architectural splendour of Palatine Hill. The exhibits in the Vatican museums are breathtaking, and no trip to Rome is complete without a visit to the Sistine Chapel! A visit to the Vatican would reveal the city's profound Christian history, while the more daring might explore the catacombs of San Calisto.</p>
+                        <p>Milan is one of Europe's most major cities. Fashion, art, culture, and tourism are the most well-known aspects of the city. It is Italy's first most populated city. It also serves as the home of the Italian stock market. Milan is a renowned tourist destination because of its theatres, museums, and landmarks. Experience Leonardo da Vinci's masterwork, The Last Supper, unquestionably Milan's premier attraction. Although tickets are tough to come by, the experience is unforgettable. Don't miss Milan Cathedral, a gothic structure that serves as the seat of the Archbishop of Milan. This church is dedicated to St Mary of the Nativity and has excellent architecture. Duomo is another name for the cathedral. The view from the roof is breathtaking.</p>
+                        <p>One of the most essential trips you have to make when you book your Italy reservations is Florence, a major centre of Renaissance culture and hub for international trade, culture, and fashion. A rich and intriguing past coexists with modern attractions and a cosmopolitan atmosphere in this metropolis. The city blends history with the electric current of modern times like no other, from historical ruins to well-preserved cathedrals, beautiful architecture to the trendiest attractions. Visit the Ufizzi Gallery, a Renaissance museum, which houses important works of art from the historical period. This museum has Renaissance artworks by various Italian painters and sculptors. The gallery's U-shaped construction dates from the Renaissance period. The statues of ancient families and Rome are a delight to behold. The Gates of Paradise, which are constructed of bronze, are the entrance to this region. This visit will take you on a journey through history that you will never forget.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}
+
+
+
+
+

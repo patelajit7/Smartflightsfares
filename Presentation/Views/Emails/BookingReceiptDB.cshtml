@@ -1,0 +1,489 @@
+﻿@model Infrastructure.HelpingModel.BookingEntities.BookingDetails
+@using Infrastructure.HelpingModel.BookingEntities;
+@using Common
+@using Infrastructure
+@{
+    string basicEcoAirline = string.Empty;
+    decimal totalBaseFare = 0.0M;
+    decimal totalTaxFare = 0.0M;
+    decimal totalFare = 0.0M;
+    decimal extendedCancelFee = 0.0M;
+    decimal totalBookingFee = 0.0M;
+    decimal discount = 0.0M;
+    List<FlightSegments> outboudSegments = null;
+    List<FlightSegments> inboundSegments = null;
+}
+
+@if (Model != null && Model.BillingDetails != null && (Model.Segments != null && Model.Segments.Count > 0) && Model.Transaction != null && (Model.PriceDetail != null && Model.PriceDetail.Count > 0) && (Model.Travellers != null && Model.Travellers.Count > 0))
+{
+    outboudSegments = Model.Segments.Where(o => !o.IsReturn).ToList();
+    inboundSegments = Model.Segments.Where(o => o.IsReturn).ToList();
+    decimal currencyPrice = Model.Transaction.CurrencyPrice;
+    string currencySymbol = Presentation.Controllers.ShareUtility.GetCurrencySymbol(Model.Transaction.CurrencyCode);
+    string currecnyType = Model.Transaction.CurrencyCode;
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Confirmation Emailer</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="keywords" content="Cheap Tickets, Cheap Airline Tickets, Travel Deals, Hotel Deals, Car Rental Deals, the unpublished farehub" />
+        <meta name="description" content="Search thousands of cheap tickets and cheap flights to your favorite destinations around the world. Book vacations, find hotels and explore numerous flight deals on the @Utility.PortalSettings.Domain" />
+
+    </head>
+    <body style="margin:0px; padding: 0px; background:#F5F5F8; ">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center" style="background:#F5F5F8; font-family:Arial, Helvetica, sans-serif;">
+                    <table width="600" border="0" cellspacing="0" cellpadding="0" style="background:#fff; font-size:13px;  ">
+                        <tr>
+                            <td style="padding:10px 20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td><img src="@Utility.PortalSettings.PortalDetails.Logo" style="width:120px;" alt="logo" /></td>
+                                        <td align="right" style="text-align:right;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="50%" rowspan="3"> <img src="@string.Format("{0}/images/call.png", Utility.PortalSettings.DomainUrl)" alt="" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <div style="font-size:13px; color:#393939;">Call us 24 X 7</div> </td>
+
+                                                </tr>
+                                                <tr> <td> <div style="font-size:18px; color:#005aab; font-weight:700; ">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</div></td></tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="2" height="5"></td></tr>
+                                    <tr><td colspan="2" height="1" style="background:#f0f0f0;"></td></tr>
+                                    <tr><td colspan="2" height="10"></td></tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:center">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr><td><img src="@string.Format("{0}/images/confirmation-icon.png", Utility.PortalSettings.DomainUrl)" alt="" /></td></tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4>Thank you</h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p>
+                                                            for choosing @Utility.PortalSettings.PortalDetails.BrandName and for trusting your travel plans with us.
+                                                            This is a confirmation of your booking request and your booking is in progress. You will receive a confirmation email along with the Confirmation number shortly.
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Your Airline Confirmation Number: <strong>@Model.Transaction.PNR</strong> and Booking Id is <strong>@Model.Transaction.Id</strong></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr><td height="2" style="background:#f0f0f0;"></td></tr>
+                        <tr><td height="10"></td></tr>
+                        <tr><td style="font-size:18px; color:#4B4B4B; font-weight:700; padding:10px 20px 0 20px; ">Flight Details</td></tr>
+                        @{
+                            string airline = string.Empty;
+                            TimeSpan totalLayoverTimeOutbound = new TimeSpan(0, 0, 0);
+                            TimeSpan totalLayoverTimeInbound = new TimeSpan(0, 0, 0);
+
+                            <tr>
+                                <td style="padding:0px 20px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        @{
+                                            for (int i = 0; i <= outboudSegments.Count - 1; i++)
+                                            {
+                                                FlightSegments item = outboudSegments[i];
+
+                                                airline = Utility.GetAilineName(item.MarketingCode);
+                                                if ((CabinType)item.Cabin == CabinType.BasicEconomy && Utility.Settings.BasicEconomyAirlines.Contains(item.MarketingCode) && string.IsNullOrEmpty(basicEcoAirline))
+                                                {
+
+                                                    basicEcoAirline = item.MarketingCode;
+                                                }
+
+
+                                                if (i == 0)
+                                                {
+                                                    <tr><td style="font-size:16px; color:#393939; padding:15px 0 10px 0; border-bottom:1px solid #f0f0f0;">Departure</td></tr>
+                                                }
+                                                if (i != 0)
+                                                {
+                                                    DateTime arrivalTime = new DateTime(Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Year, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Month, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Day, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Hour, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Minute, 0);
+                                                    TimeSpan layoverTime = new DateTime(Convert.ToDateTime(item.DeptDateTime).Year, Convert.ToDateTime(item.DeptDateTime).Month, Convert.ToDateTime(item.DeptDateTime).Day, Convert.ToDateTime(item.DeptDateTime).Hour, Convert.ToDateTime(item.DeptDateTime).Minute, 0) - arrivalTime;
+                                                    if (layoverTime != TimeSpan.MinValue)
+                                                    {
+                                                        <tr><td height="15"></td></tr>
+                                                        <tr><td style="background:#F5F7FF; text-align:center; color:#787878; padding:8px; "><img src="@string.Format("{0}/images/watch.png", Utility.PortalSettings.DomainUrl)" alt="" style="margin-right:5px; vertical-align: middle;" />Layover : @Utility.GetDuration(layoverTime)</td></tr>
+                                                        totalLayoverTimeOutbound = totalLayoverTimeOutbound + layoverTime;
+                                                    }
+                                                }
+
+
+                                                <tr>
+                                                    <td style="padding:20px 0;">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td width="60"><img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCode.ToUpper())" alt="@item.MarketingCode" /></td>
+                                                                <td>
+                                                                    <strong style="font-size: 14px; font-weight:600;">@airline</strong> <br />
+                                                                    <div style="color:#6B6B6B; padding-top:5px;"> Flight No: @item.FlightNumber | @item.MarketingCode.ToUpper()-@item.FlightNumber <br /> Operated by: @airline</div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="color:#8A8A8A;">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <table width="67%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td style="width:142px;">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("ddd, MMM dd"))</td>
+                                                                            <td style="width:142px;">--</td>
+                                                                            <td style="width:142px;">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("ddd, MMM dd"))</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <img src="@string.Format("{0}/images/layover-image.png", Utility.PortalSettings.DomainUrl)" alt="layover" />
+                                                                </td>
+
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td style="font-size:16px; color:#484848; font-weight:700; padding:5px 0;">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("hh:mm tt"))</td>
+                                                                <td style="font-size:16px; color:#484848; font-weight:700; padding:5px 0;">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("hh:mm tt"))</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> @Utility.GetAirportName(item.Origin) (@item.Origin)</td>
+
+                                                                <td>@Utility.GetAirportName(item.Destination) (@item.Destination)</td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                                if (i == outboudSegments.Count - 1)
+                                                {
+                                                    <tr><td height="15"></td></tr>
+                                                    <tr><td style="background:#F5F7FF; text-align:center; color:#787878; padding:8px; "><img src="@string.Format("{0}/images/watch.png", Utility.PortalSettings.DomainUrl)" alt="" style="margin-right:5px; vertical-align: middle;" />Total Trip Time : @Utility.GetDuration(TimeSpan.FromTicks(Model.Flight.OutBoundFlightDuration))</td></tr>
+                                                }
+
+                                            }
+                                        }
+                                    </table>
+                                </td>
+
+                            </tr>
+
+
+                            if (inboundSegments != null && inboundSegments.Count > 0)
+                            {
+                                <tr><td height="20"></td></tr>
+                                <tr><td height="3" style="background:#f0f0f0;"></td></tr>
+
+                                <tr>
+                                    <td style="padding:0px 20px;">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            @{
+                                                for (int i = 0; i <= inboundSegments.Count - 1; i++)
+                                                {
+                                                    FlightSegments item = inboundSegments[i];
+
+                                                    airline = Utility.GetAilineName(item.MarketingCode);
+                                                    if ((CabinType)item.Cabin == CabinType.BasicEconomy && Utility.Settings.BasicEconomyAirlines.Contains(item.MarketingCode) && string.IsNullOrEmpty(basicEcoAirline))
+                                                    {
+
+                                                        basicEcoAirline = item.MarketingCode;
+                                                    }
+
+
+                                                    if (i == 0)
+                                                    {
+                                                        <tr><td style="font-size:16px; color:#393939; padding:15px 0 10px 0; border-bottom:1px solid #f0f0f0;">Return</td></tr>
+                                                    }
+                                                    if (i != 0)
+                                                    {
+                                                        DateTime arrivalTime = new DateTime(Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Year, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Month, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Day, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Hour, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Minute, 0);
+                                                        TimeSpan layoverTime = new DateTime(Convert.ToDateTime(item.DeptDateTime).Year, Convert.ToDateTime(item.DeptDateTime).Month, Convert.ToDateTime(item.DeptDateTime).Day, Convert.ToDateTime(item.DeptDateTime).Hour, Convert.ToDateTime(item.DeptDateTime).Minute, 0) - arrivalTime;
+                                                        if (layoverTime != TimeSpan.MinValue)
+                                                        {
+                                                            <tr><td height="15"></td></tr>
+                                                            <tr><td style="background:#F5F7FF; text-align:center; color:#787878; padding:8px; "><img src="@string.Format("{0}/images/watch.png", Utility.PortalSettings.DomainUrl)" alt="" style="margin-right:5px; vertical-align: middle;" />Layover : @Utility.GetDuration(layoverTime)</td></tr>
+                                                            totalLayoverTimeOutbound = totalLayoverTimeOutbound + layoverTime;
+                                                        }
+                                                    }
+
+
+                                                    <tr>
+                                                        <td style="padding:20px 0;">
+                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                <tr>
+                                                                    <td width="60"><img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCode.ToUpper())" alt="@item.MarketingCode" /></td>
+                                                                    <td>
+                                                                        <strong style="font-size: 14px; font-weight:600;">@airline</strong> <br />
+                                                                        <div style="color:#6B6B6B; padding-top:5px;"> Flight No: @item.FlightNumber | @item.MarketingCode.ToUpper()-@item.FlightNumber <br /> Operated by: @airline</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="color:#8A8A8A;">
+                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <table width="67%" border="0" cellspacing="0" cellpadding="0">
+                                                                            <tr>
+                                                                                <td style="width:142px;">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("ddd, MMM dd"))</td>
+                                                                                <td style="width:142px;">--</td>
+                                                                                <td style="width:142px;">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("ddd, MMM dd"))</td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <img src="@string.Format("{0}/images/layover-image.png", Utility.PortalSettings.DomainUrl)" alt="layover" />
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td style="font-size:16px; color:#484848; font-weight:700; padding:5px 0;">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("hh:mm tt"))</td>
+                                                                    <td style="font-size:16px; color:#484848; font-weight:700; padding:5px 0;">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("hh:mm tt"))</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td> @Utility.GetAirportName(item.Origin) (@item.Origin)</td>
+
+                                                                    <td>@Utility.GetAirportName(item.Destination) (@item.Destination)</td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                    if (i == inboundSegments.Count - 1)
+                                                    {
+                                                        <tr><td height="15"></td></tr>
+                                                        <tr><td style="background:#F5F7FF; text-align:center; color:#787878; padding:8px; "><img src="@string.Format("{0}/images/watch.png", Utility.PortalSettings.DomainUrl)" alt="" style="margin-right:5px; vertical-align: middle;" />Total Trip Time : @Utility.GetDuration(TimeSpan.FromTicks(Model.Flight.InBoundFlightDuration))</td></tr>
+                                                    }
+
+                                                }
+                                            }
+                                        </table>
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                        <tr><td height="20"></td></tr>
+                        <tr><td height="3" style="background:#f0f0f0;"></td></tr>
+
+                        <!-- Traveler information Start here-->
+                        <tr>
+                            <td style="padding:0px 20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                                    <tr><td colspan="3" style="font-size: 18px; color: #4B4B4B; font-weight: 700;  padding: 20px 20px 5px 0px;">Traveler Information</td></tr>
+
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td><strong>Gender</strong></td>
+                                        <td><strong>DOB</strong></td>
+                                    </tr>
+                                    @if (Model.Travellers != null && Model.Travellers.Count > 0)
+                                    {
+                                        foreach (Travellers item in Model.Travellers)
+                                        {
+                                            <tr>
+                                                <td style="background:#F9F9F9;">@Utility.GetTitleCase(string.Format("{0}{1}{2}", item.FirstName, string.IsNullOrEmpty(item.MiddleName) ? " " : string.Format(" {0} ", item.MiddleName), item.LastName).ToLower())</td>
+                                                <td style="background:#F9F9F9;">@Utility.GetEnumDescription((GenderType)item.Gender)</td>
+                                                <td style="background:#F9F9F9;">@string.Format("{0}", item.DOB == null ? "--" : (item.DOB ?? DateTime.Now).ToString("dd MMM yyyy"))</td>
+                                            </tr>
+                                            <tr><td colspan="3" style="height:10px; padding:0px;"></td></tr>
+                                        }
+                                    }
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Traveler information End here-->
+                        <!-- spacer-->
+                        <tr><td height="20"></td></tr>
+                        <tr><td height="3" style="background:#f0f0f0;"></td></tr>
+
+                        <!-- Contact information Start here-->
+                        <tr>
+                            <td style="padding:0px 20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                                    <tr><td colspan="2" style="font-size: 18px; color: #4B4B4B; font-weight: 700;  padding: 20px 20px 5px 0px;">Contact Information</td></tr>
+                                    <tr>
+                                        <td><strong>Contact Number</strong></td>
+                                        <td><strong>E-mail</strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="background:#F9F9F9;">@Model.BillingDetails.BillingPhone</td>
+                                        <td style="background:#F9F9F9;">@Model.BillingDetails.Email</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Contact information End here-->
+                        <!-- spacer-->
+                        <tr><td height="20"></td></tr>
+                        <tr><td height="3" style="background:#f0f0f0;"></td></tr>
+
+
+                        <!-- Price detail Start here-->
+                        <tr>
+                            <td style="padding:0px 20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                                    <tr><td style="font-size: 18px; color: #4B4B4B; font-weight: 700;  padding: 20px 20px 5px 0px;">Price Details</td></tr>
+
+                                    <tr>
+                                        <td style="background:#f9f9f9; padding:10px; line-height:20px; ">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="6">
+
+                                                @{
+
+                                                    foreach (PriceDetails item in Model.PriceDetail)
+                                                    {
+                                                        totalFare = totalFare + (item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount;
+                                                        totalBaseFare = totalBaseFare + (item.BaseFare * item.PaxCount);
+                                                        totalTaxFare = totalTaxFare + (item.Tax + item.Markup + item.SupplierFee) * item.PaxCount;
+                                                        extendedCancelFee = extendedCancelFee + (item.IsExtendedCancellation ? item.ExtendedCancellationAmount : 0) * item.PaxCount;
+                                                        totalBookingFee = totalBookingFee + (item.BookingFee * item.PaxCount);
+                                                        discount = discount + (item.Discount * item.PaxCount);
+
+                                                        <tr>
+                                                            <td>
+                                                                <strong>@item.PaxCount @Utility.GetEnumDescription((TravellerPaxType)item.PaxType)</strong>
+                                                                <div style="color:#888888; padding:5px 0; ">
+                                                                    Flight Charges<br />
+                                                                    Taxes &amp; Fees
+                                                                </div>
+                                                            </td>
+                                                            <td style="text-align:right;">
+                                                                <strong>@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</strong>
+                                                                <div style="color:#888888; padding:5px 0;">
+                                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare * item.PaxCount)) * currencyPrice) <br />
+                                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.Tax + item.Markup + item.SupplierFee) * item.PaxCount) * currencyPrice)
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr><td colspan="2" style="height:1px; background:#e8e8e8; padding:0px;"></td></tr>
+                                                    }
+                                                }
+                                                @if (extendedCancelFee > 0)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <strong>Extended Cancel.</strong>
+                                                            <div style="color:#888888; padding:5px 0; ">
+                                                                @Model.Travellers.Count Traveller(s) X @String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee / Model.Travellers.Count) * currencyPrice)
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align:right;">
+                                                            <strong>@String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee * currencyPrice))</strong>
+                                                            <div style="color:#888888; padding:5px 0;">
+                                                                @String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee * currencyPrice))
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr><td colspan="2" style="height:1px; background:#e8e8e8; padding:0px;"></td></tr>
+                                                    { totalFare = totalFare + extendedCancelFee; }
+                                                }
+                                                <tr>
+                                                    <td style="color:#005aab; font-weight:700;">
+                                                        Total Price (@currecnyType)
+                                                    </td>
+                                                    <td style="text-align:right; color:#005aab; font-weight:700;">
+                                                        @String.Format("{0}{1:0.00}", currencySymbol, (totalFare - discount) * currencyPrice)
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+
+                                    </tr>
+
+
+
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Price detail End here-->
+                        <!-- spacer-->
+                        <tr><td height="20"></td></tr>
+                        <tr><td height="3" style="background:#f0f0f0;"></td></tr>
+
+
+                        <!-- Flight content Tnc Start here-->
+                        <tr>
+                            <td style="padding:0px 20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tr><td style="font-size: 16px; color: #4B4B4B; font-weight: 700;  padding: 20px 20px 5px 10px;">Flight Booking Terms &amp; Conditions</td></tr>
+
+                                    <tr>
+                                        <td style="font-size:12px; color:#6B6B6B; line-height:18px;">Most of the airline tickets and service fees charged for booking the same are non-refundable after 24 hours of booking. Tickets may be cancelled within 24 hours and upto 3 hours before the flight departure time. A cancellation fee of $50 will be applicable for any cancellations that occur after 24 hours of making the reservation, along with any charges as per the carrier, balance would remain as a credit that expires after one year. Once a ticket is purchased, name changes are not allowed according to Airlines Policies And any changes made to the itinerary are restricted & are subject to airline fare rules.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="font-size:12px; color:#6B6B6B; line-height:18px;"><a href="@string.Format("{0}/terms-condition",Utility.PortalSettings.DomainUrl)" style="color:#005aab; text-decoration:none;">Terms & Conditions</a> and <a href="@string.Format("{0}/privacy-policy",Utility.PortalSettings.DomainUrl)" style="color:#005aab; text-decoration:none;">Privacy Policy</a></td>
+                                    </tr>
+
+                                    <tr><td height="20"></td></tr>
+
+                                    <tr>
+                                        <td style="color:#6B6B6B; line-height:20px; text-align:center;">
+                                            Unpublished Farehub LLC<br />
+                                            United States
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="color:#6B6B6B; line-height:20px; text-align:center;">
+                                            All Rights Reserved, Unpublished Farehub LLC
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Flight content Tnc End here-->
+
+                        <tr><td height="30"></td></tr>
+
+                    </table>
+
+                </td>
+            </tr>
+
+            <tr><td height="40"></td></tr>
+        </table>
+        <!--  \ wrapper / -->
+
+    </body>
+
+</html>
+}

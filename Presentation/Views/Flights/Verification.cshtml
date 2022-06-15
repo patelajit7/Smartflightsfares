@@ -1,0 +1,63 @@
+﻿@model string
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Verification " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_BookingPathLayout.cshtml";
+}
+<div id="contentCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="resultsBox">
+                    <div class="results-skeleton-content"></div>
+                    <div class="loadingBox">
+                        <div class="mid__loading">
+
+                            <div class="loading_block midloader">
+                                <div class="loading-icon">
+                                    <div class="loading-circle"></div>
+                                </div>
+                                <div class="head text-center">Please wait <span class="dot"><span>.</span><span>.</span><span>.</span></span></div>
+                                <div class="head text-center">This will take few seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-skeleton-content"></div>
+                </div>
+                <div class="repeat_results">
+                    <div class="resultsBox">
+                        <div class="results-skeleton-content"></div>
+                        <div class="results-skeleton-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+      setTimeout(function () {
+            window.location.href = "@Utility.PortalSettings.DomainUrl";
+        }, 60000);
+        var INTERVAL = 2000;
+    function doAjax() {
+        $.ajax({
+            type: 'POST',
+            url: '@string.Format("{0}flights/isverificationcomplete/{1}", Utility.PortalSettings.DomainUrl, Model)',
+             success: function (response) {
+                if (response != null && !response.IsContextExist) {
+                    window.location.assign("@Utility.PortalSettings.DomainUrl");
+                } else if (response != null && response.IsContextExist && response.IsRequestCompleted == true) {
+                    window.location.href = response.RedirectUrl;
+                }
+            },
+            complete: function (data) {
+                setTimeout(doAjax, INTERVAL);
+            }
+        });
+    }
+        doAjax();
+    </script>
+}

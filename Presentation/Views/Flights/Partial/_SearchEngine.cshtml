@@ -1,0 +1,109 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+@using (Html.BeginForm("searchengine", "flights", FormMethod.Post, new { @id = "flights" }))
+{
+    @Html.HiddenFor(o => o.SearchGuidId)
+    @Html.HiddenFor(o => o.Origin);
+    @Html.HiddenFor(o => o.Destination);
+    @Html.HiddenFor(o => o.AffiliateId);
+    <div class="modify-bg">
+        <div class="modi-select navbar-expand-sm">
+            <ul class="navbar-nav radio-style">
+                <li onclick="callme('RoundTrip');" class="RoundTrip nav-item active">
+                    <label class="radio-defult"><input class="form-check-input" type="radio" name="TripType" value="2" style="height: auto;" @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? " checked " : "")> Round Trip</label>
+                </li>
+                <li onclick="callme('OneWay');" class="OneWay nav-item">
+                    <label class="radio-defult"> <input class="form-check-input" type="radio" id="oneway" name="TripType" value="1" style="height: auto;" @string.Format("{0}", Model.TripType == TripType.ONEWAY ? " checked " : "")> One Way zdfcsdds</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex">
+
+            <div class="modi-input col-md-4 pr-0">
+                <input autocomplete="off" type="text" class="input-type" placeholder="Origin city/airport" onfocus="javascript:this.select();" value="@Model.OriginSearch" id="OriginSearch" name="OriginSearch">
+                <span class="ag_suggestion-box-clear all-clear origsuggestion @string.Format("{0}", string.IsNullOrEmpty(Model.OriginSearch) ? "d-none":"")">&times;</span>                
+                <span id="Depart_error" class="error-div errortext">Please select an origin</span>
+            </div>
+
+            <div class="modi-input col-md-4 pr-0">
+                <input autocomplete="off" type="text" class="input-type" placeholder="Destination city/airport" onfocus="javascript:this.select();" id="DestinationSearch" name="DestinationSearch" value="@Model.DestinationSearch">
+                <span class="ag_suggestion-box-clear all-clear destinationggestion  @string.Format("{0}", string.IsNullOrEmpty(Model.DestinationSearch) ? "d-none" : "")">&times;</span>
+                <span id="Return_error" class="error-div errortext">Please select an destination</span>                
+                <span id="SameCity_error" class="error-div errorsameSearch">Please enter a different Origin and Destination/City airport!</span>
+            </div>
+
+            <div class="modi-calender col-md-4">
+                <div class="calen-sec" style="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? "" : "")">
+                    <input type="text" class="input-type" placeholder="Depart" name="Departure" id="Departure" autocomplete="off" value="@(Model.Departure==DateTime.MinValue? "" : Model.Departure.ToString("MMM dd yyyy"))" readonly="">
+                    <span class="calen-icon"></span>                    
+                    <span id="Departure_error" class="error-div errortext" style="display: none;">Please enter a Depart date</span>
+                </div>
+                <div class="calen-sec-return" style="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? "" : "")">
+                    <input type="text" class="input-type" placeholder="Return" id="Return" name="Return" readonly autocomplete="off" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : (Model.Return??DateTime.Now).ToString("MMM dd yyyy") : "")">
+                    <span class="calen-icon"></span>                    
+                    <span id="ReturnDate_error" class="error-div errortext" style="display: none;">Please enter a Return date</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex">
+            <div class="modi-pax col-md-3 pr-0" id="paxCounter">
+                <div class="input-type">
+                    <label id="paxCounterVal"> @Model.TotalPax()</label> Traveler(s)
+                </div>
+                <span class="arrow-icon"></span>
+                <div class="error-div " id="TotalPax_error" style="display: none;">
+                    <span class="error-flL errorbox1"><i class="fa fa-exclamation-triangle"></i></span>
+                    <span class="error-flL error-innertxt">Total <b>'Infant'</b> not more then <b>'Adult'</b></span>
+                </div>
+            </div>
+
+
+            <div class="modi-class col-md-3 pr-0" id="cabinDiv">
+                <div class="input-type">
+                    <label id="cabinDivVal"> Economy</label>
+                </div>
+                <span class="arrow-icon"></span>
+            </div>
+
+            <div class="modi-direct-air col-md-3 pr-0 mt-2">
+                <label>
+                    <input type="checkbox" name="DirectFlight" id="DirectFlight" @string.Format("{0}", Model.IsDirectFlight == true ? " checked" : "")>
+                    <span>Direct Flight</span>
+                </label>
+            </div>
+            @*<div class="more-option col-md-3">
+                    <a href="javascript:void(0)">Advanced Options</a>
+                </div>*@
+
+            <div class="col-md-3">
+                <div class="modi-serach-btn">
+                    Search Now
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    { Html.RenderPartial("~/views/flights/partial/_FlightSearchEnginePopUp.cshtml"); }
+}
+
+
+<div id="Departure-popup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                The flight time is within 24 hours and can only be booked over the phone. We request you to call us at <br />
+                <a href="tel:@ViewBag.TollFreeNumber">@ViewBag.TollFreeNumber</a>
+            </div>
+        </div>
+    </div>
+</div>

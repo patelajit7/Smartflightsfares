@@ -1,0 +1,117 @@
+﻿@model Infrastructure.HelpingModel.HomeDeals
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.Deals;
+@using Common
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+<div class="deal-tab-mobile">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="holder">
+                <div id="tabs-1">
+                    <div class="deal__block">
+                        <h3>Domestic</h3>
+                        @if (Model != null && Model.Domestic != null && Model.Domestic.TransactionStatus != null && Model.Domestic.TransactionStatus != null && Model.Domestic.TransactionStatus.IsSuccess)
+                        {
+                            <ul class="deals">
+                                @foreach (DealData item in Model.Domestic.Result)
+                                {
+                                    <li>
+                                        <a href="javascript:void(0)" onclick='javascript:window.location.href="@String.Format("/flights/find-result/?origin={0}&destination={1}&adults=1&children=0&infants=0&type={2}&departure={3}&return={4}&cabin=economy&airline={5}&utm_source={6}", item.From, item.To, item.TripType, item.Departure.ToString("MM-dd-yyyy"), (item.Retun ?? DateTime.Now).ToString("MM-dd-yyyy"), item.Airline, Utility.PortalSettings.PortalId)"'>
+                                            <div class="column">
+                                                <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.Airline)" class="airline__logo" alt="@item.Airline" />
+                                                <span class="airline__name">@Html.Raw(Utility.GetAilineName(item.Airline).Replace(" ", "<br>"))</span>
+                                            </div>
+
+                                            <div class="column column-2">
+                                                @if (item.Retun != null)
+                                                {
+                                                    <div class="deal__date">@item.Departure.ToString("MMM dd") - @((item.Retun ?? DateTime.Now).ToString("MMM dd"))</div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="deal__date">@item.Departure.ToString("MMM dd")</div>
+                                                }
+                                                <span class="city__code">@item.From</span>
+                                                <img src="~/images/mobile/icons/flight.svg" class="flight__icon" alt="" />
+                                                <span class="city__code">@item.To</span>
+                                                <img src="~/images/mobile/icons/right-arrow-blue.svg" class="right__arrow" alt="arrow" />
+                                            </div>
+
+                                            <div class="column column-3">
+                                                <span class="small__text">Starting from</span>
+                                                <p class="deal__price chgcomplete" default-price="@item.Total">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (item.Total * currencyMaster.CurrencyPrice))</p>
+                                                <img src="/images/icons/right-arrow-blue.svg" class="right__arrow" alt="arrow" />
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+
+                        }
+                    </div>
+                </div>
+
+                <div id="tabs-2">
+                    <div class="deal__block">
+                        <h3>International</h3>
+                        @if (Model != null && Model.International != null && Model.International.TransactionStatus != null && Model.International.TransactionStatus != null && Model.International.TransactionStatus.IsSuccess)
+                        {
+                            <ul class="deals">
+                                @foreach (DealData item in Model.International.Result)
+                                {
+                                    <li>
+                                        <a href="javascript:void(0)" onclick='javascript:window.location.href="@String.Format("/flights/find-result/?origin={0}&destination={1}&adults=1&children=0&infants=0&type={2}&departure={3}&return={4}&cabin=economy&airline={5}&utm_source={6}", item.From, item.To, item.TripType, item.Departure.ToString("MM-dd-yyyy"), (item.Retun ?? DateTime.Now).ToString("MM-dd-yyyy"), item.Airline, Utility.PortalSettings.PortalId)"'>
+                                            <div class="column">
+                                                <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.Airline)" class="airline__logo" alt="@item.Airline" />
+                                                <span class="airline__name">@Html.Raw(Utility.GetAilineName(item.Airline).Replace(" ", "<br>"))</span>
+                                            </div>
+
+                                            <div class="column column-2">
+                                                @if (item.Retun != null)
+                                                {
+                                                    <div class="deal__date">@item.Departure.ToString("MMM dd") - @((item.Retun ?? DateTime.Now).ToString("MMM dd"))</div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="deal__date">@item.Departure.ToString("MMM dd")</div>
+                                                }
+                                                <span class="city__code">@item.From</span>
+                                                <img src="~/images/mobile/icons/flight.svg" class="flight__icon" alt="" />
+                                                <span class="city__code">@item.To</span>
+                                                <img src="~/images/mobile/icons/right-arrow-blue.svg" class="right__arrow" alt="arrow" />
+                                            </div>
+
+                                            <div class="column column-3">
+                                                <span class="small__text">Starting from</span>
+                                                <p class="deal__price chgcomplete" default-price="@item.Total">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (item.Total * currencyMaster.CurrencyPrice))</p>
+                                                <img src="/images/icons/right-arrow-blue.svg" class="right__arrow" alt="arrow" />
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                        </a>
+                                    </li>
+                                }
+
+                            </ul>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <p class="deal__tnc">*All fares above were last found on: <span>@System.DateTime.UtcNow.ToString("MMM dd, yyyy") at @System.DateTime.UtcNow.ToString("hh:mm:ss tt") UTC</span>. Fares are round trip. Fares incl. all fuel surcharges, <a href="#" target="_blank">taxes &amp; fees</a> and our service fees. Displayed fares are based on historical data, are subject to change and cannot be guaranteed at the time of booking. See all booking <a href="#" target="_blank">terms and conditions</a>.</p>
+
+    </div>
+</div>
+

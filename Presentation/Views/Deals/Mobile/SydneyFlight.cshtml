@@ -1,0 +1,77 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Flight to Sydney Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Sydney Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="content">
+                        <h3 class="page__title"><strong>Cancun</strong> Tourism</h3>
+                        <p>Cancun is one of Mexico's most popular tourist destinations, attracting over a thousand people each month with its white sand beaches, nice weather, opulent resorts, vibrant nightlife, and delicious Mexican cuisine.</p>
+                        <p>Cancun is a shimmering tropical destination beckoning you to immerse yourself in its various vivid activities. This Caribbean peninsula, shaped like the number seven, was practically deserted four decades ago. The region developed from a tiny fishing town to what it is now, a centre of lavish resorts, brilliant parties, and mouth-watering seafood, thanks to the Mexican government's successful endeavour to turn the city into a tourist attraction.</p>
+                        <p>Your Cancun trip reservations would offer you the chance to experience Chichen Itza, one of the world's seven wonders. It is a pre-Columbian metropolis from the Mayan period, and is about a day's drive from Cancun. It is one of the greatest Mayan sites and the most loved archaeological site in the country, with over a million visitors each year. The city's main feature is the pyramid El Castillo, which was formerly a centre of worship. If you choose to miss Cancun's beaches for a day and instead see the remains of one of the world's greatest civilizations, your vacation will be well worth it.</p>
+                        <p>Another archaeological treasure, the El Rey ruins, are a well-known Mayan archaeological site near Cancun's central area. The remains are presently located in central Cancun and are named after a skeleton discovered at the site that is thought to be that of a monarch named El Rey. The location, which was once a renowned Mayan metropolis, is now home to a swarm of Iguanas who have grown used to the presence of humans.</p>
+                        <p>Book your Cancun tickets today and visit Isla Mujeres, a tiny Caribbean island noted for its seafood, snorkelling, and scuba diving. It is located just a few kilometres from Cancun. It is known as the Women's Island and offers breathtaking views of the Caribbean. The island is accessible by ferry from Cancun and is known for its sea turtles. The beach at Playa del Norte is quite popular with tourists. The Cancun Underwater Museum and Island, located on the western shore, is also near to a coral reef in Garrafon Park and serves as a centre for aquatic sports. </p>
+                        <p>Cancun offers an unrivalled nightlife experience, with a wide range of bars, clubs, and lounges to choose from. Although it is known as a Spring Breakers' Paradise, there is something for everyone with cutting-edge light effects, nonstop music, and fantastic discos. You have the option of purchasing an open bar package and drinking all night long, or paying by the drink. Zone Hotelera is home to the majority of the nightclubs, with Dady'O, Coco Bongo and Mandala among the most prominent.</p>
+                        <p>When you make your Cancun trip reservations, snorkelling, scuba diving, or riding the waves are all available options for exploring the Caribbean's depths. And if you're interested in ancient history, you're in for a treat because you'll be visiting the Mayan civilization's birthplace. Cancun is a melange worth your visit, whether it's for a family vacation, an archaeological excursion, or a spring break.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}
+
+
+
+

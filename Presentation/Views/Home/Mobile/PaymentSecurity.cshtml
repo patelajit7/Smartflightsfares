@@ -1,0 +1,33 @@
+﻿@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Payment Security | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/Mobile/_GeneralLayout.cshtml";
+}
+
+<!--  / content container \ -->
+<div id="contentCntr">
+
+    <div class="static_title">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Payment & Security</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>It is of paramount importance to us that all the transactions you conduct on our site are carried out in a safe and secure environment to your satisfaction. To achieve this, @Utility.PortalSettings.Domain are protected by Secured Socket Layer technology. Your credit card details are transmitted in an encrypted form over the internet, so that no one else can read them. Your card details are shared with our service providers to the extent deemed to be necessary. If you have any additional queries or concerns please email us and we will reply to your queries with 24 hours.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--  \ content container / -->

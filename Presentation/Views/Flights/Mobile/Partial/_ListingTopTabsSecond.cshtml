@@ -1,0 +1,44 @@
+﻿@model Infrastructure.HelpingModel.API.ContractFacets
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+
+<h4 class="total_results">@Model.TotalContract Results Found</h4>
+
+<!--  / Apply filter box \ -->
+<div class="apply_filter">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul>
+                <li>Non Stop <a href="#"><i class="bi bi-x-circle"></i></a></li>
+                <li>One Stop <a href="#"><i class="bi bi-x-circle"></i></a></li>
+                <li class="clear__all"><a href="#">Clear all </a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!--  \ Apply filter box / -->
+<!--  / Sorting Tab box \ -->
+<div class="sortingTabBox">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul>
+                <li class="flights active" onclick="contractFilter.setTab(0);">Cheapest <span class="price">$164.54</span> </li>
+                @if (Model.NearbyMinPrice > 0)
+                {
+                    <li onclick="contractFilter.setTab(2);"><a> Nearby AIrport(s) <span class="price">$@String.Format("{0:0.00}", Model.NearbyMinPrice)</span></a></li>
+                }
+                @if (Model.AlternameMinPrice > 0)
+                {
+                    <li onclick="contractFilter.setTab(3);"><a> Alternate Dates <span class="price">$164.54</span></a></li>
+                }
+                @if (Model.PhoneOnlyMinPrice > 0)
+                {
+                    <li><a> Shortest Flight <span class="price">$164.54</span></a></li>
+                }
+                </ul>
+        </div>
+    </div>
+</div>

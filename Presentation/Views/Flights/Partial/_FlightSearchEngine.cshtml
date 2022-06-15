@@ -1,0 +1,85 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+
+@using (Html.BeginForm("searchengine", "flights", FormMethod.Post, new { @id = "flights", @autocomplete = "off" }))
+{
+    @Html.HiddenFor(o => o.SearchGuidId)
+    @Html.HiddenFor(o => o.Origin);
+    @Html.HiddenFor(o => o.Destination);
+    @Html.HiddenFor(o => o.AffiliateId);
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="searchBox">
+                <!-- tab box -->
+
+
+                <div class="searchBlock">
+
+                    <!--Radio start here -->
+                    <ul class="tripType inputSet">
+                        <li><label><input type="radio" onclick="callme('RoundTrip');" name="TripType" value="2" @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? " checked " : "")><span>Round trip</span> </label></li>
+                        <li><label><input type="radio" onclick="callme('OneWay');" id="oneway" name="TripType" value="1" @string.Format("{0}", Model.TripType == TripType.ONEWAY ? " checked " : "")><span>Oneway</span> </label></li>
+                    </ul>
+                    <!--Radio end here -->
+                    <!-- Flight Search Engin Start here-->
+                    <div class="flightSearch">
+
+                        <div class="column_1 box-shadow">
+                            <div class="label first inputOrigin">
+                                <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Origin city/airport" value="@Model.OriginSearch" id="OriginSearch" name="OriginSearch" class="inputField input_clear valid" />
+                                <span class="icons bi bi-geo-alt destination-icon"></span>
+                                <span id="Depart_error" class="error-div1 errortext">Please select an origin</span>
+                            </div>
+
+                            <div class="label inputDestination">
+                                <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Destination city/airport" id="DestinationSearch" name="DestinationSearch" value="@Model.DestinationSearch" class="inputField input_clear" />
+                                <span class="icons bi bi-geo-alt destination-icon"></span>
+                                <span id="Return_error" class="error-div1 errortext">Please select an destination</span>
+                            </div>
+                        </div>
+
+                        <div class="column_2 box-shadow">
+                            <div class="label cursor inputDepart">
+                                <input type="text" class="inputField cursor" placeholder="Depart" name="Departure" id="Departure" autocomplete="off" value="@(Model.Departure==DateTime.MinValue? "" : Model.Departure.ToString("MMM dd yyyy"))" readonly="" />
+                                <span class="icons bi bi-calendar3 calender-icon"></span>
+                                <span id="Departure_error" class="error-div1 errortext">Please enter a Depart date</span>
+                            </div>
+
+                            <div class="label cursor inputReturn">
+                                <input type="text" placeholder="Return" class="inputField cursor" id="Return" name="Return" readonly autocomplete="off" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : (Model.Return??DateTime.Now).ToString("MMM dd yyyy") : "")" />
+                                <span class="icons bi bi-calendar3 calender-icon"></span>
+                                <span id="ReturnDate_error" class="error-div1 errortext">Please enter a Return date</span>
+                            </div>
+                        </div>
+
+                        <div class="column_3 box-shadow">
+                            <div class="label cursor traveller" id="paxCounter">
+                                <input type="text" id="paxCounterVal" value="@Model.TotalPax() Traveler(s), Economy" class="inputField valid cursor" readonly />
+                                <span class="icons person-icon bi bi-person traveller-icon"></span>
+                                <div class="error-div" id="TotalPax_error" style="display: none;">
+                                    <span class="error-flL errorbox1"><i class="fa fa-exclamation-triangle"></i></span>
+                                    <span class="error-flL error-innertxt">Total <b>'Infant'</b> not more then <b>'Adult'</b></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="searchButton">Search</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            @{ Html.RenderPartial("~/views/flights/partial/_FlightSearchEnginePopUp.cshtml"); }
+
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+
+
+
+}

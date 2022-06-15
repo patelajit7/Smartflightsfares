@@ -1,0 +1,119 @@
+﻿@using Common;
+@using Configration;
+@using Infrastructure;
+
+<footer id="footerCntr">
+    <!--  / footer link box \ -->
+    <div class="footer__linkBox">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-4 mobile-bg">
+                    <h4> Get in touch</h4>
+                    <p>
+                        United States
+                        @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber
+                    </p>
+                    <a href="mailto:@Utility.PortalSettings.PortalDetails.CustomerSupportMail" class="email"><i class="bi bi-envelope icon"></i> @Utility.PortalSettings.PortalDetails.CustomerSupportMail</a>
+                    
+                </div>
+
+                <div class="col-lg-3 col-md-4 mobile-bg">
+                    <h4>Quick Links</h4>
+
+                    <ul>
+                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/terms-condition">Terms &amp; Conditions</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="/payment-security">Payment Security</a></li>
+                        <li><a href="/website-terms-of-use">Website Terms of Use</a></li>
+
+                    </ul>
+
+
+                </div>
+
+                <div class="col-lg-3 col-md-4 mobile-bg">
+                    <h4>Top Destinations</h4>
+
+                    <ul>
+                        <li><a href="/deals/flight-to-amsterdam">Flights to Amsterdam</a></li>
+                        <li><a href="/deals/flight-to-bali">Flights to Bali</a></li>
+                        <li><a href="/deals/flight-to-aruba">Flights to Aruba</a></li>
+                        <li><a href="/deals/flight-to-cancun">Flights to Cancun</a></li>
+                        <li><a href="/deals/flight-to-dubai">Flights to Dubai</a></li>
+                        <li><a href="/deals/flight-to-london">Flights to London</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 mobile-bg hide-tablet">
+                    <h4>Top Airlines</h4>
+
+                    <ul>
+                        <li><a href="/airlines/ua">United Airlines Flights</a></li>
+                        <li><a href="/airlines/dl">Delta Air lines Flights</a></li>
+                        <li><a href="/airlines/aa">American Airlines Flights</a></li>
+                        <li><a href="/airlines/b6">JetBlue Airlines Flights</a></li>
+                        <li><a href="/airlines/as">Alaska Airways Flights</a></li>
+                        <li><a href="/airlines/ek">Emirates Airlines Flights</a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!--  \ footer link box / -->
+    <!--  / footer disclaimer box \ -->
+    <div class="disclaimerBox">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>
+                        Unpublished Farehub is not liable for any harm, destruction, or damage done by circumstances, activities, or failures that fall outside its personal responsibility.
+                        It is also accepted and recognized that traveling to several regions of the world may pose a multitude of health hazards and vulnerabilities, not all of which are restricted to infection, criminality, violence, and conflict. Since individual passenger's tolerance for risk varies, Unpublished Farehub holds no authority to counsel or suggest to choose if or not journey to any certain location during any specific time. It is advised that tourists consult independent third-party trip data resources for additional information.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  \ footer disclaimer box / -->
+    <!--  / footer logo box \ -->
+    <div class="footer__logoBox">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 text-lg-right text-sm-center">
+                    <img src="~/images/footer/card-icon.jpg" class="card_icons" alt="card">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  \ footer logo box / -->
+    <!--  / footer Copyrights box \ -->
+    <div class="footer__copyrightBox">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+
+                    <p>All Rights Reserved, Unpublished Farehub @DateTime.UtcNow.ToString("yyyy")</p>
+
+                </div>
+
+                <div class="col-sm-5 text-right">
+                    <ul class="social__icons">
+                        <li>Follow us:</li>
+                        <li><a href="https://www.facebook.com/wizfairtravelCanada/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/wizfairtravel" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.youtube.com/c/wizfairtravel" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="https://www.instagram.com/thewizfair/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  \ footer Copyrights box / -->
+</footer>

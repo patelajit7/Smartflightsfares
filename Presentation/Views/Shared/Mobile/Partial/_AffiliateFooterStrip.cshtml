@@ -1,0 +1,71 @@
+﻿@using Common
+@{
+    int aff = Utility.GetAffiliateId(Request);
+}
+
+<div style="height:129px"></div>
+<div id="fit">
+    <div class="modal-content modal-window-style">
+        <div class="modal-body">
+            <div class="phone-modal-content col-12 pdlr-0 d-flex">
+                <div class="operator-col col-3 d-flex pdlr-0">
+                    <div class="call-girl-section pdlr-0">
+                        <div class="call-girl">
+
+                        </div>
+                        <div class="available-section">
+                            <div class="available-circle"></div>
+                            <div class="available-text">Available Now</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-col col-9  pdlr-0 d-flex flex-wrap">
+                    <div class="number-section shockwave col-md-6 col-sm-11 col-xs-12 pdlr-0">
+                        <div class="head-text"> For phone only flight deals,<br/>upto 30% cheaper </div>
+                        <div class="international">
+
+                            @if (Common.Utility.PortalSettings.ResponseTagAffiliates.Contains(aff))
+                            {
+                                <a href="tel:@ViewBag.TollFreeNumber" id="@aff" class="call-mCenter">
+                                    <div class="tel-container us phone_click_event" onclick="rTapClickToCall(359597)">
+                                        <div class="tel-box">
+                                            <p>Call now</p>
+                                            <span class="rTapNumber359597" onclick="rTapClickToCall(359597)">@ViewBag.TollFreeNumber</span>
+                                        </div>
+                                        <div class="call-img shake">
+                                            <svg viewBox="0 0 26 26" fill="none">
+                                                <path d="M13.0001 0C5.82084 0 0 5.82081 0 13C0 20.1791 5.82084 26 13.0001 26C20.1793 26 26 20.179 26 13C26.0001 5.82081 20.1793 0 13.0001 0ZM19.8649 18.9684L18.8241 20.0095C18.6382 20.1951 18.0941 20.3109 18.0766 20.3109C14.7837 20.3396 11.6131 19.0462 9.28356 16.7164C6.94762 14.3792 5.65269 11.1973 5.68746 7.89331C5.68746 7.89331 5.80664 7.36325 5.99231 7.17935L7.03314 6.13836C7.41403 5.75571 8.14568 5.58279 8.65822 5.75426L8.87717 5.8273C9.38821 5.99861 9.92475 6.56366 10.066 7.08424L10.5895 9.00589C10.7307 9.52797 10.5403 10.2707 10.1595 10.6516L9.46451 11.3467C10.1469 13.8728 12.1289 15.8552 14.6555 16.5392L15.3502 15.844C15.7328 15.4613 16.4753 15.271 16.9963 15.412L18.9177 15.9375C19.4383 16.0805 20.0033 16.6137 20.1746 17.1246L20.2476 17.3467C20.4173 17.8578 20.2458 18.5893 19.8649 18.9684Z" fill="white"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="tel:@ViewBag.TollFreeNumber" id="@aff" class="call-mCenter">
+                                    <div class="tel-container us phone_click_event">
+                                        <div class="tel-box">
+                                            <p>Call now</p>
+                                            <span>@ViewBag.TollFreeNumber</span>
+                                        </div>
+                                        <div class="call-img shake">
+                                            <svg viewBox="0 0 26 26" fill="none">
+                                                <path d="M13.0001 0C5.82084 0 0 5.82081 0 13C0 20.1791 5.82084 26 13.0001 26C20.1793 26 26 20.179 26 13C26.0001 5.82081 20.1793 0 13.0001 0ZM19.8649 18.9684L18.8241 20.0095C18.6382 20.1951 18.0941 20.3109 18.0766 20.3109C14.7837 20.3396 11.6131 19.0462 9.28356 16.7164C6.94762 14.3792 5.65269 11.1973 5.68746 7.89331C5.68746 7.89331 5.80664 7.36325 5.99231 7.17935L7.03314 6.13836C7.41403 5.75571 8.14568 5.58279 8.65822 5.75426L8.87717 5.8273C9.38821 5.99861 9.92475 6.56366 10.066 7.08424L10.5895 9.00589C10.7307 9.52797 10.5403 10.2707 10.1595 10.6516L9.46451 11.3467C10.1469 13.8728 12.1289 15.8552 14.6555 16.5392L15.3502 15.844C15.7328 15.4613 16.4753 15.271 16.9963 15.412L18.9177 15.9375C19.4383 16.0805 20.0033 16.6137 20.1746 17.1246L20.2476 17.3467C20.4173 17.8578 20.2458 18.5893 19.8649 18.9684Z" fill="white"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

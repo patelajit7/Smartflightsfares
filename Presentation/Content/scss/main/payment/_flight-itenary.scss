@@ -1,0 +1,252 @@
+/*Flights detail Strat here*/
+
+.flight__itenaryBox {
+    .head {
+        padding: 0px 30px 0px 0px;
+        position: relative;
+    }
+    .page__title {
+        font-size: 18px;
+        &.flight_detail_title {
+            @include breakpoint(sm) {
+                padding-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        &:after {
+            bottom: -9px;
+            display: none;
+        }
+        strong {
+            display: inline-block;
+        }
+    }
+    /*Flightdetail*/
+    .flightDetail {
+        color: #8A8A8A;
+        h4 {
+            font-size: 16px;
+            color: #393939;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .devider_line {
+            height: 8px;
+            background: #F5F5F8;
+            border: none;
+            margin: 20px -20px;
+        }
+    }
+    .flighttab {
+        list-style: none;
+        width: 100%;
+        float: left;
+        margin-bottom: 30px;
+        padding: 0px;
+        border-bottom: 1px solid #DFDFDF;
+        @include breakpoint(md) {
+            margin: 10px 0;
+            width: auto;
+            overflow: hidden;
+            float: none;
+            border-bottom: none;
+        }
+        li {
+            float: left;
+            margin-right: 30px;
+            @include breakpoint(md) {
+                width: 45%;
+                margin-right: 15px;
+            }
+            @include breakpoint(xs) {
+                width: 43%;
+            }
+            a {
+                font-size: 16px;
+                color: #484848;
+                text-decoration: none;
+                padding: 0 0px 7px 0;
+                display: block;
+                position: relative;
+                cursor: pointer;
+                @include breakpoint(md) {
+                    font-size: 14px;
+                    padding: 4px 10px;
+                    border: 2px solid #ccc;
+                    text-align: center;
+                    border-radius: 5px;
+                    &.active {
+                        border-color: #2b4ded;
+                    }
+                }
+                &:before {
+                    content: '';
+                    height: 2px;
+                    position: absolute;
+                    left: 0px;
+                    bottom: -1px;
+                    transition: all 0.5s;
+                    width: 0px;
+                    display: block;
+                    background: $primary;
+                    @include breakpoint(md) {
+                        display: none;
+                    }
+                }
+                &:hover,
+                &.active,
+                &:hover:before,
+                &.active:before {
+                    width: 100%;
+                    color: $secondary;
+                }
+            }
+        }
+    }
+    /*End tab*/
+    .airlines__details {
+        padding-top: 26px;
+        font-size: 13px;
+        line-height: 1.5em;
+        color: #949494;
+        .air-name {
+            font-size: 14px;
+            color: #484848;
+        }
+        img {
+            width: 32px;
+            float: left;
+            margin-right: 10px;
+        }
+        .detail {
+            width: calc(100% - 45px);
+            float: left;
+        }
+    }
+    /*route start */
+    .route__info {
+        padding: 40px 0;
+        font-size: 13px;
+        position: relative;
+        @include breakpoint(sm) {
+            padding: 0 20px;
+            margin: 15px 0 35px 0;
+            border-left: 2px dashed #ccc;
+            &:after,
+            &:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                display: block;
+                border: 2px solid $primary;
+                position: absolute;
+                left: -6px;
+                top: 0px;
+                border-radius: 100%;
+                background: $white;
+            }
+            &:before {
+                top: inherit;
+                bottom: 0px;
+            }
+        }
+        .time {
+            font-size: 14px;
+            color: #484848;
+            font-weight: 600;
+            margin-top: 28px;
+            @include breakpoint(sm) {
+                margin-top: 2px;
+            }
+        }
+        .date {
+            position: relative;
+            @include breakpoint(sm) {
+                .highlight {
+                    display: inline-block;
+                }
+                .message_display {
+                    position: static;
+                    display: inline-block;
+                    margin-right: 6px;
+                }
+            }
+        }
+        .destination_fullname {
+            position: relative;
+            .message_display {
+                top: inherit;
+                bottom: -25px;
+            }
+        }
+        .connecting__bar {
+            width: 60%;
+            height: 2px;
+            border-top: 2px dashed #DFDFDF;
+            position: absolute;
+            left: 0px;
+            top: 72px;
+            &:after,
+            &:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                display: block;
+                border: 2px solid $primary;
+                position: absolute;
+                right: 0px;
+                top: -6px;
+                border-radius: 100%;
+                background: $white;
+            }
+            &:before {
+                right: inherit;
+                left: 0px;
+            }
+            .duretion_time {
+                position: absolute;
+                left: 50%;
+                margin-top: -30px;
+                text-align: center;
+                img {
+                    background: $white;
+                    padding: 0 6px;
+                    display: block;
+                }
+            }
+        }
+        .TripTime {
+            margin: 15px;
+        }
+        .message_display {
+            position: absolute;
+            left: 0px;
+            top: -25px;
+            margin: 0px;
+            @include breakpoint(sm) {
+                position: static;
+            }
+        }
+    }
+    .class__type {
+        padding-top: 26px;
+    }
+    /*route end */
+    .layover {
+        margin-bottom: 15px;
+        padding: 8px 20px;
+        font-size: 12px;
+        color: #787878;
+        background: #F5F7FF;
+        text-align: center;
+        .bi-stopwatch {
+            position: relative;
+            top: -2px;
+            margin-right: 4px;
+        }
+    }
+}
+
+
+/*Flight detail end */

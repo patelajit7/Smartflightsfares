@@ -1,0 +1,183 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Delta Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/dl.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Delta Airlines</strong> Flights </h3>
+                        <p>Have you ever wanted to travel to an exciting faraway location for an edifying holiday but couldn't figure out how to go about it? Unpublished Farehub makes reserving flights a straightforward and fun experience so you can focus on what counts most - your chosen vacation getaway. When making a reservation, one must be careful about the airline service selected, and Unpublished Farehub ensures that you make the best option at the lowest possible price.</p>
+                        <p>Delta Airlines bookings encompass major locations inside the United States as well as international flights all around the world. Delta Airlines is a heritage carrier and one of the main airlines in the United States. It is based in Atlanta, Georgia, and is one of the world's oldest airlines. </p>
+                        <p>Book Delta Airlines flights via Unpublished Farehub and take advantage of a wide range of unbeatable bargains and discounts. Take advantage of Delta Airlines' flight services to a selection of major tourist spots in the United States, as well as a plethora of international getaway destinations.</p>
+                        <p>Delta Connection, along with its subsidiaries and regional affiliates, operates approximately 5,400 flights per day to 325 destinations in 52 countries across six continents. It is the world's second-largest airline in terms of scheduled passenger miles flown, revenue passenger kilometres flown, and fleet size.</p>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Book a flight with Delta Airlines</h4>
+                    <p>Book Delta Airlines Flights instantly. Feel free to call us at our helpline no. <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a> and make your Delta Airlines reservation today. Take pleasure in experiencing a 24/7 customer support service with wait times as low as 30 seconds. Book a flight at zero additional costs, today.</p>
+                    <h4>A Quick and Easy Step-Wise Assistance For Booking A Flight With Delta Airlines and Unpublished Farehub</h4>
+                    <p>We at Unpublished Farehub have created a concise step-by-step guide to guarantee that your airline purchasing experience is simple and painless. Continue reading to find out how to book your Delta Airlines travel quickly and at the best possible price.</p>
+
+                    <ul class="list w_50">
+                        <li>Log in to your Unpublished Farehub account to maximise your experience and save up to 40% on your tickets. </li>
+                        <li>Choose the Delta Airlines flight booking page and input your departure and arrival points.</li>
+                        <li>Unpublished Farehub offers a multitude of flight options, allowing you to choose between one-way, round-trip, or multi-city flights based on your preferences.</li>
+                        <li>Then, enter the dates you wish to travel and return from your location, as well as a few other parameters such as the number of tickets you want to purchase.</li>
+                        <li>Then, input the dates you want to leave and return from your location, as well as a few other details like the amount of tickets you want to buy.</li>
+                        <li>Finally, based on your selections, you'll be shown all of the Delta Airlines flights that are available.</li>
+                        <li>Choose the Delta Airlines flight that best fits your budget and price requirements, then complete the billing process to complete your Delta Airlines reservation.</li>
+                        <li>When you buy a Delta Airlines flight via Unpublished Farehub, you'll be able to take advantage of a selection of seasonal deals and discounts, as well as low-cost flights, all with the click of a mouse.</li>
+                        <li>After you complete the transaction, your Delta Airlines flight tickets will be emailed to your authorised email address and phone number right away.</li>
+                    </ul>
+                    <h4>Best Practices while booking a flight with Delta Airlines</h4>
+                    <p>Unpublished Farehub works hard to make your Delta Airlines flight booking experience enjoyable and memorable. Follow these guidelines and tips to get the most out of Unpublished Farehub and your vacation adventure.</p>
+                    <ul class="list w_50">
+                        <li>Make your travel dates as flexible as possible. It is fairly unusual for prices for a certain flight to increase on certain days. Adjustable dates may be used to compare flight rates and choose the lowest alternative. To enjoy great savings on Etihad lighting, use the required credit cards.</li>
+                        <li>Confirm your Delta Airlines bookings at least a couple weeks before your departure date. When demand for the flight is minimal, you may take advantage of significantly discounted fares and fly for a fraction of the price.</li>
+                        <li>When booking a Delta Airlines journey, make sure to take advantage of the award-winning lounge amenities and in-flight entertainment selections.</li>
+                        <li>Register with Unpublished Farehub and enable notifications to never miss out on the latest Delta Airlines Flight Tickets discounts and seasonal offers.</li>
+                    </ul>
+
+                    <h4>Delta Airlines Cabin Services</h4>
+                    <p>Unpublished Farehub presents you with a variety of deals and offers for Delta Airlines flight booking services which would take you to one of the several cabin experiences available on making a Delta Airlines reservation. We assure you a 24/7 customer service experience for any issues that you may have during the flight booking process. We also offer in flight assistance and strive to make your journey comfortable throughout the flight.</p>
+                    <h5>Delta Airlines - Delta One</h5>
+                    <p>Delta One is the airline's premium business class offering, which is accessible on long-haul international flights as well as transcontinental flights from New York JFK to Los Angeles, San Francisco, and Seattle/Tacoma. All Delta One aircraft have lie-flat seating and direct aisle access from every seat, with the exception of the Boeing 757-200.</p>
+                    <p>On making a Delta Airlines reservation through the Delta One class, passengers receive seats equipped with a personal, on demand in-flight-entertainment (IFE) system, universal power-ports, a movable reading light, and a folding work table. Passengers also receive complimentary chef-curated meals, a Tumi Inc. amenity kit, refreshments, premium bedding, alcoholic beverages and pre-flight Sky Club access.</p>
+                    <h5>Delta Airlines - Premium Select </h5>
+                    <p>Delta CEO Ed Bastian announced the addition of a new Premium Economy cabin. This cabin has been rebranded Premium Select and booking a flight in the Delta Airlines Premium Select cabin will now accommodate customers with increased legroom, adjustable leg rests, additional seat pitch, breadth, and recline, as well as a new premium service.</p>
+                    <h5>Delta Airlines - First Class</h5>
+                    <p>On booking a Delta Airlines mainline domestic flight or certain short and medium haul international flights and Delta Connection aircraft with more than 50 seats, First Class is available. In comparison to Main Cabin, passengers in this class receive a broader range of complimentary snacks, as well as free beverages and alcohol, and full dinner service on flights of 900 miles or more. There are also power outlets at each seat on some planes, as well as complimentary Delta Studio entertainment. Priority boarding is also available to First Class travellers.</p>
+                    <h5>Delta Airlines - Delta Comfort Plus  </h5>
+                    <p>When you book a Delta Airlines ticket, you can be certain that the quality of your journey will not be compromised, regardless of the flight class you select.</p>
+                    <p>All Delta Comfort+ seats are standard on all aircraft, with the exception of a few A350s. Priority boarding, dedicated overhead space, unlimited beer, wine, and spirits on flights of 250 miles or more, and complementary premium snacks on flights of 900 miles or more are among the perks. Delta Studio offers complimentary premium entertainment, with free headphones accessible on most flights.</p>
+                    <h5>Delta Airlines Main Cabin </h5>
+                    <p>On booking a Delta Airlines flight of 250 miles or more, Main Cabin passengers enjoy complimentary snacks and non-alcoholic beverages. There are also alcoholic beverages available for purchase. Long-haul international flights, as well as some transcontinental domestic flights, such as those between New York–JFK and Seattle, San Francisco, Los Angeles, and San Diego, include complimentary meals and alcoholic beverages. Meals are offered for purchase on other North American flights 900 miles or longer as part of Delta's Flight Fuel buy on board programme.</p>
+                    <h5>Delta Airlines Basic Economy</h5>
+                    <p>Basic Economy in the Delta Airlines flight booking experience is a less expensive variant of Main Cabin that provides the same services but with less flexibility options. No ticket modifications, no paid or gratis upgrades regardless of frequent-flier status, and only having a seat allocated at check-in are examples of less flexibility possibilities. </p>
+                    <h4>Delta Airlines Reward Programs</h4>
+                    <h5>Skymiles</h5>
+                    <p>Delta Air Lines' frequent flyer programme is called SkyMiles. Miles do not expire, although Delta has the right to cancel accounts in certain circumstances, such as a programme member's death or fraudulent behaviour. These miles can be used while booking a flight through Delta Airlines and provide you impressive discounts during the flight booking process. </p>
+                    <h5>Delta Sky Club </h5>
+                    <p> Delta Sky Club is the moniker given to the Delta Airline's airport lounges. Annual memberships are available and may be purchased with either money or miles. Passengers flying internationally in Delta One class enjoy free access. With some restrictions, membership can also be obtained through top-tier Delta status or by holding an American Express card. Delta no longer offers single-day passes as of January 2019.</p>
+                    <h5>Skybonus</h5>
+                    <p>Delta Airlines SkyBonus is a programme for small-to-medium enterprises who spend $5,000 to $500,000 per year on air travel. Businesses may earn Sky Club memberships and SkyMiles Silver Medallion status, as well as free travel and upgrades. On booking a flight with Delta Airlines, points are gained depending on a range of factors such as the fare amount paid, the booking code, and the origin or destination location. While participating companies can earn points toward free travel, the travelling passenger can still earn SkyMiles throughout his or her journey.</p>
+                    <h4>Delta Airlines Flight Booking FAQs</h4>
+                    <h5>What documentation do I need to enter the United States?</h5>
+                    <p>If you're not a US citizen, you'll need a passport that's valid for at least six months after your arrival date. You'll also need to carry a visa or a visa waiver. For the most up-to-date information on the visa you'll need, go to the US government's website. </p>
+                    <h5>Is it possible to alter my flight within 24 hours after making a reservation?</h5>
+                    <p>You can make changes to your flight information up to 24 hours before departure. Your Delta Airlines flight booking via Unpublished Farehub will be an easy and quick experience thanks to a 24/7 hotline with guaranteed customer problem satisfaction and nearly no waiting time.</p>
+                    <h5>How can I bring a pet on a Delta Airlines flight?</h5>
+                    <p>The total number of pets permitted on any Delta aircraft is restricted, and will be assigned on a first-come, first-served basis. Please see the Delta Pet Policy guidelines for further details.</p>
+                    <h5>How far in advance can you make a Delta Airlines flight booking?</h5>
+                    <p>Delta Airlines Reservations accepts reservations up to 331 days (about 44 weeks) in advance of travel.</p>
+                    <h5>Is it possible to alter my flight within 24 hours after making a reservation?</h5>
+                    <p>Unpublished Farehub makes changing flights simple and straightforward. If your trip plans change or you need to adjust the date of your tickets, Unpublished Farehub is there to help you every step of the way and ensure that you get the best deal possible.</p>
+                    <h5>How can I get a discount on my Delta Airlines reservations?</h5>
+                    <p>Unpublished Farehub has a fantastic range of seasonal specials and discounts on Delta Airlines flight bookings and reservations, with reductions of up to 40%. To stay up to date on bargains including Black Friday deals, Cyber Monday deals, and more, sign up for Unpublished Farehub's email notifications. When you want to book a flight with Delta Airlines and Unpublished Farehub, you can use this to remain up to date on the newest discounts and deals.</p>
+                    <h5>Which airports does Delta Airlines fly to?</h5>
+                    <p>Delta Airlines has a total of 325 destinations, both local and foreign. Atlanta, Boston, Detroit, Los Angeles, New York JFK, and Salt Lake City are all popular airports.</p>
+                    <h5>How can I purchase a flight with Delta Airlines using skymiles?</h5>
+                    <ul class="list w_50">
+                        <li>To begin, sign in to your SkyMiles account or register for the SkyMiles programme to become a member. </li>
+                        <li>Choose the option to book a flight. Select the flights which have the "Pay with SkyMiles" option. </li>
+                        <li>Choose Pay with Miles on the next page of the trip summary. Complete the reservation by providing all of your contact details.</li>
+                    </ul>
+                    <h5>What alternatives do I have for Delta Airlines flight seat selection?</h5>
+                    <p> Verify your travel information by logging into your Unpublished Farehub account and using your assigned flight confirmation number. You have the option of picking your favourite seat when purchasing a Delta Airlines flight. Following that, you may choose your seats and pay with cash or Miles.</p>
+                    <h5>Do Delta Airlines adhere to COVID safety regulations?</h5>
+                    <p>The procedure of booking a flight with Delta Airlines is completely safe and secure. Delta Airlines goes to great lengths to ensure that its passengers have a safe and enjoyable flight. The plane is sanitised on a regular basis, and the air filters on board ensure that the interiors of the flight remain undisturbed. Every consumer is also provided hand sanitizers and is expected to wear safety clothing.</p>
+                    <h4>Delta Airlines Domestic Flights Service</h4>
+                    <p>When booking a flight with Delta Airlines, book your tickets via Unpublished Farehub to get the most amazing and drastic discounts and seasonal deals. Delta Air Lines, being one of the major carriers, offers the finest flight connections inside the United States. You can book flights to several domestic airports fast and conveniently. It serves over 200 cities across the United States and is always available. Take a look at some of the most popular domestic flights and destinations below.</p>
+                    <ul class="list w_50">
+                        <li>Delta Airlines flights to Orlando</li>
+                        <li>Delta Airlines flights to Los Angeles</li>
+                        <li>Delta Airlines flights to New York</li>
+                    </ul>
+                    <h5>Delta Airlines International Flights Service</h5>
+                    <p>Delta Airlines flights are the most popular among international passengers because of their numerous advantages. Delta Air Lines flies to more than 250 locations in 52 countries. Discover the finest airline deals and discounts to popular locations across the world. The following are the most popular travel destinations:</p>
+                    <ul class="list w_50">
+                        <li>Delta Airlines flights to Israel</li>
+                        <li>Delta Airlines flights to Toronto</li>
+                        <li>Delta Airlines flights to Dhaka</li>
+                        <li>Delta Airlines flights to Vienna</li>
+                        <li>Delta Airlines flights to Paris</li>
+                        <li>Delta Airlines flights to Rome</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}
+
+
+
+
+
+

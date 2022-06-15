@@ -1,0 +1,91 @@
+﻿@using Common
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Welcome To @Utility.PortalSettings.PortalDetails.BrandName Airport Transfers">
+
+</head>
+<body>
+   
+    <title>
+       Internal Error 500
+    </title>
+    <style type="text/css">
+        .error {
+            width: 1200px;
+            margin: 0 auto;
+            font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+            font-weight: normal;
+        }
+
+            .error .logoBox {
+                width: 100%;
+                float: left;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .error .largetext {
+                font-size: 180px;
+                color: #141414;
+                text-shadow: 0px 5px 0px #555555;
+                text-align: center;
+                margin-top: 60px;
+                text-align: center;
+                font-weight: bold;
+                float: left;
+                width: 100%;
+            }
+
+            .error .infotext {
+                font-size: 40px;
+                color: #424242;
+                text-align: center;
+            }
+
+            .error .text {
+                font-size: 15px;
+                color: #424242;
+                text-align: center;
+            }
+
+            .error .linkButton {
+                float: left;
+                width: 100%;
+                text-align: center;
+                margin: 40px 0;
+            }
+
+                .error .linkButton a.link_btn {
+                    padding: 10px 30px;
+                    font-size: 15px;
+                    background: #2D3C5F;
+                    border-radius: 25px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+    </style>
+    <div class="error">
+        <!--<div class="logoBox"><img src="mainpagelogo.png" width="357" height="171"  alt=""/></div>-->
+        <div class="largetext">
+            500
+        </div>
+        <div class="infotext">
+            Web site internal error.
+        </div>
+        <div class="text">
+            We apologize, an error occurred on our side while handling your request.The details have been sent to our administrators and we will investigate shortly.
+            <br />In the mean time, please retry your request as it may have been temporary.
+        </div>
+        <div class="linkButton">
+            <a class="link_btn" href="@Utility.PortalSettings.DomainUrl">Return to Home Page</a>
+        </div>
+    </div>
+</body>
+</html>
+

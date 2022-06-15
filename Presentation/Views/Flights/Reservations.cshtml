@@ -1,0 +1,51 @@
+﻿@using Common;
+@{
+
+    ViewBag.Title = "reservations | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+<div class="common-wrapper reservation-wraaper"></div>
+<div class="marquee-wrapper">
+
+    <marquee width="100%" class="scrol-msg" onmouseover="this.stop();" onmouseout="this.start();">
+        <strong>PLEASE NOTE:</strong> WE DO ALL BOOKINGS OVER PHONE. WE ARE AN INDEPENDENT TRAVEL COMPANY AND NOT ASSOCIATED WITH ANY AIRLINE COMPANY
+    </marquee>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="contact-reservation">
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">
+                    <span>Airline Reservation: </span>
+                    <span>@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="reserv-airline">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="contanct-address">
+                    <h3>Contact Address</h3>
+                    <p>
+                        United States @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber
+                    </p>
+                </div>
+                <div class="reserve-disclaim">
+                    <p>
+                        Disclaimer: We, Unpublished Farehub Airline Reservation are an online travel service provider since 2019.
+                        We offer travelers a sheer range of air deals, hotels, and erstwhile activities at spirited price.
+                        We present an immaculate travel booking experience via our proprietary technology thus ensuring discounted
+                        airline tickets for the finest airlines of the world.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

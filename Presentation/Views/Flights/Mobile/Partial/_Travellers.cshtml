@@ -1,0 +1,86 @@
+﻿@model Infrastructure.HelpingModel.API.BookingDetail
+@using Common
+@using Infrastructure
+@using Business
+@for (int i = 0; i <= Model.Travellers.Count - 1; i++)
+{
+    @Html.HiddenFor(m => m.Travellers[i].PaxType)
+    @Html.HiddenFor(m => m.Travellers[i].PaxOrderId)
+    <div class="traveler_block">
+        <h4 class="page__title"><strong>Traveler</strong> @Model.Travellers[i].PaxOrderId @Utility.GetTravellerPaxType((TravellerPaxType)Model.Travellers[i].PaxType)</h4>
+
+        <p>Please be careful - Passenger details must match your passport or government-issued photo ID</p>
+
+        <ul class="adultType inputSet">
+            <li><label>@Html.RadioButtonFor(model => model.Travellers[i].Gender, "1", new { @checked = "true" })<span>Male</span> </label></li>
+            <li><label>@Html.RadioButtonFor(model => model.Travellers[i].Gender, "2")<span>Female</span> </label></li>
+            
+            
+        </ul>
+
+        <div class="form__block">
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <label class="formlabel">First name <i class="required_star">*</i></label>
+                    <div id="div_error_FirstName_@i">
+                        @Html.TextBoxFor(model => model.Travellers[i].FirstName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "onBlurValidateTraveller(this,'firstname');", @maxlength = 30, @class = "form-control", placeholder = "First Name" })
+                        <i id="i_error_FirstName_@i"></i>
+                        <div class=" mt-2" id="error_FirstName_@i"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="formlabel">Middle name</label>
+                    <div id="div_error_MiddleName_@i">
+                        @Html.TextBoxFor(model => model.Travellers[i].MiddleName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "getValidPaxName(this);", @maxlength = 30, @class = "form-control", placeholder = "Middle Name" })
+                        <i id="i_error_MiddleName_@i"></i>
+                        <div class=" mt-2" id="error_MiddleName_@i"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <label class="formlabel">Last name <i class="required_star">*</i></label>
+                    <div id="div_error_LastName_@i">
+                        @Html.TextBoxFor(model => model.Travellers[i].LastName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "onBlurValidateTraveller(this,'lastname');", @maxlength = 30, @class = "form-control", placeholder = "Last Name" })
+                        <i id="i_error_LastName_@i"></i>
+                        <div class=" mt-2" id="error_LastName_@i"></div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <label class="formlabel">Date of Birth <i class="required_star">*</i></label>
+                    <div class="row">
+                        <div class="col">
+                            <div id="div_error_Date_@i">
+                                @Html.TextBoxFor(model => model.Travellers[i].DOBDay, new { @onkeypress = "return isNumeric(event)", @onblur = "onBlurValidateTraveller(this,'day');", @maxlength = 2, @class = "form-control", placeholder = "Date" })
+                                <i id="i_error_Date_@i"></i>
+                                <div class=" mt-2" id="error_Date_@i"></div>
+                            </div>
+                        </div>
+
+                        <div class="col p-0">
+                            <div id="div_error_Month_@i">
+                                <div class="select-class">
+                                    @Html.DropDownListFor(model => model.Travellers[i].DOBMonth, StaticData.GetMonth(Model.Travellers[i].DOBMonth), new { @onblur = "onBlurValidateTraveller(this,'month');", @class = "form-control" })
+                                    <div class=" mt-2" id="error_Month_@i"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div id="div_error_Year_@i">
+                                @Html.TextBoxFor(model => model.Travellers[i].DOBYear, new { @onkeypress = "return isNumeric(event)", @onblur = "onBlurValidateTraveller(this,'year');", @maxlength = 4, @class = "form-control form-control-mbl", placeholder = "Year" })
+                                <i id="i_error_Year_@i"></i>
+                                <div class=" mt-2" id="error_Year_@i"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

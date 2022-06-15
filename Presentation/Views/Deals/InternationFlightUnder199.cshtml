@@ -1,0 +1,74 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Deals | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+
+@section headerSection{
+    @Styles.Render("~/content/searchengine")
+}
+
+<div class="engine-home international-flight-under-199">
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="cheap-flight-head"> International Flight Under 199</h3>
+                </div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+    </div>
+</div>
+
+
+
+
+<div class="wrpr-box mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="common-head mt-sm-4 mb-sm-3 mt-2 ">
+                    <h3>International Flight Under 199</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="wrpr-cnt">
+                    
+                    <p>
+                        Unpublished Farehub is a subsidiary of Unpublished Farehub based in Canada. It is a travel company offering travel services comprising Leisure Travel, Business Travel, and Accommodation, Car or Bike rentals and Transfers in Canada. We provide customized travel packages for our customers to live the travel experience in an extraordinary way and explore the spectacular beauty of desired travel destinations.
+                    </p><p>
+                        It is a travel company offering travel services comprising Leisure Travel, Business Travel, and Accommodation, Car or Bike rentals and Transfers in Canada. We provide customized travel packages for our customers to live the travel experience in an extraordinary way and explore the spectacular beauty of desired travel destinations.
+                    </p><p>
+                        Comprising Leisure Travel, Business Travel, and Accommodation, Car or Bike rentals and Transfers in Canada. We provide customized travel packages for our customers to live the travel experience in an extraordinary way and explore the spectacular beauty of desired travel destinations.
+                    </p><p>
+                        Unpublished Farehub is a subsidiary of Unpublished Farehub based in Canada. It is a travel company offering travel services comprising Leisure Travel, Business Travel, and Accommodation, Car or Bike rentals and Transfers in Canada. We provide customized travel packages for our customers to live the travel experience in an extraordinary way and explore the spectacular beauty of desired travel destinations.
+                        Unpublished Farehub is a subsidiary of Unpublished Farehub based in Canada. It is a travel company offering travel services comprising Leisure Travel, Business Travel, and Accommodation, Car or Bike rentals and Transfers in Canada. We provide customized travel packages for our customers to live the travel experience in an extraordinary way and explore the spectacular beauty of desired travel destinations.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+@{Html.RenderPartial("~/views/home/partial/_TopDestination.cshtml");}
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}

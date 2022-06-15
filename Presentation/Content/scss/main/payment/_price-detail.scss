@@ -1,0 +1,123 @@
+.price__Box {
+    @include boxshadow;
+    padding: 15px;
+    @include breakpoint(md) {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    @include breakpoint(sm) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .head {
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        h4 {
+            font-size: 16px;
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0px;
+        li {
+            padding: 8px 0px;
+            border-bottom: 1px solid #e1e1e1;
+            font-size: 13px;
+            color: #4B4B4B;
+            font-weight: 600;
+            i {
+                font-size: 16px;
+                margin-left: 4px;
+                font-weight: 700;
+            }
+            .accordian-slide {
+                padding-left: 13px;
+                padding-top: 5px;
+                font-size: 12px;
+                color: #6B6B6B;
+                font-weight: 400;
+            }
+            .accordian_toggle {
+                cursor: pointer;
+            }
+            .disscount--price {
+                color: $green-text;
+            }
+        }
+    }
+    .total_price {
+        font-weight: 700;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 10px;
+        color: $primary;
+    }
+    .price__note {
+        font-size: 11px;
+        padding: 12px 0;
+        color: #666;
+    }
+}
+
+
+/*Secure*/
+
+.securebooking__Box {
+    @include boxshadow;
+    margin-top: 20px;
+    padding: 15px;
+    @include breakpoint(sm) {
+        margin: 0 -15px 70px -15px;
+    }
+    h4 {
+        padding-bottom: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+
+/*Coupon here*/
+
+.cuponBlock {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cuponBlock .inputText {
+    width: calc(100% - 78px);
+    border: 1px solid #D9D9D9;
+    padding: 10px 10px;
+    float: left;
+    font-size: 13px;
+    color: #7E7E7E;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.cuponBlock .submit {
+    border: none;
+    background: #02CB66;
+    padding: 9px;
+    color: #fff;
+    width: 73px;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cuponBlock .submit:focus {
+    border: none;
+    outline: none;
+}
+
+.cuponBlock .submit.remove {
+    background: $primary;
+}
+
+.cuponBlock .sucessfull {
+    color: #02CB66;
+}
+
+.text-right {
+    text-align: right;
+}

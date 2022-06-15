@@ -1,0 +1,113 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares :" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_BookingPathLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="loader-Wrapper">
+                <div class="loader-inner">
+                    <div class="load-head">
+                        <p>Please Wait... This will take Few Seconds</p>
+                        <h4>Flight Search In Progress</h4>
+                    </div>
+
+
+                    <div class="load-middle">
+                        <div class="trp-dtl">
+                            Trip Details
+                        </div>
+
+                        <div class="route-line mb-1">
+                            <span class="line-draw"></span>
+                            <p class="dest-code">@Model.Origin</p>
+                            <p class="btw-date">@Model.Departure.ToString("ddd, dd MMM, yyyy")</p>
+                            <p class="dest-code">@Model.Destination</p>
+                        </div>
+                        @if (Model.TripType == TripType.ROUNDTRIP)
+                        {
+                            <div class="route-line">
+                                <span class="line-draw"></span>
+                                <p class="dest-code">@Model.Destination</p>
+                                <p class="btw-date">@((Model.Return ?? DateTime.Now).ToString("ddd, dd MMM yyyy"))</p>
+                                <p class="dest-code">@Model.Origin</p>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="loader-passer-details">
+                        <h3>Passenger</h3>
+                        <div class="dtl-passnge">
+                            <span><strong>@Model.Adult</strong> Adults</span>
+                            <span><strong>@Model.Child</strong> Childs</span>
+                            <span><strong>@Model.InfantOnSeat</strong> Infant </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="meter">
+                            <span style="width: 100%"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-trust-logo">
+    <span>
+        <img src="~/Images/1.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/2.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/3.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/4.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/asta.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/bbb.jpg" alt="card" />
+    </span>
+    <span>
+        <img src="~/Images/trustpilot.jpg" alt="card" />
+    </span>
+</div>
+
+@section scripts{
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")
+    <script type="text/javascript">
+
+        function doAjax() {
+            $.ajax({
+                type: 'POST',
+                url: '@string.Format("{0}flights/issearchcomplete/{1}", Utility.PortalSettings.DomainUrl,Model.SearchGuidId)',
+                success: function (response) {
+                    if (response != null && !response.IsContextExist) {
+                        window.location.assign("@Utility.PortalSettings.DomainUrl");
+                    } else if (response != null && response.IsContextExist && response.IsRequestCompleted) {
+                        window.location.href = response.RedirectUrl;
+                    }
+                    else {
+                        doAjax();
+                    }
+                },
+                complete: function (data) {
+                    
+                }
+            });
+        }
+
+        doAjax();
+    </script>
+}

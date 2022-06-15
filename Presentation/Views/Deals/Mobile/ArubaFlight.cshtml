@@ -1,0 +1,77 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Flight to Aruba Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Aruba Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="content">
+                        <h3 class="page__title"><strong>Aruba</strong> Tourism</h3>
+                        <p>Aruba is known for its stunning beaches and ideal weather, but walk off the sand and you'll be wowed by an astounding array of fresh and fascinating activities. The place, also called the One Happy Island, has everything in it, whether you're looking for peace and tranquillity, excitement and adventure, deep cultural events, or a memorable romance break. With so many exciting Activities you could be doing in Aruba, you'll be sure to discover an activity, sight, site, or activity that you'll like.</p>
+                        <p>If you’re the type of tourist who likes to dive right into the heart of the city and fully explore it, then Aruba’s hop on trolley would make your day. Getting about the city has never been easier or more enjoyable. The tram, which runs from the cruise ship dock to the city centre, goes via Main Street, which has been completely remodelled into an appealing pedestrian mall. The tram makes six stops along the way, including at monuments and museums as well as major commercial districts.</p>
+                        <p>Book your Aruba trip reservations today and explore Aruba's unique assortment of kayaking activities, where you can learn about life below sea level while remaining high and (usually) dry. These trips assist you in creating a unique holiday experience by combining great marine experiences. Perfect for anybody interested in learning more about Aruba's natural wonders. Explore some of our beaches' blue seas, which are home to some of the most vibrant underwater ecosystems. Kayak across the seas of Mangel Halto, Boca Catalina, or even Nikki Beach to see the aquatic life up up and personal.</p>
+                        <p>When you book your Aruba trip reservations, be sure to visit the cave attractions present here, and trust us you would not regret it. Shallow cave formations in the deep crevices of rock along the island's windward shore entice tourists, who are rewarded with enigmatic sights as they endeavour to explore its damp interiors.</p>
+                        <p>The Guadirikiri Cave is known for its two chambers, which are lit by sunlight passing through breaches in the cave's top. Hundreds of harmless bats sleep in the cave's darkest areas.  The Fontein Cave is the most visited of the caverns since it is the only one with Arawak Indian cave paintings on the ceilings, giving it a true feeling of island history. </p>
+                        <p>A full stomach equals a happy heart, and while visiting a new location, you should never miss out on sampling the local food. Make your Aruba trip reservations today and arrive at Linda's, which serves Dutch pancakes, and offers you the choice to pick from classic Dutch pancakes like the apple and bacon Dutch pancake, which are filled with sliced apples and crispy bacon strips, or make your own with over 40 different toppings. Try a smoothie at Mauchi and one of their other tasty and interesting drinks. Fun tastes like Key Lime Pie and Pia Colada are available at Mauchi.</p>
+                        <p>Don't miss out on the local favourite Saco di Felipe, which has been serving Caribbean delights like home cut fries, sizzling-hot fried chicken, ribs or chops, plantain and Johnny Cake in a brown paper bag for over 65 years.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}
+
+
+
+
+

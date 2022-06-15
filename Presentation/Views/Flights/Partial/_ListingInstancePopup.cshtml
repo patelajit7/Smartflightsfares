@@ -1,0 +1,260 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Infrastructure
+@using Infrastructure.HelpingModel
+@using Infrastructure.HelpingModel.API
+@using Common
+@{
+    Segments oItem = Model.TripDetails.OutBoundSegment[0];
+    Segments dItem = Model.TripDetails.OutBoundSegment[Model.TripDetails.OutBoundSegment.Count - 1];
+    Segments returnoItem = Model.TripDetails.InBoundSegment != null && Model.TripDetails.InBoundSegment.Count > 0 ? Model.TripDetails.InBoundSegment[0] : null;
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    CouponData couponData = Utility.CouponData != null && Utility.CouponData.Count > 0 ? Utility.CouponData.Where(o => o.IsDefault).FirstOrDefault() : null;
+}
+
+
+@*<div class="modal fade listpop-Wrap" id="listingPopup" tabindex="-1" aria-labelledby="listingPopupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+
+                <div class="listpop-inner">
+                    <span class="commonpop-close" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
+
+                    <div class="listpop-endsin">
+                        <div class="listpop-trip">
+                            <a href="/">
+                                <img src="~/images/logo.png" alt="logo" />
+                            </a>
+                        </div>
+                        <div class="listpop-endtime">
+                            <p>Ends in</p>
+                            <h4 id="countdown">15m 33s</h4>
+                        </div>
+                    </div>
+
+                    <div class="listpop-price">
+                        <div class="listpop-place">
+                            <p>Special Fare to</p>
+                            <h4>@Utility.GetCityName(dItem.Destination)</h4>
+                            <p>
+                                <strong>@String.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? "Roundtrip" : "Oneway") </strong>
+                                @Utility.GetEnumDescription(oItem.CabinType)
+                            </p>
+                        </div>
+
+                        <div class="listpop-amt">
+                            <h4>
+                                <span class="sec chgCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}", currencyMaster.CurrencySymbol)</span>
+                                <span class="main chgCurrencyTwo" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:0}", Math.Truncate(Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice))</span>
+                                <span class="sec chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice) - Convert.ToSingle(Math.Truncate(Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice)))</span>
+                            </h4>
+                            <p>Price per person</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="listpop-flight-type">
+                        <div class="listpop-flight">
+                            <h4>@String.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? "Depart" : "Origin") </h4>
+                            <h3>@oItem.Origin</h3>
+                            <p>
+                                @Utility.GetCityName(oItem.Origin) @Utility.GetCountryCode(oItem.Origin)
+                                <span>
+                                    @oItem.Departure.ToString("dd") @oItem.Departure.ToString("MMM yyyy")
+                                    
+                                </span>
+                            </p>
+                        </div>
+
+
+                        <div class="listpop-interchange">
+                            @if (Model.TripType == TripType.ROUNDTRIP)
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
+                                </svg>
+                            }
+                            else
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            }
+                        </div>
+
+
+
+
+                        @if (Model.TripType == TripType.ROUNDTRIP)
+                        {
+                            <div class="listpop-flight text-right">
+                                <h4> Return</h4>
+                                <h3>@returnoItem.Origin</h3>
+                                <p>
+                                    @Utility.GetCityName(returnoItem.Origin), @Utility.GetCountryCode(returnoItem.Origin)
+                                    <span>
+                                        @returnoItem.Departure.ToString("dd") @returnoItem.Departure.ToString("MMM yyyy")
+                                        
+                                    </span>
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="listpop-flight text-right">
+                                <h4> Destination  </h4>
+                                <h3>@dItem.Destination</h3>
+                                <p>
+                                    @Utility.GetCityName(dItem.Destination), @Utility.GetCountryCode(dItem.Destination)
+                                    <span>
+                                        @dItem.Arrival.ToString("dd") @dItem.Arrival.ToString("MMM yyyy")
+                                        
+                                    </span>
+                                </p>
+                            </div>
+                        }
+                    </div>
+
+                    @if (Utility.Settings.IsCouponEnable && couponData != null)
+                    {
+                        <div class="coupunText">
+                            Use this <span>@couponData.CouponCode</span> to Get
+                            @if (couponData.DiscountType == DiscountType.Amount)
+                            {
+                                <span>FLAT <span class="chgcomplete" default-price="@couponData.Amount">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (couponData.Amount * Convert.ToDecimal(currencyMaster.CurrencyPrice)))</span> OFF</span>
+                            }
+                            else
+                            {
+                                <span>@string.Format("{0:0.##}% OFF", couponData.Percentage)</span>
+                            }
+                        </div>
+                    }
+
+
+                    <div class="listpop-call">
+                        <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="btn btn-primary btn-block"><i class="fa fa-phone" aria-hidden="true"></i> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                        <p>*Fares are subject to seat availibility and not guaranteed until ticketed.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+
+<div id="listingPopup" class="popup_Box" style="display:none;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="callDeal">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 text-center">
+                        <img src="/images/promo/best-deal.gif" style="width:100%; background-repeat:no-repeat;" class="hidden-xs ">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-7">
+                        <div class="list-count-content">
+                            <div class="time-block">
+                                <div class="limited-time">Limited Time Offer!</div>
+                                <div class="dealEnd">
+                                    Ends in &nbsp;
+                                    <div class="countTime" id="countdown">14<small>m</small> 40<small>s</small> </div>
+                                </div>
+                            </div>
+
+                            <div class="dealCode ng-scope" ng-if="dealCode.length>0">
+                                <span class="deal">Phone Call Offer</span>
+                            </div>
+                            <div class="special-fare">
+                                <div class="hot-price">
+                                    <b class="ng-binding">
+
+                                        <span class="dollar chgCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}", currencyMaster.CurrencySymbol)</span><span class="main chgCurrencyTwo" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:0}", Math.Truncate(Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice))</span><sup class="ng-bindingchgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice) - Convert.ToSingle(Math.Truncate(Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice)))</sup>
+                                    </b>
+                                    Price per adult
+                                </div>
+                                <div class="special-txt">
+                                    Special fare to
+                                    <b>@Utility.GetCityName(dItem.Destination)</b>
+                                </div>
+
+                            </div>
+
+                            <div class="tripclass-type ng-binding">
+                                @String.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? "Roundtrip" : "Oneway"),@Utility.GetEnumDescription(oItem.CabinType)
+                            </div>
+                            <div class="itenerary-section">
+
+                                Trip arrow
+                                <div class="trip-type-arrow"> </div>
+                                @if (Model.TripType == TripType.ROUNDTRIP)
+                                {
+                                    <span class="trip-type-icon"><img src="/images/promo/round-trip.svg"></span>
+                                }
+                                else
+                                {
+                                    <span class="trip-type-icon"><img src="/images/promo/one-way.webp"></span>
+                                }
+                                @if (Model.TripType == TripType.ROUNDTRIP)
+                                {
+                                    <div class="city-code right">
+                                        <div>Return</div>
+                                        <b>@returnoItem.Origin</b>
+                                    </div>
+                                }
+                                <div class="city-code">
+                                    <div>Depart</div>
+                                    <b>@oItem.Origin</b>
+                                </div>
+
+                            </div>
+                            <div class="city-name">
+                                <div class="depart-name">
+                                    @Utility.GetCityName(oItem.Origin) @Utility.GetCountryCode(oItem.Origin) <br>
+                                    @oItem.Departure.ToString("MMM")<span>&nbsp;</span>@oItem.Departure.ToString("dd, yyyy")
+                                </div>
+                                @if (Model.TripType == TripType.ROUNDTRIP)
+                                {
+                                    <div class="return-name">
+                                        @Utility.GetCityName(returnoItem.Origin) (@Utility.GetCountryCode(returnoItem.Origin)) <br>
+                                        @returnoItem.Departure.ToString("MMM")<span>&nbsp;</span>@returnoItem.Departure.ToString("dd, yyyy")
+                                    </div>
+                                }
+                            </div>
+                            <div class="call-btn">
+                                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" id="callTracker"> Call Now <img src="/images/promo/call-ani.webp"> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                            </div>
+                            <div class="trustpilot-new">
+                                <div class="t-logo">
+                                    <img src="/images/promo/tp-logo.webp">
+                                </div>
+                                <div class="t-rating">
+                                    <div><b>Excellent</b></div>
+                                    <img src="/images/promo/stars-4.5.svg">
+                                    <div>4.4 Out of 5</div>
+                                </div>
+                            </div>
+
+                            <div class="disclaimer-txt">* Fares are subject to seat availability and not guaranteed until ticketed.</div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>

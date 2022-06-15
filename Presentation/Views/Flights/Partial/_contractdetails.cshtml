@@ -1,0 +1,281 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Infrastructure;
+@using Infrastructure.HelpingModel
+@using Infrastructure.HelpingModel.API
+@using Common;
+@{
+    float totalFare = 0;
+    float totalTaxFare = 0;
+    float totalbaseFare = 0;
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    totalFare = Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice;
+    totalTaxFare = Model.AdultFare.TaxPPax * currencyMaster.CurrencyPrice;
+    totalbaseFare = Model.AdultFare.BaseFarePPax * currencyMaster.CurrencyPrice;
+}
+
+<div class="flightDetailWrapper">
+    <div class="flightDetail_popup">
+        <div class="head">
+            <h2 class="page__title"><strong>Flight</strong> Detail</h2>
+            <a href="javascript:void(0);" class="close_detail" onclick="closeDetailPopup();"><i class="bi bi-x-circle"></i> </a>
+        </div>
+        <div class="flightDetail">
+            <ul class="flighttab">
+                <li><a id="departTab" class="tabclick active" onclick="clickTabShow('departTabcontent','departTab');">Departure</a></li>
+                @if (Model.TripType == TripType.ROUNDTRIP)
+                {
+                    <li><a id="returnTab" class="tabclick" onclick="clickTabShow('returnTabcontent','returnTab');">Return</a></li>
+                }
+            </ul>
+
+            <div class="clearfix"></div>
+            <div class="tab-content">
+                <div id="departTabcontent">
+                    @for (int i = 0; i <= Model.TripDetails.OutBoundSegment.Count - 1; i++)
+                    {
+                        Segments item = Model.TripDetails.OutBoundSegment[i];
+                        if (i != 0)
+                        {
+                            DateTime arrivalTime = new DateTime(Model.TripDetails.OutBoundSegment[i - 1].Arrival.Year, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Month, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Day, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Minutes, 0);
+                            TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
+                            if (layoverTime != TimeSpan.MinValue)
+                            {
+                                <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
+                            }
+                        }
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="airlines__details">
+                                    <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCarrier.Code)" alt="@item.MarketingCarrier.Code">
+                                    <div class="detail">
+                                        <div class="air-name" title="@item.MarketingCarrier.Name">@item.MarketingCarrier.Name</div>
+                                        <div class="flight__info">
+                                            Flight No: @item.FlightNumber | @item.MarketingCarrier.Code-@item.FlightNumber
+                                            <!-- Tooltip-->
+                                            @*<div class="tooltip_block">
+                                                    <i class="bi bi-info-circle tooltip-icon"></i>
+                                                    <div class="custom_tooltip">
+                                                        <i class="bi bi-x tooltip_close"></i>
+                                                        Boeing 787-9 Dreamliner 295-350 STD SEATS
+                                                    </div>
+                                                </div>*@
+                                            <!-- Tooltip-->
+                                        </div>
+                                        <div class="oprated_by">Operated by: @item.OperatingCarrier.Name</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 text-right">
+                                Class: @Utility.GetEnumDescription(item.CabinType)
+                            </div>
+                        </div>
+
+                        <!-- repeat route-->
+                        <div class="route__info">
+
+                            <div class="connecting__bar d-none d-md-block">
+                                <div class="duretion_time">
+                                    <span>@Utility.GetDuration(item.FlightDuration)</span>
+                                    <img src="/images/icons/plane2.svg" alt="icon" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="date">
+                                        <div class="@string.Format("{0}",item.IsDepartDateHighlight?"highlight":"")">@item.Departure.ToString("ddd, MMM dd, yyyy")</div>
+                                        @if ((Model.ContractType == ContractType.Flexi || Model.ContractType == ContractType.NearByFlexi) && item.IsDepartDateHighlight)
+                                        {
+                                            <small class="message_display ">Alternate Date</small>
+                                        }
+                                    </div>
+                                    <div class="time">@DateTime.Today.Add(item.DepartureTime).ToString("hh:mm tt")</div>
+                                    <div class="destination_fullname">
+                                        <div class="text-overflow @string.Format("{0}",item.IsOriginHighlight?"highlight":"")" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
+                                        @if ((Model.ContractType == ContractType.NearBy || Model.ContractType == ContractType.NearByFlexi) && item.IsOriginHighlight)
+                                        {
+                                            <small class="message_display ">Nearby Airport</small>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="TripTime  d-md-none d-block">Trip Time : @Utility.GetDuration(item.FlightDuration)</div>
+
+                                <div class="col-sm-6">
+                                    <div class="destinationName">
+                                        <div class="date"><span>@item.Arrival.ToString("ddd, MMM dd, yyyy")</span> </div>
+                                        <div class="time">@DateTime.Today.Add(item.ArrivalTime).ToString("hh:mm tt")</div>
+
+                                        <div class="destination_fullname">
+                                            <div class="@string.Format("{0}",item.IsDestinationHighlight?"highlight":"")"> <div class="text-overflow" title="@Utility.GetAirportName(item.Destination)  (@item.Destination)">@Utility.GetAirportName(item.Destination)  (@item.Destination)</div></div>
+                                            @if ((Model.ContractType == ContractType.NearBy || Model.ContractType == ContractType.NearByFlexi) && item.IsDestinationHighlight)
+                                            {
+                                                <small class="message_display ">Nearby Airport</small>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.TotalOutBoundFlightDuration) </div>
+                </div>
+
+                @if (Model.TripType == TripType.ROUNDTRIP)
+                {
+                    <div id="returnTabcontent" style="display:none;">
+                        @for (int i = 0; i <= Model.TripDetails.InBoundSegment.Count - 1; i++)
+                        {
+                            Segments item = Model.TripDetails.InBoundSegment[i];
+                            if (i != 0)
+                            {
+                                DateTime arrivalTime = new DateTime(Model.TripDetails.InBoundSegment[i - 1].Arrival.Year, Model.TripDetails.InBoundSegment[i - 1].Arrival.Month, Model.TripDetails.InBoundSegment[i - 1].Arrival.Day, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Minutes, 0);
+                                TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
+                                if (layoverTime != TimeSpan.MinValue)
+                                {
+                                    <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
+                                }
+                            }
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="airlines__details">
+                                        <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCarrier.Code)" alt="@item.MarketingCarrier.Code">
+                                        <div class="detail">
+                                            <div class="air-name" title="@item.MarketingCarrier.Name">@item.MarketingCarrier.Name</div>
+                                            <div class="flight__info">
+                                                Flight No: @item.FlightNumber | @item.MarketingCarrier.Code-@item.FlightNumber
+                                                <!-- Tooltip-->
+                                                @*<div class="tooltip_block">
+                                                        <i class="bi bi-info-circle tooltip-icon"></i>
+
+                                                        <div class="custom_tooltip">
+
+                                                            <i class="bi bi-x tooltip_close"></i>
+
+                                                            Boeing 787-9 Dreamliner 295-350 STD SEATS
+                                                        </div>
+                                                    </div>*@
+                                                <!-- Tooltip-->
+                                            </div>
+                                            <div class="oprated_by">Operated by: @item.OperatingCarrier.Name</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-right">
+                                    Class: @Utility.GetEnumDescription(item.CabinType)
+                                </div>
+                            </div>
+
+                            <!-- repeat route-->
+                            <div class="route__info">
+
+                                <div class="connecting__bar d-none d-md-block">
+                                    <div class="duretion_time">
+                                        <span>@Utility.GetDuration(item.FlightDuration)</span>
+                                        <img src="/images/icons/plane2.svg" alt="icon" />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="destinationName">
+                                            <div class="date">
+                                                <div class="@string.Format("{0}",item.IsDepartDateHighlight?"highlight":"")">@item.Departure.ToString("ddd, MMM dd, yyyy")</div>
+                                                @if ((Model.ContractType == ContractType.Flexi || Model.ContractType == ContractType.NearByFlexi) && item.IsDepartDateHighlight)
+                                                {
+                                                    <small class="message_display ">Alternate Date</small>
+                                                }
+                                            </div>
+                                            <div class="time">@DateTime.Today.Add(item.DepartureTime).ToString("hh:mm tt")</div>
+                                            <div class="destination_fullname">
+                                                <div class="text-overflow @string.Format("{0}",item.IsOriginHighlight?"highlight":"")" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
+                                                @if ((Model.ContractType == ContractType.NearBy || Model.ContractType == ContractType.NearByFlexi) && item.IsOriginHighlight)
+                                                {
+                                                    <small class="message_display ">Nearby Airport</small>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="TripTime d-md-none d-block">Trip Time : @Utility.GetDuration(item.FlightDuration)</div>
+
+                                    <div class="col-sm-6">
+                                        <div class="destinationName">
+                                            <div class="date"><span>@item.Arrival.ToString("ddd, MMM dd, yyyy")</span> </div>
+                                            <div class="time">@DateTime.Today.Add(item.ArrivalTime).ToString("hh:mm tt")</div>
+                                            <div class="destination_fullname">
+                                                <div class="@string.Format("{0}",item.IsDestinationHighlight?"highlight":"")"> <div class="text-overflow" title="@Utility.GetAirportName(item.Destination)  (@item.Destination)">@Utility.GetAirportName(item.Destination)  (@item.Destination)</div></div>
+                                                @if ((Model.ContractType == ContractType.NearBy || Model.ContractType == ContractType.NearByFlexi) && item.IsDestinationHighlight)
+                                                {
+                                                    <small class="message_display ">Nearby Airport</small>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.TotalInBoundFlightDuration) </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+        <!-- Flight bottom-->
+        <div class="bottom">
+            <div class="flight_left">
+                <div class="citycode">
+                    <strong>@Model.Origin</strong>
+                    @Utility.GetAirportCity(Model.Origin)
+                </div>
+                <img src="/images/icons/plane.svg" alt="" />
+
+                <div class="citycode">
+                    <strong>@Model.Destination</strong>
+                    @Utility.GetAirportCity(Model.Destination)
+                </div>
+
+            </div>
+            <a href="avascript:void(0)" class="bagguage_fees d-block d-md-none">@Model.BaggageQuantity Baggage</a>
+            <div class="price_list">
+                <div>
+                    <div class="price chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))<sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>
+
+                    <div class="fare__breakup">
+                        <a href="javascript:void(0);" class="fare__detail">
+                            Fare Detail
+                            <span>(incl. taxes)</span>
+                        </a>
+                        <div class="fare_breakup_detail">
+                            <a href="javascript:void(0);" class="close_price_breakup">X</a>
+                            <ul>
+                                <li>
+                                    <div class="traveler">
+                                        Flight Price
+                                        <span>Per person</span>
+                                    </div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(totalbaseFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0:#.00}", (totalbaseFare - Convert.ToSingle(Math.Truncate(totalbaseFare))))</sup></div>
+                                </li>
+
+                                <li>
+                                    <div class="traveler">Taxes & Fees</div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(totalTaxFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0:#.00}", (totalTaxFare - Convert.ToSingle(Math.Truncate(totalTaxFare))))</sup></div>
+                                </li>
+
+                                <li class="total__price">
+                                    <div class="traveler">Total</div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="javascript:void(0)" class="select__btn" @string.Format("{0}", Model.BookingStatus == BookingStatus.SoldOutOrUnavailable ? "" : " onclick=contractFilter.setVerificationContract(\"" + Model.SearchGuid + "\",\"" + Model.ContractId + "\",\"" + ((int)Model.ContractType) + "\");")>Continue <i class="bi bi-chevron-right ml-2" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

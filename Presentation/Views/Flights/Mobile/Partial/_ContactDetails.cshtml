@@ -1,0 +1,26 @@
+﻿@model Infrastructure.HelpingModel.API.BookingDetail
+@using Presentation.Models;
+<div class="contact_block hr-line">
+    <h2 class="page__title"><strong>Contact</strong> Information</h2>
+    <div class="form__block">
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="formlabel">Contact Number <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_BillingPhone">
+                    @Html.EditorFor(m => m.BillingDetails.BillingPhone).AddHtmlAttributes(new { @onblur = "onBlurValidateContact(this,'billingphone');", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control isNumericClass", @maxlength = 15, placeholder = "Billing phone number", onkeypress = "return isNumeric(event)", tabindex = 1 })
+                    <i id="i_error_BillingDetails_BillingPhone"></i>
+                    <div class=" mt-2" id="error_BillingDetails_BillingPhone"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label class="formlabel">Email Address <i class="required_star">*</i></label>
+                <div id="div_error_BillingDetails_Email">
+                    @Html.EditorFor(m => m.BillingDetails.Email).AddHtmlAttributes(new { @onblur = "onBlurValidateContact(this,'email');", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @maxlength = 120, placeholder = "Email Address", tabindex = 2 })
+                    <i id="i_error_BillingDetails_Email"></i>
+                    <div class=" mt-2" id="error_BillingDetails_Email"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

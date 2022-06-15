@@ -1,0 +1,61 @@
+﻿@using Infrastructure.HelpingModel
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+
+<div class="currencyBox">
+    <div class="currencyClick"><span class="curClass">@String.Format("{0}", currencyMaster.CurrencyType) </span> <i class="bi bi-chevron-down"></i></div>
+
+    <ul id="currencyul" style="display:none;">
+
+        <li onclick="currencyChange('USD')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte usd"> </span><span class="name_currency"> USD</span></div>
+                <span class="side_curency">$</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('CAD')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte cad"> </span><span class="name_currency"> CAD</span></div>
+                <span class="side_curency">CA$</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('INR')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte inr"> </span><span class="name_currency"> INR</span></div>
+                <span class="side_curency">₹</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('GBP')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte gbp"> </span><span class="name_currency"> GBP</span></div>
+                <span class="side_curency">£</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('AED')">
+
+            <a href="javascript:void(0)">
+                <div><span class="sprte aed"> </span><span class="name_currency"> AED</span></div>
+                <span class="side_curency">AED</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('AUD')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte aud"> </span><span class="name_currency"> AUD</span></div>
+                <span class="side_curency">A$</span>
+            </a>
+        </li>
+
+        <li onclick="currencyChange('SAR')">
+            <a href="javascript:void(0)">
+                <div><span class="sprte sar"> </span><span class="name_currency"> SAR</span></div>
+                <span class="side_curency">SAR</span>
+            </a>
+        </li>
+    </ul>
+</div>

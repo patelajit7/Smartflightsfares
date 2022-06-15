@@ -1,0 +1,147 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr" style="background-image:url(/images/airline-banner/b6.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Lufthansa Flights</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>JetBlue Airways </strong> Flights </h3>
+                        <p>Are you considering travelling to a secluded island after spending more than a year at home due to a pandemic? Unpublished Farehub makes the entire airline booking process as quick and pleasant as possible so you can focus on the more essential elements of your vacation, such as packing and thinking about yourself sipping margaritas. Booking an airline demands precision; otherwise, errors may arise; however, worry not, since Unpublished Farehub will not only present you with the lowest pricing, but will also help you through the whole booking procedure.</p>
+                        <p>When you book your JetBlue Airways tickets via Unpublished Farehub, you'll get a selection of great bargains and discounts. JetBlue Airways offers flights to a number of popular tourist locations around the United States, as well as a number of overseas destinations.</p>
+                        <p>Booking a flight with JetBlue Airways grants you the possibility to fly to approximately 100 domestic and international network locations in the United States, Mexico, the Caribbean, Central America, South America, and Europe on a daily basis. JetBlue is not a member of any of the three main airline alliances, but it has codeshare agreements with 21 airlines, including Oneworld, SkyTeam, and Star Alliance members as well as non-affiliated carriers.</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <h4>Book a flight with JetBlue Airways</h4>
+                    <p>Make your JetBlue Airways flight booking now. Please contact us at our toll-free number <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a> to book your JetBlue Airways flight. Enjoy a customer care team that is available 24 hours a day, 7 days a week, with wait times as low as 30 seconds. Make a JetBlue Airways reservation through Unpublished Farehub and book a flight with no hidden fees.</p>
+                    <h4>A Step-by-Step Guide to Booking JetBlue Airways and Unpublished Farehub Flights</h4>
+                    <p>We've put up a fast step-by-step guide to make booking with JetBlue Airways as straightforward and pleasant as possible. Continue reading to learn how to book a JetBlue Airways flight efficiently and affordably.</p>
+                    <ul class="list w_50">
+                        <li>Log in to your account to get the most out of your Unpublished Farehub experience and save up to 40% on your tickets.</li>
+                        <li>In the JetBlue Airways flight booking page, enter your departure and arrival locations.</li>
+                        <li>Depending on your needs, Unpublished Farehub provides a variety of flight alternatives, including one-way, round-trip, and multi-city flights.</li>
+                        <li>Then, enter your departure and return dates, as well as some further information such as the number of tickets you wish to purchase.</li>
+                        <li>Finally, you'll see all of the JetBlue Airways flights that are available depending on your choices.</li>
+                        <li>Select the JetBlue Airways flight that best meets your budget and pricing needs, then finish the payment procedure to complete your JetBlue Airways reservation.</li>
+                        <li>You'll be able to take advantage of a number of seasonal promotions and discounts, as well as low-cost flights, when you book a JetBlue Airways trip via Unpublished Farehub.</li>
+                        <li>Your JetBlue Airways flight tickets will be emailed to the email address and phone number you provided when you complete the transaction.</li>
+                    </ul>
+                    <h4>Things to know before you take a flight through JetBlue Airways</h4>
+
+                    <ul class="list w_50">
+                        <li>Cuisine of the region: When visiting a new place, it's usually a good idea to understand a little about the cuisine served there. Food in the United States of America, for example, is impacted by its residents' many ethnic origins. Try deep-dish pizza in Chicago, bagels in New York, and BBQ in the southern states.</li>
+                        <li>Sockets and Plugs: The sockets and plugs used in a foreign vacation destination are one of the most significant pieces of information that a tourist should be aware of. In the United States, plug sockets A and B are utilised. The standard voltage is 120 V, and the frequency is 60 Hz. If you'll need an adapter, be sure you have one on hand.</li>
+                        <li>Money: If one wants to get the most out of a trip, one must be familiar with the currency of the target country. The official currency of the United States, for example, is the dollar (USD). The majority of restaurants take credit and debit cards, as well as cash.</li>
+                        <li>Customs and culture: Learning about a place's customs and culture is a beneficial habit to develop. Tipping is prevalent in the United States, with around 10% added to the total at restaurants and bars. Tipping is also demanded of taxi drivers and hotel personnel.</li>
+                    </ul>
+                    <h4>Best Practices while booking a flight with JetBlue Airways</h4>
+                    <p>Unpublished Farehub will go to great lengths to ensure that your JetBlue Airways flight booking is a pleasant and memorable experience. To get the most out of Unpublished Farehub and your journey, follow these recommendations and advice.</p>
+                    <ul class="list w_50">
+                        <li>Take advantage of the award-winning lounges and in-flight entertainment options while travelling with JetBlue Airways.</li>
+                        <li>Register with Unpublished Farehub and switch on alerts to ensure you never miss out on the newest JetBlue Airways Flight Tickets discounts and seasonal deals.</li>
+                        <li>Make your vacation dates as ad hoc as you can. It is rare for the cost of a flight to rise on specific days. By altering the dates, you may compare flight prices and pick the cheapest option. Use the essential credit cards that provide the most discounts on Etihad airline reservations to save the most money.</li>
+                        <li>Make your JetBlue Airways reservations at least a few weeks ahead of time. When there is a low demand for a flight, you can get considerably discounted flights and fly for a fraction of the price.</li>
+                    </ul>
+                    <h4>JetBlue Airways Services</h4>
+                    <h5>Core Cabin</h5>
+                    <p>JetBlue's entire fleet has Core (Main Cabin) seats. Leather seats, complimentary Wi-Fi, complimentary entertainment screens with DirecTV, Sirius XM Radio, and movies, as well as complementary food and non-alcoholic beverages are all included in the Core cabin. </p>
+                    <h5>Mint Cabin</h5>
+                    <p>Booking a flight in JetBlue’s Mint or business class offers you entirely lie-flat chairs along with some with sliding screens for further privacy. Mint was expanded to a few Caribbean destinations, and a new version of the service and seating was announced in 2021.</p>
+                    <h4>JetBlue Airways In Flight Entertainment</h4>
+                    <p>Booking a flight with JetBlue grants you several in-flight entertainment options, including gate-to-gate Fly-Fi internet access, over 100 channels of DIRECTV, Sirius XM Radio, and movies, as well as a 15-inch interactive video screen on the Airbus A321 and newer retrofitted Airbus A320 aircraft, which is not available on the rest of the fleet. Customers who connect to Wi-Fi and download the Amazon Video app on their mobile phone or tablet can view Amazon Prime videos thanks to JetBlue's collaboration with Amazon.</p>
+                    <p>On all flights, the "Fly-Fi" network provides complimentary in-flight WiFi at speeds of 12–15 megabits per second.</p>
+                    <h4>JetBlue Airways Frequent Flyer Programme</h4>
+                    <p>TrueBlue is JetBlue's frequent-flier programme. Members get three points for every dollar spent on a ticket, excluding taxes and fees, and three additional points for every dollar spent on a flight booked directly on JetBlue.com. </p>
+                    <p>If the member purchases the flight with a JetBlue Mastercard credit card offered by Barclay's, they will receive additional points. The cost of a flight in points is determined by the cost of a flight in US dollars. </p>
+                    <p>TrueBlue points will never expire for any reason, according to JetBlue.</p>
+                    <h4>JetBlue Airways Flight Booking FAQs</h4>
+                    <h5>Is it possible to alter my flight after booked it less than 24 hours?</h5>
+                    <p>Changing flights with Unpublished Farehub is simple and fast. If your trip plans change or you need to adjust the date of your tickets, Unpublished Farehub is here to help and ensure you get the best deal.</p>
+                    <h5>If I wish to enter the United States, what documents do I need to bring?</h5>
+                    <p>If you're not a US citizen, you'll need a passport that's valid for at least six months after your arrival date. To enter the nation, you'll need a visa or a visa waiver. For the most up-to-date information on the visa you'll need, go to the US government's website.</p>
+                    <h5>Is there anything I can do to get a discount on my JetBlue Airways tickets?</h5>
+                    <p>Unpublished Farehub offers seasonal promotions and discounts on JetBlue Airways flight bookings and reservations, with savings of up to 40%. Sign up for Unpublished Farehub's email notifications to be informed about special offers such as Black Friday and Cyber Monday specials. When buying a flight with JetBlue Airways or Unpublished Farehub, you may utilise this to remain up to date on the newest discounts and specials.</p>
+                    <h5>When it comes to selecting seats on JetBlue Airways flights, what options do I have?</h5>
+                    <p>Log onto your Unpublished Farehub account and use your given flight confirmation number to double-check your trip details. When booking a ticket with JetBlue Airways, you have the option of selecting your preferred seat.</p>
+                    <h5>Is it possible to change my flight when less than 24 hours have passed after I booked it?</h5>
+                    <p>You have up to 24 hours before your journey to make changes to your flight details. Unpublished Farehub's 24-hour helpline, which assures customer satisfaction and has little to no wait time, will make purchasing JetBlue Airways tickets simple and quick</p>
+                    <h5>Is JetBlue Airways in accordance with COVID guidelines?</h5>
+                    <p>Booking a flight with JetBlue Airways is a completely risk-free experience. JetBlue Airways takes several efforts to guarantee that its passengers have a safe and enjoyable flight. The plane is sanitised on a regular basis, and the air filters on board ensure that the interiors of the flight remain clean. Every passenger is also given hand sanitizers and is expected to put on safety clothing.</p>
+                    <h4>JetBlue Airways Domestic Flights Service</h4>
+                    <p>When buying a JetBlue Airways flight, check via Unpublished Farehub to obtain the lowest rates and seasonal deals. JetBlue Airways serves over 100 locations in the United States, Latin America, and the Caribbean, ensuring that your next trip will be unforgettable. Some of our most popular and frequently searched flight booking destinations are shown below.</p>
+                    <ul class="list w_50">
+                        <li>JetBlue Airways flights to Chicago</li>
+                        <li>JetBlue Airways flights to Atlanta</li>
+                        <li>JetBlue Airways flights to New York</li>
+                    </ul>
+                    <h4>JetBlue Airways International Flights Service</h4>
+                    <p>JetBlue flies to more than 100 locations in the United States, Latin America, the Caribbean, and the United Kingdom, and its airline partners can fly you to hundreds more around the world. They have a massive fleet that ensures a smooth and luxurious travel experience. We've provided a list of some of the most popular international travel destinations and airlines for your convenience.</p>
+                    <ul class="list w_50">
+                        <li>JetBlue Airways flights to London</li>
+                        <li>JetBlue Airways flights to Aruba</li>
+                        <li>JetBlue Airways flights to Los Cabos</li>
+                        <li>JetBlue Airways flights to Bermuda</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+
+}
+
+
+
+
+

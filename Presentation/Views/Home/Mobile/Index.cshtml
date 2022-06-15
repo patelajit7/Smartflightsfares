@@ -1,0 +1,45 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Common;
+@using Infrastructure.HelpingModel.API;
+@{
+    ViewBag.Title = "Affordable Flight Tickets, Discounted Airfare | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/Mobile/_GeneralLayout.cshtml";
+}
+@section headerSection{
+    <meta name="description" content="Get cheap airline tickets for domestic and international destinations at @Utility.PortalSettings.Domain.Replace("www.", ""). Call us toll free at @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber for discounted airfares. Save Big">
+    <meta name="keywords" content="cheap flight tickets, discount airfare, airplane tickets, online flight tickets, airline tickets bookings">
+    <link rel="canonical" href="@string.Format("{0}", Utility.PortalSettings.DomainUrl)">
+}
+
+<div id="mobileSearchCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="searchBox">
+                    <!-- tab box -->
+                    <div class="mobileTitle">
+                        Best Flight Fares
+                    </div>
+
+                    @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="clients_logo">
+    <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+    <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+    <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+</ul>
+
+
+
+@{ Html.RenderPartial("~/views/home/mobile/partial/_homecenter.cshtml"); }
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}

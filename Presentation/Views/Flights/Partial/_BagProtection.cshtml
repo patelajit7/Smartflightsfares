@@ -1,0 +1,133 @@
+﻿@model Tuple<string, BagInsuranceType>
+@using Common;
+@using Configration;
+@using Infrastructure;
+@if (Utility.Settings.TravelBagAPI.IsEnable && Utility.IsAirlineExistForBaggage(Model.Item1))
+{
+        <div class="FrPyBggwrpr paycommnWrppr">
+            <div class="pay_cmmnHead" data-toggle="collapse" data-target="#BegProtecton">
+                <h4> Delay Beggage Service <i class="glyphicon glyphicon-menu-up"></i></h4>
+            </div>
+            <div class="collapse in pull-left" id="BegProtecton">
+                <div class="Fr_PyBgCont ">
+                    <div class="Fr_SlctDeal">
+                        <ul>
+
+                        @foreach (Product item in Utility.Settings.TravelBagAPI.Products.Product)
+                        {
+                            if (@item.Id != 0)
+                            {
+                                <li>
+                                    <label class="radio_cmmn">
+                                        $@item.ProductPrice Per Passanger
+                                        <input type="radio" id="@item.ProductCode" name="BagInsuranc.BagInsuranceType" value="@((int)(BagInsuranceType)Enum.Parse(typeof(BagInsuranceType),item.ProductCode))" @string.Format("{0}", Model.Item2 == (BagInsuranceType)item.Id ? " checked" : "") />
+                                        <span class="radio_inrCheck"></span>
+                                        <strong> (Pays $@item.ProductCoverageAmount Per bag.)</strong>
+                                    </label>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <label class="radio_cmmn">
+                                        No - I'll deal with my lost bags.
+                                        <input type="radio" id="@item.ProductCode" name="BagInsuranc.BagInsuranceType" value="@((int)(BagInsuranceType)Enum.Parse(typeof(BagInsuranceType),item.ProductCode))" />
+                                        <span class="radio_inrCheck"></span>
+                                    </label>
+                                </li>
+                                @*<div class="bb_prce">
+                                    <label class="radio_wrappr">
+                                        <input  class="brb-redio-btn" type="radio">
+                                        <span class=" radio_checkmark topNO"></span> <bdo dir="ltr" class="nobags">  </bdo>
+                                    </label>
+                                </div>*@
+                            }
+
+
+                        }
+                    </ul>
+                </div>
+                <div class="Fr_bgImg">
+                    <span>
+                        <img src="~/Images/blue-ribbon-beg.png" alt="blue-ribbon-beg" />
+                    </span>
+                </div>
+                <div class="listItm">
+                    <ul>
+                        <li>Blue Ribbon Bags will locate and expedite the return of delayed bags within 96 hours or pay $1000 per bag.</li>
+                        <li>Constant updates via and Email/SMS regarding the status of your delayed bag.</li>
+                        <li>Don't waste time contacting the airlines, Blue Ribbon Bags will give you peace of mind.</li>
+                    </ul>
+                </div>
+                <div class="py_disc">
+                    <p><strong>NOTE:</strong>  This service is valid only for this flight booking. If you want to make any changes, you must write to @Utility.PortalSettings.PortalDetails.CustomerSupportMail before your scheduled flight departure. To do so, we request you to mention your Service Agreement Number in the subject line and it may involve further purchases.</p>
+                    <p>Once you click on the 'Add Baggage Protection' option, you agree to the <a href="javascript:void(0);" onclick="openWindow('https://www.blueribbonbags.com/serviceagreement', 'Service Agreement', 'scrollbars=yes,width=500,height=600');">Terms and Conditions*</a></p>
+                    <p>Please click here to <a href="javascript:void(0);" onclick="openWindow('@string.Format("{0}baggage-description",Utility.PortalSettings.DomainUrl)', 'Baggage Description', 'scrollbars=yes,width=700,height=600');;">View the Description of Baggage</a></p>
+                </div>
+
+
+                    <span class="py_begshwhide">
+                        <bdo dir="ltr">Show More</bdo> <i class="glyphicon glyphicon-menu-down"></i>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+         
+     
+
+    @*<div class="blue_rib_wrap clearfix">
+        <div class="prebok_hding">
+            Delayed Baggage Service
+        </div>
+        <div class="cont_blue_bag">
+           @foreach (Product item in Utility.Settings.TravelBagAPI.Products.Product)
+            {
+
+                if (@item.Id != 0)
+                {
+                    <div class="bb_prce">
+                        <label class="radio_wrappr">
+                            <input id="@item.ProductCode" name="BagInsuranc.BagInsuranceType" class="brb-redio-btn" type="radio" value="@((int)(BagInsuranceType)Enum.Parse(typeof(BagInsuranceType),item.ProductCode))" @string.Format("{0}", Model.Item2 == (BagInsuranceType)item.Id ? " checked" : "")>
+                            <span class="radio_checkmark"></span> <strong>$@item.ProductPrice</strong> Per Passenger  <bdo dir="ltr">( Pays $@item.ProductCoverageAmount Per bag. )</bdo>
+                        </label>
+                    </div>
+                }
+                else
+                {
+                    <div class="bb_prce">
+                        <label class="radio_wrappr">
+                            <input id="@item.ProductCode" name="BagInsuranc.BagInsuranceType" class="brb-redio-btn" type="radio" value="@((int)(BagInsuranceType)Enum.Parse(typeof(BagInsuranceType),item.ProductCode))">
+                            <span class=" radio_checkmark topNO"></span> <bdo dir="ltr" class="nobags">No - I'll deal with my lost bags.  </bdo>
+                        </label>
+                    </div>
+                }
+
+
+            }
+            <div class="blue_beg_logo">
+                <span>
+                    <img src="/images/blue-ribbon-beg.png">
+                </span>
+            </div>
+            <div class="discl">
+                <ul>
+                    
+                </ul>
+            </div>
+            <div class="overw">
+                
+            </div>
+
+
+        </div>
+
+        <a href="javascript:void(0)" class="btn_sld">Show More</a>
+
+
+    </div>*@
+
+
+
+}

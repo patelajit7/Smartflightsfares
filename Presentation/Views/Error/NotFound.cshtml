@@ -1,0 +1,102 @@
+﻿@using Common
+@{
+    Layout = null;
+  
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>404 - Page Not Found: Trekhops</title>
+    <link rel="canonical" href="@string.Format("{0}404-page-not-found",Utility.PortalSettings.DomainUrl)">
+    <meta name="page-topic" content="TrekHops">
+    <meta name="Copyright" content="@string.Format("{0},  Trekhops",DateTime.Now.ToString("yyyy"))">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="rating" content="Safe For Kids">
+    <meta name="googlebot" content="INDEX, FOLLOW">
+    <meta name="YahooSeeker" content="INDEX, FOLLOW">
+    <meta name="msnbot" content="INDEX, FOLLOW">
+    <meta name="allow-search" content="yes">
+    <meta name="revisit-after" content="daily">
+    <meta name="Rating" content="General">
+    <meta name="distribution" content="global">
+    <meta name="expires" content="never">
+
+
+</head>
+<body>
+  
+    <style type="text/css">
+        .error {
+            width: 1200px;
+            margin: 0 auto;
+            font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+            font-weight: normal;
+        }
+
+            .error .logoBox {
+                width: 100%;
+                float: left;
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .error .largetext {
+                font-size: 180px;
+                color: #141414;
+                text-shadow: 0px 5px 0px #555555;
+                text-align: center;
+                margin-top: 60px;
+                text-align: center;
+                font-weight: bold;
+                float: left;
+                width: 100%;
+            }
+
+            .error .infotext {
+                font-size: 40px;
+                color: #424242;
+                text-align: center;
+            }
+
+            .error .text {
+                font-size: 15px;
+                color: #424242;
+                text-align: center;
+            }
+
+            .error .linkButton {
+                float: left;
+                width: 100%;
+                text-align: center;
+                margin: 40px 0;
+            }
+
+                .error .linkButton a.link_btn {
+                    padding: 10px 30px;
+                    font-size: 15px;
+                    background: #2D3C5F;
+                    border-radius: 25px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+    </style>
+    <div class="error">
+        <div class="largetext">
+            404
+        </div>
+        <div class="infotext">
+           <h1>Page Not Found.</h1>
+        </div>
+        <div class="text">
+            Sorry, the page you tried to access is no longer available on the @Utility.PortalSettings.Domain !
+        </div>
+        <div class="linkButton">
+            <a class="link_btn" href="@Utility.PortalSettings.DomainUrl">Return to Home Page</a>
+        </div>
+    </div>
+</body>
+</html>

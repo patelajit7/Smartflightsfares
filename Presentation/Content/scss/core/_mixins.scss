@@ -1,0 +1,42 @@
+// declare common mixins here
+@mixin inline-block($vertical-align) {
+    display: inline-block;
+    vertical-align: $vertical-align;
+}
+
+@mixin transform($transform) {
+    transform: $transform;
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -o-transform: $transform;
+    -ms-transform: $transform;
+}
+
+@mixin transition($property) {
+    transition: $property;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin boxshadow {
+	border-radius: 5px;
+	box-shadow: 0px 4px 5px #0000000A;
+	border: 1px solid #E8E8E8;
+	background: $white;
+}

@@ -1,0 +1,102 @@
+/*Tooltip Stop hover*/
+
+.tooltip-new {
+    background: #292f33;
+    color: $white;
+    bottom: 100%;
+    display: block;
+    width: 280px;
+    border-radius: 5px;
+    padding: 9px 10px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    transition: all 0.25s ease-out;
+    transform: translateX(-50%);
+    &:before {
+        bottom: -20px;
+        content: " ";
+        display: block;
+        height: 20px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+    &:after {
+        border-left: solid transparent 10px;
+        border-right: solid transparent 10px;
+        border-top: solid #292f33 10px;
+        bottom: -10px;
+        content: " ";
+        height: 0;
+        left: 53%;
+        position: absolute;
+        width: 0;
+        transform: translateX(-53%);
+    }
+}
+
+.connnecting-block:hover .tooltip-new {
+    opacity: 1;
+    pointer-events: auto;
+    @include breakpoint(sm) {
+        opacity: 0;
+    }
+}
+
+
+/*Custom Tooltip hover*/
+
+.tooltip_block {
+    position: relative;
+    display: inline-block;
+    &:hover .custom_tooltip {
+        display: block;
+    }
+}
+
+.tooltip-icon {
+    position: relative;
+    top: -2px;
+}
+
+.custom_tooltip {
+    width: 320px;
+    display: none;
+    position: absolute;
+    top: 31px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $white;
+    padding: 11px 13px;
+    font-size: 12px;
+    color: #444444;
+    border: 1px solid #E0E0E0;
+    z-index: 1;
+    box-shadow: 4px 4px 9px #00000029;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        top: -10px;
+        left: 47%;
+        border-bottom: 10px solid #ccc
+    }
+    &:after {
+        border-bottom: 11px solid $white;
+        z-index: 1
+    }
+    .tooltip_close {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        font-size: 26px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,369 @@
+﻿@model Infrastructure.HelpingModel.BookingEntities.BookingDetails
+@using Infrastructure.HelpingModel.BookingEntities;
+@using Common
+@using Infrastructure
+@{
+
+    ViewBag.Title = "Booking Confirmation" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_BookingConfirmationLayout.cshtml";
+    decimal totalBaseFare = 0.0M;
+    decimal totalTaxFare = 0.0M;
+    decimal totalFare = 0.0M;
+    decimal totalBookingFee = 0.0M;
+    decimal extendedCancelFee = 0.0M;
+    decimal discount = 0.0M;
+    string basicEcoAirline = string.Empty;
+    int outBoundSegCount = 0;
+    int inBoundSegCount = 0;
+    List<FlightSegments> outboudSegments = null;
+    List<FlightSegments> inboundSegments = null;
+}
+
+
+@if (Model != null && Model.BillingDetails != null && (Model.Segments != null && Model.Segments.Count > 0) && Model.Transaction != null && (Model.PriceDetail != null && Model.PriceDetail.Count > 0))
+{
+    outBoundSegCount = Model.Segments.Where(o => !o.IsReturn).ToList().Count;
+    inBoundSegCount = Model.Segments.Where(o => o.IsReturn).ToList().Count;
+    outboudSegments = Model.Segments.Where(o => !o.IsReturn).ToList();
+    inboundSegments = Model.Segments.Where(o => o.IsReturn).ToList();
+
+    decimal currencyPrice = Model.Transaction.CurrencyPrice;
+    string currencySymbol = Presentation.Controllers.ShareUtility.GetCurrencySymbol(Model.Transaction.CurrencyCode);
+    string currecnyType = Model.Transaction.CurrencyCode;
+
+    <div id="resultsCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 full-col">
+                    <div class="confirmation__Box text-center">
+                        <a href="javascript:window.print()" class="print_itinerary"><i class="bi bi-printer"></i>Print itinerary </a>
+                        <img src="/images/icons/booking_confirmed.svg" alt="">
+                        <h4>Thank you</h4>
+                        <p>
+                            for choosing @Utility.PortalSettings.PortalDetails.BrandName and for trusting your travel plans with us.
+                            This is a confirmation of your booking request and your booking is in progress. You will receive a confirmation email along with the Confirmation number shortly.
+                        </p>
+                        <div class="airline_confirmation">Your Airline Confirmation Number: <strong>@Model.Transaction.PNR</strong> and Booking Id is <strong class="refrance__number">@Model.Transaction.Id</strong></div>
+                    </div>
+                    <div class="payment__wrapper">
+                        <div class="flight__itenaryBox">
+                            <div class="head">
+                                <h2 class="page__title flight_detail_title"><strong>Flight</strong> Details</h2>
+                            </div>
+                            <div class="flightDetail">
+                                <h4>Departure</h4>
+                                <div class="tab-content">
+                                    <div id="departTabcontent">
+                                        @{
+                                            TimeSpan totalLayoverTimeOutbound = new TimeSpan(0, 0, 0);
+                                            TimeSpan totalLayoverTimeInbound = new TimeSpan(0, 0, 0);
+                                            string airline = string.Empty;
+                                            for (int i = 0; i <= outboudSegments.Count - 1; i++)
+                                            {
+                                                FlightSegments item = outboudSegments[i];
+                                                airline = Utility.GetAilineName(item.MarketingCode);
+                                                if (i != 0)
+                                                {
+                                                    DateTime arrivalTime = new DateTime(Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Year, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Month, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Day, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Hour, Convert.ToDateTime(outboudSegments[i - 1].ArrivalDateTime).Minute, 0);
+                                                    TimeSpan layoverTime = new DateTime(Convert.ToDateTime(item.DeptDateTime).Year, Convert.ToDateTime(item.DeptDateTime).Month, Convert.ToDateTime(item.DeptDateTime).Day, Convert.ToDateTime(item.DeptDateTime).Hour, Convert.ToDateTime(item.DeptDateTime).Minute, 0) - arrivalTime;
+                                                    if (layoverTime != TimeSpan.MinValue)
+                                                    {
+                                                        <div class="row">
+                                                            <div class="col-sm-8 offset-sm-4">
+                                                                <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
+                                                            </div>
+                                                        </div>
+                                                        totalLayoverTimeOutbound = totalLayoverTimeOutbound + layoverTime;
+                                                    }
+                                                }
+                                                <div class="row">
+                                                    <div class="col-9 col-sm-4">
+                                                        <div class="airlines__details">
+                                                            <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCode.ToUpper())" alt="@item.MarketingCode">
+                                                            <div class="detail">
+                                                                <div class="air-name">@airline</div>
+                                                                <div class="flight__info">Flight No: @item.FlightNumber | @item.MarketingCode-@item.FlightNumber</div>
+                                                                <div class="oprated_by">Operated by: @airline</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3 col-sm-1 order-md-3 pl-0">
+                                                        <div class="class__type">
+                                                            Class: <br> @Utility.GetEnumDescription((CabinType)item.Cabin)
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-7">
+                                                        <!--  route-->
+                                                        <div class="route__info">
+
+                                                            <div class="connecting__bar d-none d-md-block">
+                                                                <div class="duretion_time">
+                                                                    <span>--</span>
+                                                                    <img src="/images/icons/plane2.svg" alt="icon" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="destinationName">
+                                                                        <div class="date"><div class="">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("ddd, MMM dd, yyyy"))</div> @*<small class="message_display ">Alternate Date</small>*@ </div>
+                                                                        <div class="time">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("hh:mm tt"))</div>
+                                                                        <div class="destination_fullname">
+                                                                            <div class="text-overflow" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="TripTime  d-md-none d-block">Trip Time : --</div>
+
+                                                                <div class="col-sm-6">
+                                                                    <div class="destinationName">
+                                                                        <div class="date"><span>@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("ddd, MMM dd, yyyy"))</span> </div>
+                                                                        <div class="time">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("hh:mm tt"))</div>
+                                                                        <div class="destination_fullname"><div class=""> <div class="text-overflow" title="@Utility.GetAirportName(item.Destination)  (@item.Destination)">@Utility.GetAirportName(item.Destination)  (@item.Destination)</div></div> @*<small class="message_display ">Nearby Airport</small>*@</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!--  route-->
+
+                                                    </div>
+
+                                                </div>
+                                            }
+                                        }
+                                        <div class="row">
+                                            <div class="col-sm-8 offset-sm-4">
+                                                <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(TimeSpan.FromMinutes(Model.Flight.OutBoundFlightDuration) + totalLayoverTimeOutbound) </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    @if (inboundSegments != null && inboundSegments.Count > 0)
+                                    {
+                                        <div id="returnTabcontent">
+                                            <hr class="devider_line"></hr>
+                                            <h4>Retrun</h4>
+                                            @for (int i = 0; i <= inboundSegments.Count - 1; i++)
+                                            {
+                                                FlightSegments item = inboundSegments[i];
+                                                airline = Utility.GetAilineName(item.MarketingCode);
+                                                if (i != 0)
+                                                {
+                                                    DateTime arrivalTime = new DateTime(Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Year, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Month, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Day, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Hour, Convert.ToDateTime(inboundSegments[i - 1].ArrivalDateTime).Minute, 0);
+                                                    TimeSpan layoverTime = new DateTime(Convert.ToDateTime(item.DeptDateTime).Year, Convert.ToDateTime(item.DeptDateTime).Month, Convert.ToDateTime(item.DeptDateTime).Day, Convert.ToDateTime(item.DeptDateTime).Hour, Convert.ToDateTime(item.DeptDateTime).Minute, 0) - arrivalTime;
+                                                    if (layoverTime != TimeSpan.MinValue)
+                                                    {
+                                                        <div class="row">
+                                                            <div class="col-sm-8 offset-sm-4">
+                                                                <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
+                                                            </div>
+                                                        </div>
+                                                        totalLayoverTimeInbound = totalLayoverTimeOutbound + layoverTime;
+                                                    }
+                                                }
+
+                                                <div class="row">
+                                                    <div class="col-9 col-sm-4">
+                                                        <div class="airlines__details">
+                                                            <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCode.ToUpper())" alt="@item.MarketingCode">
+                                                            <div class="detail">
+                                                                <div class="air-name">@airline</div>
+                                                                <div class="flight__info">Flight No: @item.FlightNumber | EQP-@item.FlightNumber</div>
+                                                                <div class="oprated_by">Operated by: @airline</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3 col-sm-1 order-md-3 pl-0">
+                                                        <div class="class__type">
+                                                            Class: <br> @Utility.GetEnumDescription((CabinType)item.Cabin)
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-7">
+                                                        <!--  route-->
+                                                        <div class="route__info">
+
+                                                            <div class="connecting__bar d-none d-md-block">
+                                                                <div class="duretion_time">
+                                                                    <span>--</span>
+                                                                    <img src="/images/icons/plane2.svg" alt="icon" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="destinationName">
+                                                                        <div class="date"><div class="">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("ddd, MMM dd, yyyy"))</div> @*<small class="message_display ">Alternate Date</small>*@ </div>
+                                                                        <div class="time">@string.Format("{0}", item.DeptDateTime == null ? "--" : (item.DeptDateTime ?? DateTime.Now).ToString("hh:mm tt"))</div>
+                                                                        <div class="destination_fullname">
+                                                                            <div class="text-overflow" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="TripTime  d-md-none d-block">Trip Time : --</div>
+
+                                                                <div class="col-sm-6">
+                                                                    <div class="destinationName">
+                                                                        <div class="date"><span>@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("ddd, MMM dd, yyyy"))</span> </div>
+                                                                        <div class="time">@string.Format("{0}", item.ArrivalDateTime == null ? "--" : (item.ArrivalDateTime ?? DateTime.Now).ToString("hh:mm tt"))</div>
+                                                                        <div class="destination_fullname"><div class=""> <div class="text-overflow" title="@Utility.GetAirportName(item.Destination)  (@item.Destination)">@Utility.GetAirportName(item.Destination)  (@item.Destination)</div></div> @*<small class="message_display ">Nearby Airport</small>*@</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            }
+                                            <div class="row">
+                                                <div class="col-sm-8 offset-sm-4">
+                                                    <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(TimeSpan.FromMinutes(Model.Flight.InBoundFlightDuration) + totalLayoverTimeInbound) </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="confirmation__information">
+                        <h4><strong>Traveler</strong> Information</h4>
+                        <div class="head d-none d-md-block">
+                            <div class="row">
+                                <div class="col-sm-6">Name</div>
+                                <div class="col-sm-3">Gender</div>
+                                <div class="col-sm-3">DOB</div>
+                            </div>
+                        </div>
+                        @if (Model.Travellers != null && Model.Travellers.Count > 0)
+                        {
+                            foreach (Travellers item in Model.Travellers)
+                            {
+                                <div class="detail">
+                                    <div class="row">
+                                        <div class="col-3 d-inline-block d-md-none"><b>Name</b></div>  <div class="col-sm-6 col-9">@Utility.GetTitleCase(string.Format("{0}{1}{2}", item.FirstName, string.IsNullOrEmpty(item.MiddleName) ? " " : string.Format(" {0} ", item.MiddleName), item.LastName).ToLower())</div>
+                                        <div class="col-3 d-inline-block d-md-none"><b>Gender</b></div>  <div class="col-sm-3 col-9">@Utility.GetEnumDescription((GenderType)item.Gender)</div>
+                                        <div class="col-3 d-inline-block d-md-none"><b>DOB</b></div> <div class="col-sm-3 col-9">@string.Format("{0}", item.DOB == null ? "--" : (item.DOB ?? DateTime.Now).ToString("dd MMM yyyy"))</div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="confirmation__information">
+                        <h4><strong>Contact</strong> Information</h4>
+                        <div class="head d-none d-md-block">
+                            <div class="row">
+                                <div class="col-sm-4">Contact Number</div>
+                                <div class="col-sm-8 col-9">E-mail</div>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div class="row">
+                                <div class="col-3 d-inline-block d-md-none"><b>Contact </b></div>   <div class="col-sm-4 col-9">@Model.BillingDetails.BillingPhone</div>
+                                <div class="col-3 d-inline-block d-md-none"><b>E-mail</b></div>   <div class="col-sm-8 col-9">@Model.BillingDetails.Email</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 full-col">
+                    <div class="price__Box">
+                        <div class="head">
+                            <h4>Price details</h4>
+                        </div>
+
+                        <ul>
+                            @{
+
+                                foreach (PriceDetails item in Model.PriceDetail)
+                                {
+                                    totalFare = totalFare + (item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount;
+                                    totalBaseFare = totalBaseFare + (item.BaseFare * item.PaxCount);
+                                    totalTaxFare = totalTaxFare + (item.Tax + item.Markup + item.SupplierFee) * item.PaxCount;
+                                    extendedCancelFee = extendedCancelFee + (item.IsExtendedCancellation ? item.ExtendedCancellationAmount : 0) * item.PaxCount;
+                                    totalBookingFee = totalBookingFee + (item.BookingFee * item.PaxCount);
+                                    discount = discount + (item.Discount * item.PaxCount);
+
+                                    <li>
+                                        <div class="row accordian_toggle">
+                                            <div class="col-8">@item.PaxCount @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) </div> <div class="col-4 text-right">@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</div>
+                                        </div>
+                                        <div class="accordian-slide">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    Flight Charges <br>
+                                                    Taxes & Fees
+                                                </div>
+                                                <div class="col-4 text-right">
+                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare * item.PaxCount)) * currencyPrice) <br>
+                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.Tax + item.Markup + item.SupplierFee) * item.PaxCount) * currencyPrice)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                            @if (extendedCancelFee > 0)
+                            {
+                                <li>
+                                    <div class="row accordian_toggle">
+                                        <div class="col-8">Extended Cancel. <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete">@String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee * currencyPrice))</div>
+                                    </div>
+                                    <div class="accordian-slide">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                @Model.Travellers.Count Traveller(s) X <span class="chgcomplete">@String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee / Model.Travellers.Count) * currencyPrice)</span><br>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span class="chgcomplete">@String.Format("{0}{1:0.00}", currencySymbol, (extendedCancelFee * currencyPrice))</span><br>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {totalFare = totalFare + extendedCancelFee;}
+                            }
+                            @if (Model.CouponDetails != null && Model.CouponDetails.Status && discount > 0)
+                            {
+                                <li>
+                                    <div class="row disscount--price">
+                                        <div class="col-8">Discount</div> <div class="col-4 text-right">@String.Format("-{0}{1:0.00}", currencySymbol, discount * currencyPrice)</div>
+                                    </div>
+                                </li>
+                            }
+
+
+                        </ul>
+
+                        <div class="total_price">
+                            <div class="row">
+                                <div class="col-7">Total Price (@currecnyType)</div>
+                                <div class="col-5 text-right">@String.Format("{0}{1:0.00}", currencySymbol, (totalFare - discount) * currencyPrice)</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="text-center pt-3">
+            <a href="javascript:window.print()" class="print_button"><i class="bi bi-printer"></i>Print itinerary </a>
+        </div>
+        <div class="spacer d-none d-md-block"></div>
+
+    </div>
+}
+

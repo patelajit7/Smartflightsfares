@@ -1,0 +1,83 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares :" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+@section headerSection{
+    <link rel="stylesheet" href="/content/jquery-ui.min.css">
+    @Styles.Render("~/content/searchengine")
+    @Styles.Render("~/content/listing")
+
+}
+
+
+@{Html.RenderPartial("~/views/flights/partial/_FlightListingSearchEngine.cshtml", Model);}
+
+<div class="container-fluid mt-3">
+    <div class="row" id="divMain">
+        @*<div id="leftCntr" class="col-lg-3">
+            @{Html.RenderPartial("~/views/flights/partial/_AvailabilityLeft.cshtml");}
+        </div>*@
+        <div class="col-lg-7" id="GetContract">
+            @{ Html.RenderPartial("~/views/flights/partial/_AvailabilityRight.cshtml", Model);}
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+</div>
+<div id="loadingDiv" class="loading" style="display: none;">Loading…</div>
+@{Html.RenderPartial("~/views/flights/partial/_ListingIdlePopup.cshtml");}
+@{Html.RenderPartial("~/views/shared/partial/_FooterBlckStrip.cshtml");}
+@section scripts{
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")
+    <script type="text/javascript">
+
+        function doAjax() {
+            $.ajax({
+                type: 'POST',
+                url: '@string.Format("{0}flights/issearchcompletetwosteps/{1}", Utility.PortalSettings.DomainUrl,Model.SearchGuidId)',
+                success: function (response)
+                {
+                    if (response != null && !response.IsContextExist) {
+                        window.location.assign("@Utility.PortalSettings.DomainUrl");
+
+                    } else if (response != null && response.IsContextExist && response.IsRequestCompleted) {
+
+                        $("#divMain").html(response.HtmlResponseLeft);
+                        $("#divMain").append(response.HtmlResponse);
+                        $("#divMain").append(response.HtmlResponseRightDisplay);
+
+                        setTimeout(function () {
+                            $('#listingPopup').modal('show')
+                        }, 10000);
+                        $("#btnClose_resl").click(function (e) {
+                            HideDialog();
+                            e.preventDefault();
+                        });
+
+                        function HideDialog() {
+                            $("#listingPopup").fadeOut(300);
+                        }
+                        applyJquery();
+                    } else {
+                        doAjax();
+                    }
+
+                },
+                complete: function (data) {
+
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+
+        doAjax();
+    </script>
+}

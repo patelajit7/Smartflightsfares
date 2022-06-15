@@ -1,0 +1,63 @@
+﻿@model Infrastructure.HelpingModel.API.BookingDetail
+@using Common
+@using Infrastructure.HelpingModel
+@if (Utility.Settings.TravelInsurance.IsEnable)
+{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    <div id="TravelProtectionIns">
+        <div class="row">
+            <div class="col-12">
+                <div class="payment-common-head-mobile">
+                    <h3>
+                        <span>
+                            <i class="fa fa-shield" aria-hidden="true"></i>
+                            Travel Protection Plan
+                        </span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="payment-contact-inner">
+                        <div class="travel-protection">
+                            <div class="para">
+                                <h5><b>Why do you need Travel Protection?</b></h5>
+                                <ul>
+                                    <li>If you get too sick to travel remember your ticket is non-refundable.</li>
+                                    <li>Should you sustain an unexpected injury and are not able to make your fight.</li>
+                                    <li>Your travel companion has a  medical emergency, and you do not want to travel without them.</li>
+                                </ul>
+
+                            </div>
+                            <div class="img-box">
+                                <img src="/images/travel_protection.png" />
+                            </div>
+                        </div>
+                        <div class="radio-tag-main-wrapper">
+                            <div class="radio-check-wrapper">
+                                <label class="radio-wrapper">
+                                    <input type="radio" class="radio_cmmn" id="TravelIns1" name="TravelInsuranceOption" value="true">
+                                    Yes I want to protect my trip with
+                                    <strong class="chgcomplete" default-price="@Utility.Settings.TravelInsurance.PricePPax">
+                                        @String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Utility.Settings.TravelInsurance.PricePPax * currencyMaster.CurrencyPrice))
+                                    </strong>
+                                    <small>Per Pax</small>
+                                    <span class="radio-checkmark"></span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" class="radio_cmmn" id="TravelIns2" name="TravelInsuranceOption" value="false">
+                                    No I would risk my entire trip
+                                    <span class="radio-checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+
+}

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Infrastructure.HelpingModel.API.Contract>
+@using Infrastructure.HelpingModel.API;
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (Contract item in Model)
+    {
+        if (!item.IsPhoneOnly)
+        {
+            Html.RenderPartial("~/views/flights/mobile/partial/_Contract.cshtml", item);
+        }
+        else
+        {
+            Html.RenderPartial("~/views/flights/mobile/partial/_Contract.cshtml", item);
+        }
+    }
+}
+else
+{
+    <div class="listing" id="containerListing">
+        <div id="flights-list" class="flight-data">
+            <section class="clearfix no-result">
+                <b class="no-results noRslts alert alert-help">
+                    No results match your selections. Please reset. <a href="javascript:void(0);" onclick="contractFilter.resetFilter();" class="undertxt">Clear all filters</a> OR select another tab.
+                </b>
+            </section>
+        </div>
+    </div>
+}

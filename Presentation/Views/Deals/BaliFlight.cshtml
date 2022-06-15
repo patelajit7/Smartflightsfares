@@ -1,0 +1,72 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to Amsterdam Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+@section headerSection{
+    @*@Styles.Render("~/content/searchengine")*@
+}
+
+<div id="bannerCntr" style="background-image:url(/images/city-banner/bli.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Bali Flight Fare</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-md-12">
+                  
+                    <div class="content">
+                        <h3 class="page__title"><strong>Bali</strong> Tourism</h3>
+                        <p>Bali tourism has been booming in recent years, thanks to its stunning vistas, natural splendour, vibrant markets, and calm beaches, earning it the moniker "Island of Gods." Bali's numerous attractions for visitors of all ages and backgrounds have made a journey to Bali a must-do for any adventurer trying to satisfy their wanderlust. Bali's distinct culture, kind people, and profound spiritual scene combine to serve as a pulling force, drawing visitors from all over the planet.</p>
+                        <p>Your Bali trip reservations would take you to a visit to the majestic Mount Batur in the early morning hours and provide panoramic vistas that are just breathtaking. Furthermore, one may soothe and rest their thoughts by participating in an intensive yoga session or receiving a soothing massage from some of Bali's most skilled hands.</p>
+                        <p>A Bali vacation also has a lot to offer adventure lovers in terms of various activities. During a trip to Indonesia’s Bali, vacationers may participate in a variety of amazing activities. Bali's rich and vivid underwater environment is shown through scuba diving and snorkelling. In the warm seas of Bali, you would be able to experience the magnificent diving sites and a collection of underwater gardens, as well as enormous coral reefs. Popular surfing locations in Bali include Uluwatu, Impossibles, and Padang Padang. These locations also draw a large number of skilled surfers, pros, and daredevils looking for a burst of adrenaline. </p>
+                        <p>Bali's nightlife is exciting and daring. Bali has grown in popularity as a party destination, attracting a great number of visitors who want to partake in the island's exciting nightlife. There are several nightclubs, beach clubs and pubs, as well as evening cruises, cabaret shows, night markets, and other exciting spots to experience Bali's nightlife.</p>
+                        <p>Kuta's nightlife comes alive as soon as the sun sets. Visit Kuta's vibrant pubs, clubs, and hangout locations, which provide a diverse range of activities for all partygoers.</p>
+                        <p>If you’re the type of traveller who likes to engross themselves in the culture of their vacation location, visit Nusa Dua, known for its several galleries, each of which has a diverse collection of magnificent artwork from the Pacific Islands and Asia. Nusa Dua also has a variety of temples which offer you the chance to see several unique ceremonies and festivities on certain occasions.</p>
+                        <p>Kuta Beach is another well-known tourist destination in Bali, where the two most famous beach roads, Jalan Kartika Plaza and Jalan Pantai Kuta, are filled with resorts, hotels, entertainment venues, stores, restaurants, and bars. Here, visitors may go shopping in the well-known Discovery Shopping Mall and the Kuta Art Market.</p>
+                        <p>Finally, a Bali trip without experiencing the place’s cuisine is a crime. Every tourist should experience Balinese cuisine, and for all the food lovers out there, there are several restaurants and street food alternatives where one may satisfy one's hunger for new cuisines without burning a massive hole in their wallet. Visit venues like Barbacoa, La Finca, Menega Cafe, Atithi, Cascades Restaurant, and many others for a culinary delight. Bali is brimming with sites and experiences that add to the island's allure. With travellers flocking to the island all year, it is unquestionably a wonderful spot to visit.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}
+
+
+
+
+

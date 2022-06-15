@@ -1,0 +1,428 @@
+/*Destinations*/
+
+.destinationBox {
+    padding: 40px 0;
+    width: 100%;
+    @include breakpoint(md) {
+        padding: 20px 0;
+    }
+    .items {
+        padding: 0 10px;
+        cursor: pointer;
+        figure {
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            img {
+                width: 100%;
+                transition: all 0.5s;
+                border-radius: 5px;
+            }
+            .deal {
+                position: absolute;
+                right: 12px;
+                top: 12px;
+                font-size: 11px;
+                color: $text-color;
+                text-align: center;
+                padding: 5px 11px;
+                background: #fcf74b;
+                border-radius: 100%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                font-weight: 600;
+                width: 50px;
+                line-height: 14px;
+            }
+        }
+        .title {
+            padding-right: 20px;
+            margin: 0px;
+            display: inline-block;
+            font-size: 18px;
+            color: $text-color;
+            line-height: 24px;
+            font-weight: 500;
+            span {
+                display: inline-block;
+                background:url(#{$imagePath}/icons/long-arrow.svg) right 9px no-repeat;
+                font-size: 13px;
+                color: $primary;
+                font-weight: 400;
+                padding-right: 21px;
+            }
+        }
+        &:hover {
+            .title {
+                color: $primary;
+            }
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+    .slick-prev,
+    .slick-next {
+        width: 46px;
+        height: 46px;
+        border-radius: 100%;
+        border: 1px solid #484848;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: 'FontAwesome';
+        font-size: 28px;
+        content: "\f105";
+        color: $text-color;
+    }
+    .slick-prev:before {
+        content: "\f104";
+    }
+    .slick-prev {
+        left: -50px;
+        @include breakpoint(lg) {
+            left: 0px;
+            z-index: 1;
+            background: $white;
+        }
+    }
+    .slick-next {
+        right: -50px;
+        @include breakpoint(lg) {
+            right: 0px;
+            z-index: 1;
+            background: $white;
+        }
+    }
+    .slick-prev:hover,
+    .slick-next:hover {
+        background: $primary;
+        border-color: $primary;
+    }
+    .slick-prev:hover:before,
+    .slick-next:hover:before {
+        color: $white;
+    }
+    .slick-prev.slick-disabled:hover,
+    .slick-next.slick-disabled:hover {
+        background: $white;
+        border: 1px solid #484848;
+    }
+    .slick-prev.slick-disabled:hover:before,
+    .slick-next.slick-disabled:hover:before {
+        color: $text-color;
+    }
+    &.border-b {
+        border-bottom: 1px dashed #e8e9f1;
+    }
+    .slick-list {
+        margin: 0 -8px;
+        @include breakpoint(sm) {
+            padding: 0 80px 0 0!important
+        }
+        @include breakpoint(xs) {
+            padding: 0 50px 0 0!important
+        }
+    }
+}
+
+.slick-dots {
+    bottom: -6px;
+    li {
+        button {
+            border: 2px solid #ccc;
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+        }
+        &.slick-active {
+            button {
+                border: 2px solid $primary;
+                background: $primary;
+            }
+        }
+    }
+}
+
+
+/*Flights deal section*/
+
+.dealCntr {
+    padding: 50px 0;
+    width: 100%;
+    background: rgb(30, 87, 153);
+    background: -moz-linear-gradient(45deg, rgba(30, 87, 153, 1) 0%, rgba(113, 177, 234, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(30, 87, 153, 1) 0%, rgba(113, 177, 234, 1) 100%);
+    background: linear-gradient(45deg, rgba(30, 87, 153, 1) 0%, rgba(113, 177, 234, 1) 100%);
+    @include breakpoint(sm) {
+        padding: 30px 0;
+    }
+    .page__title {
+        color: $white;
+    }
+    h3 {
+        font-size: 26px;
+        color: $white;
+        font-weight: 300;
+    }
+    .holder {
+        margin-right: -30px;
+        @include breakpoint(md) {
+            margin-right: -15px;
+        }
+        @include breakpoint(sm) {
+            margin-right: 0px;
+        }
+    }
+    .deal__block {
+        width: calc(50% - 30px);
+        float: left;
+        margin-right: 30px;
+        @include breakpoint(md) {
+            width: calc(50% - 15px);
+            margin-right: 15px;
+        }
+        @include breakpoint(sm) {
+            width: 100%;
+            margin-right: 0px;
+        }
+    }
+    ul.deals {
+        list-style: none;
+        padding: 0px;
+        li {
+            margin-bottom: 15px;
+            padding: 13px;
+            border-radius: 5px;
+            background: $white;
+            border: 1px solid #eee;
+            font-size: 14px;
+            color: #898D92;
+            transition: all 0.2s;
+            position: relative;
+            @include breakpoint(xs) {
+                padding: 10px;
+                font-size: 12px;
+            }
+            a {
+                color: $text-color;
+                text-decoration: none;
+                display: block;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            /*Column*/
+            .column {
+                padding-left: 15px;
+                width: 33.3%;
+                float: left;
+                border-left: 1px solid $border-color-light;
+                &.first-child,
+                &:first-child {
+                    padding-left: 0px;
+                    border-left: none;
+                    @include breakpoint(md) {
+                        width: 45%;
+                    }
+                }
+                &.column-2 {
+                    @include breakpoint(md) {
+                        width: 55%;
+                    }
+                }
+                &.column-3 {
+                    @include breakpoint(md) {
+                        width: 100%;
+                        border-left: none;
+                        border-top: 1px solid $border-color-light;
+                        padding-left: 0px;
+                        margin-top: 11px;
+                        padding-top: 7px;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+            .airline__logo {
+                margin-top: 7px;
+                float: left;
+                width: 42px;
+                outline: 3px solid #fff;
+                outline-offset: -2px;
+            }
+            .airline__name {
+                padding: 9px 0px 0px 10px;
+                line-height: 20px;
+                word-wrap: break-word;
+                vertical-align: middle;
+                display: flex;
+            }
+            .city__code {
+                color: $secondary;
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 29px;
+                @include breakpoint(lg) {
+                    font-size: 19px;
+                }
+                @include breakpoint(sm) {
+                    font-size: 16px;
+                    width: 44px;
+                }
+            }
+            .flight__icon {
+                margin: 0px 7px;
+            }
+            .small__text {
+                font-size: 12px;
+                @include breakpoint(md) {
+                    width: 62px;
+                    display: block;
+                }
+            }
+            .deal__price {
+                margin: 0px;
+                font-size: 23px;
+                color: $primary;
+                font-weight: 700;
+                line-height: 29px;
+                @include breakpoint(lg) {
+                    font-size: 22px;
+                }
+                @include breakpoint(sm) {
+                    font-size: 18px;
+                }
+            }
+            .right__arrow {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                @include breakpoint(md) {
+                    margin-left: 10px;
+                    right: 10px;
+                }
+            }
+            .deal_book {
+                cursor: pointer;
+                border: none;
+                padding: 7px 17px;
+                border-radius: 3px;
+                margin: 7px auto;
+                display: inline-block;
+            }
+        }
+    }
+    .deal__tnc {
+        font-size: 13px;
+        margin: 0px;
+        padding-top: 5px;
+        line-height: 22px;
+        color: $white;
+        @include breakpoint(sm) {
+            font-size: 11px;
+            line-height: 20px;
+        }
+        span {
+            color: $white;
+            font-weight: 500;
+        }
+        a {
+            color: $white;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    /**/
+    .mobile__deal_tab {
+        display: none;
+        list-style: none;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+        margin-bottom: 26px;
+        @include breakpoint(sm) {
+            display: block;
+        }
+        li {
+            font-size: 16px;
+            padding: 8px 0px;
+            margin-right: 35px;
+            cursor: pointer;
+            float: left;
+            a {
+                color: #474747;
+                text-decoration: none;
+            }
+            &.active {
+                border-bottom: 1px solid $primary;
+            }
+        }
+    }
+    /**/
+}
+
+
+/*Hover effect
+
+.dealCntr ul.deals li:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 0px;
+    width: 3px;
+    background: $secondary;
+    transition: all 0.5s;
+}
+
+.dealCntr ul.deals li:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 2px;
+    background: $secondary;
+    transition: all 0.5s;
+}
+
+.dealCntr ul.deals li a:before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 0px;
+    width: 2px;
+    background: $secondary;
+    transition: all 0.5s;
+}
+
+.dealCntr ul.deals li a:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+    height: 2px;
+    background: $secondary;
+    transition: all 0.5s;
+}
+
+.dealCntr ul.deals li:hover:before,
+.dealCntr ul li:hover a:before {
+    height: 100%;
+}
+
+.dealCntr ul.deals li:hover:after,
+.dealCntr ul li:hover a:after {
+    width: 100%;
+}
+
+*/
+
+
+/*Hover effect*/

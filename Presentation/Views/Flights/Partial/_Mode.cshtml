@@ -1,0 +1,50 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Common
+<style>
+    .table_mode table {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: -20px;
+        float: left;
+    }
+
+        .table_mode table tr {
+            text-align: center;
+        }
+
+        .table_mode table th {
+            text-align: center;
+            background: #083d77;
+            color: #fff;
+        }
+</style>
+
+<div class="table_mode">
+    <table border="1" cellpadding="0" cellspacing="0">
+        <tr style="">
+            <th style="text-align:center">Val. Air</th>
+            <th>Class</th>
+            <th>Base</th>
+            <th>Tax</th>
+            <th>Markup</th>
+            <th>BookingFee</th>
+            <th>FareType</th>
+            <th>Fare Code</th>
+            <th>Provider</th>
+            <th>Affiliate</th>
+        </tr>
+        <tr>
+            <td>@Model.ValidatingCarrier.Code</td>
+            <td style="text-transform:uppercase">@Utility.GetContractClass(Model)</td>
+            <td>@Model.TotalBaseFare</td>
+            <td>@Model.TotalTax</td>
+            <td>@Model.TotalMarkup</td>
+            <td>@Model.TotalBookingFee</td>
+            <td>@Model.FareType</td>
+            <td>@Model.FareBasisCode</td>
+            <td>@Model.Provider.ToString()</td>
+            <td>@Model.AffiliateId</td>
+        </tr>
+    </table>
+</div>

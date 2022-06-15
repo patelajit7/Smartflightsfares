@@ -1,0 +1,473 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Infrastructure
+@using Infrastructure.HelpingModel
+@using Infrastructure.HelpingModel.API
+@using Common
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    string basicEcoAirline = string.Empty;
+    float actualMinPrice = 0;
+}
+
+
+<div class="repeat_results">
+    @switch (Model.ContractType)
+    {
+        case ContractType.NearBy:
+            actualMinPrice = Utility.GetActualMinFare(Model.SearchGuid);
+            if (Model.AdultFare.TotalFarePPax < actualMinPrice)
+            {
+                <div class="save_price_msg">Save <span class="chgcomplete" default-price="@(actualMinPrice-Model.AdultFare.TotalFarePPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (actualMinPrice - Model.AdultFare.TotalFarePPax) * currencyMaster.CurrencyPrice)</span> by selecting nearby airport</div>
+            }
+            else
+            {
+                <div class="save_price_msg">Nearby airport</div>
+            }
+            break;
+        case ContractType.Flexi:
+            actualMinPrice = Utility.GetActualMinFare(Model.SearchGuid);
+            if (Model.AdultFare.TotalFarePPax < actualMinPrice)
+            {
+                <div class="save_price_msg">Save <span class="chgcomplete" default-price="@(actualMinPrice-Model.AdultFare.TotalFarePPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (actualMinPrice - Model.AdultFare.TotalFarePPax) * currencyMaster.CurrencyPrice)</span> by selecting alternate dates</div>
+            }
+            else
+            {
+                <div class="save_price_msg">Alternate dates</div>
+            }
+            break;
+        case ContractType.NearByFlexi:
+            actualMinPrice = Utility.GetActualMinFare(Model.SearchGuid);
+            if (Model.AdultFare.TotalFarePPax < actualMinPrice)
+            {
+                <div class="save_price_msg">Save <span class="chgcomplete" default-price="@(actualMinPrice-Model.AdultFare.TotalFarePPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (actualMinPrice - Model.AdultFare.TotalFarePPax) * currencyMaster.CurrencyPrice)</span> by selecting alternate dates & nearby airport</div>
+            }
+            else
+            {
+                <div class="save_price_msg">Alternate dates & Nearby airport</div>
+            }
+            break;
+    }
+    @{
+        Segments oItem = Model.TripDetails.OutBoundSegment[0];
+        Segments dItem = Model.TripDetails.OutBoundSegment[Model.TripDetails.OutBoundSegment.Count - 1];
+        int stops = 0;
+        if (oItem.CabinType == CabinType.BasicEconomy && Utility.Settings.BasicEconomyAirlines.Contains(oItem.MarketingCarrier.Code) && string.IsNullOrEmpty(basicEcoAirline))
+        {
+            basicEcoAirline = oItem.MarketingCarrier.Code;
+        }
+    }
+    @{
+        float totalFare = 0;
+        float totalTaxFare = 0;
+        float totalbaseFare = 0;
+        totalFare = Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice;
+        totalTaxFare = Model.AdultFare.TaxPPax * currencyMaster.CurrencyPrice;
+        totalbaseFare = Model.AdultFare.BaseFarePPax * currencyMaster.CurrencyPrice;
+    }
+    <div class="resultsBox">
+        <div class="row">
+            <div class="col-md-9 pr-lg-0">
+
+                <!-- Flight row-->
+                <div class="flight__row">
+                    <!--Mobile price added-->
+                    <div class=" d-md-none d-block">
+                        <div class="top_row_mobile">
+                            <div class="price_list">
+
+                                <div class="price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>
+                                <div class="seat_left highlight mt-3">Hurry!! Only @string.Format("{0}", Model.MinSeatAvailableForContract > 1 ? Model.MinSeatAvailableForContract.ToString() : "Few") @String.Format("{0}", Model.MinSeatAvailableForContract > 1 ? "Seats" : "Seat") left</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Mobile price added End-->
+                    <div class="head">Departure  <span class="date"> | @oItem.Departure.ToString("ddd, MMM dd")</span></div>
+
+                    <div class="row">
+                        <div class="col-md-5 col-2">
+                            <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, oItem.MarketingCarrier.Code)" alt="@oItem.MarketingCarrier.Code" class="airline_logo" />
+
+                            <div class="flights_info d-none d-md-block">
+                                <div class="airline_name"> @oItem.MarketingCarrier.Name</div>
+                                <div class="flights_number">
+                                    Flight No: @oItem.FlightNumber | @oItem.MarketingCarrier.Code-@oItem.FlightNumber
+                                    <!-- Tooltip-->
+                                    @*<div class="tooltip_block">
+                                            <i class="bi bi-info-circle tooltip-icon"></i>
+
+                                            <div class="custom_tooltip">
+
+                                                <i class="bi bi-x tooltip_close"></i>
+
+                                                Boeing 787-9 Dreamliner 295-350 STD SEATS
+                                            </div>
+                                        </div>*@
+                                    <!-- Tooltip-->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-10 pl-0">
+                            <div class="leg-details">
+
+                                <div class="city">
+                                    <div class="time"><strong>@DateTime.Today.Add(oItem.DepartureTime).ToString("hh:mm")</strong> @DateTime.Today.Add(oItem.DepartureTime).ToString("tt").ToLower()</div>
+                                    <div class="code">@oItem.Origin</div>
+                                </div>
+
+                                <!-- connecting block-->
+                                <div class="connnecting-block">
+                                    <div class="leg-points">
+
+                                        <div class="stops">
+                                            <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration) </div>
+                                            <i></i>
+                                            <br>
+                                            <b>
+                                                @if (Model.TripDetails.OutBoundSegment.Count > 1)
+                                                {
+                                                    stops = Utility.GetTotalStops(Model.TripDetails.OutBoundSegment);
+                                                    <span>@stops Stop</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Non Stop</span>
+                                                }
+                                            </b>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Tooltip-->
+                                    @*<div class="tooltip-new">
+                                            <div class="text-center">
+                                                46m layover, O'Hare International Airport
+                                            </div>
+                                        </div>*@
+                                    <!-- Tooltip-->
+
+                                </div>
+                                <!-- Connecting block end-->
+
+                                <div class="city">
+                                    <div class="time"><strong>@DateTime.Today.Add(dItem.ArrivalTime).ToString("hh:mm")</strong> @DateTime.Today.Add(dItem.ArrivalTime).ToString("tt").ToLower()</div>
+                                    <div class="code">@dItem.Destination</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.TripType == TripType.ROUNDTRIP)
+                {
+                    oItem = Model.TripDetails.InBoundSegment[0];
+                    dItem = Model.TripDetails.InBoundSegment[Model.TripDetails.InBoundSegment.Count - 1];
+
+                    <div class="flight__row return_flights">
+                        <div class="head">Return  <span class="date">| @oItem.Departure.ToString("ddd, MMM dd")</span></div>
+                        <div class="row">
+                            <div class="col-md-5 col-2">
+                                <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, oItem.MarketingCarrier.Code)" alt="@oItem.MarketingCarrier.Code" class="airline_logo" />
+
+                                <div class="flights_info d-none d-md-block">
+                                    <div class="airline_name"> @oItem.MarketingCarrier.Name</div>
+                                    <div class="flights_number">
+                                        Flight No: @oItem.FlightNumber | @oItem.MarketingCarrier.Code-@oItem.FlightNumber
+                                        <!-- Tooltip-->
+                                        @*<div class="tooltip_block">
+                                                <i class="bi bi-info-circle tooltip-icon"></i>
+
+                                                <div class="custom_tooltip">
+
+                                                    <i class="bi bi-x tooltip_close"></i>
+
+                                                    Boeing 787-9 Dreamliner 295-350 STD SEATS
+                                                </div>
+                                            </div>*@
+                                        <!-- Tooltip-->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-10 pl-0">
+                                <div class="leg-details">
+
+                                    <div class="city">
+                                        <div class="time"><strong>@DateTime.Today.Add(oItem.DepartureTime).ToString("hh:mm")</strong> @DateTime.Today.Add(oItem.DepartureTime).ToString("tt").ToLower()</div>
+                                        <div class="code">@oItem.Origin</div>
+                                    </div>
+
+                                    <!-- connecting block-->
+                                    <div class="connnecting-block">
+                                        <div class="leg-points">
+
+                                            <div class="stops">
+                                                <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration) </div>
+                                                <i></i>
+                                                <br>
+                                                <b>
+                                                    @if (Model.TripDetails.InBoundSegment.Count > 1)
+                                                    {
+                                                        stops = Utility.GetTotalStops(Model.TripDetails.InBoundSegment);
+                                                        <span>@stops Stop</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Non Stop</span>
+                                                    }
+                                                </b>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Tooltip-->
+                                        @*<div class="tooltip-new">
+                                                <div class="text-center">
+                                                    46m layover, O'Hare International Airport
+                                                </div>
+                                            </div>*@
+                                        <!-- Tooltip-->
+
+                                    </div>
+                                    <!-- Connecting block end-->
+
+                                    <div class="city">
+                                        <div class="time"><strong>@DateTime.Today.Add(dItem.ArrivalTime).ToString("hh:mm")</strong> @DateTime.Today.Add(dItem.ArrivalTime).ToString("tt").ToLower()</div>
+                                        <div class="code">@dItem.Destination</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+
+            <div class="col-md-3 d-none d-md-block">
+                <div class="price_list">
+                    <div class="class_type">@string.Format("{0}", Model.TripDetails != null && Model.TripDetails.InBoundSegment != null && Model.TripDetails.InBoundSegment.Count > 0 ? Utility.GetEnumDescription(Model.TripDetails.InBoundSegment[0].CabinType) : "Economy")</div>
+                    <div class="price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
+                    <div class="fare__breakup">
+                        <a href="javascript:void(0);" class="fare__detail">
+                            Fare Detail
+                            <span>(incl. taxes)</span>
+                        </a>
+                        <div class="fare_breakup_detail">
+                            <a href="javascript:void(0);" class="close_price_breakup">X</a>
+                            <ul>
+                                <li>
+                                    <div class="traveler">
+                                        Flight Price
+                                        <span>Per person</span>
+                                    </div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalbaseFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0:#.00}", (totalbaseFare - Convert.ToSingle(Math.Truncate(totalbaseFare))))</sup></div>
+                                </li>
+
+                                <li>
+                                    <div class="traveler">Taxes & Fees</div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalTaxFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0:#.00}", (totalTaxFare - Convert.ToSingle(Math.Truncate(totalTaxFare))))</sup></div>
+                                </li>
+
+                                <li class="total__price">
+                                    <div class="traveler">Total</div>
+                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    @if (Model.BookingStatus == BookingStatus.SoldOutOrUnavailable)
+                    {
+                        <a href="#" class="select__btn d-none d-md-block disabled" style="background: gray;cursor: no-drop;">Soldout <i class="bi bi-chevron-right ml-2" aria-hidden="true"></i></a>
+                    }
+                    else
+                    {
+                        <a href="#" class="select__btn d-none d-md-block" @string.Format("{0}", Model.BookingStatus == BookingStatus.SoldOutOrUnavailable ? "" : " onclick=contractFilter.setVerificationContract(\"" + Model.SearchGuid + "\",\"" + Model.ContractId + "\",\"" + ((int)Model.ContractType) + "\");")>Select <i class="bi bi-chevron-right ml-2" aria-hidden="true"></i></a>
+                        <div class="seat_left highlight mt-3">Hurry!! Only @string.Format("{0}", Model.MinSeatAvailableForContract > 1 ? Model.MinSeatAvailableForContract.ToString() : "Few") Seats left</div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="results_bottom d-none d-md-block">
+            <div class="row">
+                <div class="col-6">
+                    <a href="#" class="bagguage_fees">@Model.BaggageQuantity Baggage</a>
+                </div>
+                @if (Model.BookingStatus != BookingStatus.SoldOutOrUnavailable)
+                {
+                    <div class="col-6 text-right">
+                        @if (Utility.Settings.IsSentItineraryEnable)
+                        {
+                            <a href="javascript:void(0);" class="flightInfo" onclick="openSentItin('@Model.SearchGuid','@Model.ContractId')">Share itinerary <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+                        }
+                        <a href="javascript:void(0);" class="flight_detail_btn" data-target="#@string.Format("ContractDetails{0}",@Model.ContractId)" onclick="GetContractDetails('@Model.SearchGuid',@Model.ContractId)">Flight details   <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="@string.Format("ContractDetails{0}",@Model.ContractId)">
+    <div class="data"></div>
+</div>
+
+<!--  / Promo  Box \ -->
+
+<!--  \ Session expire Box / -->
+@*<div class="popup_Box" style="display:block;">
+        <div class="center-block">
+            <div class="outer">
+                <div class="promoBox">
+                    <div class="phoneInfo">
+                            <div class="title-block">
+                                <span class="over-title">
+                                    Enter your phone and get
+                                </span><h2 class="title">
+                                    Offline Deal to Bangkok
+                                </h2><div class="subtitle">
+                                    <span>Fares starting at </span><b>$387</b>
+                                </div>
+                            </div>
+                            <div class="agreement">
+                                <p>
+                                    I agree to provide my phone number by clicking "Get a Quote".
+                                </p>
+                                <div class="agreement-assurance">
+                                    <i class="shield-icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="path-1-inside-1" fill="white"><path d="M7 15.3334L2.78133 12.5207C2.23352 12.1555 1.78431 11.6608 1.47357 11.0803C1.16282 10.4999 1.00016 9.85173 1 9.19335V2.53469C1.00003 2.38303 1.05176 2.23592 1.14666 2.11762C1.24156 1.99933 1.37396 1.91693 1.522 1.88402L7 0.666687L11.0572 1.56828L9.77742 2.99121L7 2.37401L2.66667 3.33697V9.19335C2.66682 9.57727 2.76171 9.95522 2.94291 10.2937C3.12418 10.6323 3.38622 10.9209 3.70578 11.1339L7 13.3302C7.17192 13.2156 10.5439 10.9644 12 10V11.9772L7 15.3334Z"></path></mask><path d="M7 15.3334L2.78133 12.5207C2.23352 12.1555 1.78431 11.6608 1.47357 11.0803C1.16282 10.4999 1.00016 9.85173 1 9.19335V2.53469C1.00003 2.38303 1.05176 2.23592 1.14666 2.11762C1.24156 1.99933 1.37396 1.91693 1.522 1.88402L7 0.666687L11.0572 1.56828L9.77742 2.99121L7 2.37401L2.66667 3.33697V9.19335C2.66682 9.57727 2.76171 9.95522 2.94291 10.2937C3.12418 10.6323 3.38622 10.9209 3.70578 11.1339L7 13.3302C7.17192 13.2156 10.5439 10.9644 12 10V11.9772L7 15.3334Z" fill="white"></path><path d="M2.78133 12.5207L4.16816 10.4406L4.168 10.4405L2.78133 12.5207ZM7 15.3334L5.61317 17.4134L7.00469 18.3412L8.39331 17.4091L7 15.3334ZM7 0.666687L7.54233 -1.77378L7 -1.8943L6.45767 -1.77378L7 0.666687ZM1.522 1.88402L0.979674 -0.556447L0.979498 -0.556408L1.522 1.88402ZM1.14666 2.11762L3.09668 3.68204L3.09669 3.68204L1.14666 2.11762ZM1 2.53469L-1.5 2.53426V2.53469H1ZM1 9.19335H-1.5V9.19395L1 9.19335ZM1.47357 11.0803L3.67759 9.90037L3.67759 9.90037L1.47357 11.0803ZM2.94291 10.2937L0.738891 11.4736L0.738892 11.4736L2.94291 10.2937ZM2.66667 9.19335H0.166667L0.166667 9.19438L2.66667 9.19335ZM3.70578 11.1339L5.0926 9.05382L5.09244 9.05371L3.70578 11.1339ZM2.66667 3.33697L2.12434 0.896505L0.166667 1.33154V3.33697H2.66667ZM7 2.37401L7.54233 -0.0664576L7 -0.186975L6.45767 -0.0664577L7 2.37401ZM7 13.3302L5.61317 15.4103L7 16.3349L8.38682 15.4103L7 13.3302ZM9.77742 2.99121L9.23509 5.43168L10.6601 5.74835L11.6362 4.66299L9.77742 2.99121ZM11.0572 1.56828L12.916 3.24006L15.7791 0.0566174L11.5995 -0.872185L11.0572 1.56828ZM12 10H14.5V5.34565L10.6195 7.91571L12 10ZM12 11.9772L13.3933 14.0529L14.5 13.3101V11.9772H12ZM1.39451 14.6008L5.61317 17.4134L8.38683 13.2533L4.16816 10.4406L1.39451 14.6008ZM6.45767 -1.77378L0.979674 -0.556447L2.06433 4.32449L7.54233 3.10715L6.45767 -1.77378ZM0.979498 -0.556408C0.276302 -0.400089 -0.352585 -0.00868571 -0.803366 0.553207L3.09669 3.68204C2.83571 4.00735 2.47161 4.23395 2.0645 4.32445L0.979498 -0.556408ZM-0.803366 0.553206C-1.25415 1.1151 -1.49988 1.81389 -1.5 2.53426L3.5 2.53512C3.49993 2.95217 3.35766 3.35673 3.09668 3.68204L-0.803366 0.553206ZM-1.5 2.53469V9.19335H3.5V2.53469H-1.5ZM-1.5 9.19395C-1.49974 10.2638 -1.23541 11.3171 -0.730456 12.2603L3.67759 9.90037C3.56106 9.68271 3.50006 9.43965 3.5 9.19276L-1.5 9.19395ZM-0.730457 12.2603C-0.225501 13.2035 0.504463 14.0075 1.39467 14.6009L4.168 10.4405C3.96257 10.3036 3.79412 10.118 3.67759 9.90037L-0.730457 12.2603ZM5.14693 9.11373C5.15988 9.13791 5.16666 9.16491 5.16667 9.19233L0.166667 9.19438C0.166993 9.98964 0.363543 10.7725 0.738891 11.4736L5.14693 9.11373ZM5.09244 9.05371C5.11527 9.06894 5.13399 9.08955 5.14693 9.11373L0.738892 11.4736C1.11437 12.175 1.65716 12.7728 2.31912 13.2141L5.09244 9.05371ZM3.20899 5.77744L7.54233 4.81448L6.45767 -0.0664577L2.12434 0.896505L3.20899 5.77744ZM5.16667 9.19335V3.33697H0.166667V9.19335H5.16667ZM8.38683 11.2501L5.0926 9.05382L2.31895 13.214L5.61317 15.4103L8.38683 11.2501ZM6.45767 4.81448L9.23509 5.43168L10.3197 0.550747L7.54233 -0.0664576L6.45767 4.81448ZM11.5995 -0.872185L7.54233 -1.77378L6.45767 3.10715L10.5149 4.00875L11.5995 -0.872185ZM11.6362 4.66299L12.916 3.24006L9.19837 -0.103495L7.91861 1.31944L11.6362 4.66299ZM8.38682 15.4103C8.56282 15.293 11.9286 13.0459 13.3805 12.0843L10.6195 7.91571C9.15915 8.88295 5.78101 11.1382 5.61318 11.2501L8.38682 15.4103ZM8.39331 17.4091L13.3933 14.0529L10.6067 9.90145L5.60669 13.2576L8.39331 17.4091ZM14.5 11.9772V10H9.5V11.9772H14.5Z" fill="#33404F" mask="url(#path-1-inside-1)"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M8.22548 7.46272L14.3534 1.33411L15.5797 2.55952L8.22549 9.91375L3.99999 5.68974L5.2255 4.46423L8.22548 7.46272Z" fill="#09864A"></path></svg>
+                                    </i>
+                                    <b>100% Safe. No spam. Ever.</b>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    <div class="thanksActive">
+                        <div class="state-image">
+                            <img src="/images/promo/banner-succes.svg">
+                        </div>
+                        <div class="title-block">
+                            <h2 class="state-title">Thank you for Request!</h2>
+                            <p class="state-sub">Keep your phone close. Our operator will contact you shortly for details.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="phoneFooter">
+                        <a href="tel:+1 855-252-2220">
+                            <span>Call us for instant deal: </span>
+                            <b>+1 855-252-2220</b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+
+<!--  / Call Deal pop up \ -->
+@*<div class="popup_Box" style="display:block;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="callDeal">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 text-center">
+                        <img src="/images/promo/best-deal.gif" style="width:100%; background-repeat:no-repeat;" class="hidden-xs ">
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-7">
+                        <div class="list-count-content">
+                            <div class="time-block">
+                                <div class="limited-time">Limited Time Offer!</div>
+                                <div class="dealEnd">
+                                    Ends in &nbsp;
+                                    <div class="countTime">14<small>m</small> 40<small>s</small> </div>
+                                </div>
+                            </div>
+
+                            <div class="dealCode ng-scope" ng-if="dealCode.length>0">
+                                <span class="deal">Phone Call Offer</span>
+                            </div>
+                            <div class="special-fare">
+                                <div class="hot-price">
+                                    <b class="ng-binding"><span class="dollar">$</span>840<sup class="ng-binding">.41*</sup></b>
+                                    Price per adult
+                                </div>
+                                <div class="special-txt">
+                                    Special fare to
+                                    <b>Dubai</b>
+                                </div>
+
+                            </div>
+
+                            <div class="tripclass-type ng-binding">
+                                Round Trip,Economy
+                            </div>
+                            <div class="itenerary-section">
+
+                                Trip arrow
+                                <div class="trip-type-arrow"> </div>
+                                <span class="trip-type-icon"><img src="/images/promo/round-trip.svg"></span>
+                                <span class="trip-type-icon"><img src="/images/promo/one-way.webp"></span>
+                                <div class="city-code right">
+                                    <div>Return</div>
+                                    <b>DXB</b>
+                                </div>
+                                <div class="city-code">
+                                    <div>Depart</div>
+                                    <b>NYC</b>
+                                </div>
+
+                            </div>
+                            <div class="city-name">
+                                <div class="depart-name">
+                                    New York (US) <br>
+                                    May<span>&nbsp;</span>08, 2022
+                                </div>
+                                <div class="return-name">
+                                    Dubai (AE) <br>
+                                    May<span>&nbsp;</span>14,
+                                    2022
+                                </div>
+
+                            </div>
+                            <div class="call-btn">
+                                <a href="tel:+1-855-252-2220" id="callTracker"> Call Now <img src="/images/promo/call-ani.webp"> +1-855-252-2220</a>
+                            </div>
+                            <div class="trustpilot-new">
+                                <div class="t-logo">
+                                    <img src="/images/promo/tp-logo.webp">
+                                </div>
+                                <div class="t-rating">
+                                    <div><b>Excellent</b></div>
+                                    <img src="/images/promo/stars-4.5.svg">
+                                    <div>4.4 Out of 5</div>
+                                </div>
+                            </div>
+
+                            <div class="disclaimer-txt">* Fares are subject to seat availability and not guaranteed until ticketed.</div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>*@

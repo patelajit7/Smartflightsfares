@@ -1,0 +1,319 @@
+/*Home city airlines*/
+
+a {
+    cursor: pointer;
+}
+
+.transparent_header {
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    @include breakpoint(sm) {
+        padding: 4px 0 0 0;
+        position: static;
+    }
+    #headerCntr {
+        background: none;
+        .logo a {
+            background:url(#{$imagePath}/logo.png) left top no-repeat;
+            @include breakpoint(sm) {
+                background-size: 100%;
+            }
+        }
+        .call-tfn {
+            cursor: pointer;
+            padding-left: 59px;
+            &:before {
+                left: 15px;
+                background:url(#{$imagePath}call.svg) left top no-repeat;
+                background-size: 100%;
+            }
+            span {
+                color: $white;
+            }
+        }
+        .menuBox ul li a {
+            color: #333;
+        }
+    }
+}
+
+
+/*Results payment page */
+
+.flow-menu {
+    .menuBox {
+        display: none;
+    }
+    #headerCntr .call-tfn_mobile {
+        margin-right: 0px;
+    }
+    .mobileMenu {
+        display: none;
+        @include breakpoint(sm) {
+            display: none;
+        }
+    }
+}
+
+
+/*Payment menu*/
+
+.payment-page {
+    .flow-menu {
+        @include breakpoint(sm) {
+            padding-left: 45px;
+        }
+    }
+}
+
+
+/*Main header start here*/
+
+#headerCntr {
+    z-index: 1;
+    padding: 10px 0 0 0;
+    background: #fff;
+    @include breakpoint(sm) {
+        padding: 10px 0;
+    }
+    .logo {
+        float: left;
+        margin-top: 7px;
+        @include breakpoint(sm) {
+            margin-top: 0px;
+        }
+        a {
+            width: 165px;
+            height: 50px;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            text-indent: -99999px;
+            background:url(#{$imagePath}logo.png) left top no-repeat;
+            background-size: 100%;
+            @include breakpoint(sm) {
+                width: 121px;
+            }
+            @include breakpoint(xs) {
+                padding-top: 6px;
+                width: 100px;
+                height: 33px;
+            }
+        }
+    }
+    /*Call TFn*/
+    .call-tfn {
+        cursor: pointer;
+        float: right;
+        margin: -10px 0px 0 0;
+        font-size: 20px;
+        padding: 12px 20px 12px 70px;
+        position: relative;
+        color: #ff4e01;
+        font-weight: 600;
+        text-decoration: none;
+        width: 285px;
+        &:before {
+            content: '';
+            width: 50px;
+            height: 51px;
+            display: block;
+            position: absolute;
+            left: 11px;
+            top: 9px;
+            background:url(#{$imagePath}call-icon.png) left top no-repeat;
+            background-size: 100%;
+            @include breakpoint(lg) {
+                width: 36px;
+                height: 36px;
+            }
+        }
+        span {
+            font-size: 11px;
+            display: block;
+            color: #808080;
+        }
+        @include breakpoint(lg) {
+            font-size: 18px;
+        }
+        @include breakpoint(sm) {
+            display: none;
+        }
+    }
+    /*TFN Mobile*/
+    .call-tfn_mobile {
+        cursor: pointer;
+        padding: 8px 15px;
+        display: none;
+        position: relative;
+        font-weight: 700;
+        float: right;
+        font-size: 14px;
+        color: $white;
+        text-decoration: none;
+        background: $primary;
+        border-radius: 36px;
+        float: left;
+        margin-left: 14px;
+        /* &:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 25px;
+            height: 25px;
+            background:url(#{$imagePath}call.svg) left top no-repeat;
+            background-size: 100%;
+        }*/
+        @include breakpoint(sm) {
+            margin-right: 33px;
+            display: block;
+        }
+    }
+    /*Menu Box start here*/
+    .menuBox {
+        float: right;
+        @include breakpoint(sm) {
+            display: none;
+        }
+        ul {
+            list-style: none;
+            position: relative;
+            padding: 0px;
+            z-index: 1;
+            li {
+                float: left;
+                margin-left: 37px;
+                @include breakpoint(md) {
+                    margin-left: 17px;
+                }
+                a {
+                    padding: 17px 0px;
+                    font-size: 16px;
+                    display: block;
+                    color: $text-color-dark;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    border-bottom: 2px solid transparent;
+                    @include breakpoint(lg) {
+                        padding: 6px 0px;
+                    }
+                    @include breakpoint(md) {
+                        font-size: 14px;
+                    }
+                    &:hover,
+                    &.active {
+                        border-bottom-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*Header End*/
+
+.mobileMenu {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 50px;
+    height: 50px;
+    background:url(#{$imagePath}/icons/menu.svg) left top no-repeat;
+    background-size: 100%;
+    @include breakpoint(sm) {
+        top: 17px;
+        right: 11px;
+        height: 22px;
+        width: 22px;
+        display: block;
+    }
+}
+
+
+/*Mobile Menu Start*/
+
+.mobileMenuBox {
+    display: none;
+    width: 100%;
+    position: fixed;
+    right: -200%;
+    top: 0px;
+    background: #fff;
+    z-index: 3;
+    height: 100vh;
+    .menu_div {
+        background: $white;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 4;
+        width: 320px;
+        height: 100vh;
+    }
+    ul {
+        list-style: none;
+        padding: 16px;
+        height: 100%;
+        overflow-y: auto;
+        li {
+            display: block;
+            padding: 12px 0 12px 0px;
+            position: relative;
+            border-bottom: 1px dashed #ccc;
+            a {
+                color: $text-color-dark;
+                text-decoration: none;
+            }
+            .icons {
+                border-radius: 100%;
+                position: absolute;
+                left: 0px;
+                top: 12px;
+                width: 30px;
+                height: 30px;
+                display: none;
+                border: 1px solid $secondary;
+                text-align: center;
+                line-height: 30px;
+                color: $primary;
+            }
+        }
+    }
+}
+
+.mobile_menu {
+    display: none;
+    @include breakpoint(sm) {
+        display: block;
+    }
+}
+
+.desktopMenu {
+    display: block;
+    @include breakpoint(sm) {
+        display: none;
+    }
+}
+
+.mobile_head {
+    background: $primary;
+    color: $white;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 9px;
+        font-size: 22px;
+        color: #fff;
+    }
+}

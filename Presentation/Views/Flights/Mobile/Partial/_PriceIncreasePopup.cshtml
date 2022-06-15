@@ -1,0 +1,26 @@
+﻿@model Tuple<float, float, string>
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Infrastructure;
+@using Common
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+<div class="popup_Box" id="PriceIncreasePopup" style="display:none;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="increasefare text-center">
+                <div class="icons"><i class="bi bi-sort-up-alt"></i></div>
+                <p>The fare you have selected is no longer available</p>
+                <h4>The fare increased by <span class="chgcomplete" default-price="@Model.Item2">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Item2 * currencyMaster.CurrencyPrice)</span></h4>
+
+                <p class="font-15">Your updated total fare is <strong> <span class="chgcomplete" default-price="@Model.Item1">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Item1 * currencyMaster.CurrencyPrice)</span> </strong>. Previous total fare was <strong><span class="chgcomplete" default-price="@(Model.Item1 - Model.Item2)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Item1 - Model.Item2) * currencyMaster.CurrencyPrice)</span></strong> </p>
+                <div class="popup-btn">
+                    <button class="active searchbtn" onclick='p.acceptHigherPrice("@Model.Item3")'>Continue Booking</button>
+                    <button class="searchbtn relaunchSearch">Change Flights</button>
+                </div>
+                @*<small>Remember that as per the offical disposition, foreigners that visit mexico must pay the<br> Non Resident Fee (DNR) which is automatically added to the reservation taxes</small>*@
+            </div>
+        </div>
+    </div>
+</div>

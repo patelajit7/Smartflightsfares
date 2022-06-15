@@ -1,0 +1,51 @@
+.confirmation__information {@include boxshadow; padding: 15px; margin-top: 20px; 
+@include breakpoint(sm){ margin: 10px -15px; }
+	h4 { font-size: 18px; font-weight: 400; margin-bottom: 11px; color:#303030; }
+	.head { font-weight: 700; padding: 10px; }
+	.detail{background: #F9F9F9; padding: 10px; margin-bottom: 10px;}
+}
+
+.spacer { height: 50px; }
+
+.confirmation__Box {@include boxshadow; padding: 20px 15px; margin-bottom: 20px; position: relative;  
+@include breakpoint(sm){ margin: 20px -15px; }
+	h4 { font-size: 18px; font-weight: 600; margin-bottom: 5px; color:#303030; }
+	p { margin-bottom: 5px; }
+	.refrance__number {font-size: 18px; font-weight: 600; }
+	.print_itinerary { position: absolute; right: 15px; top: 15px; color: #8A8A8A; text-decoration: none; 
+		i { margin-right: 5px;  position: relative;  top: -2px;}
+		&:hover { color: $primary; }
+	}
+	
+}
+.print_button { background: $primary; padding: 7px 14px; display: inline-block; text-decoration: none; border-radius: 3px; color:$white;
+	i { margin-right: 5px;  position: relative;  top: -2px;}
+	&:hover { text-decoration: none; color:$white; background:$button-bg-hover; }
+ }
+
+
+/*Print media css start here*/
+@media print {
+	a[href]:after {content: none; }
+	.print_itinerary,
+	.print_button,
+	.footer__linkBox,
+	.noprint,
+	 {
+		display: none
+	}
+	.full-col {
+		width: 100%;
+		flex: 0 0 100%;
+    max-width: 100%;
+	}
+
+}
+
+@page {
+	size: auto;
+	margin: 2mm;
+	page-break-inside: inherit;
+	-webkit-print-color-adjust: exact !important
+}
+/*Print end */

@@ -1,0 +1,60 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+
+@{
+ViewBag.Title = "Affordable Flight Tickets, Discounted Airfare | " + Utility.PortalSettings.PortalDetails.BrandName;
+Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+@section headerSection{
+    <meta name="description" content="Get low-cost airline tickets for domestic and international destinations at @Utility.PortalSettings.Domain.Replace("www.", ""). Call us toll free at @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber for discounted airfares. Save Big">
+    <meta name="keywords" content="affordable flight tickets, discount airfare, airplane tickets, online flight tickets, airline tickets bookings">
+    <link rel="canonical" href="@string.Format("{0}", Utility.PortalSettings.DomainUrl)">
+    @*@Styles.Render("~/content/searchengine")*@
+}
+
+<div id="bannerCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">Best Flight Fare</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+   
+    </div>
+</div>
+<div id="contentCntr">
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+    @{Html.RenderPartial("~/views/home/partial/_TopDestination.cshtml");}
+    
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+  
+</div>
+<div class="subscribeBox">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>Sign up to get exclusive offers from our favorite brands and to be well up in the news.</p>
+            </div>
+
+            <div class="col-md-6">
+                <div class="subscribe">
+                    <input type="text" class="input" placeholder="Enter your Email Address" />
+                    <button type="submit" class="button">Subscribe</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}

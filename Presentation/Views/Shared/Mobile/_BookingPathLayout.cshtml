@@ -1,0 +1,179 @@
+﻿@using Common;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="key, words" />
+    <meta name="description" content="Website description" />
+    <meta name="robots" content="" />
+    <!-- change into index, follow -->
+    <link rel="shortcut icon" href="@string.Format("{0}images/favicon.png?v=1234", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
+    <meta name="Author" content="@Utility.PortalSettings.Domain">
+    <meta name="page-topic" content="@Utility.PortalSettings.Domain">
+    <meta name="Copyright" content="@string.Format("{0},  {1}", DateTime.Now.ToString("yyyy"), Utility.PortalSettings.Domain)">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="rating" content="Safe For Kids">
+    <meta http-equiv="content-language" content="en-us">
+    <link rel="alternate" href="@Utility.PortalSettings.DomainUrl" hreflang="en" />
+
+    @RenderSection("headerSection", required: false)
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/content/m-css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+</head>
+<body class="results_body">
+    <div id="wrapper">
+        <div id="mainCntr">
+            @{Html.RenderPartial("~/views/shared/mobile/partial/_BookingPathHeader.cshtml");}
+            @RenderBody()
+            @{Html.RenderPartial("~/views/shared/mobile/partial/_BookingPathFooter.cshtml");}
+        </div>
+    </div>
+    <div class="full-screen-modal popupSearch" id="orginPopup">
+        <div class="mobile_head">
+            <div class="mobile_back"><i class="bi bi-arrow-left-short"></i></div>
+            <p class="ToFromMsg">Where are you  <strong>leaving from?</strong></p>
+        </div>
+
+        <div class="model_content" id="from">
+            <div class="search_field">
+                <input type="text" class="searchInput" placeholder="leaving from?" id="OriginSearchpopup" />
+                <i class="bi bi-geo-alt location_icon"></i>
+            </div>
+        </div>
+        <div class="model_content" id="to">
+            <div class="search_field">
+                <input type="text" class="searchInput" placeholder="Where to?" id="DestinationSearchPopup" />
+                <i class="bi bi-geo-alt location_icon"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Leaving from popup End-->
+    <!-- Calendar popup Start-->
+    <div id="departPopup" class="full-screen-modal open-calendarpopup">
+        <div class="mobile_head">
+            <div class="mobile_back"><i class="bi bi-arrow-left-short"></i></div>
+            <p>Select your  <strong>departure date</strong></p>
+        </div>
+
+        <div class="model_content">
+            <div id='inline1'></div>
+            <a href="javascript:void(0);" onclick="$('.open-calendarpopup').removeClass('active')" class="mobiledone_Btn">Done</a>
+        </div>
+        <!-- Content area End-->
+    </div>
+    <div id="returnPopup" class="full-screen-modal open-calendarpopup">
+        <div class="mobile_head">
+            <div class="mobile_back"><i class="bi bi-arrow-left-short"></i></div>
+            <p>Select your  <strong>return date</strong></p>
+        </div>
+
+        <div class="model_content">
+            <div id='inline2'></div>
+            <a href="javascript:void(0);" onclick="$('.open-calendarpopup').removeClass('active')" class="mobiledone_Btn">Done</a>
+        </div>
+        <!-- Content area End-->
+    </div>
+
+    <div class="popup_Box" id="flgihtValidatonPopup" style="display: none;">
+        <div class="center-block">
+            <div class="outer">
+                <div class="errorpopupBox">
+                    <p class="error-div"></p>
+                    <a href="javascript:void(0);" onclick="$('#flgihtValidatonPopup').hide();" class="ok_button"> OKey! </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flightDetailWrapper" id="contractDetaildiv">
+
+    </div>
+    <!-- footer call popup-->
+
+    <div class="footer_call">
+        <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">
+            <i class="bi bi-telephone"></i>
+            <span class="call-text">Save Time and get our best deals</span>
+            <strong> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</strong>
+        </a>
+    </div>
+
+    @Scripts.Render("~/bundles/m-js")
+
+    <script> DOMAIN_URL = "@Common.Utility.PortalSettings.DomainUrl";AFFILIATE_ID = parseInt("@ViewBag.AffiliateId", 10);</script>
+    @RenderSection("scripts", required: false)
+    <script>
+
+        $(document).ready(function () {
+            $(".click_div").click(function () {
+                searchengine.hideAllPopup();
+                $(this).next().show();
+                $(".mobile_overlay").css("height", "100%");
+            });
+
+            $(".travelerclick").click(function () {
+                searchengine.hideAllPopup();
+                $(".full-screen-modal").addClass("active");
+            });
+
+            $(".mobile_back").click(function () {
+                $(".full-screen-modal").removeClass("active");
+            });
+
+            $(".currencyClick").click(function () {
+                $(this).next().slideToggle();
+            });
+
+            $(".inputclick").click(function () {
+                $(".open-popup").addClass("active");
+            });
+
+            $(".calendarclick").click(function () {
+                $(".open-calendarpopup").addClass("active");
+            });
+
+            $(".travelerclick").click(function () {
+                $(".full-screen-modal").addClass("active");
+            });
+
+            $(document).on('click touch', function (event) {
+                if (!$(event.target).parents().addBack().is('.click_div')) {
+                    $('.Mobiletrip_type, .mobile_travelerBox, .Mobiletrip_type, .currencyBox ul').hide();
+                }
+            });
+            $('.Mobiletrip_type, .mobile_travelerBox, .Mobiletrip_type, .currencyClick, .currencyClick').on('click touch', function (event) {
+                event.stopPropagation();
+            });
+
+            $(".mobile_back").click(function () {
+                $(".full-screen-modal").removeClass("active");
+            });
+
+            //Modify
+            $(".search__infoBox").click(function () {
+                $(".modifySearchBox").css("left", "0")
+            });
+
+            $(".close_modify").click(function () {
+                $(".modifySearchBox").css("left", "-200%")
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

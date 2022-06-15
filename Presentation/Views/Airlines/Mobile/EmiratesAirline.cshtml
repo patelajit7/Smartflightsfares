@@ -1,0 +1,148 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Emirates Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/ek.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Emirates Airlines  </strong> Flights </h3>
+                        <p>Travelling to distant land during vacation is a remarkable experience that one must not miss. Especially if you wish to travel towards the middle east, there is no doubt that any other Airline other than  Emirates Airline will provide that luxurious experience. We at Unpublished Farehub provide great deals and offers to make your Emirates Airlines Reservations hassle free.</p>
+                        <p>Emirates Airlines is not only the largest airline belonging to the middle east, but also one of the world’s largest airlines. Deriving its name from the United Arab Emirates, Emirates Airline is a subsidiary of “The Emirates Group”. </p>
+                        <p>Before the world was stuck with COVID-19 pandemic, the Emirates Airline reservations served more than 3600 flights each week, operating in its full functionality in more than 150 cities across 80 countries. During the pandemic, the Emirates Airlines flight booking got paused along with all the other flights, but as the world is approaching closer to defeating the COVID-19 virus, Emirates is working full fledged. </p>
+                        <h4>A Complete Manual to Book A Flight With Emirates Airlines </h4>
+                        <p>At Unpublished Farehub, we not only give you a complete assistance in flight bookings but also offer a great deal of discounts In order to Book a flight with Emirates Airlines, kindly follow the below mentioned steps and you will be good to go-</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+
+                    <ul class="list w_50">
+                        <li>Firstly, Login to Your personal Unpublished Farehub account. You can also avail all the benefits from a guest account.</li>
+                        <li>Then find the Emirates Airlines booking section where you must enter your departure and destination airport.</li>
+                        <li>Once the above process is complete, select the flight options i.e.a multi-city flight, a round trip or a one-way flight . Choose your departure dates; returning as well in case of round trip, along with the number of passengers travelling.</li>
+                        <li>Proceed to the next page to know the availability of Emirates Airlines with a plethora of price range.</li>
+                        <li>Select the Emirates Airlines Reservations that are compatible with your schedule and budget, after which you must enter contact details.</li>
+                        <li>The last step to this process is choosing mode of payment in order to Book a flight with Emirates Airlines.</li>
+                    </ul>
+                    <p>Once all of this is done, you will receive a booking confirmation email. </p>
+                    <h4>Tips to Book a Flight with Emirates Airlines</h4>
+                    <p>
+                        Sign up with Unpublished Farehub and turn your notifications on to make sure that you never miss out on the latest discount and seasonal offers on Emirates Airlines Flight Tickets.
+                        Make sure to make your Emirates Airlines Reservations several weeks before the date of departure. This way you can avail the benefit of massively discounted rates when the demand for the flight is lesser, and travel at a fraction of the cost
+                    </p>
+                    <p>Always try to get a seat in a flight leaving at dawn or during the early morning hours. These flights can be booked at the cheapest fares as a lesser number of passengers choose to travel during this time of the day.</p>
+                    <p>Once you book a flight with Emirates Airlines, don't miss out on the world class lounge services and the in flight entertainment experience available along with mini bar services.</p>
+                    <h4>Cabin and Lounge Services in Emirates Airlines </h4>
+                    <h5>Reservations </h5>
+                    <p>One more perk of having  Emirates Airlines reservations is its amazing cabin experience. The world class cabin design in Emirates Airways is demarcated into First class, Business class, Premium economy class and Economy class. The prices of the tickets solely depends on the cabin you select, and we at Unpublished Farehub are  happy to assist you 24*7 to make your Emirates Airlines Flight Booking experience seamless. </p>
+                    <h5>First Class</h5>
+                    <p>First class seats are divided into two categories: completely enclosed suites with floor-to-ceiling gates and personal suites with panels that shut but do not reach to the top. Both apartments have shutting doors for seclusion, a mini-bar, a jacket shelf, and cabinets. </p>
+                    <p>The ICE system is also available on a 23-inch-wide LCD display in the exclusive quarters and a 32-inch-wide Lcd display in the closed suite. </p>
+                    <h5>Business Class</h5>
+                    <p>Seats in business class on Boeing 777-200LRs and 777-300ERs have a 60 inch in length pitch and tilt to 79-inch slanted flat mattresses. Relaxation function, confidentiality divider, flapped armrest with 6 way mobility, 2 separate reading lights, and a light per chair. </p>
+                    <p>If you book a flight with Emirates Airways you also get in-seat power source, Usb connection, and an RCA plug for macbook/laptop connection, along with more than 600 streams of recreation, displayed on a 23 inch wide screen as important in-flight amenities. </p>
+                    <p>Mini bars are also available in Business class of Airbus..</p>
+                    <h5>Premium Economy Class</h5>
+                    <p>Only one Airbus A380 in Emirates' aircraft presently has luxury economy seats. Nevertheless the compartment is planned to be added accompanying the launch of Emirates new aircraft. These seating will also be installed on the aircraft's Boeing 777-300ERs. </p>
+                    <h5>Economy Class</h5>
+                    <p>Emirates' airline, Boeing 777,  has 10 seats per row. The seats on board of Emirates Airlines’ Economy class  have adjustable headrests along with a 3000-channel in-flight entertainment mechanism.</p>
+                    <p>When you book a flight with Emirates Airlines’ Economy Class you also get in-seat laptop power outlets along with laptop recharge service. </p>
+                    <h4>Catering Services In Emirates Airlines</h4>
+                    <p>Emirates Flight Catering, which maintains one of the world's biggest aircraft meals establishments, provides cuisine on Emirates aircraft departing from Airports. In particular, Emirates offers different food choices depending on age, nutritional needs and interests, and cultural adherence in all classes in the flight. </p>
+                    <p>Customised foods should always be requested at minimum 24 hours prior to the takeoff time of the trip. Nevertheless, all dishes are cooked in accordance with Islamic dietary laws. Emirates Airlines booking offers.</p>
+                    <h4>FAQs about Emirates Airlines Flight Booking</h4>>
+                    <h5>Is Emirates Airlines taking upto the mark precautionary and hygiene measures due to COVID-19?</h5>
+                    <p>Emirates Airlines are taking remarkable safety measures to ensure a convenient experience to its passengers. The Aircraft is sanitized regularly and the air filters in the flight ensure that the insides of the flight remain unaffected. Apart from that each passenger is made to wear protective gear and provided with personal sanitizers.</p>
+                    <h5>How to book a flight with Emirates Airlines?</h5>
+                    <p>It is effortless to book a flight with Delta Airlines Reservations. You can use Delta's website, Fly Delta mobile application, or simply call Delta's Phone Number and make your reservation.</p>
+                    <h5>How to change an Emirates Flight?</h5>
+                    <p>Because of the pandemic, Emirates Airlines have altered their Flight change policy. If you book your tickets with Unpublished Farehub, there will be no extra fair or penalty for the change.</p>
+                    <h5>Can I change my flight within 24 hours of booking?</h5>
+                    <p>Unpublished Farehub makes changing flights a smooth and hassle free process. If your travel needs change or you need to modify the date of your tickets, Unpublished Farehub provides continuous assistance throughout this process and makes sure you do it at the cheapest possible cost.</p>
+                    <h5>How to correct my name on Emirates Airlines Flight Booking?</h5>
+                    <p>First visit the official website of the airlines. If you have booked your ticket via Unpublished Farehub, you can either access the reservation on your own by opening the booking section, or you can call the customer care number for assistance.</p>
+                    <h5>How can I choose my Emirates Airlines flight seats?</h5>
+                    <p>You can pick and choose your flight seats while making your Emirates Airlines reservation. Log in through your Unpublished Farehub account and check your flight details through your assigned flight confirmation number. You will then be able to choose your seats and pay through cash or Miles. </p>
+                    <h5>How do I avail discounts for Emirates Airlines flight booking?</h5>
+                    <p>Unpublished Farehub offers an incredible selection of seasonal deals and discounts of up to 40% on Emirates Airlines flight booking and reservations. Subscribe to Unpublished Farehub’s email notifications to get the latest information about deals like Black Friday offers, Cyber Monday offers and much more. This will make sure that you stay up to date with the latest discounts and offers whenever you wish to book a flight with Emirates Airlines via Unpublished Farehub.</p>
+                    <h4>Emirates Airlines’ Domestic Routes</h4>
+                    <p>Emirates Airline reservations serves more than 3600 flights each week, operating in its full functionality in more than 150 cities across 80 countries. Emirates Airlines’ major  nine U.S. destinations are-</p>
+                    <p>Boston, Chicago O'Hare, Dallas/Fort Worth, Houston Bush Intercontinental, Los Angeles, New York JFK, San Francisco, Seattle and Washington Dulles. It also covers Toronto which is  Canada's largest city.</p>
+                    <h4>Emirates Airlines’ International Routes</h4>
+                    <p>Emirates Airlines covers more than 150 popular international destinations including Australia, China, India, Egypt, Italy, Ireland, Japan, Maldives, Saudi Arabia, Philippines, Norway and many more with an extraordinary fleet of 300 aircrafts. You can avail seasonal as well as special discounts of Unpublished Farehub for international flight bookings to ensure that the vacation is not hefty on the pockets.  </p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}
+
+
+
+
+

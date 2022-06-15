@@ -1,0 +1,302 @@
+/*Banner Box content*/
+.contentBannerCntr { height: 400px; }
+
+/*Contact form */
+
+.contact__formBox {
+    background: $secondary;
+    padding: 35px;
+    color: $white;
+    margin-top: 20px;
+    position: relative;
+    @include breakpoint(md) {
+        padding: 20px;
+    }
+   
+    .seprator {
+        padding-right: 40px;
+        margin-right: 40px;
+        border-right: 1px solid rgba(255, 255, 255, 0.6);
+        @include breakpoint(md) {
+            padding-right: 10px;
+            margin-right: 0px;
+        }
+        @include breakpoint(sm) {
+            padding-right: 0px;
+            border-right: 0px;
+            padding-bottom: 15px;
+        }
+    }
+    h3 {
+        font-weight: 600;
+        color: $white; margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 25px;
+      
+    }
+    .textarea {
+        width: 100%;
+        border: none;
+        border-radius: .25rem;
+        padding: 10px;
+    }
+    .input_set {
+        position: relative;
+        margin-bottom: 10px;
+        input[type="text"],
+        input[type="email"] {
+            padding: 10px 15px;
+            height: 44px;
+        }
+        .star {
+            position: absolute;
+            left: 8px;
+            top: 13px;
+            color: red;
+        }
+    }
+    input[type="text"]:focus~.star,
+    input[type="email"]:focus~.star {
+        visibility: hidden;
+    }
+    .button {
+        width: 100%;
+        border: none;
+        padding: 11px;
+        margin-top: 4px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        &.enqsubmit_button {
+            padding: 15px 20px;
+            width: 100%;
+        }
+    }
+    /*Enquiry form Start*/
+    &.enquiry_form {
+        margin: 0px 0 20px 0;
+        .pl-left {
+            padding-left: 42px!important;
+        }
+        .seprator {
+            min-height: 300px;
+            margin-right: 20px;
+            @include breakpoint(md) {
+                margin-right: 0px;
+                padding-right: 10px;
+            }
+            @include breakpoint(sm) {
+                min-height: auto;
+            }
+        }
+        .icons {
+            color: $primary;
+            position: absolute;
+            left: 13px;
+            top: 3px;
+            display: block;
+            pointer-events: none;
+            font-size: 20px;
+        }
+        .list-point {
+            list-style: none;
+            li {
+                position: relative;
+                margin-bottom: 10px;
+                padding-left: 23px;
+                &:before {
+                    content: "";
+                    width: 5px;
+                    height: 5px;
+                    background: $white;
+                    display: block;
+                    position: absolute;
+                    left: 4px;
+                    top: 9px;
+                    border-radius: 100%;
+                }
+            }
+        }
+        .dates {
+            background: $white;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            .input_set {
+                margin-bottom: 0px;
+                border: none;
+                .form-control {
+                    border: none;
+                    cursor: pointer;
+                }
+                .form-control:disabled,
+                .form-control[readonly] {
+                    background: #fff;
+                }
+            }
+        }
+        .tab_box {
+            list-style: none;
+            overflow: hidden;
+            li {
+                float: left;
+                padding-right: 15px;
+                label {
+                    color: #C7D0FF;
+                    margin-bottom: 5px;
+                    input[type=radio]~span::after {
+                        border-color: #AEBCFF;
+                    }
+                    input[type=radio]:checked~span::before {
+                        background: $white;
+                    }
+                    input[type=radio]:checked~span {
+                        color: $white;
+                    }
+                    input[type=radio]:checked~span::after {
+                        border-color: $white;
+                    }
+                }
+            }
+        }
+        .input_block {
+            height: 44px;
+            background: $white;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            overflow: hidden;
+            font-size: 1rem;
+            color: #202020;
+            padding: 6px 11px 9px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .right_count {
+                width: 45%;
+                border-left: 1px solid #ccc;
+                padding: 0 10px 0 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 17px;
+            }
+            .left_side {
+                display: flex;
+                align-items: center;
+            }
+            .hotel_icon {
+                background: url(../../images/icons/hotel.svg) left top no-repeat;
+                width: 25px;
+                height: 17px;
+                display: inline-block;
+                margin-right: 5px;
+            }
+            .minus-icon,
+            .plus-icon {
+                cursor: pointer;
+                margin: 0px;
+                font-size: 24px;
+                line-height: 24px;
+                color: #828181;
+                &:hover {
+                    color: $primary;
+                }
+                &.disabled {
+                    cursor: default;
+                    &:hover {
+                        color: #828181;
+                    }
+                }
+            }
+            .bi::before {
+                margin-top: 0px;
+            }
+            .guest-icon {
+                font-size: 27px;
+                line-height: 20px;
+                color: $primary;
+                margin-right: 5px;
+            }
+        }
+        .select-class {
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            &:before {
+                content: "\f107";
+                font-family: fontawesome;
+                font-size: 23px;
+                color: #333;
+                font-weight: 700;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                pointer-events: none;
+                padding: 7px 10px 0 0;
+                background: $white;
+            }
+            .form-control {
+                height: auto;
+                padding: 10px 27px;
+            }
+        }
+        .watch-icon {
+            position: absolute;
+            left: 7px;
+            top: 6px;
+            color: $primary;
+            font-size: 18px;
+        }
+    }
+    /*Enquiry form end*/
+}
+
+
+/**/
+
+.enquiry_form .label_name {
+    display: none;
+}
+
+.enquiry_form .inputField {
+    width: 100%;
+    border-radius: .25rem;
+    border: none;
+    padding-left: 40px !important;
+    background: #fff;
+}
+
+.seprator .page__title {
+    color: $white;
+}
+
+.enquiry_form .error {
+    color: #f2ff84;
+    margin: 5px 0;
+}
+
+.enquiry_form .angucomplete-dropdown {
+    width: 100%;
+    left: 0px;
+    margin: 0px;
+    @include breakpoint(sm) {
+        min-height: 250px;
+    }
+}
+
+/**/
+.contactBox { padding-top: 30px; padding-bottom: 30px;
+	.contact {
+		box-shadow: 0 2px 9px #cccc;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+	.page__title { margin-bottom: 10px; font-size: 20px; }
+	a{ color:#333; text-decoration: none; }
+	i{ margin-right:10px;}
+	}
+	
+}

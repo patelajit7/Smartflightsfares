@@ -1,0 +1,306 @@
+@import 'modify-search';
+@import 'filter';
+@import 'results';
+@import 'flight-detail';
+@import 'metrix';
+@import 'tooltip';
+@import 'popup';
+@import 'midscreen';
+@import 'range-slider';
+.results_body {
+    background: #fff;
+}
+
+#resultsCntr {
+    width: 100%;
+    padding: 22px 0;
+    background: #fff;
+    font-size: 14px;
+    @include breakpoint(lg) {
+        font-size: 13px;
+    }
+    @include breakpoint(sm) {
+        padding-top: 0px;
+    }
+    .leftCntr {
+        padding-right: 20px;
+        width: 280px;
+        float: left;
+        @include breakpoint(lg) {
+            width: 260px;
+        }
+        @include breakpoint(md) {
+            position: fixed;
+            left: -200%;
+            top: 0px;
+            transition: all 0.5s;
+        }
+        &.open-filter {
+            left: 0px;
+            width: 100%;
+            padding-right: 0px;
+            background: $white;
+            z-index: 2;
+            display: block;
+            .holder {
+                height: calc(100vh - 80px);
+                overflow-x: hidden;
+                overflow-y: scroll;
+                padding-bottom: 76px;
+            }
+        }
+    }
+    .rightCntr {
+        width: calc(100% - 280px);
+        float: left;
+        @include breakpoint(lg) {
+            width: calc(100% - 260px);
+        }
+        @include breakpoint(md) {
+            width: 100%;
+        }
+    }
+    /*Fare detail*/
+    .fare__breakup {
+        position: relative;
+        @include breakpoint(xs) {
+            display: none;
+        }
+    }
+    .fare__detail {
+        color: $primary;
+        text-decoration: none;
+        text-align: center;
+        @include breakpoint(sm) {
+            font-size: 12px;
+        }
+        span {
+            color: #686868;
+            display: block;
+            font-size: 12px;
+            width: 73px;
+        }
+        &:hover {
+            text-decoration: none;
+            color: $secondary;
+        }
+    }
+    .fare_breakup_detail {
+        box-shadow: 0 0 9px #b8c7ff;
+        display: none;
+        width: 300px;
+        position: absolute;
+        bottom: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: $white;
+        padding: 15px;
+        border: 1px solid #d9d9db;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: 100%;
+            left: 50%;
+            border-top: 10px solid #ccc;
+        }
+        &:after {
+            border-top: 10px solid $white;
+            margin-top: -1px;
+            z-index: 1;
+        }
+        ul {
+            list-style: none;
+            margin: 0px;
+            li {
+                width: 100%;
+                border-bottom: 1px dashed #a6a6a6;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: space-between;
+                &:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                }
+                .traveler {
+                    span {
+                        display: block;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .close_price_breakup {
+            width: 38px;
+            text-align: center;
+            background: $white;
+            display: inline-block;
+            height: 22px;
+            position: absolute;
+            right: 0px;
+            top: -22px;
+            color: $primary;
+            border: 1px solid #d9d9db;
+            border-bottom: 0px;
+        }
+    }
+    /*end breakup*/
+}
+
+
+/*Results*/
+
+.total_results {
+    font-size: 15px;
+}
+
+
+/*Sorting Tab box*/
+
+.sortingTabBox {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    @include boxshadow;
+    @include breakpoint(sm) {
+        width: auto;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 10px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    ul {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+        @include breakpoint(sm) {
+            white-space: nowrap;
+            display: flex;
+            overflow: inherit;
+        }
+        li {
+            padding: 7px 18px;
+            display: block;
+            float: left;
+            width: 25%;
+            font-weight: 700;
+            border-left: 1px solid #ccc;
+            position: relative;
+            min-height: 41px;
+            &:after {
+                content: '';
+                width: 0;
+                height: 2px;
+                background: $primary;
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                transition: all 0.5s;
+            }
+            a {
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .price {
+                color: #6B6B6B;
+                font-weight: normal;
+                display: block;
+            }
+            &.active a,
+            &.active .price {
+                color: $primary;
+            }
+            &.active:after {
+                width: 100%;
+            }
+            &:hover {
+                background: #ecf0ff;
+            }
+            &:first-child {
+                border: none;
+            }
+            @include breakpoint(sm) {
+                width: auto;
+            }
+        }
+    }
+}
+
+
+/*Sorting Tab box end*/
+
+.text-link-red {
+    color: $primary!important;
+    text-decoration: underline !important;
+}
+
+
+/*Apply filter*/
+
+.apply_filter {
+    margin-bottom: 15px;
+    @include breakpoint(sm) {
+        display: none;
+    }
+    ul {
+        list-style: none;
+        padding: 0px;
+        li {
+            float: left;
+            padding: 8px 15px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            border-radius: 40px;
+            border: 1px solid #d9dade;
+            color: $primary;
+            font-weight: 500;
+            background: #fafafa;
+            a {
+                color: #898585;
+                position: relative;
+                top: -2px;
+                margin-left: 6px;
+                float: right;
+                line-height: 12px;
+                &:hover {
+                    color: $primary;
+                }
+            }
+            &.clear__all {
+                a {
+                    color: #ff5555;
+                    position: relative;
+                    top: 0px;
+                    margin: 0px;
+                    line-height: 20px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.loadmore {
+    font-size: 15px;
+    background: $button-bg;
+    padding: 15px 46px;
+    color: $white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-top: 15px;
+    @include breakpoint(sm) {
+        display: block;
+    }
+    &:hover {
+        background: $button-bg-hover;
+        color: $white;
+        text-decoration: none;
+    }
+}

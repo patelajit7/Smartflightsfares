@@ -1,0 +1,74 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to Amsterdam Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest India Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+    <div id="contentCntr">
+
+        @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+        <div class="container">
+            @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+            <!-- Content-->
+            <div class="contentBox">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="content">
+                            <h3 class="page__title"><strong>India</strong> Tourism</h3>
+                            <p>India is a country in South Asia with deep cultural origins and a rich tradition. India is known for its forts and palaces and is an excellent location for cheap travel. You may travel to India to find yourself via yoga, to get lost in the Himalayan highlands, or to be mesmerised by old temples. The packed bazaars, roaring traffic, filmy music, the colour, the noise, and, of course, the mayhem will leave you speechless.</p>
+                            <p>Make your India trip reservations and head over to the capital city of New Delhi, where you will get the chance to visit a plethora of iconic bars, clubs, cafes and lounges in millennial favourite places like Connaught Place and Hauz Khas. Walk the streets and experience the local culture and cuisine through partaking in the local street food. Delicacies like Gol Gappa, Samosa Chaat and Jalebis would surely make you want to extend your stay for just a few more days, only to try just one more savoury.</p>
+                            <p>Visit Himachal Pradesh, which is home to a variety of breathtakingly gorgeous hill stations, including Manali, Kasol, and Nainital. These towns are tourist favourites because of their relaxing cafés, good internet, tiny eateries, and convenient stores. Many homestays and hostels provide inexpensive dorm beds for longer visits. Manali is surrounded by several hiking possibilities, making it an excellent base for exploring this part of the Himalayas. In the adjacent town of Kullu, the River Beas offers excellent rafting opportunities. The Parvati Valley, which runs beside the Parvati River and includes Kasol, Manikaran, Tosh, and other tiny settlements, attracts visitors for longer stays. The months of January and February get the greatest snowfall, followed by December and March.</p>
+                            <p>Book your India trip reservations today and reach Goa, India's smallest state and unlike any other, which is famed for its boundless beaches, excellent nightlife, unique seafood, and UNESCO World Heritage-listed architecture. Goa's relaxed atmosphere (susegad) draws as many international visitors as it does Indians, if not more. While the seafood is delicious, Goa offers one of the greatest nightlife scenes in India, with trendy pubs, beach shacks, beautiful cafés, and a plethora of clubs and discos. Goa is especially ideal for younger travellers with limited funds, thanks to the state's cheaper alcohol rates. Visit one of the numerous whitewashed churches, decaying forts, or beautiful churches. Goa has been a Portuguese province for over 450 years, but Portuguese architecture is nowhere as ubiquitous as it is in Goa. The kaleidoscope of Goan architecture is completed with yellow houses with purple doors, ochre-colored palaces, and oyster shell windows.</p>
+                            <p>Every tourist's heart is captured by India, with its misty hill stations, fascinating beaches, ancient monuments, beautiful deserts, calm backwaters, pilgrimage sites, abundant wildlife, and colourful fairs. A variety of festivals, busy marketplaces, a dynamic lifestyle, and traditional Indian hospitality will make your visit to India genuinely unique and spectacular. Travel around the beautiful Indian states and get a close look at the vibrant hues and diverse cultural landscapes of this magnificent country.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content-->
+
+        </div>
+
+       
+    </div>
+
+    @section scripts{
+        @Scripts.Render("~/bundles/m-searchengin-js")
+    }
+
+
+
+
+

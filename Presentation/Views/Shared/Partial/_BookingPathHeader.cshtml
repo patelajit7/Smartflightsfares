@@ -1,0 +1,19 @@
+﻿@using Common
+<header id="headerCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="logo">
+                    <a href="/">Unpublished Farehub</a>
+                </div>
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn"> <i class="bi bi-telephone"></i> <span>Call us 24/7 for Support</span> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber </a>
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn_mobile"> <i class="bi bi-telephone"></i> Call us </a>
+
+                @{Html.RenderPartial("~/views/home/partial/_CurrencyConverter.cshtml");}
+
+            </div>
+
+        </div>
+    </div>
+</header>
+

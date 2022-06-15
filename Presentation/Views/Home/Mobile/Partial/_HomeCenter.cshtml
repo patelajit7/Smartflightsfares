@@ -1,0 +1,138 @@
+﻿
+<div id="contentCntr">
+    <div class="container">
+
+        <!--  / service box \ -->
+        <div class="serviceBox">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="service_slider">
+                        <div class="service_block">
+                            <img src="~/images/mobile/icons/support.svg" class="icon" alt="" />
+                            <div class="detail">
+                                <h3>24/7 Support</h3>
+                                <p>24x7 support service provider</p>
+                            </div>
+                        </div>
+
+                        <div class="service_block">
+                            <img src="~/images/mobile/icons/secure.svg" class="icon" alt="" />
+                            <div class="detail">
+                                <h3>Secure Booking</h3>
+                                <p>Find best holiday destination</p>
+                            </div>
+                        </div>
+
+                        <div class="service_block">
+                            <img src="~/images/mobile/icons/best-price.svg" class="icon" alt="" />
+                            <div class="detail">
+                                <h3>Best Price Deal</h3>
+                                <p>Best price deal with us</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--  \ service box / -->
+        <!--  / destination box \ -->
+        <div class="destinationBox">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="page__title"><strong>Popular</strong> Destinations</h2>
+
+                    <div class="destination_slider">
+                        <div class="items">
+                            <a href="/deals/flight-to-dubai">
+                                <figure><img src="/images/home/dubai.jpg" alt="" /></figure>
+                                <p class="title">Dubai <br><span>See Offers</span></p>
+                            </a>
+                        </div>
+
+                        <div class="items">
+                            <a href="/deals/flight-to-aruba">
+                                <figure>
+                                    <img src="/images/home/aruba.jpg" alt="" />
+                                    <span class="deal">Best Deal</span>
+                                </figure>
+                                <p class="title">Aruba <br><span>See Offers</span></p>
+                            </a>
+                        </div>
+
+                        <div class="items">
+                            <a href="deals/flight-to-bali">
+                                <figure><img src="/images/home/bali.jpg" alt="" /><span class="deal">Best Deal</span></figure>
+                                <p class="title">Bali <br><span>See Offers</span></p>
+                            </a>
+                        </div>
+
+                        <div class="items">
+                            <a href="/deals/flight-to-london">
+                                <figure><img src="/images/home/london.jpg" alt="" /></figure>
+                                <p class="title">London <br><span>See Offers</span></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+       
+    </div>
+    <div class="destinationBox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="page__title"><strong>Best</strong> Hotel Deal</h2>
+                    <div class="destination_slider">
+                        <div class="items">
+                            <figure><img src="images/home/NYC.jpg" alt="" /></figure>
+                            <div class="hotel_bottom_info">
+                                <div>
+                                    <p class="title">The Sea Hotel</p>
+                                    <div class="rating"> <span style="width:100%;"></span> </div>
+                                </div>
+                                <div class="price"> $150.0 <small>From / per night</small> </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <figure><img src="images/home/sfo.jpg" alt="" /> <span class="deal">Best Deal</span> </figure>
+                            <div class="hotel_bottom_info">
+                                <div>
+                                    <p class="title">The Sea Hotel</p>
+                                    <div class="rating"> <span style="width:80%;"></span> </div>
+                                </div>
+                                <div class="price"> $150.0 <small>From / per night</small> </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <figure><img src="images/home/MIA.jpg" alt="" /><span class="deal">Best Deal</span></figure>
+                            <div class="hotel_bottom_info">
+                                <div>
+                                    <p class="title">The Sea Hotel</p>
+                                    <div class="rating"> <span style="width:100%;"></span> </div>
+                                </div>
+                                <div class="price"> $150.0 <small>From / per night</small> </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <figure><img src="images/home/rome.jpg" alt="" /></figure>
+                            <div class="hotel_bottom_info">
+                                <div>
+                                    <p class="title">The Sea Hotel</p>
+                                    <div class="rating"> <span style="width:60%;"></span> </div>
+                                </div>
+                                <div class="price"> $150.0 <small>From / per night</small> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

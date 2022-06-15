@@ -1,0 +1,438 @@
+.popup_Box {
+    background-color: rgba(0, 0, 0, .75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    overflow-y: auto;
+    .center-block {
+        width: 100%;
+        height: 100%;
+        z-index: 1001;
+        display: table;
+        table-layout: fixed;
+    }
+    .outer {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+        padding: 40px 0;
+        &.call_fullwindow {
+            padding: 0px;
+            .close__popup {
+                top: 4px;
+                z-index: 1;
+                right: 12px;
+            }
+        }
+    }
+    .close__popup {
+        width: 38px;
+        text-align: center;
+        background: #fff;
+        display: inline-block;
+        height: 33px;
+        position: absolute;
+        right: 0px;
+        top: -31px;
+        font-size: 18px;
+        padding-top: 5px;
+        color: $primary;
+    }
+}
+
+.button {
+    background: $primary;
+    color: $white;
+    &:hover {
+        background: $button-bg-hover;
+        color: $white;
+    }
+}
+
+
+/*Session expire start here*/
+
+.session__expire {
+    width: 420px;
+    margin: 0px auto;
+    background: $white;
+    padding: 36px;
+    position: relative;
+    border-radius: 5px;
+    @include breakpoint(xs) {
+        width: 95%;
+        padding: 15px;
+    }
+    .clock_tym {
+        width: 60px;
+        margin: 0px auto;
+        img {
+            width: 100%;
+        }
+    }
+    h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 12px 0;
+    }
+    .call_us {
+        overflow: hidden;
+        border-top: 1px dotted #ccc;
+        padding-top: 11px;
+        .call_icon {
+            width: 50px;
+            margin-top: 11px;
+        }
+    }
+    .left {
+        width: calc(100% - 80px);
+        float: left;
+        padding-left: 15px;
+        text-align: left;
+        border-left: 1px solid #ccc;
+        margin-left: 18px;
+        color: #3B3B3B;
+        a {
+            font-size: 22px;
+            color: $primary;
+            font-weight: 700;
+            display: inline-block;
+        }
+    }
+    .timeStart {
+        padding-top: 12px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        .seconds {
+            font-size: 30px;
+            color: $primary;
+            font-weight: 700;
+            line-height: 40px;
+        }
+    }
+    .time_text {
+        font-size: 14px;
+        margin: 0px;
+    }
+}
+
+
+/*Session expire end here*/
+
+.popup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .searchbtn {
+        background: #ced0d4;
+        color: #fff;
+        font-size: 15px;
+        width: 167px;
+        text-align: center;
+        padding: 12px 5px;
+        border: 0;
+        border-radius: 3px;
+        font-weight: 600;
+        display: inline-block;
+        &.active {
+            background: $primary;
+            margin-right: 10px;
+        }
+    }
+}
+
+
+/*No Results page Start here*/
+
+.no__resultsBox {
+    margin-bottom: 20px;
+    padding: 50px 20px;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 4px 5px #0000000F;
+    background: $white;
+    text-align: center;
+    .head {
+        font-size: 21px;
+        color: #484848;
+        font-weight: 600;
+        padding: 20px 0 10px 0;
+    }
+    .resetFilter_button {
+        background: $button-bg;
+        padding: 7px 20px;
+        border-radius: 3px;
+        text-decoration: none;
+        color: $white;
+        i {
+            margin-right: 7px;
+        }
+        &:hover {
+            background: $button-bg-hover;
+            text-decoration: none;
+        }
+    }
+}
+
+
+/*No Results page End here*/
+
+
+/*Baggage Fees popup start here*/
+
+.baggage__fees {
+    width: 820px;
+    margin: 0px auto;
+    background: $white;
+    padding: 20px;
+    position: relative;
+    @include breakpoint(sm) {
+        width: 420px;
+        padding: 15px;
+    }
+    @include breakpoint(xs) {
+        width: 95%;
+    }
+    h3 {
+        font-size: 19px;
+        font-weight: 600;
+        margin: 14px 0 20px 0;
+        padding-bottom: 5px;
+        @include breakpoint(sm) {
+            font-size: 16px;
+        }
+    }
+    .baggage_block {
+        padding: 8px 15px;
+        background: #EDEEF3;
+        margin: 10px 0;
+        @include breakpoint(sm) {
+            margin: 10px -15px;
+        }
+        img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        a {
+            background: $primary;
+            color: $white;
+            text-decoration: none;
+            margin-top: 5px;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 2px;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+    }
+    .small_text {
+        font-size: 12px;
+        position: relative;
+        padding-left: 17px;
+        i {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    }
+    .text-link {
+        color: $primary;
+    }
+    .baggage_banner {
+        width: 100%;
+    }
+}
+
+
+/*Mid popup start here*/
+
+.mid_page__loading {
+    width: 340px;
+    margin: 0px auto;
+    background: $white;
+    position: relative;
+    padding: 18px;
+    overflow: hidden;
+    @include breakpoint(xs) {
+        width: 95%;
+        padding: 15px;
+    }
+    img {
+        float: left;
+        width: 131px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 24px;
+        float: left;
+        margin: 0px;
+        border-left: 1px solid #ccc;
+        padding: 0 0 0 20px;
+        margin-left: 20px;
+    }
+    .dot span {
+        font-size: 28px;
+        line-height: 15px;
+        animation-name: blink;
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+    }
+    .dot span:nth-child(2) {
+        animation-delay: .2s;
+    }
+    .dot span:nth-child(3) {
+        animation-delay: .4s;
+    }
+    @keyframes blink {
+        0% {
+            opacity: .2;
+        }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            opacity: .2;
+        }
+    }
+}
+
+
+/*Mid popup end here*/
+
+.mobilecall_fullwindow {
+    padding: 0px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    .title {
+        font-weight: 300;
+        text-transform: capitalize;
+        font-size: 33px;
+        padding-bottom: 13px;
+        padding-top: 10px;
+    }
+    .callBannerBox {
+        background: #2139ac;
+        color: #fff;
+        text-align: center;
+    }
+    .image-responsive {
+        width: 100%;
+    }
+    .content_popup {
+        padding: 20px 0;
+    }
+    .call_button {
+        width: 100%;
+        background: #fb3d4e;
+        border: none;
+        font-weight: 700;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 14px;
+        outline: none;
+        display: block;
+    }
+    h2 {
+        font-size: 21px;
+        font-weight: 400;
+        padding: 22px;
+        margin: 0px;
+        line-height: 32px;
+    }
+}
+
+
+/*Increase fare*/
+
+.increasefare {
+    width: 520px;
+    margin: 0px auto;
+    background: $white;
+    padding: 25px;
+    position: relative;
+    border-radius: 5px;
+    h4 {
+        font-size: 21px;
+        @include breakpoint(sm) {
+            font-size: 16px;
+        }
+    }
+    @include breakpoint(xs) {
+        width: 95%;
+        padding: 15px;
+    }
+    small {
+        display: block;
+        padding-top: 20px;
+    }
+    .icons {
+        background: #005aab;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        border-radius: 100%;
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        line-height: 40px;
+        margin-bottom: 15px;
+        font-size: 27px;
+    }
+}
+
+
+/*promoBox fare*/
+
+.promoBox {
+    width: 520px;
+    margin: 0px auto;
+    background: $white;
+    padding: 25px;
+    position: relative;
+    border-radius: 5px;
+    h4 {
+        font-size: 18px;
+    }
+    @include breakpoint(xs) {
+        width: 95%;
+        padding: 15px;
+    }
+    .couponList {
+        list-style: none;
+        padding: 10px 0;
+        li {
+            font-size: 11px;
+            border-bottom: 1px solid #ececec;
+            padding: 11px 0;
+            p {
+                margin: 0px;
+            }
+        }
+    }
+    .promo-key {
+        display: inline-block;
+        border: 1px dashed #02CB66;
+        padding: 3px 10px;
+        color: #02CB66;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        min-width: 85px;
+        text-align: center;
+    }
+    .save {
+        color: #db9a00;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+}

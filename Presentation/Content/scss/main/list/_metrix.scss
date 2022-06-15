@@ -1,0 +1,135 @@
+/*matrix view start here */
+
+.matrixBox {
+    margin-bottom: 20px;
+    @include breakpoint(sm) {
+        margin-bottom: 10px;
+    }
+    .matrix__wrap {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 10px;
+        @include boxshadow;
+    }
+    .matrix__aside {
+        position: relative;
+        float: left;
+        width: 14%;
+        z-index: 1;
+        @include breakpoint(sm) {
+            width: 110px;
+        }
+        .matrix__box {
+            padding-left: 15px;
+            color: $primary;
+            white-space: nowrap;
+            i {
+                margin-left: 6px;
+            }
+        }
+    }
+    .matrix__slider {
+        position: relative;
+        float: left;
+        width: 86%;
+        @include breakpoint(sm) {
+            width: calc(100% - 110px);
+        }
+        .items {
+            width: 200px;
+            float: left;
+        }
+        .matrix__logo {
+            width: 38px;
+            margin-bottom: 10px;
+            outline: 3px solid #fff;
+            outline-offset: -2px;
+        }
+        .matrix__airline-name {
+            line-height: 16px;
+            margin-left: 10px;
+            text-align: center;
+			white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+        }
+    }
+    .matrix__box-lg {
+        border-right: 1px solid #ddd;
+        font-size: 13px;
+        height: 60px;
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        .multiairline {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 15px;
+        }
+    }
+    .matrix__box {
+        border-right: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        display: block;
+        font-size: 13px;
+        height: 45px;
+        text-align: center;
+        width: 100%;
+        cursor: pointer;
+        line-height: 26px;
+        padding: 8px;
+        font-weight: 500;
+    }
+    .matrix__box-lg:hover,
+    .matrix__box:hover {
+        background: #ECF0FF;
+    }
+    .matrix__box-lg.matrixdisabled:hover,
+    .matrix__box.matrixdisabled:hover {
+        background: transparent;
+        cursor: default;
+        font-weight: 400;
+    }
+    .disclaimer {
+        font-size: 12px;
+    }
+    .slick-next,
+    .slick-prev {
+        right: 0px;
+        top: -25px;
+        background: white;
+        width: 23px;
+        height: 23px;
+        border-radius: 100%;
+        border: 1px solid $primary;
+    }
+    .slick-prev {
+        left: inherit;
+        right: 30px;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+        color: $primary;
+        font-family: 'FontAwesome';
+        content: "\f105";
+    }
+    .slick-prev:before {
+        font-family: 'FontAwesome';
+        content: "\f104";
+    }
+    .collapse.show {
+        display: inline!important;
+    }
+    .learn-more {
+        color: $primary;
+    }
+}
+
+
+/*Matrix view end here*/

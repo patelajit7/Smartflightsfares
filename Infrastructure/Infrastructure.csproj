@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A4F39914-7AD7-43B5-9901-009DCCDEC39A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infrastructure</RootNamespace>
+    <AssemblyName>Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\Mongo\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HelpingModel\API\IATAGeoLocation.cs" />
+    <Compile Include="HelpingModel\BookingEntities\BaggageInsurances.cs" />
+    <Compile Include="HelpingModel\BlueribbonbagsAPI\BlueribbonbagsAPI.cs" />
+    <Compile Include="HelpingModel\BookingEntities\BookingCampaignTracking.cs" />
+    <Compile Include="HelpingModel\BookingEntities\EasyPayDetails.cs" />
+    <Compile Include="HelpingModel\BookingEntities\TravelInsurance.cs" />
+    <Compile Include="HelpingModel\BookingFailureDetails.cs" />
+    <Compile Include="HelpingModel\CampaignMaster.cs" />
+    <Compile Include="Entities\Airlines.cs" />
+    <Compile Include="Entities\Airports.cs" />
+    <Compile Include="Entities\ContentBase.cs" />
+    <Compile Include="Entities\Searches.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="HelpingModel\AirContext.cs" />
+    <Compile Include="HelpingModel\AirportAutoComplete.cs" />
+    <Compile Include="HelpingModel\API\Airline.cs" />
+    <Compile Include="HelpingModel\API\AirMatrixMain.cs" />
+    <Compile Include="HelpingModel\API\Availability.cs" />
+    <Compile Include="HelpingModel\API\BillingDetail.cs" />
+    <Compile Include="HelpingModel\API\BookingDetail.cs" />
+    <Compile Include="HelpingModel\API\Contract.cs" />
+    <Compile Include="HelpingModel\API\ContractFacets.cs" />
+    <Compile Include="HelpingModel\API\FareDetails.cs" />
+    <Compile Include="HelpingModel\API\FlightBookingRS.cs" />
+    <Compile Include="HelpingModel\API\FlightSearch.cs" />
+    <Compile Include="HelpingModel\API\Response.cs" />
+    <Compile Include="HelpingModel\API\Segments.cs" />
+    <Compile Include="HelpingModel\API\SignInToken.cs" />
+    <Compile Include="HelpingModel\API\Transactions.cs" />
+    <Compile Include="HelpingModel\API\Traveller.cs" />
+    <Compile Include="HelpingModel\API\TripDetails.cs" />
+    <Compile Include="HelpingModel\BookingEntities\BillingDetails.cs" />
+    <Compile Include="HelpingModel\BookingEntities\BookingDetails.cs" />
+    <Compile Include="HelpingModel\BookingEntities\Flights.cs" />
+    <Compile Include="HelpingModel\BookingEntities\FlightSegments.cs" />
+    <Compile Include="HelpingModel\BookingEntities\PriceDetails.cs" />
+    <Compile Include="HelpingModel\BookingEntities\Transactions.cs" />
+    <Compile Include="HelpingModel\BookingEntities\Travellers.cs" />
+    <Compile Include="HelpingModel\CouponData.cs" />
+    <Compile Include="HelpingModel\Currency.cs" />
+    <Compile Include="HelpingModel\CurrencyMaster.cs" />
+    <Compile Include="HelpingModel\IncompleteBookingContext.cs" />
+    <Compile Include="HelpingModel\ContractFilterRQ.cs" />
+    <Compile Include="HelpingModel\DealAirlines.cs" />
+    <Compile Include="HelpingModel\DealDestinations.cs" />
+    <Compile Include="HelpingModel\DealBusness.cs" />
+    <Compile Include="HelpingModel\Deals\DealData.cs" />
+    <Compile Include="HelpingModel\Deals\DealRequest.cs" />
+    <Compile Include="HelpingModel\DealThemeHoliday.cs" />
+    <Compile Include="HelpingModel\EmailTransaction.cs" />
+    <Compile Include="HelpingModel\FAQs.cs" />
+    <Compile Include="HelpingModel\ForgetPassword.cs" />
+    <Compile Include="HelpingModel\HomeDeals.cs" />
+    <Compile Include="HelpingModel\KeyValueData.cs" />
+    <Compile Include="HelpingModel\Location.cs" />
+    <Compile Include="HelpingModel\Operations\ContactDetail.cs" />
+    <Compile Include="HelpingModel\Operations\DocuSigns.cs" />
+    <Compile Include="HelpingModel\PortalStaticData.cs" />
+    <Compile Include="HelpingModel\RequestedItinerary.cs" />
+    <Compile Include="HelpingModel\Reviews.cs" />
+    <Compile Include="HelpingModel\UserProfile.cs" />
+    <Compile Include="HelpingModel\PromoCodeRequest.cs" />
+    <Compile Include="HelpingModel\PromoCodeResponse.cs" />
+    <Compile Include="HelpingModel\Subscription.cs" />
+    <Compile Include="HelpingModel\Travelex\CreateRQ.cs" />
+    <Compile Include="HelpingModel\Travelex\CreateRS.cs" />
+    <Compile Include="HelpingModel\Travelex\InsuraneTravel.cs" />
+    <Compile Include="HelpingModel\Travelex\PayLinkRQ.cs" />
+    <Compile Include="HelpingModel\Travelex\PayLinkRS.cs" />
+    <Compile Include="HelpingModel\Travelex\RatesRQ.cs" />
+    <Compile Include="HelpingModel\Travelex\RatesRS.cs" />
+    <Compile Include="HelpingModel\WidgetData.cs" />
+    <Compile Include="Interfaces\ICacheManager.cs" />
+    <Compile Include="Interfaces\IDatabase.cs" />
+    <Compile Include="Interfaces\ILoggingService.cs" />
+    <Compile Include="Interfaces\IMongoDBRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="MongoDB\Contracts.cs" />
+    <Compile Include="MongoDB\MongoEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,188 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Infrastructure
+@using Infrastructure.HelpingModel
+@using Infrastructure.HelpingModel.API
+@using Common
+@{
+    float totalFare = 0;
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    totalFare = Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice;
+}
+<div class="repeat_results" @string.Format("{0}", Model.BookingStatus == BookingStatus.SoldOutOrUnavailable ? "" : " onclick=GetContractDetails(\"" + Model.SearchGuid + "\",\"" + Model.ContractId + "\");")>
+
+    <div class="resultsBox">
+        <div class="row">
+            <div class="col-md-9 pr-lg-0">
+
+                <!-- Flight row-->
+                <div class="flight__row">
+                    <!--Mobile price added-->
+
+                    <div class="top_row_mobile">
+
+                        <div class="price_list">
+                            <div class="price chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))<sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>
+                            @if (Model.BookingStatus != BookingStatus.SoldOutOrUnavailable)
+                            {
+                                <div class="seat_left highlight mt-3">Hurry!! Only @string.Format("{0}", Model.MinSeatAvailableForContract > 1 ? Model.MinSeatAvailableForContract.ToString() : "Few") @String.Format("{0}", Model.MinSeatAvailableForContract > 1 ? "Seats" : "Seat") left</div>
+                            }
+                        </div>
+                        @if (Model.BookingStatus == BookingStatus.SoldOutOrUnavailable)
+                        {
+                            <button type="button" class="selectBtn disabled" style="background: gray;cursor: no-drop;">Soldout</button>
+                        }
+                        else
+                        {
+                            <button type="button" onclick="GetContractDetails(@Model.SearchGuid ,@Model.ContractId" class="selectBtn">Select</button>
+                        }
+
+                    </div>
+                    @switch (Model.ContractType)
+                    {
+                        case ContractType.NearBy:
+                            <small class="message_display mobile_alternate">Near by Airport</small>
+                            break;
+                        case ContractType.Flexi:
+                            <small class="message_display mobile_alternate">Alternate Date</small>
+                            break;
+                        case ContractType.NearByFlexi:
+                            <small class="message_display mobile_alternate">Alternate date and Nearby Aiport</small>
+                            break;
+                    }
+                    @{
+                        Segments oItem = Model.TripDetails.OutBoundSegment[0];
+                        Segments dItem = Model.TripDetails.OutBoundSegment[Model.TripDetails.OutBoundSegment.Count - 1];
+                        int stops = 0;
+                        TimeSpan layover;
+                    }
+                    <!--Mobile price added End-->
+                    <div class="head">Departure  <span class="date"> | @oItem.Departure.ToString("ddd, MMM dd")</span></div>
+
+                    <div class="row">
+                        <div class="col-md-5 col-2">
+                            <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, oItem.MarketingCarrier.Code)" alt="@oItem.MarketingCarrier.Code logo" class="airline_logo" />
+                        </div>
+                        <div class="col-md-7 col-10 pl-0">
+                            <div class="leg-details">
+
+                                <div class="city">
+                                    <div class="time"><strong>@DateTime.Today.Add(oItem.DepartureTime).ToString("hh:mm")</strong> @DateTime.Today.Add(oItem.DepartureTime).ToString("tt").ToLower()</div>
+                                    <div class="code">@oItem.Origin</div>
+                                </div>
+
+                                <!-- connecting block-->
+                                <div class="connnecting-block">
+                                    <div class="leg-points">
+
+                                        <div class="stops">
+                                            <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration)</div>
+                                            <i></i>
+                                            <br>
+                                            @if (Model.TripDetails.OutBoundSegment.Count > 1)
+                                            {
+                                                <b>@Utility.GetTotalStops(Model.TripDetails.OutBoundSegment) Stops</b>
+                                            }
+                                            else
+                                            {
+                                                <b>0 Stop</b>
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Tooltip-->
+                                    @*<div class="tooltip-new">
+                                            <div class="text-center">
+                                                46m layover, O'Hare International Airport
+                                            </div>
+                                        </div>*@
+                                    <!-- Tooltip-->
+
+                                </div>
+                                <!-- Connecting block end-->
+
+                                <div class="city">
+                                    <div class="time"><strong>@DateTime.Today.Add(dItem.ArrivalTime).ToString("hh:mm")</strong> @DateTime.Today.Add(dItem.ArrivalTime).ToString("tt").ToLower()</div>
+                                    <div class="code">@dItem.Destination</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flight row-->
+                <!-- Flight row-->
+                @if (Model.TripType == TripType.ROUNDTRIP)
+                {
+                    oItem = Model.TripDetails.InBoundSegment[0];
+                    dItem = Model.TripDetails.InBoundSegment[Model.TripDetails.InBoundSegment.Count - 1];
+
+                    <div class="flight__row return_flights">
+
+                        <div class="head">Return  <span class="date">| @oItem.Departure.ToString("ddd, MMM dd")</span></div>
+
+                        <div class="row">
+                            <div class="col-md-5 col-2">
+                                <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, oItem.MarketingCarrier.Code)" alt="@oItem.MarketingCarrier.Code" class="airline_logo" />
+                            </div>
+                            <div class="col-md-7 col-10 pl-0">
+                                <div class="leg-details">
+
+                                    <div class="city">
+                                        <div class="time"><strong>@DateTime.Today.Add(oItem.DepartureTime).ToString("hh:mm")</strong> @DateTime.Today.Add(oItem.DepartureTime).ToString("tt").ToLower()</div>
+                                        <div class="code">@oItem.Origin</div>
+                                    </div>
+
+                                    <!-- connecting block-->
+                                    <div class="connnecting-block">
+                                        <div class="leg-points">
+
+                                            <div class="stops">
+                                                <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration)</div>
+                                                <i></i>
+                                                <br>
+                                                @if (Model.TripDetails.InBoundSegment.Count > 1)
+                                                {
+                                                    <b>@Utility.GetTotalStops(Model.TripDetails.InBoundSegment) Stops</b>
+                                                }
+                                                else
+                                                {
+                                                    <b>0 Stop</b>
+                                                }
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Tooltip-->
+                                        @*<div class="tooltip-new">
+                                                <div class="text-center">
+                                                    46m layover, O'Hare International Airport
+                                                </div>
+                                            </div>*@
+                                        <!-- Tooltip-->
+                                    </div>
+                                    <!-- Connecting block end-->
+
+                                    <div class="city">
+                                        <div class="time"><strong>@DateTime.Today.Add(dItem.ArrivalTime).ToString("hh:mm")</strong> @DateTime.Today.Add(dItem.ArrivalTime).ToString("tt").ToLower()</div>
+                                        <div class="code">@dItem.Destination</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!-- Flight row-->
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

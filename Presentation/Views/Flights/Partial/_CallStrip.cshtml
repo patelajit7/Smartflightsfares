@@ -1,0 +1,65 @@
+﻿@model Infrastructure.HelpingModel.API.Contract
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+@if (Model != null)
+{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+    
+    <div class="resultsBox">
+        <div class="row">
+            <div class="col-md-9 pr-lg-0">
+                <div class="call-container__main">
+                    <div class="call-container_head">
+                        <div class="call-container__badge-list">
+                            <div class="call-container__badge">
+                                <span>
+                                    Phone-only Deals
+                                </span>
+                            </div>
+                        </div><div class="call-container__head-text">
+                                  <span>
+                                      to @Utility.GetCityName(Model.Destination)
+                                  </span>
+                        </div>
+                    </div>
+                    <div class="call-container__text">
+                        <p>
+                            Fares starting from <b class="colored chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice))</b><sup href="/static-page/page?slug=disclaimer" data-toggle="modal" data-target="#modal-disclaimer">*</sup>. Call to Get This Fare Now.
+                        </p>
+                    </div>
+                    <div class="call-contaner__advantages">
+                        <ul class="call-container__advantage-list">
+                            <li class="call-container__advantage-item">
+                                <div class="call-container__advantage-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.8002V22.4002C13.8736 22.4002 15.3616 21.7178 16.4984 20.8002H12Z" fill="#33404F"></path><path d="M4 12.8002V14.4002C4 16.4002 5.6 16.8002 5.6 16.8002C5.6 16.8002 7.2 21.6002 12 21.6002" stroke="#33404F" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M20.8002 13.5999H18.4002C18.4002 8.60785 16.0002 6.39985 16.0002 6.39985C13.6002 11.9999 5.6002 7.99985 5.6002 13.5999H3.2002C3.2002 13.5999 3.2002 13.5055 3.2002 10.3999C3.2002 4.79985 8.0002 1.59985 12.0002 1.59985C15.2002 1.59985 16.0002 3.19985 16.0002 3.19985C19.2002 3.19985 20.8002 7.19985 20.8002 10.3999V13.5999Z" fill="#33404F"></path><path d="M12.3999 16.8002C12.2591 16.8002 11.7407 16.8002 11.5999 16.8002C10.9375 16.8002 10.3999 17.3378 10.3999 18.0002C10.3999 18.6626 10.9375 19.2002 11.5999 19.2002C11.7407 19.2002 12.2591 19.2002 12.3999 19.2002C13.0623 19.2002 13.5999 18.6626 13.5999 18.0002C13.5999 17.3378 13.0623 16.8002 12.3999 16.8002Z" fill="#33404F"></path><path d="M12.7998 18.4002H16.7998C18.567 18.4002 19.9998 16.9674 19.9998 15.2002V12.8002" stroke="#33404F" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M19.9999 16H18.3999V12H19.9999C20.8839 12 21.5999 12.716 21.5999 13.6V14.4C21.5999 15.284 20.8839 16 19.9999 16Z" fill="#33404F"></path></svg></div><span class="pm-container__advantage-text">
+                                    24/7 Live Agents
+                                </span>
+                            </li>
+                            <li class="call-container__advantage-item">
+                                <div class="call-container__advantage-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.6875 9.42188C12.6875 9.06627 12.9764 8.77734 13.332 8.77734C13.6876 8.77734 13.9766 9.06627 13.9766 9.42188C13.9766 9.77748 13.6876 10.0664 13.332 10.0664C12.9764 10.0664 12.6875 9.77748 12.6875 9.42188Z" fill="#33404F"></path><path d="M18.4883 13.9336C18.1327 13.9336 17.8438 14.2225 17.8438 14.5781C17.8438 14.9337 18.1327 15.2227 18.4883 15.2227C18.8439 15.2227 19.1328 14.9337 19.1328 14.5781C19.1328 14.2225 18.8439 13.9336 18.4883 13.9336Z" fill="#33404F"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M22.3555 4.91016H7.49881V6.84375C7.49881 7.2 7.21053 7.48828 6.85428 7.48828C6.49802 7.48828 6.20975 7.2 6.20975 6.84375V4.91016H1.64453C1.28828 4.91016 1 5.19843 1 5.55469V9.42188C1 9.77813 1.28828 10.0664 1.64453 10.0664C2.71076 10.0664 3.57812 10.9338 3.57812 12C3.57812 13.0662 2.71076 13.9336 1.64453 13.9336C1.28828 13.9336 1 14.2219 1 14.5781V18.4453C1 18.8016 1.28828 19.0898 1.64453 19.0898H6.15625V17.1562C6.15625 16.8 6.44453 16.5117 6.80078 16.5117C7.15704 16.5117 7.44531 16.8 7.44531 17.1562V19.0898H22.3555C22.7117 19.0898 23 18.8016 23 18.4453V5.55469C23 5.19843 22.7117 4.91016 22.3555 4.91016ZM7.44531 14.5781C7.44531 14.9344 7.15704 15.2227 6.80078 15.2227C6.44453 15.2227 6.15625 14.9344 6.15625 14.5781V13.2891C6.15625 12.9328 6.44453 12.6445 6.80078 12.6445C7.15704 12.6445 7.44531 12.9328 7.44531 13.2891V14.5781ZM7.44531 10.7109C7.44531 11.0672 7.15704 11.3555 6.80078 11.3555C6.44453 11.3555 6.15625 11.0672 6.15625 10.7109V9.42188C6.15625 9.06562 6.44453 8.77734 6.80078 8.77734C7.15704 8.77734 7.44531 9.06562 7.44531 9.42188V10.7109ZM11.3984 9.42188C11.3984 8.35565 12.2658 7.48828 13.332 7.48828C14.3983 7.48828 15.2656 8.35565 15.2656 9.42188C15.2656 10.4881 14.3983 11.3555 13.332 11.3555C12.2658 11.3555 11.3984 10.4881 11.3984 9.42188ZM12.9745 16.4034C12.6781 16.2058 12.5981 15.8061 12.7958 15.5096L17.952 7.77527C18.149 7.47883 18.5487 7.39951 18.8458 7.59652C19.1423 7.79418 19.2222 8.19383 19.0246 8.49031L13.8683 16.2247C13.6739 16.5167 13.2757 16.6031 12.9745 16.4034ZM18.4883 16.5117C17.4221 16.5117 16.5547 15.6444 16.5547 14.5781C16.5547 13.5119 17.4221 12.6445 18.4883 12.6445C19.5545 12.6445 20.4219 13.5119 20.4219 14.5781C20.4219 15.6444 19.5545 16.5117 18.4883 16.5117Z" fill="#33404F"></path></svg></div><span class="pm-container__advantage-text">
+                                    Exclusive Airfares
+                                </span>
+                            </li>
+                            <li class="call-container__advantage-item">
+                                <div class="call-container__advantage-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.2286 3.77148L7.28431 18.2861C7.08724 18.5071 7.24678 18.8572 7.54287 18.8572H20.2286L24 3.77148H20.2286Z" fill="#33404F"></path><path opacity="0.75" d="M14.7429 8.22854L15.4286 5.14282H12.0001L0.0805283 18.338C-0.100417 18.5389 0.0710461 18.8571 0.342915 18.8571H5.14292L14.7429 8.22854Z" fill="#33404F"></path></svg></div><span class="pm-container__advantage-text">
+                                    Major Airlines
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-3 d-none d-md-block">
+                <div class="price_list">
+                    <div class="class_type">Call Now</div>
+                    <div class="number">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber </div>
+                    <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="requestCall">Click to Call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

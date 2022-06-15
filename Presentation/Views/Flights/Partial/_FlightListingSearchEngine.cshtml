@@ -1,0 +1,130 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+@using (Html.BeginForm("searchengine", "flights", FormMethod.Post, new { @id = "flights" }))
+{
+    <div class="modifySearchBox">
+        <div class="container">
+
+            <div class="relative">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="tripType inputSet">
+                            <li><label><input type="radio" onclick="callme('RoundTrip');" name="TripType" value="2" @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? " checked " : "")><span>Round trip</span> </label></li>
+                            <li><label><input type="radio" onclick="callme('OneWay');" id="oneway" name="TripType" value="1" @string.Format("{0}", Model.TripType == TripType.ONEWAY ? " checked " : "")><span>Oneway</span> </label></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="row row_margin">
+                            <div class="col-lg-6 pad3px">
+                                <div class="input__block label1 inputOrigin">
+                                    <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Origin city/airport" value="@Model.OriginSearch" id="OriginSearch" name="OriginSearch" class="inputField valid" />
+                                    <span class="icons bi bi-geo-alt"></span>
+                                    <span id="Depart_error" class="error-div1 errortext">Please select an origin</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pad3px">
+                                <div class="input__block label1 inputDestination">
+                                    <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Destination city/airport" id="DestinationSearch" name="DestinationSearch" value="@Model.DestinationSearch" class="inputField" />
+                                    <span class="icons bi bi-geo-alt"></span>
+                                    <span id="Return_error" class="error-div1 errortext">Please select an destination</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 no-padding">
+                        <div class="row row_margin2">
+                            <div class="col-lg-9 no-padding">
+                                <div class="row row_margin">
+                                    <div class="col-lg-6 pad3px">
+                                        <div class="dates">
+                                            <div class="input__block col-50 label1 inputDepart">
+                                                <input type="text" class="inputField cursor" placeholder="Depart" name="Departure" id="Departure" autocomplete="off" value="@(Model.Departure==DateTime.MinValue? "" : Model.Departure.ToString("MMM dd yyyy"))" readonly="" />
+                                                <span class="icons bi bi-calendar3"></span>
+                                                <span id="Departure_error" class="error-div1 errortext">Please enter a Depart date</span>
+                                            </div>
+
+                                            <div class="input__block col-50 label1 inputReturn">
+                                                <input type="text" placeholder="Return" class="inputField cursor" id="Return" name="Return" readonly autocomplete="off" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : (Model.Return??DateTime.Now).ToString("MMM dd yyyy") : "")" @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "disabled" : "" : "disabled")/>
+                                                <span class="icons bi bi-calendar3"></span>
+                                                <span id="ReturnDate_error" class="error-div1 errortext">Please enter a Return date</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6 pad3px">
+                                        <div class="input__block traveller">
+                                            <input type="text" id="paxCounterVal" value="@Model.TotalPax() Traveler(s), Economy" class="inputField cursor" readonly />
+                                            <span class="icons person-icon bi bi-person"></span>
+                                            <div class="error-div" id="TotalPax_error" style="display: none;">
+                                                <span class="error-flL errorbox1"><i class="fa fa-exclamation-triangle"></i></span>
+                                                <span class="error-flL error-innertxt">Total <b>'Infant'</b> not more then <b>'Adult'</b></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 pl-8"><button type="submit" class="searchButton">Modify</button></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            @{ Html.RenderPartial("~/views/flights/partial/_FlightSearchEnginePopUp.cshtml"); }
+        </div>
+    </div>
+
+    <div class="search__infoBox">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="city-itenery">
+
+                    <div class="airportCode column">@Model.Origin</div>
+
+
+                    <div class="airporticon column">
+                        <!-- roundtrip arrow-->
+                        <i class="bi bi-arrow-left-right"></i>
+                    </div>
+
+
+                    <div class="airportCode column">@Model.Destination</div>
+
+                    <div class="clearfix"></div>
+
+                    <!--Date Start -->
+                    @if (Model.TripType == TripType.ROUNDTRIP)
+                    {
+                        <div class="itenery-date"> @(Model.Departure == DateTime.MinValue ? "" : Model.Departure.ToString("MMM dd yyyy"))<span style="margin:0 5px;">-</span> @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return == null || Model.Return == DateTime.MinValue) ? "" : (Model.Return ?? DateTime.Now).ToString("MMM dd yyyy") : "") <span>&nbsp; | &nbsp;</span> @Model.TotalPax()&nbsp;Traveler</div>
+                    }
+                    else
+                    {
+                        <div class="itenery-date"> @(Model.Departure == DateTime.MinValue ? "" : Model.Departure.ToString("MMM dd yyyy"))<span style="margin:0 5px;"></span><span>&nbsp; | &nbsp;</span> @Model.TotalPax()&nbsp;Traveler</div>
+                    }
+
+                </div>
+                <div class="modify_search_mobile"> <i class="bi bi-search"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mobile__filter">
+        <a href="javascript:void(0);" class="filter_link"><i class="bi bi-filter-circle-fill"></i></a>
+        <ul>
+            <li>Stops <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            <li>Price <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            <li>Time <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            <li class="active">Airlines <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+        </ul>
+    </div>
+}

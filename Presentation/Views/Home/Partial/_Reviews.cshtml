@@ -1,0 +1,41 @@
+﻿@model Infrastructure.HelpingModel.GoogleReviews
+
+@if (Model != null)
+{
+    <div class="head">
+        <img src="/images/google.jpg" alt="google">
+        <div class="heading">
+            <span class="review">Review </span>
+            <span class="stars">
+                <span style="width:@(Model.Rating*20)%"></span>
+            </span>
+        </div>
+    </div>
+    <div class="greviewBox">
+        @if (Model != null && Model.GoogleSubReviews != null && Model.GoogleSubReviews.Count > 0)
+        {
+            foreach (var item in Model.GoogleSubReviews)
+            {
+                <div class="reviewSec">
+                    <div class="userIcon">
+                        <img src="@item.UserImage" alt="user" onerror="this.onerror=null;this.src='/images/user-icon.jpg';" />
+                    </div>
+                    <div class="userReview">
+                        <div class="userName">
+                            @item.UserName
+                            <span class="date">@item.Date</span>
+                        </div>
+                        <div class="userText">
+                            <span class="stars">
+                                <span style="width:@(item.UserRating*20)%"></span>
+                            </span>
+                            <p class="show-read-more">@item.ReviewText</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+    </div>
+}

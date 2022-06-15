@@ -1,0 +1,45 @@
+﻿@using Common
+<header id="headerCntr">
+    <div class="tfnmobile">
+        <div class="call">Call us 24/7 </div>
+        <div class="tfn">
+            <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call_mobile"> <i class="bi bi-telephone"></i> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 relative">
+                <div class="logo">
+
+                    <a href="/">Unpublished Farehub</a>
+
+                </div>
+
+                <!-- <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn_mobile"> <i class="bi bi-telephone"></i> Call us </a>-->
+
+                @{Html.RenderPartial("~/views/home/mobile/partial/_CurrencyConverter.cshtml");}
+
+                <div class="mobileMenuBox" id="nav">
+                    <div class="mobile_head">
+                        <h4>Menu</h4>
+                        <a href="javascript:void(0);" class="close close_modify"><i class="bi bi-x-circle"></i></a>
+                    </div>
+                    <ul>
+                        <li><a href="/"><span class="icons"><i class="fa fa-plane"></i></span> Flights</a></li>
+                        <li><a href="/about-us"><span class="icons"><i class="fa fa-file-word-o"></i></span>About Us</a></li>
+                        <li><a href="/terms-condition"><span class="icons"><i class="fa fa-info"></i></span>Terms &amp; Conditions</a></li>
+                        <li><a href="/privacy-policy"><span class="icons"><i class="fa fa-info"></i></span>Privacy Policy</a></li>
+                        <li><a href="/contact-us"><span class="icons"><i class="fa fa-globe"></i></span>Contact Us</a></li>
+                        <li><a href="/payment-security"><span class="icons"><i class="fa fa-usd"></i></span>Payment Security</a></li>
+
+
+                    </ul>
+                </div>
+                <!--  \ menu box / -->
+
+                <a href="javascript:void(0);" class="mobileMenu"><span></span></a>
+            </div>
+
+        </div>
+    </div>
+</header>

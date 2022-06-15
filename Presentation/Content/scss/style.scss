@@ -1,0 +1,52 @@
+@import 'core/core';
+@import 'main/header';
+@import 'main/banner';
+@import 'main/search/engine';
+@import 'main/search/radio-check';
+@import 'main/home/home';
+@import 'main/home/destination-deal';
+@import 'main/home/reviews';
+@import 'main/home/hotel-deal';
+@import 'main/home/subscribe';
+@import 'main/list/listing';
+@import 'main/payment/payment';
+@import 'main/confirmation/confirmation';
+@import 'main/footer/footer';
+@import 'main/currency';
+@import 'main/content/content';
+@import 'main/content/inquiry_form';
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input,
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+focus {
+    outline: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+#mainCntr {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1300px;
+    padding-left: 30px;
+    padding-right: 30px;
+    @include breakpoint(lg) {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

@@ -1,0 +1,112 @@
+﻿@model Infrastructure.HelpingModel.API.BookingDetail
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    <title>Review Trip Details & Book : @Utility.PortalSettings.PortalDetails.BrandName</title>
+    Layout = "~/Views/Shared/_BookingPathLayout.cshtml";
+}
+<div id="resultsCntr">
+    <div class="container">
+        @using (Html.BeginForm("Payment", "Flights", FormMethod.Post, new { @id = "payment" }))
+        {
+            <input type="hidden" id="insTranscationId" name="TravelerInsurance.TransactionId" value="" />
+            <input type="hidden" id="insCardType" name="TravelerInsurance.CardType" value="" />
+            <input type="hidden" id="insToken" name="TravelerInsurance.Token" value="" />
+            <input type="hidden" name="guid" id="guid" value="@Model.Contract.SearchGuid" />
+            <div class="payment__top d-none d-lg-block">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="javascript:void(0)" onclick="window.location='@string.Format("{0}flights/availability/{1}", Utility.PortalSettings.DomainUrl, Model.Contract.SearchGuid)'" class="go__back"><i class="fa fa-angle-left"></i> Go Back</a>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <ul class="secure__Box">
+                            <li><i class="bi bi-credit-card-2-back"></i> Low Airfare<br> Guarantee</li>
+                            <li><i class="bi bi-check-circle"></i> Fast <br> Easy Booking</li>
+                            <li><i class="bi bi-patch-check"></i> Deals from <br>500+ Airlines</li>
+                            <li> <i class="bi bi-bookmark-check"></i> Focused on <br>Quality Services</li>
+                            <li><i class="bi bi-emoji-smile"></i> Happy <br>Customers</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+                    <div class="payment__wrapper">
+
+                        <div class="flight__itenaryBox">
+
+                            @{ Html.RenderPartial("~/views/flights/partial/_PaymentContract.cshtml", Model);}
+
+                            @{ Html.RenderPartial("~/views/flights/partial/_ContactDetails.cshtml", Model);}
+                            @{ Html.RenderPartial("~/views/flights/partial/_ExtendedCancellation.cshtml", Model);}
+
+                        </div>
+                          
+                            @{ Html.RenderPartial("~/views/flights/partial/_Travellers.cshtml", Model);}
+                                        
+
+                            @{ Html.RenderPartial("~/views/flights/partial/_BillingDetails.cshtml", Model);}
+
+                            <div class="bottom_text">
+                                <p>
+                                    Please verify that the <b>date(s), time(s), and name(s) of the travelers are correct.</b> To be used on this trip, <b>each traveler's name and date of birth must be exactly as they appear on their passport or government-issued photo-ID.</b>
+                                </p>
+                                <p>
+                                    Name modifications are not allowed and tickets are non-transferable. All applicable taxes and fees, as well as our service fees, are included in the total price shown. Additional baggage or other fees may be levied by certain airlines. Tickets are not assured until they are purchased. Tickets are non-refundable, as are our payments.  Any taxes and fees levied by government agencies will not be refunded. If requested within 24 hours of the time of purchase, tickets may be canceled for a fee. Changes in dates and routes will be subject to airline fines as well as our fees.
+                                </p>
+                                <p>
+                                    I acknowledge that I have read and acknowledged the <a href="#">Terms and Conditions</a> and  <a href="#">Privacy Policy</a> by clicking "Confirm &amp; Book."
+                                </p>
+                            </div>
+
+                            <div class="bottom__row">
+                                <a href="javascript:void(0);" onclick="p.validatePayment(0);" class="continue__button confirm">
+                                    Confirm &amp; Book
+                                    <span><i class="fa fa-lock"></i> Secure Payment</span>
+                                </a>
+                            </div>                    
+
+                    </div>
+                </div>
+                <div id="price12" class="col-lg-3 col-md-12">
+                    @{ Html.RenderPartial("~/views/flights/partial/_pricedetails.cshtml", Model);}
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@{Html.RenderPartial("~/views/flights/partial/_ListingIdlePopup.cshtml");}
+@if (Model.PriceIncrease > 0)
+{
+    float amount = Utility.GetAllTotalAmount(Model);
+    Html.RenderPartial("~/views/flights/partial/_PriceIncreasePopup.cshtml", Tuple.Create<float, float, string>(amount, Model.PriceIncrease, Model.Contract.SearchGuid));
+}
+
+@section scripts{
+    @{
+        DateTime trvDate = Model.Contract.TripDetails.OutBoundSegment[0].Departure;
+    }
+    <script>
+        reqPass = false;
+    </script>
+    @Scripts.Render("~/bundles/payment")
+    <script>
+
+            DOMAIN_URL = "@Common.Utility.PortalSettings.DomainUrl";
+            PAX_COUNTER = parseInt("@Model.Travellers.Count", 10);
+            TRV_DATE = new Date(parseInt("@trvDate.Year", 10), parseInt("@trvDate.Month", 10) - 1, parseInt("@trvDate.Day", 10));
+            PROVIDER = parseInt("@((int)Model.Contract.Provider)");
+            setStateOnCountry();
+            if (parseFloat("@Model.PriceIncrease", 10) > 0) {
+            $(window).on('load', function () {
+                $('#PriceIncreasePopup').show();
+                });
+            }
+    </script>
+}

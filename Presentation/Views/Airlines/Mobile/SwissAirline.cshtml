@@ -1,0 +1,134 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Swiss Flights
+                        </div>
+                        <div class="airlineIcon">
+                            <img src="~/Images/mobile/airlines/lx.png" alt="airline" />
+                        </div>
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Swiss Airlines </strong> Flights </h3>
+                        <p>Travelling to distant land during vacation is a remarkable experience that one must not miss. Especially if you wish to travel at affordable rates, there is no doubt that any other Airline other than  Swiss  Airlines will provide that luxurious experience. We at Unpublished Farehub provide great deals and offers to make your Swiss  Airlines Reservations hassle free.</p>
+                        <p>Swiss International Air Lines, also known as Swiss Airlines, is Switzerland's flagship airline, providing regular routes across Europe as well as to North America, South America, Africa, and Asia. Its primary hub is Zurich Airport, with Geneva Airport serving as a focal city.</p>
+                        <p>Prior to the globe being engulfed in the COVID-19 epidemic, Swiss  Airline bookings served over 70 countries and 100 travel destinations. Swiss  Airlines flight bookings were suspended along with all other flights during the pandemic, but as the globe moves closer to eradicating the COVID-19 virus, Swiss  is back in full swing.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>A Complete Manual to Book A Flight With Swiss Airlines </h4>
+                    <p>At Unpublished Farehub, we not only provide comprehensive flight booking help, but we also provide substantial savings. Follow the steps below to book a flight with Swiss Airlines.</p>
+                    <ul class="list w_50">
+                        <li>To begin, go to your Unpublished Farehub account and sign in. A guest account gives you access to all of the features.</li>
+                        <li>Then go to the Swiss Airlines booking area and fill in your departing and arrival airports.</li>
+                        <li>Select a flight choice, such as a multi-city flight, a round trip flight, or a one-way flight, once the preceding steps have been completed. Choose your departure dates, as well as the number of persons travelling, if you're doing a round journey.</li>
+                        <li>To find out about availability, go to the next page.</li>
+                        <li>Continue to the next page to learn about Swiss Airlines' availability in a variety of pricing ranges.</li>
+                        <li>After that, you must input contact information for the Swiss Airlines Reservations that are appropriate with your schedule and budget.</li>
+                        <li>In order to book a flight with Swiss Airlines, the final step is to select a payment method.</li>
+                    </ul>
+                    <p>You will receive an email confirmation after all of this has been completed.</p>
+                    <h4>Book a flight with Swiss Airways</h4>
+                    <p>Instantly book flights with Swiss Airways. Call us to book your Swiss Airways flight. Enjoy a customer care service that is available 24 hours a day, 7 days a week, with wait times as short as 30 seconds. Make a flight reservation with no hidden fees.</p>
+                    <h4>Tips to Book a Flight with Swiss Airlines</h4>
+                    <ul class="list w_50">
+                        <li>Sign up for Unpublished Farehub and switch on alerts to make sure you don't miss out on the best Swiss Airlines Flight Tickets deals.</li>
+                        <li>Make your Swiss Airlines reservations well in advance of your trip date. This manner, you may take advantage of huge discounts on flights when demand is low, and go for a fraction of the price.</li>
+                        <li>Always attempt to acquire a seat on a flight that departs early in the morning. Because a smaller number of customers opt to fly during this time of day, these flights may be booked at the lowest costs.</li>
+                    </ul>
+                    <h4>Catering Services In Swiss  Airlines</h4>
+                    <p>Swiss serves refreshments on European flights. Swiss may provide refreshments depending on the time of day and the length of the journey. On shorter flights, cold refreshments are supplied; on longer trips, heated snacks are served. Sandwiches from a Swiss bakery are included in the economy class meal.  Passengers on all flights are given a little bar of Swiss chocolate branded with the name "SWISS" and the characteristic tail fin prior to landing. A buy-on-board system called Swiss Saveurs is offered for its  Airbus A220 aircraft.</p>
+                    <h4>Things to know before you Book a Flight with Swiss Airlines</h4>
+                    <ul class="list w_50">
+                        <li>Money: If one wants to get the most out of a trip, one must be familiar with the currency of the target country. The official currency of the United States, for example, is the dollar (USD). The majority of restaurants take credit and debit cards, as well as cash.</li>
+                        <li>Customs and culture: Learning about a place's customs and culture is a beneficial habit to develop. Tipping is prevalent in the United States, with around 10% added to the total at restaurants and bars. Tipping is also demanded of taxi drivers and hotel personnel.</li>
+                        <li>Cuisine of the region: When visiting a new place, it's usually a good idea to understand a little about the cuisine served there. Food in the United States of America, for example, is impacted by its residents' many ethnic origins. Try pan-fried noodles in China, real sushi in Japan, and french roasted breads and croissants in France.</li>
+                        <li>Sockets and Plugs: The sockets and plugs used in a foreign vacation destination are one of the most significant pieces of information that a tourist should be aware of. In the United States, plug sockets A and B are used. The standard voltage is 120 V, and the frequency is 60 Hz. If you'll need an adapter, be sure you have one on hand.</li>
+                    </ul>
+                    <h4>FAQs about Swiss  Airlines Flight Booking</h4>
+                    <h5>Is Swiss  Airlines taking upto the mark precautionary and hygiene measures due to COVID-19?</h5>
+                    <p>Swiss  Airlines are taking remarkable safety measures to ensure a convenient experience to its passengers. The Aircraft is sanitized regularly and the air filters in the flight ensure that the insides of the flight remain unaffected. Apart from that each passenger is made to wear protective gear and provided with personal sanitizers.</p>
+                    <h5>How to book a flight with Swiss  Airlines?</h5>
+                    <p>It is effortless to book a flight with Swiss Airlines Reservations. You can use the Swiss Airlines website, or simply call Swiss Airlines’ phone number and make your reservation. You can aslo book a flight with Swiss Airlines via Unpublished Farehub where you will get undivided assistance and perks.</p>
+                    <h5>How to change a Swiss Airline Flight Booking?</h5>
+                    <p>Because of the pandemic, Swiss  Airlines have altered their Flight change policy. If you book your tickets with Unpublished Farehub, there will be no extra fare or penalty for the change.</p>
+                    <h5>Is it possible to alter my flight after 24 hours?</h5>
+                    <p>Changing flights with Unpublished Farehub is simple and hassle-free. If your trip plans change or you need to adjust the date of your tickets, Unpublished Farehub will be there to help you every step of the way, ensuring that you get the best deal possible.</p>
+                    <h5>What should I do if my name is misspelled on my Swiss Airlines flight reservation?</h5>
+                    <p>To begin, go to the airline's official website. If you purchased your ticket with Unpublished Farehub, you may either access it yourself by going to the booking area or calling the customer service number for help</p>
+                    <h5>What options do I have for selecting my Swiss Airlines flight seats?</h5>
+                    <p>When booking a ticket with Swiss Airlines, you have the option of selecting your preferred seat. Log in to your Unpublished Farehub account and use your allocated flight confirmation number to verify your travel information. After that, you'll be able to select your seats and pay with cash.</p>
+                    <h5>Swiss Airlines flies to which airports?</h5>
+                    <p>Swiss Airlines flies to more than 100 locations, both local and foreign. France, Germany, Italy, the United Kingdom, and the United States are among the most popular airports.</p>
+                    <h5>When is the ideal time to start planning your vacation?</h5>
+                    <p>To obtain the best discounts, book your ticket as early as 45 weeks before your departure date. Furthermore, because airlines receive less people on first-morning flights, you may plan slightly early flights to get the best rates. Swiss Airlines Reservations offers the cheapest pricing for travellers flying early in the morning.</p>
+                    <h5>How can I get a discount on a Swiss Airlines flight?</h5>
+                    <p>Unpublished Farehub has a fantastic variety of seasonal bargains and discounts on Swiss Airlines fly bookings and reservations, with savings of up to 40%. To stay up to date on bargains including Black Friday deals, Cyber Monday deals, and more, sign up for Unpublished Farehub's email notifications. This will ensure that you are always aware of the most recent discounts and special offers.</p>
+                    <h4>Swiss  Airlines’ Domestic Routes</h4>
+                    <p>Swiss  Airline reservations serves more than 1300 flights each week, operating in its full functionality in more than 100 cities across 70 plus countries. Swiss  Airlines’ major  U.S. destinations are Chicago, Los Angeles, Boston, Miami, New York City, Washington D.C. etc.</p>
+                    <h4>Swiss  Airlines’ International Routes</h4>
+                    <p>Swiss  Airlines covers more than 80 popular  destinations including Austria, China, India, Egypt, Italy, Ireland, Japan, Maldives, Saudi Arabia, Philippines, Norway and many more with a fleet of 89 aircrafts. Unpublished Farehub offers seasonal and special discounts on all airlines including Swiss Airlines Reservations to ensure that your holiday is not too expensive.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+
+}
+

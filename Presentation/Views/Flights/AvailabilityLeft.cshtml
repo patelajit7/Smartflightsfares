@@ -1,0 +1,81 @@
+﻿@model Infrastructure.HelpingModel.API.Availability
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_BookingPathLayout.cshtml";
+}
+@section headerSection{
+    <link rel="stylesheet" href="/content/jquery-ui.min.css">
+    @Styles.Render("~/content/searchengine")
+    @Styles.Render("~/content/listing")
+
+}
+@{Html.RenderPartial("~/views/flights/partial/_ListingInstancePopUp.cshtml", Tuple.Create<int, FlightSearch>(2, Model.Factes.Search));}
+
+<div id="GetContract">
+    <div class="container">
+        <div class="row">
+            <div class="filtrsrch">
+                <div class="col-md-3 col-sm-4 pull-left">
+                    @{Html.RenderPartial("~/views/flights/partial/_AvailabilityLeft.cshtml");}
+                </div>
+
+                <div class="col-md-9 col-sm-8 pull-right">
+                    @{Html.RenderPartial("~/views/flights/partial/_AvailabilityRight.cshtml", Model.Factes.Search);}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loadingDiv" class="loading" style="display: none;">Loading…</div>
+@{Html.RenderPartial("~/views/flights/partial/_ListingIdlePopup.cshtml");}
+@{Html.RenderPartial("~/views/shared/partial/_FooterBlckStrip.cshtml");}
+@section scripts{
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")
+    <script type="text/javascript">
+        $("#flights").css('display', "none");
+        //$(window).load(function () {
+        //    try {
+        //        $('html, body').animate({
+        //            scrollTop: $("#scrollPosition").offset().top
+        //        }, 1);
+        //    } catch (e) { }
+        //});
+        var INTERVAL = 2000;
+        var myVar = setInterval(doAjax, 1000);
+        function doAjax() {
+            $.ajax({
+                type: 'POST',
+                url: '@string.Format("{0}flights/issearchcompletetwosteps/{1}", Utility.PortalSettings.DomainUrl,Model.Factes.Search.SearchGuidId)',
+                success: function (response)
+                {
+                    if (response != null && !response.IsContextExist) {
+                       window.location.assign("@Utility.PortalSettings.DomainUrl");
+
+                    } else if (response != null && response.IsContextExist && response.IsRequestCompleted)
+                    {
+                        clearInterval(myVar);
+                     $("#GetContract").html(response.HtmlResponse);
+                        applyJquery();
+                        searchJquery();
+                        $("#flights").css('display', "block");
+                    }
+                },
+                complete: function (data) {
+
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+            
+
+    </script>
+}

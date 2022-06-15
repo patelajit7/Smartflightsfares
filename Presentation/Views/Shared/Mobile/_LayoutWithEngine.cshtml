@@ -1,0 +1,44 @@
+﻿@using Common;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="@string.Format("{0}images/icon-fav.ico", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
+    <meta name="Author" content="@Utility.PortalSettings.Domain">
+    <meta name="page-topic" content="@Utility.PortalSettings.Domain">
+    <meta name="Copyright" content="@string.Format("{0},  {1}", DateTime.Now.ToString("yyyy"), Utility.PortalSettings.Domain)">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="rating" content="Safe For Kids">
+    <meta http-equiv="content-language" content="en-us">
+    <link rel="alternate" href="@Utility.PortalSettings.DomainUrl" hreflang="en" />
+    <link rel="stylesheet" href="/content/jquery-ui.min.css">
+    @Styles.Render("~/m-content/css")
+    @Styles.Render("~/m-content/searchengine")
+    @RenderSection("headerSection", required: false)
+</head>
+<body>
+    @{Html.RenderPartial("~/views/shared/mobile/partial/_header.cshtml");}
+    @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", new Infrastructure.HelpingModel.API.FlightSearch()
+        {
+            Adult = 1,
+            Cabin = Infrastructure.CabinType.EconomyCoach,
+            TripType = Infrastructure.TripType.ROUNDTRIP,
+            OriginSearch = "",
+            Destination = "",
+            Departure = DateTime.MinValue,
+            Return = DateTime.MinValue
+        });}
+    @RenderBody()
+
+    @{Html.RenderPartial("~/views/shared/mobile/partial/_footer.cshtml");}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/m-bundles/searchengine")
+    @RenderSection("scripts", required: false)
+    @{Html.RenderPartial("~/views/shared/_gtmcontainer.cshtml");}
+</body>
+
+</html>

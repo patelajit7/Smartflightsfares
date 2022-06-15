@@ -1,0 +1,218 @@
+.loaderBox {
+    img {
+        width: 100%;
+    }
+}
+
+.loading-icon {
+    background: url(../../images/icons/flights-blue.svg) no-repeat center center;
+    width: 94px;
+    height: 94px;
+    line-height: 90px;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.loading-circle {
+    border: 3px solid #dddddd;
+    border-radius: 50%;
+    border-top: 5px solid $primary;
+    width: 90px;
+    height: 90px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-width: 5px;
+}
+
+.mid__loading {
+    padding: 0 0 50px 0;
+    .head {
+        padding: 10px 0;
+        font-size: 22px;
+        @include breakpoint(xs) {
+            font-size: 17px;
+        }
+    }
+    .block {
+        padding: 5px 0px 40px;
+        overflow: hidden;
+        max-width: 420px;
+        margin: 0px auto;
+        @include breakpoint(xs) {
+            text-align: center;
+        }
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px;
+            @include breakpoint(xs) {
+                display: block;
+            }
+            .city__code {
+                width: 50%;
+                font-size: 18px;
+                color: #484848;
+                font-weight: 600;
+                @include breakpoint(xs) {
+                    width: auto;
+                }
+                small {
+                    display: block;
+                    @include breakpoint(xs) {
+                        display: inline-block;
+                    }
+                }
+            }
+            .flight__icon {
+                padding: 0 20px;
+            }
+        }
+        .right {
+            padding: 3px 10px 0 10px;
+            position: relative;
+            @include breakpoint(xs) {
+                width: 100%;
+                padding: 0 10px;
+            }
+            .arrow {
+                color: $primary;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                font-size: 27px;
+                padding: 5px;
+                line-height: 27px;
+            }
+        }
+    }
+}
+
+
+/*No Results Box*/
+
+.no_resultsBox {
+    padding: 50px 0;
+    text-align: center;
+    background: $white;
+    .buttons {
+        .backbutton {
+            padding: 10px 20px;
+            border: none;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    }
+    .block {
+        max-width: 500px;
+        margin: 0px auto;
+    }
+    .head {
+        font-size: 33px;
+        font-weight: 600;
+        @include breakpoint(sm) {
+            font-size: 23px;
+        }
+    }
+    p {
+        font-size: 16px;
+        color: #636363;
+        @include breakpoint(sm) {
+            font-size: 13px;
+        }
+    }
+    .call {
+        padding-top: 30px;
+        width: 310px;
+        margin: 0px auto;
+        .call_icon {
+            width: 50px;
+            margin-top: 10px;
+        }
+        span {
+            display: block;
+            font-size: 18px;
+            color: #4863DB;
+            @include breakpoint(sm) {
+                font-size: 14px;
+            }
+        }
+        a {
+            font-size: 30px;
+            color: $primary;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            @include breakpoint(sm) {
+                font-size: 23px;
+            }
+            &:hover {
+                text-decoration: none;
+                color: $secondary;
+            }
+        }
+    }
+}
+
+
+/*Mid page*/
+
+.results-skeleton-content:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 120px;
+    background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .8) 50%, hsla(0, 0%, 100%, 0)), radial-gradient(circle 15px at center, #e9ebec 99%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(#e9ebec 100%, transparent 0), linear-gradient(90deg, #fff, #fff);
+    background-size: 960px 110px, 30px 30px, 108px 16px, 90px 6px, 60px 6px, 384px 6px, 410px 6px, 200px 6px, 314px 6px, 120px 30px, 100% 100%;
+    background-position: -960px 0, 20px 20px, 60px 20px, 60px 46px, 20px 84px, 188px 20px, 188px 36px, 188px 52px, 188px 68px, 710px 40px, 0 0;
+    background-repeat: no-repeat;
+    animation: oneway-loading 1.2s infinite
+}
+
+@keyframes oneway-loading {
+    to {
+        background-position: 960px 0, 20px 20px, 60px 20px, 60px 46px, 20px 84px, 188px 20px, 188px 36px, 188px 52px, 188px 68px, 710px 40px, 0 0
+    }
+}
+
+.filter-skeleton-content:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 160px;
+    background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 96%, .8) 50%, hsla(0, 0%, 100%, 0)), linear-gradient(90deg, #e9ebec, #e9ebec), linear-gradient(90deg, #e9ebec, #e9ebec), linear-gradient(90deg, #e9ebec, #e9ebec), linear-gradient(90deg, #e9ebec, #e9ebec);
+    background-size: 260px 160px, 264px 14px, 195px 14px, 212px 14px, 115px 14px;
+    background-position: -260px 0, 0 34px, 0 64px, 0 90px, 0 120px;
+    background-repeat: no-repeat;
+    animation: leftside-loading 1.2s infinite;
+}
+
+@keyframes leftside-loading {
+    to {
+        background-position: 260px 0, 0 34px, 0 64px, 0 90px, 0 120px
+    }
+}
+
+
+/*Matrix*/
+
+.m-skeleton-content:after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 14px;
+    margin-left: 30px;
+    background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .6) 50%, hsla(0, 0%, 100%, 0)), linear-gradient(90deg, #e9ebec, #e9ebec);
+    background-size: 60px 14px, 100% 100%;
+    background-position: -300px 0, 0 0;
+    background-repeat: no-repeat;
+    animation: carousel-loading 1.2s infinite
+}
+
+@keyframes carousel-loading {
+    to {
+        background-position: 60px 0, 0 0
+    }
+}

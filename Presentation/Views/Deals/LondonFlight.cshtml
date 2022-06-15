@@ -1,0 +1,66 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to Amsterdam Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr" style="background-image:url(/images/city-banner/lon.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest London Flight Fare</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="content">
+                        <h3 class="page__title"><strong>London</strong> Tourism</h3>
+                        <p>London is the capital of England and the most populous city in the United Kingdom, standing on the Thames River. The city is a melting pot of old and modern, and it is one of the world's most significant tourist sites. It is a city with a diverse range of attractions, including outstanding architecture and heritage.</p>
+                        <p>Book your London reservations today and make your way to the numerous attractions spread across this sprawling city. The London Eye, Big Ben, Houses of Parliament, Westminster Abbey, and Nelson's Column are just a few of the city's many tourist attractions. The Shard, London's highest structure, is the city's tallest structure. In London, there are several museums and art galleries dedicated to preserving the city's rich history and culture. In addition, there are various parks in the city where visitors may wander and rest.</p>
+                        <p>Confirm your London reservations and get the chance to experience Buckingham Palace, the reigning monarch's formal residence and administrative headquarters. It is situated in Westminster, the capital of the United Kingdom. One of London's most famous structures, it is home to the city's most popular show of pomp and circumstance, the Changing of the Guard. Every season, at 11:30 a.m., this ritual takes place, when precision marching is accompanied by music and orchestra. The Palace was erected in 1837 and has served as the Royal family's residence throughout Queen Victoria's reign. Looking up at the flag at the top of the palace is one method to tell if the Queen is there. If it is flying, it means that the queen is inside the palace.</p>
+                        <p>One should not miss out on visiting Westminster Abbey in the City of Westminster, a historically significant 1000-year-old World Heritage Site and one of London's most royal and notable religious institutions. It is recognised for having held coronations, marriages, and being a burial site for English and British kings back in the day. It is located along the western bank of the River Thames.</p>
+                        <p>Another important site that you should not miss out on is the Tower Bridge. It hosts an exhibition that explains how the world's most famous bridge operates and the history behind its construction. The panoramic views of the city are also available.It is located near the Tower of London and has become a symbol of the city in recent years. The Tower Bridge museum uses interactive movies and displays to explain the history of the bridge, as well as how and why it was created. It includes a glass floor pathway that gives guests a one-of-a-kind experience.</p>
+                        <p>Make your London trip reservations today and enjoy the several bars, pubs, and nightclubs spread across London. An online city guide called View London, as well as a monthly magazine called Time Out, can give you a sense of what's going on in London's nightclubs right now. Artesian Bar, Ye Olde Cheshire Cheese, Drink Shop Do, and The Camberwell Arms are all notable bars. There are several nightclubs in the Mayfair and Leicester Square areas.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}
+
+
+
+
+

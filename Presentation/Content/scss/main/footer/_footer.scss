@@ -1,0 +1,248 @@
+#footerCntr {
+    background: #F2F2F2;
+
+    .footer__linkBox {
+        width: 100%;
+        padding: 55px 0 20px 0;
+
+        @include breakpoint(sm) {
+            padding: 20px 0 0 0;
+        }
+
+        img {
+            @include breakpoint(sm) {
+                display: block;
+            }
+        }
+
+        h4 {
+            font-size: 20px;
+            color: $text-color;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+
+            @include breakpoint(sm) {
+                border-bottom: 1px dashed #C1C1C1;
+                padding-bottom: 15px;
+            }
+
+            li {
+                display: block;
+
+                a {
+                    font-size: 14px;
+                    color: #636363;
+                    line-height: 28px;
+                    text-decoration: none;
+                    cursor: pointer;
+
+                    @include breakpoint(lg) {
+                        font-size: 14px;
+                    }
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+
+        .footer__call {
+            font-size: 25px;
+            color: $text-color-dark;
+            display: inline-block;
+            border-bottom: 1px solid #c9c9c9;
+            padding: 40px 0 9px 0;
+            margin-bottom: 9px;
+
+            @include breakpoint(sm) {
+                padding-top: 20px;
+                display: block;
+            }
+
+            a {
+                font-size: 27px;
+                color: $text-color-dark;
+                font-weight: 700;
+                text-decoration: none;
+                line-height: 46px;
+
+                @include breakpoint(lg) {
+                    font-size: 25px;
+                }
+            }
+        }
+
+        .email {
+            display: inline-block;
+            font-size: 16px;
+            color: $text-color-dark;
+            text-decoration: none;
+            white-space: nowrap;
+
+            @include breakpoint(lg) {
+                font-size: 14px;
+            }
+
+            .icon {
+                margin-right: 7px;
+                font-size: 20px;
+                color: $primary;
+            }
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+    /*Footer logo box Start here*/
+    .footer__logoBox {
+        padding: 20px 0;
+        background: $white;
+        overflow: hidden;
+
+        @include breakpoint(sm) {
+            padding: 10px 0;
+        }
+
+        .clients_logo {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            align-items: center;
+
+       
+            
+            li {
+                padding-right: 10px;
+                img{max-width:100%;}
+            }
+
+           
+        }
+
+        .card_icons {
+            width: 100%;
+
+            @include breakpoint(sm) {
+                display: block;
+                margin: 10px auto;
+                width: 260px;
+            }
+        }
+
+        .footer_logo {
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include breakpoint(sm) {
+                display: block;
+                padding-bottom: 12px;
+                border-bottom: 1px dashed #ccc;
+                text-align: center;
+            }
+
+            li {
+                display: inline-block;
+                padding: 0 10px;
+                vertical-align: middle;
+
+                @include breakpoint(sm) {
+                    margin-bottom: 10px;
+                    display: block;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    /*Footer logo box end here*/
+    /*Footer copyright box Start here*/
+    .footer__copyrightBox {
+        padding: 25px 0;
+        font-size: 16px;
+        color: #6A6A6A;
+        overflow: hidden;
+
+        @include breakpoint(sm) {
+            padding: 15px 0;
+            font-size: 13px;
+        }
+
+        p {
+            margin: 0px;
+
+            @include breakpoint(sm) {
+                padding-bottom: 10px;
+                border-bottom: 1px dashed #ccc;
+                text-align: center;
+            }
+        }
+
+        .social__icons {
+            margin: 0px;
+            list-style: none;
+            padding: 0px;
+            float: right;
+
+            @include breakpoint(sm) {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            li {
+                padding: 0px 10px;
+                display: inline-block;
+
+                a {
+                    color: #6A6A6A;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+    /*Footer copyright box end here*/
+    .disclaimerBox {
+        padding: 25px 0;
+        font-size: 13px;
+        line-height: 25px;
+
+        @include breakpoint(sm) {
+            padding: 0px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+    }
+
+    .hide-tablet {
+        @include breakpoint(md) {
+            display: none;
+        }
+
+        @include breakpoint(sm) {
+            display: block;
+        }
+    }
+
+    .mobile-bg {
+        @include breakpoint(sm) {
+            padding: 15px;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+﻿@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Infrastructure;
+@using Common;
+@model Infrastructure.HelpingModel.API.Availability
+
+@if (Model != null)
+{
+    ContractFacets facet = Model.Factes;
+    AirMatrixMain airlines = Model.AirlineMatrixMain;
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+
+    <div class="mobile__filter">
+        <a href="javascript:void(0);" class="filter_link">Filters</a>
+        <ul class="filtertab">
+            @if (facet != null && facet.Stops.Count > 0)
+            {
+                <li class="stop" onclick="openFilterPopup('stop')">Stops <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            }
+            <li class="price" onclick="openFilterPopup('price')">Price <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            <li class="time" onclick="openFilterPopup('time')">Time <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+            <li class="airline" onclick="openFilterPopup('airline')">Airlines <a href="#" class="mobile__filter-clear"><i class="bi bi-x-circle"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="filterCntr">
+        <div class="mobile_filter_tab">
+            <h4>Filters</h4>
+            <a href="javascript:void(0);" onclick="closeFilterPopup()" class="close_filter"><i class="bi bi-x-circle"></i></a>
+            <ul class="filtertab">
+                @if (facet != null && facet.Stops.Count > 0)
+                {
+                    <li onclick="openFilterPopup('stop')"> <a class="stop active" data-toggle="tab" href="#stop">Stops</a></li>
+                }
+                <li onclick="openFilterPopup('time')"> <a class="time" data-toggle="tab" href="#time">Time</a></li>
+                <li onclick="openFilterPopup('price')"> <a class="price" data-toggle="tab" href="#price">Price</a></li>
+                <li onclick="openFilterPopup('airline')"> <a class="airline" data-toggle="tab" href="#airlines">Airlines</a></li>
+            </ul>
+
+        </div>
+        <!--Mobile tab -->
+        <div class="holder">
+            <div class="tab-content filtertab">
+                @if (facet != null && facet.Stops.Count > 0)
+                {
+                    <div id="stop" class="filterBox tab-pane stop active">
+                        <h3 class="head">Stops</h3>
+
+                        <ul class="filter__list inputSet">
+                            @foreach (KeyValueData item in facet.Stops)
+                            {
+                                <li>
+                                    <label><input type="checkbox" name="Stops" onclick="contractFilter.setStops();" value="@item.Key" id="@string.Format("Stops{0}", item.Key)" class="checkStops"><span>@item.Value</span> </label>
+                                    <span class="price chgWithCurrency" default-price="@item.MinPrice">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(item.MinPrice))<sup class="chgCurrencySub" default-price="@item.MinPrice">@String.Format("{0:#.00}", (item.MinPrice - Convert.ToSingle(Math.Truncate(item.MinPrice))))</sup></span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                <div id="price" class="filterBox tab-pane price fade">
+                    <h3 class="head">Price</h3>
+                    <input class="priceRange" type="hidden" id="priceRange" readonly="" data-default-min="@String.Format("{0:0.00}",facet.MinPrice)" data-default-max="@String.Format("{0:0.00}",facet.MaxPrice)" data-default-currencySymbol="@currencyMaster.CurrencySymbol" data-default-currencyPrice="@currencyMaster.CurrencyPrice">
+                    <p class="range_text">
+                        <span class="min-range chgcomplete" id="priceLeft" default-price="@facet.MinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, facet.MinPrice * currencyMaster.CurrencyPrice)</span>
+                        <span class="max-range chgcomplete" id="priceRight" default-price="@facet.MaxPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, facet.MaxPrice * currencyMaster.CurrencyPrice)</span>
+                    </p>
+
+                    <div class="slider-range" id="priceSlider"></div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <div id="time" class="filterBox tab-pane fade time">
+                    <h3 class="head">Time</h3>
+                    <div class="subheading">Departure</div>
+                    <input class="onBoundTime inputFilter" type="hidden" id="onBoundTimeRange" data-min="@facet.OutboundDepTime.Min" data-max="@facet.OutboundDepTime.Max" data-default-min="@facet.OutboundDepTime.Min" data-default-max="@facet.OutboundDepTime.Max" readonly="" style="border: 0; font-weight: bold; width:100%; background:transparent" value="Depart - @DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundDepTime.Min)).ToString("hh:mm tt") @DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundDepTime.Max)).ToString("hh:mm tt")">
+                    <p class="range_text">
+                        <span class="min-range" id="onBoundLeft">@DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundDepTime.Min)).ToString("hh:mm tt")</span>
+                        <span class="max-range" id="onBoundRight">@DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundDepTime.Max)).ToString("hh:mm tt")</span>
+                    </p>
+                    <div class="slider-range" id="onBoundSlider"></div>
+
+                    <input class="onBoundArrivalTime inputFilter" type="hidden" id="onBoundArrivalTimeRange" data-min="@facet.OutboundArrTime.Min" data-max="@facet.OutboundArrTime.Max" data-default-min="@facet.OutboundArrTime.Min" data-default-max="@facet.OutboundArrTime.Max" readonly="" value="Arrival - @DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundArrTime.Min)).ToString("hh:mm tt") @DateTime.Today.Add(TimeSpan.FromMinutes(facet.OutboundArrTime.Max)).ToString("hh:mm tt")">
+
+                    @if (facet.TripType == TripType.ROUNDTRIP)
+                    {
+                        <div class="return_time">
+                            <div class="subheading">Return</div>
+                            <input class="inBoundTime inputFilter" type="hidden" id="inBoundTimeRange" data-min="@facet.InboundDepTime.Min" data-max="@facet.InboundDepTime.Max" data-default-min="@facet.InboundDepTime.Min" data-default-max="@facet.InboundDepTime.Max" readonly="" value="Depart - @DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundDepTime.Min)).ToString("hh:mm tt") @DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundDepTime.Max)).ToString("hh:mm tt")">
+                            <p class="range_text">
+                                <span class="min-range" id="inBoundLeft"> @DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundDepTime.Min)).ToString("hh:mm tt")</span>
+                                <span class="max-range" id="inBoundRight">@DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundDepTime.Max)).ToString("hh:mm tt")</span>
+                            </p>
+
+                            <div class="slider-range" id="inBoundSlider"></div>
+                        </div>
+                        <input class="inBoundArrivalTime inputFilter" type="hidden" id="inBoundArrivalTimeRange" data-min="@facet.InboundArrTime.Min" data-max="@facet.InboundArrTime.Max" data-default-min="@facet.InboundArrTime.Min" data-default-max="@facet.InboundArrTime.Max" readonly="" value="Arrival - @DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundArrTime.Min)).ToString("hh:mm tt") @DateTime.Today.Add(TimeSpan.FromMinutes(facet.InboundArrTime.Max)).ToString("hh:mm tt")">
+                    }
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <div class="filterBox tab-pane fade airline">
+                    <h3 class="head">Airlines</h3>
+                    <ul class="filter__list inputSet">
+                        @foreach (Airline item in Model.UniqueAirlineList)
+                        {
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="Airlines" onclick="contractFilter.setAirlines();" value="@item.Code" id="@string.Format("Airlines{0}",item.Code)"><span class="text-overflow">@item.Name</span>
+                                    @*<img src="~/Images/icons/multi-airlines.png" alt="multiple airlines" title="multiple airlines" class="multiairline" />*@
+                                </label>
+                                <span class="price chgWithCurrency" default-price="@item.MinPrice">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(item.MinPrice))<sup class="chgCurrencySub" default-price="@item.MinPrice">@String.Format("{0:#.00}", (item.MinPrice - Convert.ToSingle(Math.Truncate(item.MinPrice))))</sup></span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="filter_action_button">
+            <a href="javascript:void(0);" onclick="contractFilter.resetFilter();closeFilterPopup();">Reset</a>
+            <a href="javascript:void(0);" onclick="closeFilterPopup();" class="active apply-filter">Apply</a>
+        </div>
+    </div>
+}

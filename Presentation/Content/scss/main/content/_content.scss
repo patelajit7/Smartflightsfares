@@ -1,0 +1,152 @@
+/*About section*/
+
+.contentBox {
+    width: 100%;
+    padding: 25px 0;
+    @include breakpoint(md) {
+        padding: 20px 0;
+    }
+    p {
+        font-size: 14px;
+        color: #202020;
+        line-height: 25px;
+        @include breakpoint(sm) {
+            font-size: 13px;
+            line-height: 22px;
+        }
+    }
+    .content_image {
+        margin: 0 20px 0px 0;
+    }
+	a{ text-decoration:none;}
+	h3 { font-size:20px; margin: 0 0 20px 0;}
+	h4 { font-size:18px; }
+	h5 { font-size:16px; }
+    .list,
+    ul {
+        list-style: none;
+        overflow: hidden;
+        padding: 0 2px;
+        @include breakpoint(sm) {
+            margin: 0px;
+        }
+        li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            padding-right: 10px;
+            position: relative;
+            &:before {
+                position: absolute;
+                left: 0px;
+                top: 2px;
+                content: '\f26b';
+                color: $primary;
+                font-family: bootstrap-icons !important;
+            }
+        }
+        &.w_50 {
+            overflow: hidden;
+            li {
+                width: 50%;
+                float: left;
+                @include breakpoint(sm) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    img {
+        @include breakpoint(sm) {
+            border-radius: 5px;
+        }
+    }
+    .page__title strong {
+        @include breakpoint(sm) {
+            display: inline-block;
+        }
+    }
+    h1 {
+        font-size: 32px;
+        color: $text-color;
+        margin-bottom: 26px;
+        position: relative;
+        font-weight: 300;
+        @include breakpoint(md) {
+            font-size: 25px;
+        }
+        @include breakpoint(sm) {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        strong {
+            font-weight: 600;
+            position: relative;
+            @include breakpoint(sm) {
+                display: block;
+            }
+            &:after {
+                content: '';
+                width: 36px;
+                height: 2px;
+                display: inline-block;
+                position: absolute;
+                left: 0px;
+                bottom: -4px;
+                background: $primary;
+            }
+        }
+    }
+}
+
+
+/*other_popularBox*/
+
+.other_popularBox {
+    padding: 20px 0 50px 0; position:relative;
+    .slick-list {
+        margin: 0 -7px;
+    }
+    .items {
+        padding: 0 7px;
+        img {
+            width: 100%;
+        }
+        span {
+            margin-top: 10px;
+            display: block;
+            color: #303030;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        i {
+            position: relative;
+            top: 2px;
+            margin-left: 3px;
+        }
+        &:hover a {
+            text-decoration: none;
+            span {
+                color: $primary;
+            }
+        }
+        a {
+            display: block;
+            text-decoration: none;
+        }
+    }
+}
+
+.content_image {
+    padding: 0 20px 20px 0;
+    width: 423px;
+    @include breakpoint(sm) {
+        padding-right: 0px;
+        width: 100%;
+    }
+}
+
+
+/*Static title*/
+.static_title { background: #005aab; text-align: center; padding:20px;
+	h2{ font-size: 25px; color: #fff; margin: 0px; font-weight: 600; }
+}

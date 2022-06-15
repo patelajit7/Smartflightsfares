@@ -1,0 +1,81 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Flight to Dubai Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Dubai Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="content">
+                        <h3 class="page__title"><strong>Dubai</strong> Tourism</h3>
+                        <p>With its magnificent architecture, beautiful skylines, and massive retail malls, Dubai has become one of the most well-known locations on the planet. Dubai is one of the most advanced cities in the Middle East, and it is also home to the Burj Khalifa, the world's tallest man-made structure. While Abu Dhabi is the UAE's capital, Dubai is the country's most popular and populated metropolis.</p>
+                        <p>Book your Dubai trip reservations today and experience the metropolis of Dubai, which currently boasts a glitzy infrastructure among the Arabian desert, and was formerly regarded as a desolate wasteland. Today, this man-made wonder is brimming with gleaming skyscrapers, opulent hotels, retail malls, and restaurants. Dubai's biggest tourist attractions include the Dubai Fountain, which has jets and lights synced to music, as well as Atlantis, the Palm, and an aquarium complex. Dubai will astound you with its blend of technological wonder and old Arabian ambiance.</p>
+                        <p>A trip to Dubai is incomplete without visiting the Burj Khalifa, now the world's tallest building. This 21st-century architectural masterpiece must be your number one spot to visit when in Dubai or the UAE, with two observation decks, a Las Vegas-inspired fountain, nine of the city's greatest luxury hotels, and various eateries.</p>
+                        <p>Another one of the most popular attractions that tourists often indulge in when booking their Dubai reservations is the Aquarium and Underwater Zoo. Over 33,000 marine animals live in the 10 million litres of water that make up the place. A unique underwater zoo fills the level above the tank, presenting a diverse array of aquatic species found in the world's seas, rivers, and other bodies of water. The third element is the VR Zoo, which offers exhilarating animal excursions through realistically crafted virtual tours.</p>
+                        <p>When in Dubai, it would be a crime to leave without a little shopping extravaganza. With its multitude of vibrant souks and massive air-conditioned malls, Dubai has a reputation as a shopper's paradise. There are various souks, each specialised in a different sort of goods. Gold Souks, Textile Souks, and Spice Souks all sell high-end gold and diamond jewellery, as well as exquisite fabric in a variety of colours and aromatic herbs and spices. Make sure you practise your negotiating skills while in Dubai, as they will come in handy when buying. Most stores in malls accept credit and debit cards; however, local souks require cash.</p>
+                        <p>When you make your Dubai trip reservations, don’t forget to make your way to Global Village Dubai, a place billed as the United Arab Emirates' most important tourist, leisure, and recreation project on the planet. It is the first cultural, entertainment, family, and retail attraction in the region. Over 5 million people visit the site each year, which covers an area of 17,200,000 square feet. </p>
+                        <p>Book a trip to Dubai today and visit Palm Jumeirah, Dubai's stunning artificial archipelago that stretches into the Persian Gulf. It is the pinnacle of beauty generated via land reclamation. When viewed from above, the archipelago resembles a palm tree with a circle. It was one of the first major tourism developments in the UAE, and it now contains Atlantis, the Palm, Aquaventure Waterpark, and the Lost Chambers Aquarium, as well as other popular tourist attractions in Dubai.</p>
+                        <p>Dubai is a great place to visit for a short vacation since it has the greatest shopping, superb eating, and athletic events. Dubai is home to some of the world's most opulent hotels and retail centres.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}
+
+
+
+
+

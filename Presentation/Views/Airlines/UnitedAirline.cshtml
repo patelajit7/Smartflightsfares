@@ -1,0 +1,197 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+@section headerSection{
+    @*@Styles.Render("~/content/searchengine")*@
+}
+
+
+<div id="bannerCntr" style="background-image:url(/images/airline-banner/ua.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Uinted Flights</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>United Airlines</strong> Flights </h3>
+                        <p>To enjoy comfy seats, in-flight entertainment, and Wi-Fi, book your United Airlines journey now. Enroll in United Airlines' award-winning frequent flyer programme MileagePlus to maximise your travel rewards.</p>
+                        <p>Are you ready to begin? Find ideas for your next holiday or the best deals on flights for your business or leisure travel. Begin arranging your vacation today by comparing cheap flights to our most popular locations.</p>
+                        <p>Take advantage of a broad choice of great savings and discounts when booking United Airlines tickets via Unpublished Farehub. Leverage the power of United Airlines' flight services to a number of popular tourist sites around the United States, as well as a variety of foreign vacation places.</p>
+                        <p>United Airlines Inc. is a significant American airline with headquarters in Chicago, Illinois' Willis Tower.  United Airlines has an extensive domestic and international route network that connects major and minor locations across the United States as well as all six inhabited continents. It is the world's third-largest airline in terms of fleet size and route network.</p>
+                        <p>United has eight hubs, the largest of which being Chicago–O'Hare, which carries the most passengers and has the most departures. It is a founding member of the Star Alliance, which has 28 member airlines and is the world's largest airline alliance.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Book a flight with United Airlines</h4>
+                    <p>Conveniently book United Airlines flights. Kindly reach us at <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a> to book your United Airlines reservation. Access a customer care team that is available 24 hours a day, 7 days a week, with response time as minimal as 30 seconds. Book a flight at zero additional hidden taxes or costs, today.</p>
+                    <h4>A Quick and Easy Step-Wise Guide For Booking A Flight With United Airlines and Unpublished Farehub</h4>
+                    <p>Unpublished Farehub has put up a simple step-by-step tutorial to ensure that purchasing airline tickets is quick and pleasant. Continue reading to learn how to book your United Airlines flight swiftly and at a low cost.</p>
+                    <ul class="list w_50">
+                        <li>Log in to your Unpublished Farehub account to get the most out of your visit and save up to 40% on your tickets.</li>
+                        <li>Enter your departure and arrival points on the United Airlines flight booking page.</li>
+                        <li>Unpublished Farehub provides a variety of flight options, including one-way, round-trip, and multi-city trips, depending on your interests.</li>
+                        <li>Then, along with a few other factors like the amount of tickets you want to buy, input the dates you want to travel and return from your location.</li>
+                        <li>Then, along with a few other parameters like the number of tickets you wish to buy, enter the dates you want to travel and return from your location.</li>
+                        <li>Finally, you'll see all of the United Airlines flight bookings that are available depending on your choices.</li>
+                        <li>Select the United Airlines flight that best meets your budget and pricing needs, then finish the billing procedure to finalise your United Airlines reservation.</li>
+                        <li>When you book a United Airlines trip via Unpublished Farehub, you'll have access to a variety of seasonal promotions and discounts, as well as low-cost flights, all with the touch of a button.</li>
+                        <li>Your United Airlines flight tickets will be emailed to your authorised email address and phone number as soon as you finish the ticket purchase.</li>
+                    </ul>
+                    <h4>Best Practices while booking a flight with United Airlines</h4>
+                    <p>
+                        Unpublished Farehub hopes to make your United Airlines flight reservation a pleasant and special experience. To take full advantage of Unpublished Farehub and your holiday journey, follow these recommendations and suggestions.
+                    </p>
+                    <ul class="list w_50">
+                        <li>
+                            Keep your trip dates as ad hoc as you can. It's rare for the price of a particular flight to rise on specific days. Adjustable dates can be used to compare flight prices and select the most cost-effective option. Use the appropriate credit cards to get excellent discounts on Etihad lights.
+                        </li>
+                        <li>
+                            Verify your United Airlines reservations at least a few weeks ahead of time. When there is little demand for a flight, you might just get dramatically discounted prices and fly for a small fraction of the cost.
+                        </li>
+                        <li>When booking a ticket with United Airlines, be sure to take advantage of the award-winning lounges and in-flight entertainment options.</li>
+                        <li>
+                            To never miss out on the newest United Airlines Flight Tickets discounts and seasonal specials, register with Unpublished Farehub and activate notification alerts.
+                        </li>
+                    </ul>
+                    <h4>United Airlines Cabin Services</h4>
+                    <p>Unpublished Farehub introduces a variety of United Airlines flight booking packages and discounts that will lead you to one of the several cabin experiences accessible when making a United Airlines reservation. We pledge you will have access to customer assistance 24 hours a day, 7 days a week for any complications you may encounter during the airline reservation process. We also provide in-flight support and endeavour to make your travel feel as close to home as possible.</p>
+                    <h5>United Airlines - Polaris Business</h5>
+                    <p>
+                        The Polaris seat turns into a 6' 6" flatbed in a 1-2-1 or 1-1-1 configuration, allowing all seats to have access to the aisle. Numerous storage compartments, mood lighting, multiple charging connections, lumbar support, and better eating and amenity services are all included in this seat.
+                    </p>
+                    <p>
+                        Booking a flight with United Airlines in their Polaris Business Class also lets travellers check in at different counters and, where available, get expedited security screening. Pre-departure refreshments, table linens, and multi-course meals are among the in-flight amenities.
+                    </p>
+                    <p>Passengers are also provided priority boarding and luggage handling, as well as access to the United Polaris Lounge, the United Club, and partner airline lounges when available. All Polaris Business seats recline to a full flatbed and face front.</p>
+                    <h5>United Airlines - Premium Plus</h5>
+                    <p>
+                        United Airlines Premium Plus flight reservation guarantees the passengers additional room, comfort, and amenities as compared to United Economy or Economy Plus seats, including enhanced meals on china tableware, complimentary alcoholic drinks, a Saks Fifth Avenue blanket and pillow, an amenity box, and more.
+                    </p>
+                    <h5>United Airlines - Transcontinental</h5>
+                    <p>On booking a United Airlines Transcontinental flight with Unpublished Farehub, you gain access to  international-style meals, all seats in the premium cabin have access to inflight wi-fi, on-demand entertainment, and power outlets. At Newark, Boston, Los Angeles, and San Francisco, travellers have access to the United Club.</p>
+                    <h5>
+                        United Airlines - United First
+                    </h5>
+                    <p>United First seats on narrowbody planes have a 38-inch seat pitch, whereas United First seats on domestic Boeing 777-200 planes have entirely flat-bed seats. Priority boarding and luggage handling, pre-departure refreshments, complimentary lunches, and separate check-in counters are all available to travellers.</p>
+                    <p>Booking a flight with United Airline’ new domestic first-class seat design offers you cradling headrests, granite cocktail tables, and a tablet stand are among the features of the latest premium leather seats.</p>
+                    <h5>United Airlines Economy </h5>
+                    <p>
+                        Regardless of the flight class you choose, when you book a United Airlines flight ticket through Unpublished Farehub, you can be assured that the quality of your experience will not be compromised.
+                    </p>
+                    <p>On domestic, Caribbean, and select Latin American flights, food and refreshments are available for purchase. Depending on flight length and distance, these include snacks, fresh dinners, and snack packs. </p>
+                    <p>All other international flights include complimentary meals. On North American flights, beverages and small snacks are included in economy class. On domestic flights, alcoholic beverages can be purchased, while long-haul foreign flights include them for free. </p>
+                    <p>A cocktail snack with a beverage is offered immediately after departure on flights when meals are served, followed by a main dish and dessert. A pre-arrival meal is served on longer international flights, and it generally consists of a small breakfast or snack.</p>
+                    <h5>United Airlines Basic Economy</h5>
+                    <p>
+                        Basic Economy is provided on a limited number of routes and is not included in ordinary rates. Basic Economy prices are intended to be United's most affordable cost, and they provide most of the same in-flight services and facilities as normal United Economy Class.
+                    </p>
+                    <p>Group/family seats, seat selection/upgrades, and bringing full-sized carry-on baggage are not permitted in Basic Economy. It is prominently identified when booking online, with a user prompt to ensure the user is ordering a Basic Economy rate. Users may also pay a little charge to upgrade their booking to a normal Economy for a modest cost.</p>
+                    <h4>United Airlines Reward Programs</h4>
+                    <p>United Airlines' frequent flyer programme is called MileagePlus.</p>
+                    <p>The United Club is a United Airlines and United Express-affiliated airline lounge. Prior to United Airlines' amalgamation with Continental, the United Club supplanted the old United Red Carpet Club and Continental Airlines Presidents Club.</p>
+                    <h4>United Airlines Flight Booking FAQs</h4>
+                    <h5>What is the best way to obtain a discount on United Airlines reservations?</h5>
+                    <p>
+                        Unpublished Farehub provides a terrific selection of seasonal specials and discounts on United Airlines ticket reservations and bookings, with savings of up to 40%. Sign up for Unpublished Farehub's email notifications to remain up to know on offers including Black Friday deals, Cyber Monday deals, and more. You may use this to stay up to date on the latest discounts and deals when booking a flight with United Airlines and Unpublished Farehub.
+                    </p>
+                    <h5>What documents must I bring with me if I want to enter the United States?</h5>
+                    <p>
+                        You'll need a passport that's valid for at least six months after your arrival date if you're not a US citizen. You'll also need a visa or a visa waiver to enter the country. Visit the US government's website for the most up-to-date information on the visa you'll require.
+                    </p>
+                    <h5>Is it possible to change my flight less than 24 hours after booking it?</h5>
+                    <p>
+                        You have up to 24 hours before your travel to make changes to your flight details. Your United Airlines ticket booking with Unpublished Farehub will be simple and quick, owing to a 24-hour helpline that guarantees client pleasure and has a short wait time.
+                    </p>
+                    <h5>How can I use skymiles to book a flight with United Airlines?</h5>
+                    <ul class="list w_50">
+                        <li>
+                            To get started, log in to your SkyMiles account or join the SkyMiles programme as a new member.
+                        </li>
+                        <li>
+                            Select the option to book a flight from the drop-down menu. Choose the flights that allows customers to pay with SkyMiles.
+                        </li>
+                        <li>On the following page of the trip summary, select Pay with Miles. Fill in all of your contact information to complete the reservation.</li>
+                    </ul>
+                    <h5>What options do I have for selecting a United Airlines flight seat?</h5>
+                    <p>Log onto your Unpublished Farehub account and use your given flight confirmation number to double-check your trip details. When booking a United Airlines ticket, you have the option of selecting your preferred seat. After that, you may select your seats and pay with cash or Miles.</p>
+
+                    <h5>Do United Airlines follow COVID safety guidelines?</h5>
+                    <p>Booking a flight with United Airlines is a perfectly safe and secure process. United Airlines goes to considerable measures to guarantee that its customers have a comfortable and safe journey. The plane is sanitised on a regular basis, and the air filters on board guarantee that the flight's interiors are kept clean. Every consumer is also provided hand sanitizers and is expected to wear safety clothing.</p>
+                    <h4>United Airlines Domestic Flights Service</h4>
+                    <p>When purchasing a flight with United Airlines, use Unpublished Farehub to obtain the best and most significant discounts and seasonal specials. As one of the main carriers, United Air Lines provides the best flight connections throughout the United States. You can book flights to a variety of domestic airports quickly and easily. It is constantly available and serves over 79 domestic destinations. Check out the list below for some of the most popular domestic flights and destinations.</p>
+
+                    <ul class="list w_50">
+                        <li>United Airlines flights to Orlando</li>
+                        <li>United Airlines flights to Los Angeles</li>
+                        <li>United Airlines flights to New York</li>
+                    </ul>
+                    <h4>United Airlines International Flights Service</h4>
+                    <p>Because of their multiple benefits, Unpublished Farehub and United Airlines flights are one of the most popular flight services among foreign travellers. United Airlines has flights to over 111 destinations in 74 countries. Find the best airline flights and discounts to the most popular destinations across the world. The most popular travel locations are as follows:</p>
+                    <ul class="list w_50">
+                        <li>United Airlines flights to Israel</li>
+                        <li>United Airlines flights to Toronto</li>
+                        <li>United Airlines flights to Dhaka</li>
+                        <li>United Airlines flights to Vienna</li>
+                        <li>United Airlines flights to Paris</li>
+                        <li>United Airlines flights to Rome</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+
+}
+
+
+
+
+
+
+
+

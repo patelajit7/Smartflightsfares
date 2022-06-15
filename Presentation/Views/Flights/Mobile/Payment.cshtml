@@ -1,0 +1,200 @@
+@model Infrastructure.HelpingModel.API.BookingDetail
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    <title>Review Trip Details & Book : @Utility.PortalSettings.PortalDetails.BrandName</title>
+    Layout = "~/Views/Shared/Mobile/_BookingPathLayout.cshtml";
+}
+
+<div id="resultsCntr">
+    <div class="container">
+        @using (Html.BeginForm("Payment", "Flights", FormMethod.Post, new { @id = "payment" }))
+        {
+            <input type="hidden" id="insTranscationId" name="TravelerInsurance.TransactionId" value="" />
+            <input type="hidden" id="insCardType" name="TravelerInsurance.CardType" value="" />
+            <input type="hidden" id="insToken" name="TravelerInsurance.Token" value="" />
+            <input type="hidden" name="guid" id="guid" value="@Model.Contract.SearchGuid" />
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+
+                    <span onclick="window.location='@string.Format("{0}flights/availability/{1}", Utility.PortalSettings.DomainUrl, Model.Contract.SearchGuid)'" class="backtoresults"><i class="bi bi-arrow-left"></i> Back to Results</span>
+
+                    <div class="payment__wrapper">
+                        <div class="payment__stepBox">
+                            <ul>
+                                <li class="step1li active" onclick="p.switchTab(1)"><i class="bi bi-check-circle"></i> Itinerary </li>
+                                <li class="step2li" onclick="p.switchTab(2)"><i class="bi bi-check-circle"></i> Traveler</li>
+                                <li class="step3li" onclick="p.switchTab(3)"><i class="bi bi-check-circle"></i> Payment</li>
+                            </ul>
+                        </div>
+                        <div class="step_1">
+                            <div class="flight__itenaryBox hr-line">
+                                    <h2 class="page__title"><strong>Flight</strong> Detail</h2>
+                                @{ Html.RenderPartial("~/views/flights/mobile/partial/_PaymentContract.cshtml", Model);}
+                            </div>
+                            @{ Html.RenderPartial("~/views/flights/mobile/partial/_ContactDetails.cshtml", Model);}
+                            @{ Html.RenderPartial("~/views/flights/mobile/partial/_ExtendedCancellation.cshtml", Model);}
+                            <div class="bottom__row">
+                                <a href="javascript:void(0);" onclick="p.validatePayment(1);" class="continue__button continue__button_step1">Continue</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="travelerBox step_2" style="display:none;">
+                            @{ Html.RenderPartial("~/views/flights/mobile/partial/_Travellers.cshtml", Model);}
+                            <div class="bottom__row">
+                                <a href="javascript:void(0);" onclick="p.validatePayment(2);" class="continue__button continue__button_step2">Continue</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="paymentBox step_3" style="display:none;">
+                            @{ Html.RenderPartial("~/views/flights/mobile/partial/_BillingDetails.cshtml", Model);}
+                            <div class="bottom_text inputSet theme2">
+                                <h4>Policies &amp; Review</h4>
+                                <p class="review_policy">
+                                    Please verify that the <b>date(s), time(s), and name(s) of the travelers are correct.</b> To be used on this trip, <b>each traveler's name and date of birth must be exactly as they appear on their passport or government-issued photo-ID.</b>
+                                </p>
+                                <p>
+                                    Name modifications are not allowed and tickets are non-transferable. All applicable taxes and fees, as well as our service fees, are included in the total price shown. Additional baggage or other fees may be levied by certain airlines. Tickets are not assured until they are purchased. Tickets are non-refundable, as are our payments.  Any taxes and fees levied by government agencies will not be refunded. If requested within 24 hours of the time of purchase, tickets may be canceled for a fee. Changes in dates and routes will be subject to airline fines as well as our fees.
+                                </p>
+                                <p>
+                                    I acknowledge that I have read and acknowledged the <a href="#">Terms and Conditions</a> and  <a href="#">Privacy Policy</a> by clicking "Confirm &amp; Book."
+                                </p>
+                            </div>
+
+                            <div class="bottom__row">
+                                <a href="javascript:void(0);" onclick="p.validatePayment(0);" class="continue__button confirm">
+                                    Confirm &amp; Book
+                                    <span><i class="fa fa-lock"></i> Secure Payment</span>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-12 col-md-12">
+                    <div id="price12">
+                        @{ Html.RenderPartial("~/views/flights/mobile/partial/_PriceDetails.cshtml", Model);}
+                    </div>
+                    <div class="securebooking__Box">
+
+                        <h4>Secure SSL Boooking </h4>
+
+                        <div class="text-center">
+                            <p><img src="~/images/mobile/trustpilot-logo.png" alt="logo" /></p>
+
+                            <p><img src="~/images/mobile/godady.png" alt="logo" /></p>
+
+                            <p> Your booking is SSL secured &amp; encrypted by Godady</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+@{Html.RenderPartial("~/views/flights/mobile/partial/_ListingIdlePopup.cshtml");}
+@if (Model.PriceIncrease > 0)
+{
+    float amount = Utility.GetAllTotalAmount(Model);
+    Html.RenderPartial("~/views/flights/mobile/partial/_PriceIncreasePopup.cshtml", Tuple.Create<float, float, string>(amount, Model.PriceIncrease, Model.Contract.SearchGuid));
+}
+@section scripts{
+    @{
+        DateTime trvDate = Model.Contract.TripDetails.OutBoundSegment[0].Departure;
+    }
+    @Scripts.Render("~/bundles/m-payment-js")
+    <script>
+            DOMAIN_URL = "@Common.Utility.PortalSettings.DomainUrl";
+            PAX_COUNTER = parseInt("@Model.Travellers.Count", 10);
+            TRV_DATE = new Date(parseInt("@trvDate.Year", 10), parseInt("@trvDate.Month", 10) - 1, parseInt("@trvDate.Day", 10));
+            PROVIDER = parseInt("@((int)Model.Contract.Provider)");
+            setStateOnCountry();
+            if (parseFloat("@Model.PriceIncrease", 10) > 0) {
+            $(window).on('load', function () {
+                $('#PriceIncreasePopup').show();
+                });
+            }
+    </script>
+}
+
+<!--  / Promo  Box \ -->
+<div class="popup_Box" style="display:none;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="promoBox">
+
+                <h4>Select a Promo Code</h4>
+
+                <div class="cuponBlock">
+                    <div class="row">
+                        <div class="col-12"><input type="text" placeholder="Enter coupon Code here" class="inputText"><button class="submit">Apply</button></div>
+
+                        <div class="col-12 sucessfull mt-1">Promocode Applied!</div>
+                        <div class="col-12 error mt-1">Invalid Promocode.</div>
+                    </div>
+                </div>
+
+                <ul class="inputSet couponList">
+                    <li>
+                        <label>
+                            <input type="radio" name="coupon"><span></span>
+                            <div class="d-flex align-items-center">
+                                <div class="promo-key">YTRBOBCC</div>
+                                <div class="save">$15</div>
+                            </div>
+                            <p>Flat 15% OFF on using Bank of Baroda Credit Card.</p>
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="coupon"><span></span>
+                            <div class="d-flex align-items-center">
+                                <div class="promo-key">FLASH24</div>
+                                <div class="save">$20</div>
+                            </div>
+                            <p>Flat 15% OFF on using Bank of Baroda Credit Card.</p>
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="coupon"><span></span>
+                            <div class="d-flex align-items-center">
+                                <div class="promo-key">YTPWR</div>
+                                <div class="save">$10</div>
+                            </div>
+                            <p>Flat 15% OFF on using Bank of Baroda Credit Card.</p>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="coupon"><span></span>
+                            <div class="d-flex align-items-center">
+                                <div class="promo-key">YTZEST</div>
+                                <div class="save">$5</div>
+                            </div>
+                            <p>Flat 15% OFF on using Bank of Baroda Credit Card.</p>
+                        </label>
+                    </li>
+                </ul>
+
+                <div class="popup-btn">
+
+                    <button class="active searchbtn">Cancel</button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--  \ Session expire Box / -->

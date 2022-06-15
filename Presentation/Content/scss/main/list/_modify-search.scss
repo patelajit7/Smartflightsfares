@@ -1,0 +1,220 @@
+.modifySearchBox {
+    padding: 25px 0;
+    background: #f5f5f8;
+    position: relative;
+    z-index: 2;
+    @include breakpoint(md) {
+        display: none;
+    }
+    .input__block {
+        position: relative;
+    }
+    .searchBox {
+        padding: 0px;
+    }
+    .inputField {
+        padding: 14px 20px 13px 36px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #787878;
+        border: 1px solid #ccc;
+        outline: none;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        border-radius: 5px;
+        background-color: $white;
+        &.location {
+            padding-left: 35px;
+        }
+        @include breakpoint(lg) {
+            padding: 12px 0 10px 40px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+	.error{
+		.inputField{border-color:$red; }
+		.icons {color:$red; }
+	}
+    input[type="text"]:focus~.icons,
+    .valid~.icons,
+    .ng-valid~.icons {
+        color: $primary;
+    }
+    .icons {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        display: block;
+        pointer-events: none;
+        font-size: 20px;
+        &.person-icon {
+            font-size: 25px;
+            top: 5px;
+        }
+    }
+    .dates {
+        background: $white;
+        border-radius: 5px;
+        width: 100%;
+        float: left; padding-right:10px;
+        border: 1px solid #ccc;
+        .inputField {
+            border: none;
+			white-space: normal;
+			text-overflow: initial;
+			padding-right: 0px;
+        }
+    }
+    .no-padding {
+        padding: 0;
+    }
+    .pad3px {
+        padding: 0 4px;
+    }
+    .pl-8 {
+        padding-left: 8px;
+    }
+    .row_margin {
+        margin: 0px -4px;
+    }
+    .row_margin2 {
+        margin: 0 -6px;
+    }
+    .col-50 {
+        width: 50%;
+        float: left;
+        &.return_date {
+            margin-left: -7px;
+        }
+        &.roundtrip {
+            visibility: hidden;
+        }
+    }
+    .searchButton {
+        width: 100%;
+        background: #005aab;
+        border: none;
+        font-size: 15px;
+        color: $white;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 14px;
+        outline: none;
+        font-weight: 600;
+    }
+    .tripType {
+        border-bottom: none;
+    }
+    .traveler_main {
+        position: relative;
+        .travllerBox {
+            display: none;
+            position: absolute;
+            right: 0px;
+            top: 6px;
+            z-index: 3;
+        }
+    }
+    .switch {
+        top: 0px;
+    }
+}
+
+
+/*End modify*/
+
+
+/*Modify mobile Start here*/
+
+.search__infoBox {
+    display: none;
+    padding: 5px 10px;
+    background: #ECF0FF;
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    color: #333;
+    @include breakpoint(md) {
+        display: block;
+    }
+    .column {
+        width: 50px;
+        float: left;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .itenery-date {
+        font-size: 13px;
+    }
+    i {
+        position: relative;
+        top: 7px;
+    }
+}
+
+.modify_search_mobile {
+    background: $primary;
+    color: $white;
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+    height: 56px;
+    line-height: 55px;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    top: -6px;
+    padding-top: 5px;
+    line-height: 44px;
+}
+
+
+/*End Mobile*/
+
+.relative {
+    position: relative;
+}
+
+
+/*Extra dev*/
+
+.modifySearchBox .angucomplete-holder span.label_name {
+    display: none!important;
+}
+
+.modifySearchBox .angucomplete-dropdown {
+    left: 0px;
+    width: 650px;
+    margin-top: 15px;
+}
+
+.modifySearchBox .inputField.input_clear.x {
+    background-position: right 14px;
+}
+
+td.highlight>a {
+    background: #0000ff29 !important;
+}
+
+
+/*Extra dev*/
+
+
+/*Error classess*/
+
+
+.mobile-itenery {
+    transition: all .5s ease 0s;
+    width: 100%;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 4px 5px #0000000f;
+    background: $white;
+    &.fixed {
+        position: fixed;
+        top: 0;
+    }
+}

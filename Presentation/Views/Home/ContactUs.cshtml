@@ -1,0 +1,161 @@
+﻿@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Contact Us | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+<!--  / content container \ -->
+<div id="contentCntr">
+
+    <div class="static_title">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Contact us</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        <!--  / contact form box \ -->
+        <div class="contact__formBox">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3 class="page__title">Get in touch with us!</h3>
+
+                    <p>In case of any questions/queries or last minute requests</p>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input_set">
+                                <input type="text" placeholder="Name" class="form-control" />
+                                <span class="star">*</span>
+                            </div>
+
+                            <div class="input_set">
+                                <input type="text" placeholder="Email" class="form-control" />
+                                <span class="star">*</span>
+                            </div>
+
+                            <div class="input_set">
+                                <input type="text" placeholder="Phone" class="form-control" />
+                                <span class="star">*</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <textarea cols="5" rows="4" class="textarea" placeholder="Description"></textarea>
+
+                            <button type="submit" class="button">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!--  \ contact form box / -->
+        <!--  / contact box \ -->
+        <div class="contactBox">
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h3 class="page__title"><strong>New Reservation</strong></h3>
+                        <p>Have a query in regards to booking a flight speak to one of our specialist reservation team member.</p>
+
+                        <p>
+                            <i class="bi bi-telephone-plus icon"></i> <a class="phone" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a><br />
+
+                            <i class="bi bi-clock icon"></i> 11:00 AM – 9:00 PM EST<br />
+
+                            <i class="bi bi-envelope icon"></i> <a class="email" href="mailto:@Utility.PortalSettings.PortalDetails.CustomerSupportMail">@Utility.PortalSettings.PortalDetails.CustomerSupportMail</a>
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h3 class="page__title"><strong>Customer Support (Web bookings)</strong></h3>
+                        <p>Have a query in regards to booking a flight speak to one of our specialist reservation team member.</p>
+
+                        <p>
+                            <i class="bi bi-telephone-plus icon"></i> <a class="phone" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a><br />
+
+                            <i class="bi bi-clock icon"></i> 11:00 AM – 9:00 PM EST<br />
+
+                            <i class="bi bi-envelope icon"></i> <a class="email" href="mailto:@Utility.PortalSettings.PortalDetails.CustomerSupportMail">@Utility.PortalSettings.PortalDetails.CustomerSupportMail</a>
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h3 class="page__title"><strong>Canada Office</strong></h3>
+                        <p>
+                            <strong>Unpublished Farehub Unit :</strong> <br>
+                            #103-2464 Clearbrook Rd, <br>
+                            Abbotsford,<br>
+                            BC V2T 2X8
+                        </p>
+
+                        <p>
+                            <i class="bi bi-telephone-plus icon"></i> <a class="phone" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a><br />
+
+                            <i class="bi bi-clock icon"></i> 11:00 AM – 9:00 PM EST<br />
+
+                            <i class="bi bi-envelope icon"></i> <a class="email" href="mailto:@Utility.PortalSettings.PortalDetails.CustomerSupportMail">@Utility.PortalSettings.PortalDetails.CustomerSupportMail</a>
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+                @*<div class="col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h3 class="page__title"><strong>USA OFFICE:</strong></h3>
+                        <p>
+                            <strong>Unpublished Farehub Unit :</strong> <br>
+                            33 S Wood Ave Suite 600,<br>
+                            Iselin, NJ 08830,<br>
+                            United States
+                        </p>
+
+                        <p>
+                            <i class="bi bi-telephone-plus icon"></i> <a class="phone" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a><br />
+
+                            <i class="bi bi-clock icon"></i> 11:00 AM – 9:00 PM EST<br />
+
+                            <i class="bi bi-envelope icon"></i> <a class="email" href="mailto:@Utility.PortalSettings.PortalDetails.CustomerSupportMail">@Utility.PortalSettings.PortalDetails.CustomerSupportMail</a>
+                        </p>
+
+
+                    </div>
+
+                </div>*@
+
+
+            </div>
+        </div>
+        <!--  \ contact box / -->
+
+    </div>
+
+</div>
+<!--  \ content container / -->

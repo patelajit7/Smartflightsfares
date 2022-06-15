@@ -1,0 +1,187 @@
+.page__title {
+    font-size: 25px;
+    color: $text-color;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: 300;
+    @include breakpoint(md) {
+        font-size: 22px;
+    }
+    @include breakpoint(sm) {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    strong {
+        font-weight: 600;
+        position: relative;
+        @include breakpoint(sm) {
+            display: inline-block;
+        }
+    }
+}
+
+.serviceBox {
+    width: 100%;
+    padding: 20px 0px 30px 0; position: relative;
+    border-bottom: 1px solid $border-color-light;
+    @include breakpoint(sm) {
+        border-bottom: 10px solid #F2F2F2;
+        float: left;
+    }
+    h3 {
+        font-size: 21px;
+        color: #202020;
+        margin-bottom: 5px;
+        font-weight: 600;
+        @include breakpoint(md) {
+            font-size: 17px;
+            margin-bottom: 2px;
+        }
+        @include breakpoint(sm) {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+    }
+    p {
+        font-size: 15px;
+        color: #858585;
+        margin-bottom: 0px;
+        @include breakpoint(md) {
+            font-size: 13px;
+        }
+        @include breakpoint(sm) {
+            font-size: 15px;
+        }
+    }
+    .icon {
+        float: left;
+        @include breakpoint(md) {
+            width: 35px;
+        }
+        @include breakpoint(sm) {
+            width: auto;
+        }
+    }
+    .detail {
+        padding-left: 14px;
+        float: left;
+        @include breakpoint(md) {
+            width: calc(100% - 35px);
+        }
+        @include breakpoint(sm) {
+            width: calc(100% - 62px);
+        }
+    }
+    .service_block {
+        border-left: 1px solid #ccc;
+        width: 33.3%;
+        float: left;
+        padding-left: 49px;
+        @include breakpoint(md) {
+            padding-left: 0px;
+            border: none;
+        }
+        &:first-child {
+            padding-left: 0px;
+            border-left: 0px;
+        }
+    }
+	.slick-dots {
+		@include breakpoint(sm){ bottom: 6px; }
+	}
+}
+
+
+/*About section*/
+
+.aboutBox {
+    width: 100%;
+    padding: 50px 0;
+    @include breakpoint(md) {
+        padding: 20px 0;
+    }
+    @include breakpoint(sm) {
+        width: auto;
+    }
+    .content {
+        padding: 0 30px;
+        @include breakpoint(lg) {
+            padding: 5px;
+        }
+    }
+    p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 27px;
+        @include breakpoint(md) {
+            font-size: 15px;
+        }
+        @include breakpoint(sm) {
+            font-size: 13px;
+            line-height: 22px;
+        }
+    }
+    .text {
+        font-size: 16px;
+        color: #202020;
+    }
+    .list {
+        list-style: none;
+        font-weight: 300;
+        padding: 0px;
+        li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+            &:before {
+                position: absolute;
+                left: 0px;
+                top: 2px;
+                content: '\f26b';
+                color: $primary;
+                font-family: bootstrap-icons !important;
+            }
+        }
+    }
+    a.read_more {
+        cursor: pointer;
+        margin-top: 5px;
+        padding: 10px 15px;
+        display: inline-block;
+        font-size: 16px;
+        color: $secondary;
+        border: 1px solid $secondary;
+        border-radius: 5px;
+        @include breakpoint(md) {
+            margin-top: 10px;
+        }
+        .bi-arrow-right {
+            float: right;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    img {
+        @include breakpoint(sm) {
+            border-radius: 5px;
+        }
+    }
+    .page__title strong {
+        @include breakpoint(sm) {
+            display: inline-block;
+        }
+    }
+}
+
+
+.trustreviewBlock {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding-top: 45px;
+	.stars { height: 35px;     margin: 0px 10px; }
+	.review-text {margin-top: -10px;  line-height: 15px;}
+	
+}

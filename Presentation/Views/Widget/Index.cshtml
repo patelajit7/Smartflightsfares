@@ -1,0 +1,235 @@
+﻿@using Business;
+@using Common;
+@using Infrastructure;
+@model Infrastructure.HelpingModel.API.FlightSearch
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Wizfaire</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="key, words" />
+    <meta name="description" content="Website description" />
+    <meta name="robots" content="" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/content/widget")
+
+</head>
+
+<body>
+    <div style="background:#f2f2f2; padding:20px;">
+        <div class="search_center">
+            <form autocomplete="off" id="flights" method="post" _lpchecked="1">
+                <input id="Origin" name="Origin" type="hidden" value="@Model.Origin">
+                <input id="Destination" name="Destination" type="hidden" value="@Model.Destination">
+                <input id="utm_source" name="utm_source" type="hidden" value="1000">
+                <input id="utm_medium" name="utm_medium" type="hidden" value="">
+                <div class="searchBox">
+                    <!-- tab box -->
+                    <ul class="tabBox">
+                        <li class="active"><img src="~/images/icons/flights-dark.svg" alt="" />Flights</li>
+                    </ul>
+
+                    <div class="clearfix"></div>
+
+                    <div class="searchBlock">
+
+                        <!--Radio start here -->
+                        <ul class="tripType inputSet">
+                            <li><label><input type="radio" onclick="callme('RoundTrip');" name="TripType" value="2" @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? " checked " : "")><span>Round trip</span> </label></li>
+                            <li><label><input type="radio" onclick="callme('OneWay');" id="oneway" name="TripType" value="1" @string.Format("{0}", Model.TripType == TripType.ONEWAY ? " checked " : "")><span>Oneway</span> </label></li>
+                        </ul>
+                        <!--Radio end here -->
+                        <!-- Flight Search Engin Start here-->
+                        <div class="flightSearch">
+
+                            <div class="column_1 box-shadow">
+                                <div class="label first inputOrigin">
+                                    <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Origin city/airport" value="@Model.OriginSearch" id="OriginSearch" name="OriginSearch" class="inputField input_clear valid" />
+                                    <span class="icons bi bi-geo-alt destination-icon"></span>
+                                    <span id="Depart_error" class="error-div1 errortext">Please select an origin</span>
+                                </div>
+
+                                <div class="label inputDestination">
+                                    <input type="text" autocomplete="off" onfocus="javascript:this.select();" placeholder="Destination city/airport" id="DestinationSearch" name="DestinationSearch" value="@Model.DestinationSearch" class="inputField input_clear" />
+                                    <span class="icons bi bi-geo-alt destination-icon"></span>
+                                    <span id="Return_error" class="error-div1 errortext">Please select an destination</span>
+                                </div>
+                            </div>
+
+                            <div class="column_2 box-shadow">
+                                <div class="label cursor inputDepart">
+                                    <input type="text" class="inputField cursor" placeholder="Depart" name="Departure" id="Departure" autocomplete="off" value="@(Model.Departure==DateTime.MinValue? "" : Model.Departure.ToString("MMM dd yyyy"))" readonly="" />
+                                    <span class="icons bi bi-calendar3 calender-icon"></span>
+                                    <span id="Departure_error" class="error-div1 errortext">Please enter a Depart date</span>
+                                </div>
+
+                                <div class="label cursor inputReturn">
+                                    <input type="text" placeholder="Return" class="inputField cursor" id="Return" name="Return" readonly autocomplete="off" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : (Model.Return??DateTime.Now).ToString("MMM dd yyyy") : "")" readonly="" />
+                                    <span class="icons bi bi-calendar3 calender-icon"></span>
+                                    <span id="ReturnDate_error" class="error-div1 errortext">Please enter a Return date</span>
+                                </div>
+                            </div>
+
+                            <div class="column_3 box-shadow">
+                                <div class="label cursor traveller" id="paxCounter">
+                                    <input type="text" id="paxCounterVal" value="@Model.TotalPax() Traveler(s), Economy" class="inputField valid cursor" readonly />
+                                    <span class="icons person-icon bi bi-person traveller-icon"></span>
+                                    <div class="error-div" id="TotalPax_error" style="display: none;">
+                                        <span class="error-flL errorbox1"><i class="fa fa-exclamation-triangle"></i></span>
+                                        <span class="error-flL error-innertxt">Total <b>'Infant'</b> not more then <b>'Adult'</b></span>
+                                    </div>
+                                </div>
+                                <button type="button" class="searchButton flightsButton">Search</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="traveler_main">
+                    <div class="travllerBox" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="guestBox">
+                                    <div class="head"><span id="tpax">@Model.TotalPax()</span> Traveler</div>
+
+                                    <!--Adult-->
+                                    <div class="add-traveler">
+                                        <span class="travelers__options">
+                                            <input type="hidden" class="Adult inputbalnk" name="Adult" id="Adult" value="@Model.Adult" />
+                                            <a class="remove @string.Format("{0}",Model.Adult==1?"disable":"")" onclick="searchengine.decrement('Adult')"><i class="fa fa-minus"></i></a> <strong class="number Adult">@Model.Adult</strong><a class="add" onclick="searchengine.increment('Adult')"><i class="fa fa-plus"></i></a>
+                                        </span>
+                                        Adult
+                                    </div>
+
+                                    <div class="add-traveler">
+                                        <span class="travelers__options">
+                                            <input type="hidden" class="Child inputbalnk" name="Child" id="Child" value="@Model.Child" />
+                                            <a class="remove @string.Format("{0}",Model.Child==0?"disable":"") " onclick="searchengine.decrement('Child')"><i class="fa fa-minus"></i></a><strong class="number Child">@Model.Child</strong><a class="add" onclick="searchengine.increment('Child')"><i class="fa fa-plus"></i></a>
+                                        </span>
+                                        Children <small>(2-11)</small>
+                                    </div>
+
+                                    <!--Infant-->
+                                    <div class="add-traveler">
+                                        <span class="travelers__options">
+                                            <input type="hidden" name="InfantOnLap" id="InfantOnLap" value="@Model.InfantOnLap" />
+                                            <a class="remove @string.Format("{0}",Model.InfantOnLap==0?"disable":"")" onclick="searchengine.increment('InfantOnLap')"><i class="fa fa-minus"></i></a><strong class="number InfantOnLap">@Model.InfantOnLap</strong><a class="add" onclick="searchengine.decrement('InfantOnLap')"><i class="fa fa-plus"></i></a>
+                                        </span>
+                                        Infant <small>(on lap)</small>
+                                    </div>
+
+                                    <!--Infant with seat-->
+                                    <div class="add-traveler">
+                                        <span class="travelers__options">
+                                            <input type="hidden" name="InfantOnSeat" id="InfantOnSeat" value="@Model.InfantOnSeat" />
+                                            <a class="remove @string.Format("{0}",Model.InfantOnSeat==0?"disable":"")" onclick="searchengine.decrement('InfantOnSeat')"><i class="fa fa-minus"></i></a><strong class="number InfantOnSeat">@Model.InfantOnSeat</strong><a class="add" onclick="searchengine.increment('InfantOnSeat')"><i class="fa fa-plus"></i></a>
+                                        </span>
+                                        Infant <small>(on seat)</small>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="head">Cabin Class</div>
+
+                                <ul class="classType inputSet">
+                                    <li><label><input type="radio" name="Cabin" value="@CabinType.Economy" @string.Format("{0}", Model.Cabin == CabinType.Economy ? " checked " : "")><span>Economy </span> </label></li>
+                                    <li><label><input type="radio" name="Cabin" value="@CabinType.PremiumEconomy" @string.Format("{0}", Model.Cabin == CabinType.PremiumEconomy ? " checked " : "")><span>Premium Economy</span> </label></li>
+                                    <li><label><input type="radio" name="Cabin" value="@CabinType.Business" @string.Format("{0}", Model.Cabin == CabinType.Business ? " checked " : "")><span>Business</span> </label></li>
+                                    <li><label><input type="radio" name="Cabin" value="@CabinType.First" @string.Format("{0}", Model.Cabin == CabinType.First ? " checked " : "")><span>First</span> </label></li>
+                                </ul>
+
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="unaccompined">
+                                    <a href="javascript:void(0);" class="clickunaccompanied"><i class="bi bi-info-circle"></i> Unaccompanied Minor</a>
+
+                                    <div class="tooltip-new openunaccompanied">
+                                        <!-- <i class="bi bi-x-circle closeunaccompanied"></i> -->
+                                        Booking flights for an unaccompanied minor? some airlines have restrictions on children under the age of 18 years
+                                        traveling alone. If you have any questions, please
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">  <a href="javascript:void(0);" class="done_Btn">Done</a></div>
+                        </div>
+                    </div>
+                    <!--  \ Traveller Box / -->
+                </div>
+            </form>
+</div>
+
+    </div>
+
+    <script> 
+        C_D = new Date('@System.DateTime.Now.AddHours(24).ToString("yyyy-MM-dd HH:mm:ss")')
+        DOMAIN_URL = "@Common.Utility.PortalSettings.DomainUrl";
+        AFFILIATE_ID = parseInt("@ViewBag.AffiliateId", 10);
+    </script>
+
+    @Scripts.Render("~/bundles/widget")
+    <script>
+        var numberOfMonthValue;
+        $(window).resize(function () {
+
+            if ($(window).width() < 768) {
+                numberOfMonthValue = 1;
+                $("#departDate").datepicker("option", "numberOfMonths", numberOfMonthValue);
+                $("#returnDate").datepicker("option", "numberOfMonths", numberOfMonthValue);
+            } else {
+                numberOfMonthValue = 2;
+                $("#departDate").datepicker("option", "numberOfMonths", numberOfMonthValue);
+                $("#returnDate").datepicker("option", "numberOfMonths", numberOfMonthValue);
+            }
+        })
+            .trigger('resize');
+
+        $(function () {
+            $("#datepicker").datepicker({
+                numberOfMonths: numberOfMonthValue,
+                showButtonPanel: true,
+
+            });
+
+        });
+
+        $(function () {
+            $("#datepicker2").datepicker({
+                numberOfMonths: numberOfMonthValue,
+                showButtonPanel: true,
+            });
+        });
+        $(document).ready(function () {
+            $(".traveller").click(function () {
+                $(".travllerBox").slideDown();
+            });
+            $(".done_Btn").click(function () {
+                $(".travllerBox").slideUp();
+            });
+
+            //$(document).on('click touch', function (event) {
+            //    if (!$(event.target).parents().addBack().is('.traveller')) {
+            //        $('.travllerBox').slideUp();
+            //    }
+            //});
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

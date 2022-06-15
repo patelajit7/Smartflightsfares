@@ -1,0 +1,59 @@
+﻿@using Common
+<header id="headerCntr">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="logo">
+                    <a href="/">Unpublished Farehub</a>
+                </div>
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn"> <span>Call us 24/7 for Support</span> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber </a>
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn_mobile"> <i class="bi bi-telephone"></i> Call us </a>
+
+                @{Html.RenderPartial("~/views/home/partial/_CurrencyConverter.cshtml");}
+
+                <!--  / menu box \ -->
+                <div class="mobileMenuBox" id="nav">
+                    <div class="mobile_head">
+                        <h4>Menu</h4>
+                        <a href="javascript:void(0);" class="close close_modify"><i class="bi bi-x-circle"></i></a>
+                    </div>
+                    <ul>
+                        <li><a href="#"><span class="icons"><i class="fa fa-plane"></i></span> Flights</a></li>
+
+                        <li><a href="/about-us"><span class="icons"><i class="fa fa-file-word-o"></i></span>About Us</a></li>
+                        <li><a href="/terms-condition"><span class="icons"><i class="fa fa-info"></i></span>Terms &amp; Conditions</a></li>
+                        <li><a href="/privacy-policy"><span class="icons"><i class="fa fa-info"></i></span>Privacy Policy</a></li>
+                        <li><a href="/contact-us"><span class="icons"><i class="fa fa-globe"></i></span>Contact Us</a></li>
+                        <li><a href="/payment-security"><span class="icons"><i class="fa fa-usd"></i></span>Payment Security</a></li>
+
+
+                    </ul>
+                </div>
+                <!--  \ menu box / -->
+
+                <nav class="menuBox">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <!--  / menu box \ -->
+
+                                <ul>
+                                    <li><a href="/">Flights</a></li>
+                                    <li><a href="/about-us">About Us</a></li>
+                                    <li><a href="/contact-us">Support</a></li>
+                                </ul>
+
+                                <!--  \ menu box / -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <a href="javascript:void(0);" class="mobileMenu"><span></span></a>
+            </div>
+
+        </div>
+    </div>
+</header>
+

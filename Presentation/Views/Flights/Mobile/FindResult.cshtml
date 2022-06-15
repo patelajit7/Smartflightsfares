@@ -1,0 +1,71 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    ViewBag.Title = "Cheap Airfares :" + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+@section headerSection{
+    <link rel="stylesheet" href="/content/jquery-ui.min.css">
+    @Styles.Render("~/content/searchengine")
+    @Styles.Render("~/content/listing")
+
+}
+
+
+@{Html.RenderPartial("~/views/flights/partial/_FlightListingSearchEngine.cshtml", Model);}
+<div class="reult_main">
+    <div id="showhidefilter">
+        <div class="filter_strip"><button class="filter_show">Filter Show</button> <button class="modi_search">Modify Search</button></div>
+    </div>
+    <div class="container" id="divMain">
+        <div class="filtrsrch">
+            @{ Html.RenderPartial("~/views/flights/mobile/partial/_AvailabilityRight.cshtml", Model);}
+        </div>
+    </div>
+</div>
+
+
+<div id="loadingDiv" class="loading" style="display: none;">Loading…</div>
+@{Html.RenderPartial("~/views/flights/partial/_ListingIdlePopup.cshtml");}
+@{Html.RenderPartial("~/views/shared/partial/_FooterBlckStrip.cshtml");}
+@section scripts{
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")
+    <script type="text/javascript">
+
+        function doAjax() {
+            $("#showhidefilter").css('display', "none");
+            $.ajax({
+                type: 'POST',
+                url: '@string.Format("{0}flights/issearchcompletetwosteps/{1}", Utility.PortalSettings.DomainUrl,Model.SearchGuidId)',
+                success: function (response)
+                {
+                    if (response != null && !response.IsContextExist) {
+                        window.location.assign("@Utility.PortalSettings.DomainUrl");
+
+                    } else if (response != null && response.IsContextExist && response.IsRequestCompleted) {
+                        $("#divMain").html(response.HtmlResponseLeft);
+                        $("#divMain").append(response.HtmlResponse);
+                        $("#flights").css('display', "block");
+                        $("#showhidefilter").css('display', "block");
+                        applyJquery();
+                    } else {
+                        doAjax();
+                    }
+
+                },
+                complete: function (data) {
+
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+
+        doAjax();
+    </script>
+}

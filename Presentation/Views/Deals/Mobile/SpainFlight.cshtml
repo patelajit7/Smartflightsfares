@@ -1,0 +1,73 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    /**/
+
+    ViewBag.Title = "Flight to Spain Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/mobile/_GeneralLayout.cshtml";
+}
+
+
+<div id="bannerCntr z-index-relative">
+    <div id="mobileSearchCntr">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="searchBox">
+                        <!-- tab box -->
+                        <div class="mobileTitle">
+                            The Cheapest Spain Flight Fares
+                        </div>
+
+                        @{Html.RenderPartial("~/views/flights/mobile/partial/_FlightSearchEngine.cshtml", Model);}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="clients_logo">
+        <li><a href="https://www2.arccorp.com/support-training/arc-check-results/?acn=31786403&formSourceName=StandardForm&sp_exp=yes#" target="_blank"><img src="~/images/footer/arc.jpg" alt="arc"></a></li>
+        <li><a href="https://www.bbb.org/us/nj/iselin/profile/travel-agency/wizfair-llc-0221-90190908?utm_campaign=bbb_seal&utm_content=Wizfair%20LLC&utm_medium=website&utm_source=seal_click_90190908" target="_blank"><img src="~/images/footer/bbb.jpg" alt="bbb"></a></li>
+        <li><a href="https://www.trustpilot.com/review/wizfairvacation.com" target="_blank"><img src="~/images/footer/trust.jpg" class="trustpilot" alt="trustpilot"></a></li>
+    </ul>
+</div>
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+        @{ Html.RenderPartial("~/views/home/mobile/partial/_homedeals.cshtml"); }
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="content">
+                        <h3 class="page__title"><strong>Spain</strong> Tourism</h3>
+                        <p>Spain is regarded as one of Europe's most exotic countries, with beautiful beaches and a vibrant nightlife. It is famed for its food, culture, beaches, as well as its snow-capped mountains and deserts. Spain's architecture is likewise stunning, with Islamic, Catholic, and Renaissance influences.</p>
+                        <p>Make your Spain trip reservations today and make your way to Ibiza, one of the most iconic archipelagos in the Balearic Islands and one of Europe's most well-known party destinations. With more than 50 beautiful beaches, it is a great spot to visit for a fantastic holiday. It is a big draw for those who want to hear well-known DJs. If you like to party, this is the island for you. Beach parties are also held during the day. Ibiza is for all night ravers, bohemian chic hippy dudes, and everyone else looking for a place to party. It hosts some of Europe's top DJs, including David Guetta, Luciano, Sven Vath, and others, and may be regarded a clubber's hallowed ground.</p>
+                        <p>Barcelona, known as the "Paris of Spain" due to its likeness to the French capital, is another destination worth considering when planning your trip to Spain. The city has a lovely beauty about it as well as a rich cultural importance. It is the capital of the autonomous community of Catalonia in Spain, as well as the country's second biggest city.</p>
+                        <p>Galleries, museums, mediaeval structures, and a variety of other unique attractions abound throughout the city. It is also a significant business and industrial hub. It is located on the Mediterranean coast, with the city set against the backdrop of high mountains. Barcelona is the capital of both the province of Barcelona and the autonomous territory of Catalunya. It serves as a gateway to some of the world's most popular tourist destinations, including the Costa Brava, Tarragona, and Costa Dorada. Barcelona is also the country's chocolate production centre. Markets, restaurants, museums, cathedrals, and stores abound in this metropolis, which offers everything a European city is known for.</p>
+                        <p>A trip to Spain is incomplete without indulging in the extravagant Spanish cuisine, known across the world for its extensive use of meat and seafood, as well as a variety of vegetables cooked in a variety of spices. People typically choose coffee, Galleta, and Magdalena for breakfast. Tapas or bars are the greatest venues to experience Spanish cuisine. Gazpacho Andaluz, Paella Valenciana, Aceitunas,  Bocadillo de Calamares, Caracoles, Oliva, Churros, Ensaladilla Rusa, Tortilla de patatas, Patatas Bravas, and Sepia con alioli are some of the original Spanish meals. Horchata, Sangria, Sherry, and wine are among the native beverages to taste.</p>
+                        <p>The bustling nightlife and raucousness of Spain are well-known. For a taste of the nightlife, have a couple beers at a music bar before heading to the clubs to dance till morning. The majority of the dance clubs are open 24 hours a day, seven days a week. Ibiza's nightclubs are world-famous, with the top DJs from all over the globe performing there. Apart from Barcelona, Madrid, and Ibiza, Seville, Granada, Valencia, Bilbao, and Mallorca are also known for their nightlife.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/m-searchengin-js")
+}
+
+
+
+

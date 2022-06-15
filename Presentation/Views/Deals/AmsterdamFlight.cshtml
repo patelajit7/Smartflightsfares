@@ -1,0 +1,70 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+    ViewBag.Title = "Flight to Amsterdam Unpublished Farehub | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+@section headerSection{
+    @*@Styles.Render("~/content/searchengine")*@
+}
+
+<div id="bannerCntr" style="background-image:url(/images/city-banner/amd.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Amsterdam Flight Fare</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Amsterdam </strong> Tourism</h3>
+                        <p>The Netherlands' capital city boasts one of the most relaxed atmospheres of any European metropolis. If you're planning a trip to Amsterdam, know that it will be one of the most memorable experiences of your life. The city offers it everything, from a vibrant nightlife to picnic areas and world-class museums. You'll have a hard time making a decision!</p>
+                        <p>Book your Amsterdam tickets today and get transported to the city where you can go shopping in Jordaan's shops, rent a bike, enjoy a picnic in Vondelpark, cruise around Amsterdam's scenic canals, eat popular street delicacies like herring at herring carts, see Anne Frank's historical home, or do beer tasting at de Gooyer's Brouwerij 'Tij'. There are so many things to do in this city that the list is literally limitless. Amsterdam is a must-see on every European travel agenda!</p>
+                        <p>The canals of the city were dug more than 400 years ago and have more than 1500 bridges erected across them. Confirm your Amsterdam reservations today and get the opportunity to visit the city that has often earned the label of "Venice of the North," despite the fact that the locals proudly declare that the canals here are far cleaner and less stinky than those in Venice. While it's difficult to make the connection, the canals and the vegetation that surrounds them give the city a relaxing, even village-like feel.</p>
+                        <p>Make your Amsterdam reservations today and enjoy Amsterdam's vibrant nightlife. Almost every night of the week, you may find a lively party happening near you. Amsterdam is well-known for hosting some of the world's most famous DJs, as well as its underground culture. If that's not your thing, there are plenty of other band performances to choose from. You may select from a range of bars and clubs on Leidseplein, including the immensely popular Jimmy Woo. Melkweg and Paradiso are two of the most popular destinations for both locals and visitors. The parties in Amsterdam continue on until the early hours of the morning, guaranteeing that you get the once in a lifetime chance to enjoy nightlife like never before.</p>
+                        <p>Experience the The "Red Light District" in Amsterdam, a tiny section in the city's centre with a couple of windows or glass doors through which prostitutes stand and sell their services. There are also several peep shows, sex theatres, , a sex museum, and a variety of other unique establishments. Because prostitution is permitted across the Netherlands, this area of the city is neither sleazy nor frightening. A significant number of visitors can be seen roaming around, the most of them are simply enjoying a stroll around the region, and the area is perfectly secure.</p>
+                        <p>Because of the mild environment year-round and the flat terrain, practically everyone bikes for almost everything, including getting to the office and food shopping. As a visitor, one of the things you have to do before you leave is to rent a bicycle for the duration of your stay - it's the simplest and most enjoyable mode of transportation in Amsterdam.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content-->
+
+    </div>
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+}
+
+
+
+
+

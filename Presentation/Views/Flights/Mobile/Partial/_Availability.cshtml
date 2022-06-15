@@ -1,0 +1,86 @@
+﻿@model Infrastructure.HelpingModel.API.Availability
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+
+@if (Model != null && Model.Contracts != null && Model.Contracts.Count > 0)
+{
+   
+    { Html.RenderPartial("~/views/flights/mobile/partial/_ListingTopTabs.cshtml", Model.Factes); }
+    if (Utility.Settings.IsListingPhoneStripEnable)
+    {
+        Contract minContract = Model.Contracts.FirstOrDefault();
+        { Html.RenderPartial("~/views/flights/mobile/partial/_CallStrip.cshtml", minContract); }
+    }
+    
+
+    <div class="listing" id="containerListing">
+        @{
+            Html.RenderPartial("~/views/flights/mobile/partial/_Contracts.cshtml", Model.Contracts);
+        }
+        @if (Model.Contracts != null && Model.Contracts.Count < 15)
+        {
+            <script>HitMoreResult = false;</script>
+        }
+        else
+        {
+            <script>HitMoreResult = true;</script>
+        }
+    </div>
+
+}
+else
+{
+
+    <!--no results start-->
+    <div class="no_resultsBox">
+
+        <div class="block">
+            <div class="icon"><i class="bi bi-search"></i></div>
+            <p>You can choose from following options Confirm the search criteria you have entered, and try again Enter new search details</p>
+
+
+
+        </div>
+    </div>
+    <!--no results end-->
+
+}
+
+
+
+
+@if (Model != null && Model.Contracts != null && Model.Contracts.Count > 0)
+{
+
+    <script>
+
+
+        $(document).ready(function () {
+                var iDepMin = 0, iDepMax = 0, iArrMin = 0, iArrMax = 0, iDurMin = 0, iDurMax = 0;
+                @if (Model.Factes.TripType == TripType.ROUNDTRIP)
+       {
+            @Html.Raw("iDepMin=" + Model.Factes.InboundDepTime.Min + ";")
+            @Html.Raw("iDepMax=" + Model.Factes.InboundDepTime.Max + ";")
+            @Html.Raw("iArrMin=" + Model.Factes.InboundArrTime.Min + ";")
+            @Html.Raw("iArrMax=" + Model.Factes.InboundArrTime.Max + ";")
+            @Html.Raw("iDurMin=" + Model.Factes.InboundDuration.Min + ";")
+            @Html.Raw("iDurMax=" + Model.Factes.InboundDuration.Max + ";")
+       }
+                contractFilter.setDefaultFilter("@Model.Contracts[0].SearchGuid", 0, 1, parseInt("@((int)Model.Factes.TripType)", 10), parseFloat("@Model.Factes.MinPrice", 10), parseFloat("@Model.Factes.MaxPrice", 10), parseInt("@((int)Model.Factes.OutboundDepTime.Min)", 10), parseInt("@((int)Model.Factes.OutboundDepTime.Max)", 10), parseInt("@((int)Model.Factes.OutboundArrTime.Min)", 10), parseInt("@((int)Model.Factes.OutboundArrTime.Max)", 10), parseInt("@((int)Model.Factes.OutboundDuration.Min)", 10), parseInt("@((int)Model.Factes.OutboundDuration.Max)", 10),
+                       iDepMin, iDepMax, iArrMin, iArrMax, iDurMin, iDurMax);
+            });
+
+            $(document).ready(function () {
+                $("#edit_flt").click(function () {
+                    $("#popFlt").slideDown();
+                });
+                $("#pop_cls_btn").click(function () {
+                    $("#popFlt").slideUp();
+                });
+
+            });
+
+    </script>
+}

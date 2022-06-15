@@ -1,0 +1,88 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+
+<div class="loadingCntr">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="leftCntr">
+                <div class="holder">
+                    <div class="tab-content">
+                        <div class="filterBox">
+                            <h3 class="head">Stops</h3>
+                            <div class="filter-skeleton-content"></div>
+                        </div>
+                        <div class="filterBox">
+                            <h3 class="head">Price</h3>
+                            <div class="filter-skeleton-content"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="filterBox tab-pane fade">
+                            <h3 class="head">Time</h3>
+                            <div class="filter-skeleton-content"></div>
+                        </div>
+                        <div class="filterBox">
+                            <h3 class="head">Airports</h3>
+                            <div class="filter-skeleton-content"></div>
+                        </div>
+                        <div class="filterBox">
+                            <h3 class="head">Airlines</h3>
+                            <div class="filter-skeleton-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightCntr">
+                <div class="resultsBox midResults">
+                    <div class="results-skeleton-content"></div>
+                    <div class="mid__loading">
+                        <div class="loading-icon">
+                            <div class="loading-circle"></div>
+                        </div>
+                        <div class="head text-center">Searching cheapest flights for you</div>
+                        <div class="block text-center">
+                            <div class="left">
+                                <span class="city__code text-end">
+                                    @Model.Origin
+                                    <small>@Utility.GetCityName(Model.Origin)</small>
+                                </span>
+                                <img src="/images/icons/plane-red.svg" class="flight__icon" alt="" />
+                                <span class="city__code  text-start">
+                                    @Model.Destination
+                                    <small>@Utility.GetCityName(@Model.Destination)</small>
+                                </span>
+                            </div>
+                            @if (Model.TripType == TripType.ROUNDTRIP)
+                            {
+                                <div class="right">
+                                    @Model.Departure.ToString("ddd, MMM dd") - @((Model.Return ?? DateTime.Now).ToString("ddd, MMM dd")) @Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="right">
+                                    @Model.Departure.ToString("ddd, MMM dd"), @Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)
+                                </div>
+                            }
+                        </div>
+                        <div class="results-skeleton-content"></div>
+
+                    </div>
+                    <div class="resultsBox midResults">
+                        <div class="results-skeleton-content"></div>
+                        <div class="results-skeleton-content"></div>
+
+                    </div>
+                    <div class="resultsBox midResults">
+                        <div class="results-skeleton-content"></div>
+                        <div class="results-skeleton-content"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

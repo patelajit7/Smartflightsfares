@@ -1,0 +1,47 @@
+﻿@model Infrastructure.HelpingModel.API.ContractFacets
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Common
+@using Infrastructure
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+@if (Model != null && Model.Stops.Count > 0)
+{
+    <div class="apply_filter">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul>
+                    @foreach (KeyValueData item in Model.Stops)
+                    {
+                        <li id="@string.Format("f-{0}",item.Key)" style="display:none;">@item.Value <a href="javascript:void(0)" onclick="contractFilter.removeStopFilter('@string.Format("Stops{0}",item.Key)')"><i class="bi bi-x-circle"></i></a></li>                        
+                    }                    
+                    <li class="clear__all" id="clear__all" style="display:none;"><a href="javascript:void(0)" onclick="contractFilter.resetStops();">Clear all </a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+}
+<div class="sortingTabBox">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="flexi-date">
+                <li class="flights active" onclick="contractFilter.applySetTab(0);">Cheapest <span class="price chgcomplete" default-price="@Model.ActualMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.ActualMinPrice * currencyMaster.CurrencyPrice)</span> </li>
+
+                @if (Model.NearbyMinPrice > 0)
+                {
+                    <li class="NearByAirport" onclick="contractFilter.applySetTab(2);"><a> Nearby AIrport(s) <span class="price chgcomplete" default-price="@Model.NearbyMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.NearbyMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+                @if (Model.AlternameMinPrice > 0)
+                {
+                    <li class="AlternateDates" onclick="contractFilter.applySetTab(3);"><a> Alternate Dates <span class="price chgcomplete" default-price="@Model.AlternameMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.AlternameMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+                @if (Model.ActualMinPrice > 0)
+                {
+                    <li class="ShotestFlight" onclick="contractFilter.applySetTab(1);"><a> Shortest Flight <span class="price chgcomplete" default-price="@Model.ActualMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.ActualMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

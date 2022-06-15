@@ -1,0 +1,142 @@
+﻿@using Common;
+
+<!-- Modal -->
+@*<div class="modal fade homePopup-wrpper" id="flightHomePopup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="homepop-inner">
+                    <span class="commonpop-close" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
+                    <div class="homepop-head">
+                        <h3>Guaranteed <span>Lower Airfare</span></h3>
+                        <p>
+                            Talk to our Travel Expert and <span>Save  Upto 40% </span> on your Flight.
+                            Get Multiple price quotes within minutes.
+                        </p>
+                    </div>
+
+                    <div class="homepop-bestfare">
+                        <h3>get best fare!</h3>
+                        <p>Your Free Quote is One Call Away</p>
+                    </div>
+
+                    <div class="homepop-travelExprt">
+                        <p>Our travel experts might have better deals for you</p>
+
+                        <div class="homepop-calbox">
+                            <div class="homepop-callinggirl">
+                                <img src="~/Images/calling-girl.png" alt="Alternate Text" />
+                            </div>
+                            <div class="homepop-tollfree">
+                                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" >
+                                    <span>
+                                        CALL NOW
+                                    </span>
+                                    <span>
+                                        @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+<div class="modal fade " id="homepagePopup">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header  modal_header_cus">
+                <!--  <h4 class="modal-title">Modal Heading</h4> -->
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="model_body_inner">
+                    <div class="row">
+                        <div class="col-md-5 hide_popup_img">
+                            <div class="img_sec d-flex justify-content-between">
+                                <figure>
+                                    <img src="~/Images/popup_img.jpg" alt="popup image" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12 popup_content_in_phone ">
+                            <div class="content_section text-center">
+                                <h1>Want airfares up to <span class="offer_lower"> $300  lower </span> than online?</h1>
+                                <p>Unpublished rates may save you BIG on this route upto 60% Lower than online. </p>
+                                <h2>Phone Special Fare Deals</h2>
+                                <div class="popup__number">
+                                    <a href="tel: @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber"><img src="https://www.wizfairtravel.com/email_template/animation_call.gif" alt="call"> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                                    <span>Call Us Toll-Free</span>
+                                </div>
+                                <div class="free_inst">
+                                    <h5>Free Instant Quotes Less Than a Minute.</h5>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row trust_p">
+                                <div class="col-md-4 text-right">
+                                    <div class="trust_text text-center">
+                                        <div class="recommended_text">
+                                            <h5>99%  <span>recommended us</span></h5>
+                                        </div>
+                                        <figure class="big_logo">
+                                            <img src="~/Images/rating_logo.png" class="img-fluid rating_trust" width="90" alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 trust__content">
+                                    <p class="">Unpublished Farehub is the Most recommended and best Rated Airline ticket Agency on Trustpilot.</p>
+
+                                </div>
+                            </div>
+                            <div class="review">
+                                <div class="inline__google_review  d-flex justify-content-around justify-content-center ">
+                                    <div class="g">
+                                        <figure class="greview">
+                                            <a href="https://www.google.com/search?q=wizfairtravel+pvt+ltd&amp;rlz=1C1CHBF_enIN831IN832&amp;sxsrf=AOaemvKr8bCNgxbFq_8QY7fnG_wZ73nPZA%3A1630933575341&amp;ei=RxI2YZe2FNrWrAGvl6PgAw&amp;gs_ssp=eJzj4tVP1zc0TMtNM8wxyi4zYLRSNagwtjRIMUxLSzZNS05JNTYztTKoSE0xsDRKMzdLTjU3TExOMfPiL8-sSkvMLFIoKCtRyClJAQDwvxX_&amp;oq=wizfairtravel+&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgDMgQIIxAnMgQIIxAnMgQIIxAnMgsILhCABBDHARCvATIECAAQHjIECAAQHjoHCCMQsAMQJzoHCAAQRxCwA0oECEEYAFDmI1jmI2C_OmgBcAJ4AIABngGIAZ4BkgEDMC4xmAEAoAEByAEIwAEB&amp;sclient=gws-wiz-serp" target="_blank"><img src="~/Images/3.png" alt="google"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="f">
+                                        <figure class="greview">
+                                            <a href="https://www.facebook.com/pg/wizfairtravel/reviews/" target="_blank"><img src="~/Images/4.png" alt="facebook"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="t">
+                                        <figure class="greview">
+                                            <a href="https://www.trustpilot.com/review/wizfairtravel.com" target="_blank"><img src="~/Images/5.png" alt="trustpilot"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="t">
+                                        <figure class="greview">
+                                            <a><img src="~/Images/6.png" alt="bbb"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="t">
+                                        <figure class="greview">
+                                            <a><img src="~/Images/2.png" alt="affirm"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="t">
+                                        <figure class="greview">
+                                            <a><img src="~/Images/arc.png" alt="arc"></a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

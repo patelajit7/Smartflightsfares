@@ -1,0 +1,1533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D711074-F507-4937-9ADA-C4BFF917261C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Presentation</RootNamespace>
+    <AssemblyName>Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\itextsharp\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>..\packages\itextsharp\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.3.2.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.3.2\lib\net461\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AirlinesController.cs" />
+    <Compile Include="Controllers\DealsController.cs" />
+    <Compile Include="Controllers\FlightsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShareUtility.cs" />
+    <Compile Include="Controllers\WebModeController.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CampaignFilter.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MVCHelperExtensionMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="airline-logos\2K.jpg" />
+    <Content Include="airline-logos\3M.jpg" />
+    <Content Include="airline-logos\4O.jpg" />
+    <Content Include="airline-logos\5T.jpg" />
+    <Content Include="airline-logos\7F.jpg" />
+    <Content Include="airline-logos\7H.jpg" />
+    <Content Include="airline-logos\7I.jpg" />
+    <Content Include="airline-logos\9W.jpg" />
+    <Content Include="airline-logos\AA.jpg" />
+    <Content Include="airline-logos\AB.jpg" />
+    <Content Include="airline-logos\AC.jpg" />
+    <Content Include="airline-logos\AF.jpg" />
+    <Content Include="airline-logos\AI.jpg" />
+    <Content Include="airline-logos\AM.jpg" />
+    <Content Include="airline-logos\AR.jpg" />
+    <Content Include="airline-logos\AS.jpg" />
+    <Content Include="airline-logos\AT.jpg" />
+    <Content Include="airline-logos\AV.jpg" />
+    <Content Include="airline-logos\AY.jpg" />
+    <Content Include="airline-logos\AZ.jpg" />
+    <Content Include="airline-logos\B6.jpg" />
+    <Content Include="airline-logos\BA.jpg" />
+    <Content Include="airline-logos\BR.jpg" />
+    <Content Include="airline-logos\BT.jpg" />
+    <Content Include="airline-logos\CA.jpg" />
+    <Content Include="airline-logos\CI.jpg" />
+    <Content Include="airline-logos\CM.jpg" />
+    <Content Include="airline-logos\CX.jpg" />
+    <Content Include="airline-logos\CZ.jpg" />
+    <Content Include="airline-logos\DE.jpg" />
+    <Content Include="airline-logos\DL.jpg" />
+    <Content Include="airline-logos\EI.jpg" />
+    <Content Include="airline-logos\EK.jpg" />
+    <Content Include="airline-logos\ET.jpg" />
+    <Content Include="airline-logos\EY.jpg" />
+    <Content Include="airline-logos\F9.jpg" />
+    <Content Include="airline-logos\FI.jpg" />
+    <Content Include="airline-logos\GF.jpg" />
+    <Content Include="airline-logos\HA.jpg" />
+    <Content Include="airline-logos\HU.jpg" />
+    <Content Include="airline-logos\IB.jpg" />
+    <Content Include="airline-logos\JJ.jpg" />
+    <Content Include="airline-logos\JL.jpg" />
+    <Content Include="airline-logos\JM.jpg" />
+    <Content Include="airline-logos\JP.jpg" />
+    <Content Include="airline-logos\JQ.jpg" />
+    <Content Include="airline-logos\KE.jpg" />
+    <Content Include="airline-logos\KL.jpg" />
+    <Content Include="airline-logos\KS.jpg" />
+    <Content Include="airline-logos\KU.jpg" />
+    <Content Include="airline-logos\KX.jpg" />
+    <Content Include="airline-logos\LA.jpg" />
+    <Content Include="airline-logos\LH.jpg" />
+    <Content Include="airline-logos\LO.jpg" />
+    <Content Include="airline-logos\LX.jpg" />
+    <Content Include="airline-logos\LY.jpg" />
+    <Content Include="airline-logos\MH.jpg" />
+    <Content Include="airline-logos\MS.jpg" />
+    <Content Include="airline-logos\MU.jpg" />
+    <Content Include="airline-logos\NH.jpg" />
+    <Content Include="airline-logos\NK.jpg" />
+    <Content Include="airline-logos\NZ.jpg" />
+    <Content Include="airline-logos\OA.jpg" />
+    <Content Include="airline-logos\OK.jpg" />
+    <Content Include="airline-logos\OS.jpg" />
+    <Content Include="airline-logos\OU.jpg" />
+    <Content Include="airline-logos\OZ.jpg" />
+    <Content Include="airline-logos\PD.jpg" />
+    <Content Include="airline-logos\PR.jpg" />
+    <Content Include="airline-logos\PS.jpg" />
+    <Content Include="airline-logos\PY.jpg" />
+    <Content Include="airline-logos\QF.jpg" />
+    <Content Include="airline-logos\QR.jpg" />
+    <Content Include="airline-logos\RJ.jpg" />
+    <Content Include="airline-logos\RO.jpg" />
+    <Content Include="airline-logos\SA.jpg" />
+    <Content Include="airline-logos\SK.jpg" />
+    <Content Include="airline-logos\SN.jpg" />
+    <Content Include="airline-logos\SQ.jpg" />
+    <Content Include="airline-logos\SS.jpg" />
+    <Content Include="airline-logos\SU.jpg" />
+    <Content Include="airline-logos\SV.jpg" />
+    <Content Include="airline-logos\SY.jpg" />
+    <Content Include="airline-logos\SZ.jpg" />
+    <Content Include="airline-logos\TA.jpg" />
+    <Content Include="airline-logos\TG.jpg" />
+    <Content Include="airline-logos\TK.jpg" />
+    <Content Include="airline-logos\TP.jpg" />
+    <Content Include="airline-logos\UA.jpg" />
+    <Content Include="airline-logos\UX.jpg" />
+    <Content Include="airline-logos\V2.jpg" />
+    <Content Include="airline-logos\VA.jpg" />
+    <Content Include="airline-logos\VN.jpg" />
+    <Content Include="airline-logos\VS.jpg" />
+    <Content Include="airline-logos\VX.jpg" />
+    <Content Include="airline-logos\WP.jpg" />
+    <Content Include="airline-logos\WS.jpg" />
+    <Content Include="Content\ajax-loader.gif" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bt-icons.css" />
+    <Content Include="Content\common.css" />
+    <Content Include="Content\confirmation.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\listing.css" />
+    <Content Include="Content\Mobile\bootstrap.min.css" />
+    <Content Include="Content\Mobile\bt-icons.css" />
+    <Content Include="Content\Mobile\font-awesome.min.css" />
+    <Content Include="Content\Mobile\jquery-ui.css" />
+    <Content Include="Content\Mobile\jquery-ui.min.css" />
+    <Content Include="Content\Mobile\slick-theme.css" />
+    <Content Include="Content\Mobile\site.css" />
+    <Content Include="Content\payment.css" />
+    <Content Include="Content\searchengine.css" />
+    <Content Include="Content\slick-theme.css" />
+    <Content Include="Content\widget.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\site.css" />
+    <Content Include="Configration\Portal.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configration\Settings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Images\air2.png" />
+    <Content Include="Images\airline-banner\aa.jpg" />
+    <Content Include="Images\airline-banner\as.jpg" />
+    <Content Include="Images\airline-banner\b6.jpg" />
+    <Content Include="Images\airline-banner\dl.jpg" />
+    <Content Include="Images\airline-banner\ek.jpg" />
+    <Content Include="Images\airline-banner\m\aa.jpg" />
+    <Content Include="Images\airline-banner\m\as.jpg" />
+    <Content Include="Images\airline-banner\m\b6.jpg" />
+    <Content Include="Images\airline-banner\m\dl.jpg" />
+    <Content Include="Images\airline-banner\m\ek.jpg" />
+    <Content Include="Images\airline-banner\m\ua.jpg" />
+    <Content Include="Images\airline-banner\m\ua.png" />
+    <Content Include="Images\airline-banner\m\wn.jpg" />
+    <Content Include="Images\airline-banner\s\aa.jpg" />
+    <Content Include="Images\airline-banner\s\aa.png" />
+    <Content Include="Images\airline-banner\s\b6.jpg" />
+    <Content Include="Images\airline-banner\s\ca.png" />
+    <Content Include="Images\airline-banner\s\dl.jpg" />
+    <Content Include="Images\airline-banner\s\ey.jpg" />
+    <Content Include="Images\airline-banner\s\klm.png" />
+    <Content Include="Images\airline-banner\s\ua.jpg" />
+    <Content Include="Images\airline-banner\ua.jpg" />
+    <Content Include="Images\airline-banner\ua.png" />
+    <Content Include="Images\airline-banner\wn.jpg" />
+    <Content Include="Images\airlines\aa.png" />
+    <Content Include="Images\airlines\air2.png" />
+    <Content Include="Images\airlines\f9.png" />
+    <Content Include="Images\airlines\lh.png" />
+    <Content Include="Images\airlines\nk.png" />
+    <Content Include="Images\airlines\ua.png" />
+    <Content Include="Images\banners\about-banner.jpg" />
+    <Content Include="Images\banners\about-us.jpg" />
+    <Content Include="Images\banners\contact-banner.jpg" />
+    <Content Include="Images\banners\payment-security.jpg" />
+    <Content Include="Images\banners\privacy.jpg" />
+    <Content Include="Images\banners\terms-cond.jpg" />
+    <Content Include="Images\banners\terms-use.jpg" />
+    <Content Include="Images\call-icon.png" />
+    <Content Include="Images\call-icon12.png" />
+    <Content Include="Images\call.png" />
+    <Content Include="Images\cancel-icon.png" />
+    <Content Include="Images\city-banner\aba.jpg" />
+    <Content Include="Images\city-banner\amd.jpg" />
+    <Content Include="Images\city-banner\bli.jpg" />
+    <Content Include="Images\city-banner\cum.jpg" />
+    <Content Include="Images\city-banner\dui.jpg" />
+    <Content Include="Images\city-banner\ind.jpg" />
+    <Content Include="Images\city-banner\ity.jpg" />
+    <Content Include="Images\city-banner\jpn.jpg" />
+    <Content Include="Images\city-banner\lon.jpg" />
+    <Content Include="Images\city-banner\mia.jpg" />
+    <Content Include="Images\city-banner\m\aba.jpg" />
+    <Content Include="Images\city-banner\m\amd.jpg" />
+    <Content Include="Images\city-banner\m\bli.jpg" />
+    <Content Include="Images\city-banner\m\cum.jpg" />
+    <Content Include="Images\city-banner\m\dui.jpg" />
+    <Content Include="Images\city-banner\m\ind.jpg" />
+    <Content Include="Images\city-banner\m\ity.jpg" />
+    <Content Include="Images\city-banner\m\jpn.jpg" />
+    <Content Include="Images\city-banner\m\lon.jpg" />
+    <Content Include="Images\city-banner\m\mia.jpg" />
+    <Content Include="Images\city-banner\m\spn.jpg" />
+    <Content Include="Images\city-banner\spn.jpg" />
+    <Content Include="Images\clear_field.png" />
+    <Content Include="Images\confirmation-icon.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\filter-load.jpg" />
+    <Content Include="Images\footer\affirm.jpg" />
+    <Content Include="Images\footer\arc.jpg" />
+    <Content Include="Images\footer\asta.jpg" />
+    <Content Include="Images\footer\bbb.jpg" />
+    <Content Include="Images\footer\card-icon.jpg" />
+    <Content Include="Images\footer\card-icon.png" />
+    <Content Include="Images\footer\trust.jpg" />
+    <Content Include="Images\footer\trustpilot-logo.png" />
+    <Content Include="Images\godady.png" />
+    <Content Include="Images\google.jpg" />
+    <Content Include="Images\google.png" />
+    <Content Include="Images\google_comment.png" />
+    <Content Include="Images\home-banner.jpg" />
+    <Content Include="Images\home\about-image.jpg" />
+    <Content Include="Images\home\amsterdam.png" />
+    <Content Include="Images\home\aruba.jpg" />
+    <Content Include="Images\home\bali.jpg" />
+    <Content Include="Images\home\bali.png" />
+    <Content Include="Images\home\dubai.jpg" />
+    <Content Include="Images\home\dubai.png" />
+    <Content Include="Images\home\india.jpg" />
+    <Content Include="Images\home\lax.jpg" />
+    <Content Include="Images\home\london.jpg" />
+    <Content Include="Images\home\london.png" />
+    <Content Include="Images\home\MIA.jpg" />
+    <Content Include="Images\home\new-york-city.jpg" />
+    <Content Include="Images\home\NYC.jpg" />
+    <Content Include="Images\home\rome.jpg" />
+    <Content Include="Images\home\SFO.jpg" />
+    <Content Include="Images\icons\afternoon-hover.svg" />
+    <Content Include="Images\icons\afternoon.svg" />
+    <Content Include="Images\icons\baggage.svg" />
+    <Content Include="Images\icons\best-price.svg" />
+    <Content Include="Images\icons\booking.svg" />
+    <Content Include="Images\icons\Booking_canceled.svg" />
+    <Content Include="Images\icons\booking_confirmed.svg" />
+    <Content Include="Images\icons\Booking_pending.svg" />
+    <Content Include="Images\icons\check.png" />
+    <Content Include="Images\icons\early_morning-hover.svg" />
+    <Content Include="Images\icons\early_morning.svg" />
+    <Content Include="Images\icons\evening-hover.svg" />
+    <Content Include="Images\icons\evening.svg" />
+    <Content Include="Images\icons\flight.svg" />
+    <Content Include="Images\icons\flights-blue.svg" />
+    <Content Include="Images\icons\flights-dark.svg" />
+    <Content Include="Images\icons\flights-white.svg" />
+    <Content Include="Images\icons\location.svg" />
+    <Content Include="Images\icons\long-arrow.svg" />
+    <Content Include="Images\icons\menu.svg" />
+    <Content Include="Images\icons\morning-hover.svg" />
+    <Content Include="Images\icons\morning.svg" />
+    <Content Include="Images\icons\multi-airlines.png" />
+    <Content Include="Images\icons\no-results.svg" />
+    <Content Include="Images\icons\plane-red.svg" />
+    <Content Include="Images\icons\plane.svg" />
+    <Content Include="Images\icons\plane2.svg" />
+    <Content Include="Images\icons\right-arrow-blue.svg" />
+    <Content Include="Images\icons\right-arrow.svg" />
+    <Content Include="Images\icons\secure.svg" />
+    <Content Include="Images\icons\session-expire.svg" />
+    <Content Include="Images\icons\support.svg" />
+    <Content Include="Images\layover-image.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\mobile-banner.jpg" />
+    <Content Include="Images\Mobile\airlines\aa.png" />
+    <Content Include="Images\Mobile\airlines\ac.png" />
+    <Content Include="Images\Mobile\airlines\air2.png" />
+    <Content Include="Images\Mobile\airlines\am.png" />
+    <Content Include="Images\Mobile\airlines\as.png" />
+    <Content Include="Images\Mobile\airlines\b6.png" />
+    <Content Include="Images\Mobile\airlines\dl.png" />
+    <Content Include="Images\Mobile\airlines\ek.png" />
+    <Content Include="Images\Mobile\airlines\ey.png" />
+    <Content Include="Images\Mobile\airlines\kl.png" />
+    <Content Include="Images\Mobile\airlines\lh.png" />
+    <Content Include="Images\Mobile\airlines\lx.png" />
+    <Content Include="Images\Mobile\airlines\qr.png" />
+    <Content Include="Images\Mobile\airlines\tk.png" />
+    <Content Include="Images\Mobile\airlines\ua.png" />
+    <Content Include="Images\Mobile\airlines\wn.png" />
+    <Content Include="Images\Mobile\flight.png" />
+    <Content Include="Images\Mobile\footer\card-icon.png" />
+    <Content Include="Images\Mobile\footer\trustpilot-logo.png" />
+    <Content Include="Images\Mobile\godady.png" />
+    <Content Include="Images\Mobile\home\MIA.jpg" />
+    <Content Include="Images\Mobile\home\NYC.jpg" />
+    <Content Include="Images\Mobile\home\rome.jpg" />
+    <Content Include="Images\Mobile\home\SFO.jpg" />
+    <Content Include="Images\Mobile\icons\best-price.svg" />
+    <Content Include="Images\Mobile\icons\booking.svg" />
+    <Content Include="Images\Mobile\icons\Booking_canceled.svg" />
+    <Content Include="Images\Mobile\icons\booking_confirmed.svg" />
+    <Content Include="Images\Mobile\icons\Booking_pending.svg" />
+    <Content Include="Images\Mobile\icons\flights-white.svg" />
+    <Content Include="Images\Mobile\icons\location.svg" />
+    <Content Include="Images\Mobile\icons\long-arrow.svg" />
+    <Content Include="Images\Mobile\icons\menu.svg" />
+    <Content Include="Images\Mobile\icons\plane-red.svg" />
+    <Content Include="Images\Mobile\icons\plane.svg" />
+    <Content Include="Images\Mobile\icons\plane2.svg" />
+    <Content Include="Images\Mobile\icons\right-arrow-blue.svg" />
+    <Content Include="Images\Mobile\icons\secure.svg" />
+    <Content Include="Images\Mobile\icons\session-expire.svg" />
+    <Content Include="Images\Mobile\icons\support.svg" />
+    <Content Include="Images\Mobile\logo.png" />
+    <Content Include="Images\Mobile\mobile-banner.jpg" />
+    <Content Include="Images\Mobile\payment\card.png" />
+    <Content Include="Images\Mobile\sprite1.png" />
+    <Content Include="Images\Mobile\trustpilot-logo.png" />
+    <Content Include="Images\multi-air.png" />
+    <Content Include="Images\multi-airlines.png" />
+    <Content Include="Images\payment\american.png" />
+    <Content Include="Images\payment\card.png" />
+    <Content Include="Images\payment\discover.png" />
+    <Content Include="Images\payment\master.png" />
+    <Content Include="Images\payment\visa.png" />
+    <Content Include="Images\results-load.jpg" />
+    <Content Include="Images\sprite.png" />
+    <Content Include="Images\stars.png" />
+    <Content Include="Images\trustpilot-logo.png" />
+    <Content Include="Images\trust\ratingReview.png" />
+    <Content Include="Images\trust\stars-4.5.svg" />
+    <Content Include="Images\trust\stars-5.svg" />
+    <Content Include="Images\trust\tp-logo-white.png" />
+    <Content Include="Images\trust\tp-logo.png" />
+    <Content Include="Images\trust\trip_rating.png" />
+    <Content Include="Images\ua.png" />
+    <Content Include="Images\user-icon.jpg" />
+    <Content Include="Images\watch.png" />
+    <Content Include="Images\yellow-star.png" />
+    <Content Include="logos\0B.gif" />
+    <Content Include="logos\1X.gif" />
+    <Content Include="logos\2D.gif" />
+    <Content Include="logos\2F.gif" />
+    <Content Include="logos\2H.gif" />
+    <Content Include="logos\2I.gif" />
+    <Content Include="logos\2J.gif" />
+    <Content Include="logos\2K.gif" />
+    <Content Include="logos\2L.gif" />
+    <Content Include="logos\2M.gif" />
+    <Content Include="logos\2R.gif" />
+    <Content Include="logos\2S.gif" />
+    <Content Include="logos\2V.gif" />
+    <Content Include="logos\2W.gif" />
+    <Content Include="logos\2Y.gif" />
+    <Content Include="logos\2Z.gif" />
+    <Content Include="logos\3B.gif" />
+    <Content Include="logos\3C.gif" />
+    <Content Include="logos\3D.gif" />
+    <Content Include="logos\3E.gif" />
+    <Content Include="logos\3F.gif" />
+    <Content Include="logos\3G.gif" />
+    <Content Include="logos\3H.gif" />
+    <Content Include="logos\3K.gif" />
+    <Content Include="logos\3L.gif" />
+    <Content Include="logos\3M.gif" />
+    <Content Include="logos\3N.gif" />
+    <Content Include="logos\3P.gif" />
+    <Content Include="logos\3Q.gif" />
+    <Content Include="logos\3R.gif" />
+    <Content Include="logos\3T.gif" />
+    <Content Include="logos\3U.gif" />
+    <Content Include="logos\3V.gif" />
+    <Content Include="logos\3X.gif" />
+    <Content Include="logos\3Z.gif" />
+    <Content Include="logos\4B.gif" />
+    <Content Include="logos\4C.gif" />
+    <Content Include="logos\4D.gif" />
+    <Content Include="logos\4E.gif" />
+    <Content Include="logos\4F.gif" />
+    <Content Include="logos\4G.gif" />
+    <Content Include="logos\4H.gif" />
+    <Content Include="logos\4K.gif" />
+    <Content Include="logos\4M.gif" />
+    <Content Include="logos\4N.gif" />
+    <Content Include="logos\4O.gif" />
+    <Content Include="logos\4P.gif" />
+    <Content Include="logos\4Q.gif" />
+    <Content Include="logos\4U.gif" />
+    <Content Include="logos\4V.gif" />
+    <Content Include="logos\4W.gif" />
+    <Content Include="logos\4Z.gif" />
+    <Content Include="logos\5C.gif" />
+    <Content Include="logos\5D.gif" />
+    <Content Include="logos\5E.gif" />
+    <Content Include="logos\5J.gif" />
+    <Content Include="logos\5K.gif" />
+    <Content Include="logos\5L.gif" />
+    <Content Include="logos\5N.gif" />
+    <Content Include="logos\5Q.gif" />
+    <Content Include="logos\5T.gif" />
+    <Content Include="logos\5V.gif" />
+    <Content Include="logos\5W.gif" />
+    <Content Include="logos\5X.gif" />
+    <Content Include="logos\5Y.gif" />
+    <Content Include="logos\6A.gif" />
+    <Content Include="logos\6C.gif" />
+    <Content Include="logos\6E.gif" />
+    <Content Include="logos\6G.gif" />
+    <Content Include="logos\6H.gif" />
+    <Content Include="logos\6K.gif" />
+    <Content Include="logos\6L.gif" />
+    <Content Include="logos\6N.gif" />
+    <Content Include="logos\6Q.gif" />
+    <Content Include="logos\6T.gif" />
+    <Content Include="logos\6U.gif" />
+    <Content Include="logos\6W.gif" />
+    <Content Include="logos\7B.gif" />
+    <Content Include="logos\7D.gif" />
+    <Content Include="logos\7E.gif" />
+    <Content Include="logos\7F.gif" />
+    <Content Include="logos\7G.gif" />
+    <Content Include="logos\7H.gif" />
+    <Content Include="logos\7I.gif" />
+    <Content Include="logos\7K.gif" />
+    <Content Include="logos\7L.gif" />
+    <Content Include="logos\7M.gif" />
+    <Content Include="logos\7N.gif" />
+    <Content Include="logos\7Y.gif" />
+    <Content Include="logos\8A.gif" />
+    <Content Include="logos\8B.gif" />
+    <Content Include="logos\8D.gif" />
+    <Content Include="logos\8E.gif" />
+    <Content Include="logos\8F.gif" />
+    <Content Include="logos\8G.gif" />
+    <Content Include="logos\8H.gif" />
+    <Content Include="logos\8I.gif" />
+    <Content Include="logos\8J.gif" />
+    <Content Include="logos\8M.gif" />
+    <Content Include="logos\8O.gif" />
+    <Content Include="logos\8P.gif" />
+    <Content Include="logos\8Q.gif" />
+    <Content Include="logos\8T.gif" />
+    <Content Include="logos\8U.gif" />
+    <Content Include="logos\8V.gif" />
+    <Content Include="logos\8Y.gif" />
+    <Content Include="logos\8Z.gif" />
+    <Content Include="logos\9B.gif" />
+    <Content Include="logos\9C.gif" />
+    <Content Include="logos\9E.gif" />
+    <Content Include="logos\9F.gif" />
+    <Content Include="logos\9G.gif" />
+    <Content Include="logos\9H.gif" />
+    <Content Include="logos\9J.gif" />
+    <Content Include="logos\9K.gif" />
+    <Content Include="logos\9L.gif" />
+    <Content Include="logos\9M.gif" />
+    <Content Include="logos\9N.gif" />
+    <Content Include="logos\9P.gif" />
+    <Content Include="logos\9S.gif" />
+    <Content Include="logos\9T.gif" />
+    <Content Include="logos\9U.gif" />
+    <Content Include="logos\9V.gif" />
+    <Content Include="logos\9W.gif" />
+    <Content Include="logos\9X.gif" />
+    <Content Include="logos\9Y.gif" />
+    <Content Include="logos\A0.gif" />
+    <Content Include="logos\A3.gif" />
+    <Content Include="logos\A4.gif" />
+    <Content Include="logos\A5.gif" />
+    <Content Include="logos\A6.gif" />
+    <Content Include="logos\A7.gif" />
+    <Content Include="logos\A9.gif" />
+    <Content Include="logos\AA.gif" />
+    <Content Include="logos\AB.gif" />
+    <Content Include="logos\AC.gif" />
+    <Content Include="logos\AD.gif" />
+    <Content Include="logos\AE.gif" />
+    <Content Include="logos\AF.gif" />
+    <Content Include="logos\AG.gif" />
+    <Content Include="logos\AH.gif" />
+    <Content Include="logos\AI.gif" />
+    <Content Include="logos\AK.gif" />
+    <Content Include="logos\AL.gif" />
+    <Content Include="logos\AM.gif" />
+    <Content Include="logos\AN.gif" />
+    <Content Include="logos\AO.gif" />
+    <Content Include="logos\AP.gif" />
+    <Content Include="logos\AQ.gif" />
+    <Content Include="logos\AR.gif" />
+    <Content Include="logos\AS.gif" />
+    <Content Include="logos\AT.gif" />
+    <Content Include="logos\AU.gif" />
+    <Content Include="logos\AV.gif" />
+    <Content Include="logos\AX.gif" />
+    <Content Include="logos\AY.gif" />
+    <Content Include="logos\AZ.gif" />
+    <Content Include="logos\B0.gif" />
+    <Content Include="logos\B2.gif" />
+    <Content Include="logos\B3.gif" />
+    <Content Include="logos\B4.gif" />
+    <Content Include="logos\B5.gif" />
+    <Content Include="logos\B6.gif" />
+    <Content Include="logos\B7.gif" />
+    <Content Include="logos\B9.gif" />
+    <Content Include="logos\BA.gif" />
+    <Content Include="logos\BB.gif" />
+    <Content Include="logos\BC.gif" />
+    <Content Include="logos\BD.gif" />
+    <Content Include="logos\BE.gif" />
+    <Content Include="logos\BF.gif" />
+    <Content Include="logos\BG.gif" />
+    <Content Include="logos\BH.gif" />
+    <Content Include="logos\BI.gif" />
+    <Content Include="logos\BJ.gif" />
+    <Content Include="logos\BL.gif" />
+    <Content Include="logos\BM.gif" />
+    <Content Include="logos\BO.gif" />
+    <Content Include="logos\BP.gif" />
+    <Content Include="logos\BR.gif" />
+    <Content Include="logos\BT.gif" />
+    <Content Include="logos\BU.gif" />
+    <Content Include="logos\BV.gif" />
+    <Content Include="logos\BW.gif" />
+    <Content Include="logos\BZ.gif" />
+    <Content Include="logos\C3.gif" />
+    <Content Include="logos\C5.gif" />
+    <Content Include="logos\C6.gif" />
+    <Content Include="logos\C7.gif" />
+    <Content Include="logos\C8.gif" />
+    <Content Include="logos\C9.gif" />
+    <Content Include="logos\CA.gif" />
+    <Content Include="logos\call-us.png" />
+    <Content Include="logos\CB.gif" />
+    <Content Include="logos\CC.gif" />
+    <Content Include="logos\CD.gif" />
+    <Content Include="logos\CE.gif" />
+    <Content Include="logos\CF.gif" />
+    <Content Include="logos\CH.gif" />
+    <Content Include="logos\CI.gif" />
+    <Content Include="logos\CJ.gif" />
+    <Content Include="logos\CK.gif" />
+    <Content Include="logos\CL.gif" />
+    <Content Include="logos\CM.gif" />
+    <Content Include="logos\CN.gif" />
+    <Content Include="logos\CO.gif" />
+    <Content Include="logos\CP.gif" />
+    <Content Include="logos\CS.gif" />
+    <Content Include="logos\CU.gif" />
+    <Content Include="logos\CV.gif" />
+    <Content Include="logos\CW.gif" />
+    <Content Include="logos\CX.gif" />
+    <Content Include="logos\CY.gif" />
+    <Content Include="logos\CZ.gif" />
+    <Content Include="logos\D2.gif" />
+    <Content Include="logos\D3.gif" />
+    <Content Include="logos\D4.gif" />
+    <Content Include="logos\D6.gif" />
+    <Content Include="logos\D7.gif" />
+    <Content Include="logos\D8.gif" />
+    <Content Include="logos\D9.gif" />
+    <Content Include="logos\DE.gif" />
+    <Content Include="logos\DF.gif" />
+    <Content Include="logos\DG.gif" />
+    <Content Include="logos\DH.gif" />
+    <Content Include="logos\DI.gif" />
+    <Content Include="logos\DJ.gif" />
+    <Content Include="logos\DL.gif" />
+    <Content Include="logos\DM.gif" />
+    <Content Include="logos\DN.gif" />
+    <Content Include="logos\DO.gif" />
+    <Content Include="logos\DR.gif" />
+    <Content Include="logos\DT.gif" />
+    <Content Include="logos\DU.gif" />
+    <Content Include="logos\DX.gif" />
+    <Content Include="logos\DY.gif" />
+    <Content Include="logos\E3.gif" />
+    <Content Include="logos\E4.gif" />
+    <Content Include="logos\E5.gif" />
+    <Content Include="logos\E8.gif" />
+    <Content Include="logos\EA.gif" />
+    <Content Include="logos\EB.gif" />
+    <Content Include="logos\EC.gif" />
+    <Content Include="logos\ED.gif" />
+    <Content Include="logos\EF.gif" />
+    <Content Include="logos\EG.gif" />
+    <Content Include="logos\EI.gif" />
+    <Content Include="logos\EJ.gif" />
+    <Content Include="logos\EK.gif" />
+    <Content Include="logos\EL.gif" />
+    <Content Include="logos\EM.gif" />
+    <Content Include="logos\EN.gif" />
+    <Content Include="logos\EP.gif" />
+    <Content Include="logos\EQ.gif" />
+    <Content Include="logos\ET.gif" />
+    <Content Include="logos\EU.gif" />
+    <Content Include="logos\EV.gif" />
+    <Content Include="logos\EW.gif" />
+    <Content Include="logos\EX.gif" />
+    <Content Include="logos\EY.gif" />
+    <Content Include="logos\EZ.gif" />
+    <Content Include="logos\F5.gif" />
+    <Content Include="logos\F6.gif" />
+    <Content Include="logos\F7.gif" />
+    <Content Include="logos\F9.gif" />
+    <Content Include="logos\FA.gif" />
+    <Content Include="logos\FB.gif" />
+    <Content Include="logos\FD.gif" />
+    <Content Include="logos\FE.gif" />
+    <Content Include="logos\FH.gif" />
+    <Content Include="logos\FI.gif" />
+    <Content Include="logos\FJ.gif" />
+    <Content Include="logos\FK.gif" />
+    <Content Include="logos\FL.gif" />
+    <Content Include="logos\FM.gif" />
+    <Content Include="logos\FN.gif" />
+    <Content Include="logos\FR.gif" />
+    <Content Include="logos\FU.gif" />
+    <Content Include="logos\FV.gif" />
+    <Content Include="logos\FX.gif" />
+    <Content Include="logos\FY.gif" />
+    <Content Include="logos\FZ.gif" />
+    <Content Include="logos\G3.gif" />
+    <Content Include="logos\G4.gif" />
+    <Content Include="logos\G5.gif" />
+    <Content Include="logos\G7.gif" />
+    <Content Include="logos\G8.gif" />
+    <Content Include="logos\G9.gif" />
+    <Content Include="logos\GA.gif" />
+    <Content Include="logos\GC.gif" />
+    <Content Include="logos\GE.gif" />
+    <Content Include="logos\GF.gif" />
+    <Content Include="logos\GG.gif" />
+    <Content Include="logos\GH.gif" />
+    <Content Include="logos\GJ.gif" />
+    <Content Include="logos\GK.gif" />
+    <Content Include="logos\GL.gif" />
+    <Content Include="logos\GM.gif" />
+    <Content Include="logos\GN.gif" />
+    <Content Include="logos\GO.gif" />
+    <Content Include="logos\GQ.gif" />
+    <Content Include="logos\GR.gif" />
+    <Content Include="logos\GS.gif" />
+    <Content Include="logos\GT.gif" />
+    <Content Include="logos\GU.gif" />
+    <Content Include="logos\GW.gif" />
+    <Content Include="logos\GX.gif" />
+    <Content Include="logos\GY.gif" />
+    <Content Include="logos\GZ.gif" />
+    <Content Include="logos\H1.gif" />
+    <Content Include="logos\H2.gif" />
+    <Content Include="logos\H3.gif" />
+    <Content Include="logos\H4.gif" />
+    <Content Include="logos\H6.gif" />
+    <Content Include="logos\H9.gif" />
+    <Content Include="logos\HA.gif" />
+    <Content Include="logos\HB.gif" />
+    <Content Include="logos\HC.gif" />
+    <Content Include="logos\HD.gif" />
+    <Content Include="logos\HE.gif" />
+    <Content Include="logos\HG.gif" />
+    <Content Include="logos\HH.gif" />
+    <Content Include="logos\HI.gif" />
+    <Content Include="logos\HJ.gif" />
+    <Content Include="logos\HK.gif" />
+    <Content Include="logos\HM.gif" />
+    <Content Include="logos\HN.gif" />
+    <Content Include="logos\HO.gif" />
+    <Content Include="logos\HP.gif" />
+    <Content Include="logos\HQ.gif" />
+    <Content Include="logos\HR.gif" />
+    <Content Include="logos\HS.gif" />
+    <Content Include="logos\HT.gif" />
+    <Content Include="logos\HU.gif" />
+    <Content Include="logos\HV.gif" />
+    <Content Include="logos\HW.gif" />
+    <Content Include="logos\HX.gif" />
+    <Content Include="logos\HY.gif" />
+    <Content Include="logos\HZ.gif" />
+    <Content Include="logos\I2.gif" />
+    <Content Include="logos\I5.gif" />
+    <Content Include="logos\I7.gif" />
+    <Content Include="logos\I9.gif" />
+    <Content Include="logos\IA.gif" />
+    <Content Include="logos\IB.gif" />
+    <Content Include="logos\IC.gif" />
+    <Content Include="logos\IE.gif" />
+    <Content Include="logos\IG.gif" />
+    <Content Include="logos\IH.gif" />
+    <Content Include="logos\IJ.gif" />
+    <Content Include="logos\IK.gif" />
+    <Content Include="logos\IN.gif" />
+    <Content Include="logos\IP.gif" />
+    <Content Include="logos\IQ.gif" />
+    <Content Include="logos\IR.gif" />
+    <Content Include="logos\IS.gif" />
+    <Content Include="logos\IT.gif" />
+    <Content Include="logos\IV.gif" />
+    <Content Include="logos\IW.gif" />
+    <Content Include="logos\IX.gif" />
+    <Content Include="logos\IY.gif" />
+    <Content Include="logos\IZ.gif" />
+    <Content Include="logos\J2.gif" />
+    <Content Include="logos\J3.gif" />
+    <Content Include="logos\J4.gif" />
+    <Content Include="logos\J6.gif" />
+    <Content Include="logos\J8.gif" />
+    <Content Include="logos\J9.gif" />
+    <Content Include="logos\JA.gif" />
+    <Content Include="logos\JB.gif" />
+    <Content Include="logos\JC.gif" />
+    <Content Include="logos\JE.gif" />
+    <Content Include="logos\JI.gif" />
+    <Content Include="logos\JJ.gif" />
+    <Content Include="logos\JK.gif" />
+    <Content Include="logos\JL.gif" />
+    <Content Include="logos\JM.gif" />
+    <Content Include="logos\JN.gif" />
+    <Content Include="logos\JO.gif" />
+    <Content Include="logos\JP.gif" />
+    <Content Include="logos\JQ.gif" />
+    <Content Include="logos\JS.gif" />
+    <Content Include="logos\JT.gif" />
+    <Content Include="logos\JU.gif" />
+    <Content Include="logos\JV.gif" />
+    <Content Include="logos\JW.gif" />
+    <Content Include="logos\JY.gif" />
+    <Content Include="logos\JZ.gif" />
+    <Content Include="logos\K3.gif" />
+    <Content Include="logos\K5.gif" />
+    <Content Include="logos\K6.gif" />
+    <Content Include="logos\K9.gif" />
+    <Content Include="logos\KA.gif" />
+    <Content Include="logos\KB.gif" />
+    <Content Include="logos\KC.gif" />
+    <Content Include="logos\KE.gif" />
+    <Content Include="logos\KF.gif" />
+    <Content Include="logos\KH.gif" />
+    <Content Include="logos\KI.gif" />
+    <Content Include="logos\KJ.gif" />
+    <Content Include="logos\KK.gif" />
+    <Content Include="logos\KL.gif" />
+    <Content Include="logos\KM.gif" />
+    <Content Include="logos\KO.gif" />
+    <Content Include="logos\KP.gif" />
+    <Content Include="logos\KQ.gif" />
+    <Content Include="logos\KS.gif" />
+    <Content Include="logos\KU.gif" />
+    <Content Include="logos\KV.gif" />
+    <Content Include="logos\KX.gif" />
+    <Content Include="logos\L2.gif" />
+    <Content Include="logos\L4.gif" />
+    <Content Include="logos\L5.gif" />
+    <Content Include="logos\L6.gif" />
+    <Content Include="logos\LA.gif" />
+    <Content Include="logos\LC.gif" />
+    <Content Include="logos\LD.gif" />
+    <Content Include="logos\LE.gif" />
+    <Content Include="logos\LF.gif" />
+    <Content Include="logos\LG.gif" />
+    <Content Include="logos\LH.gif" />
+    <Content Include="logos\LI.gif" />
+    <Content Include="logos\LJ.gif" />
+    <Content Include="logos\LK.gif" />
+    <Content Include="logos\LL.gif" />
+    <Content Include="logos\LM.gif" />
+    <Content Include="logos\LN.gif" />
+    <Content Include="logos\LO.gif" />
+    <Content Include="logos\LP.gif" />
+    <Content Include="logos\LR.gif" />
+    <Content Include="logos\LS.gif" />
+    <Content Include="logos\LT.gif" />
+    <Content Include="logos\LV.gif" />
+    <Content Include="logos\LW.gif" />
+    <Content Include="logos\LX.gif" />
+    <Content Include="logos\LY.gif" />
+    <Content Include="logos\LZ.gif" />
+    <Content Include="logos\M5.gif" />
+    <Content Include="logos\M9.gif" />
+    <Content Include="logos\MA.gif" />
+    <Content Include="logos\MD.gif" />
+    <Content Include="logos\ME.gif" />
+    <Content Include="logos\MF.gif" />
+    <Content Include="logos\MG.gif" />
+    <Content Include="logos\MH.gif" />
+    <Content Include="logos\MI.gif" />
+    <Content Include="logos\MK.gif" />
+    <Content Include="logos\ML.gif" />
+    <Content Include="logos\MN.gif" />
+    <Content Include="logos\MO.gif" />
+    <Content Include="logos\MP.gif" />
+    <Content Include="logos\MQ.gif" />
+    <Content Include="logos\MR.gif" />
+    <Content Include="logos\MS.gif" />
+    <Content Include="logos\MT.gif" />
+    <Content Include="logos\MU.gif" />
+    <Content Include="logos\MW.gif" />
+    <Content Include="logos\MX.gif" />
+    <Content Include="logos\MY.gif" />
+    <Content Include="logos\N4.gif" />
+    <Content Include="logos\N6.gif" />
+    <Content Include="logos\N7.gif" />
+    <Content Include="logos\N8.gif" />
+    <Content Include="logos\N9.gif" />
+    <Content Include="logos\NA.gif" />
+    <Content Include="logos\NB.gif" />
+    <Content Include="logos\NC.gif" />
+    <Content Include="logos\ND.gif" />
+    <Content Include="logos\NE.gif" />
+    <Content Include="logos\NF.gif" />
+    <Content Include="logos\NG.gif" />
+    <Content Include="logos\NH.gif" />
+    <Content Include="logos\NI.gif" />
+    <Content Include="logos\NK.gif" />
+    <Content Include="logos\NL.gif" />
+    <Content Include="logos\NP.gif" />
+    <Content Include="logos\NQ.gif" />
+    <Content Include="logos\NT.gif" />
+    <Content Include="logos\NU.gif" />
+    <Content Include="logos\NV.gif" />
+    <Content Include="logos\NW.gif" />
+    <Content Include="logos\NX.gif" />
+    <Content Include="logos\NY.gif" />
+    <Content Include="logos\NZ.gif" />
+    <Content Include="logos\O6.gif" />
+    <Content Include="logos\OA.gif" />
+    <Content Include="logos\OB.gif" />
+    <Content Include="logos\OD.gif" />
+    <Content Include="logos\OH.gif" />
+    <Content Include="logos\OI.gif" />
+    <Content Include="logos\OK.gif" />
+    <Content Include="logos\OL.gif" />
+    <Content Include="logos\OM.gif" />
+    <Content Include="logos\OP.gif" />
+    <Content Include="logos\OQ.gif" />
+    <Content Include="logos\OR.gif" />
+    <Content Include="logos\OS.gif" />
+    <Content Include="logos\OU.gif" />
+    <Content Include="logos\OV.gif" />
+    <Content Include="logos\OW.gif" />
+    <Content Include="logos\OY.gif" />
+    <Content Include="logos\OZ.gif" />
+    <Content Include="logos\P0.gif" />
+    <Content Include="logos\P1.gif" />
+    <Content Include="logos\P4.gif" />
+    <Content Include="logos\P5.gif" />
+    <Content Include="logos\P6.gif" />
+    <Content Include="logos\P7.gif" />
+    <Content Include="logos\P8.gif" />
+    <Content Include="logos\P9.gif" />
+    <Content Include="logos\PB.gif" />
+    <Content Include="logos\PC.gif" />
+    <Content Include="logos\PD.gif" />
+    <Content Include="logos\PF.gif" />
+    <Content Include="logos\PG.gif" />
+    <Content Include="logos\PH.gif" />
+    <Content Include="logos\PK.gif" />
+    <Content Include="logos\PM.gif" />
+    <Content Include="logos\PN.gif" />
+    <Content Include="logos\PR.gif" />
+    <Content Include="logos\PS.gif" />
+    <Content Include="logos\PT.gif" />
+    <Content Include="logos\PU.gif" />
+    <Content Include="logos\PV.gif" />
+    <Content Include="logos\PW.gif" />
+    <Content Include="logos\PX.gif" />
+    <Content Include="logos\PY.gif" />
+    <Content Include="logos\PZ.gif" />
+    <Content Include="logos\Q2.gif" />
+    <Content Include="logos\Q3.gif" />
+    <Content Include="logos\Q5.gif" />
+    <Content Include="logos\Q7.gif" />
+    <Content Include="logos\QA.gif" />
+    <Content Include="logos\QC.gif" />
+    <Content Include="logos\QF.gif" />
+    <Content Include="logos\QG.gif" />
+    <Content Include="logos\QI.gif" />
+    <Content Include="logos\QJ.gif" />
+    <Content Include="logos\QK.gif" />
+    <Content Include="logos\QM.gif" />
+    <Content Include="logos\QQ.gif" />
+    <Content Include="logos\QR.gif" />
+    <Content Include="logos\QS.gif" />
+    <Content Include="logos\QT.gif" />
+    <Content Include="logos\QU.gif" />
+    <Content Include="logos\QV.gif" />
+    <Content Include="logos\QW.gif" />
+    <Content Include="logos\QX.gif" />
+    <Content Include="logos\QY.gif" />
+    <Content Include="logos\QZ.gif" />
+    <Content Include="logos\R2.gif" />
+    <Content Include="logos\R3.gif" />
+    <Content Include="logos\R5.gif" />
+    <Content Include="logos\R6.gif" />
+    <Content Include="logos\R7.gif" />
+    <Content Include="logos\RA.gif" />
+    <Content Include="logos\RB.gif" />
+    <Content Include="logos\RC.gif" />
+    <Content Include="logos\RD.gif" />
+    <Content Include="logos\RE.gif" />
+    <Content Include="logos\RG.gif" />
+    <Content Include="logos\RI.gif" />
+    <Content Include="logos\RJ.gif" />
+    <Content Include="logos\RK.gif" />
+    <Content Include="logos\RM.gif" />
+    <Content Include="logos\RO.gif" />
+    <Content Include="logos\RP.gif" />
+    <Content Include="logos\RQ.gif" />
+    <Content Include="logos\RR.gif" />
+    <Content Include="logos\RU.gif" />
+    <Content Include="logos\RV.gif" />
+    <Content Include="logos\RZ.gif" />
+    <Content Include="logos\S2.gif" />
+    <Content Include="logos\S3.gif" />
+    <Content Include="logos\S4.gif" />
+    <Content Include="logos\S5.gif" />
+    <Content Include="logos\S7.gif" />
+    <Content Include="logos\S8.gif" />
+    <Content Include="logos\SA.gif" />
+    <Content Include="logos\SB.gif" />
+    <Content Include="logos\SC.gif" />
+    <Content Include="logos\SD.gif" />
+    <Content Include="logos\SE.gif" />
+    <Content Include="logos\SF.gif" />
+    <Content Include="logos\SG.gif" />
+    <Content Include="logos\SI.gif" />
+    <Content Include="logos\SK.gif" />
+    <Content Include="logos\SM.gif" />
+    <Content Include="logos\SN.gif" />
+    <Content Include="logos\SP.gif" />
+    <Content Include="logos\SQ.gif" />
+    <Content Include="logos\SR.gif" />
+    <Content Include="logos\SS.gif" />
+    <Content Include="logos\ST.gif" />
+    <Content Include="logos\SU.gif" />
+    <Content Include="logos\SV.gif" />
+    <Content Include="logos\SW.gif" />
+    <Content Include="logos\SX.gif" />
+    <Content Include="logos\SY.gif" />
+    <Content Include="logos\SZ.gif" />
+    <Content Include="logos\T2.gif" />
+    <Content Include="logos\T3.gif" />
+    <Content Include="logos\T4.gif" />
+    <Content Include="logos\T5.gif" />
+    <Content Include="logos\T6.gif" />
+    <Content Include="logos\T8.gif" />
+    <Content Include="logos\TA.gif" />
+    <Content Include="logos\TB.gif" />
+    <Content Include="logos\TC.gif" />
+    <Content Include="logos\TE.gif" />
+    <Content Include="logos\TF.gif" />
+    <Content Include="logos\TG.gif" />
+    <Content Include="logos\TH.gif" />
+    <Content Include="logos\TJ.gif" />
+    <Content Include="logos\TK.gif" />
+    <Content Include="logos\TL.gif" />
+    <Content Include="logos\TM.gif" />
+    <Content Include="logos\TN.gif" />
+    <Content Include="logos\TO.gif" />
+    <Content Include="logos\TP.gif" />
+    <Content Include="logos\TQ.gif" />
+    <Content Include="logos\TR.gif" />
+    <Content Include="logos\TS.gif" />
+    <Content Include="logos\TT.gif" />
+    <Content Include="logos\TU.gif" />
+    <Content Include="logos\TV.gif" />
+    <Content Include="logos\TX.gif" />
+    <Content Include="logos\TY.gif" />
+    <Content Include="logos\TZ.gif" />
+    <Content Include="logos\U2.gif" />
+    <Content Include="logos\U5.gif" />
+    <Content Include="logos\U6.gif" />
+    <Content Include="logos\U7.gif" />
+    <Content Include="logos\U9.gif" />
+    <Content Include="logos\UA.gif" />
+    <Content Include="logos\UC.gif" />
+    <Content Include="logos\UE.gif" />
+    <Content Include="logos\UF.gif" />
+    <Content Include="logos\UG.gif" />
+    <Content Include="logos\UJ.gif" />
+    <Content Include="logos\UK.gif" />
+    <Content Include="logos\UL.gif" />
+    <Content Include="logos\UM.gif" />
+    <Content Include="logos\UN.gif" />
+    <Content Include="logos\UO.gif" />
+    <Content Include="logos\UP.gif" />
+    <Content Include="logos\US.gif" />
+    <Content Include="logos\UT.gif" />
+    <Content Include="logos\UU.gif" />
+    <Content Include="logos\UW.gif" />
+    <Content Include="logos\UX.gif" />
+    <Content Include="logos\UZ.gif" />
+    <Content Include="logos\V0.gif" />
+    <Content Include="logos\V2.gif" />
+    <Content Include="logos\V3.gif" />
+    <Content Include="logos\V4.gif" />
+    <Content Include="logos\V7.gif" />
+    <Content Include="logos\V9.gif" />
+    <Content Include="logos\VA.gif" />
+    <Content Include="logos\VB.gif" />
+    <Content Include="logos\VC.gif" />
+    <Content Include="logos\VE.gif" />
+    <Content Include="logos\VG.gif" />
+    <Content Include="logos\VH.gif" />
+    <Content Include="logos\VJ.gif" />
+    <Content Include="logos\VK.gif" />
+    <Content Include="logos\VL.gif" />
+    <Content Include="logos\VM.gif" />
+    <Content Include="logos\VN.gif" />
+    <Content Include="logos\VO.gif" />
+    <Content Include="logos\VR.gif" />
+    <Content Include="logos\VS.gif" />
+    <Content Include="logos\VT.gif" />
+    <Content Include="logos\VV.gif" />
+    <Content Include="logos\VW.gif" />
+    <Content Include="logos\VX.gif" />
+    <Content Include="logos\VY.gif" />
+    <Content Include="logos\VZ.gif" />
+    <Content Include="logos\W2.gif" />
+    <Content Include="logos\W3.gif" />
+    <Content Include="logos\W4.gif" />
+    <Content Include="logos\W5.gif" />
+    <Content Include="logos\W6.gif" />
+    <Content Include="logos\W9.gif" />
+    <Content Include="logos\WA.gif" />
+    <Content Include="logos\WB.gif" />
+    <Content Include="logos\WD.gif" />
+    <Content Include="logos\WE.gif" />
+    <Content Include="logos\WF.gif" />
+    <Content Include="logos\WG.gif" />
+    <Content Include="logos\WJ.gif" />
+    <Content Include="logos\WL.gif" />
+    <Content Include="logos\WM.gif" />
+    <Content Include="logos\WN.gif" />
+    <Content Include="logos\WP.gif" />
+    <Content Include="logos\WQ.gif" />
+    <Content Include="logos\WR.gif" />
+    <Content Include="logos\WS.gif" />
+    <Content Include="logos\WT.gif" />
+    <Content Include="logos\WW.gif" />
+    <Content Include="logos\WX.gif" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Mobile\site.css.map" />
+    <Content Include="fonts\Mobile\bootstrap-icons.woff" />
+    <Content Include="fonts\Mobile\bootstrap-icons.woff2" />
+    <Content Include="fonts\bootstrap-icons.woff" />
+    <Content Include="fonts\bootstrap-icons.woff2" />
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
+    <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\Js\common.js" />
+    <Content Include="Scripts\Js\listing.js" />
+    <Content Include="Scripts\Js\owl.carousel.min.js" />
+    <Content Include="Scripts\Js\payment.js" />
+    <Content Include="Scripts\Js\searchengine.js" />
+    <Content Include="Scripts\Mobile\bootstrap.min.js" />
+    <Content Include="Scripts\Mobile\global.js" />
+    <Content Include="Scripts\Mobile\html5.js" />
+    <Content Include="Scripts\Mobile\jquery-ui.js" />
+    <Content Include="Scripts\Mobile\jquery.js" />
+    <Content Include="Scripts\Mobile\jquery.min.js" />
+    <Content Include="Scripts\Mobile\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\Mobile\listing.js" />
+    <Content Include="Scripts\Mobile\payment.js" />
+    <Content Include="Scripts\Mobile\searchengine.js" />
+    <Content Include="Scripts\Mobile\slick.js" />
+    <Content Include="Scripts\slick.js" />
+    <Content Include="Scripts\widget.js" />
+    <Content Include="Views\sitemap.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_GeneralLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_BookingPathLayout.cshtml" />
+    <Content Include="Views\Flights\Availability.cshtml" />
+    <Content Include="Views\Flights\Verification.cshtml" />
+    <Content Include="Views\Flights\Payment.cshtml" />
+    <Content Include="Views\Flights\ReVerification.cshtml" />
+    <Content Include="Views\Flights\Confirmation.cshtml" />
+    <Content Include="Views\Flights\Partial\_ResultFilter.cshtml" />
+    <Content Include="Views\Flights\Partial\_Contract.cshtml" />
+    <Content Include="Views\Flights\Partial\_Travellers.cshtml" />
+    <Content Include="Views\Flights\Partial\_BillingDetails.cshtml" />
+    <Content Include="Views\Flights\Partial\_ContactDetails.cshtml" />
+    <Content Include="Views\Flights\Partial\_FlightSearchEngine.cshtml" />
+    <Content Include="Views\Shared\Partial\_Footer.cshtml" />
+    <Content Include="Views\Shared\Partial\_Header.cshtml" />
+    <Content Include="Views\Shared\Partial\_BookingPathHeader.cshtml" />
+    <Content Include="Views\Flights\Partial\_AirFilter.cshtml" />
+    <Content Include="Views\Flights\Partial\_Contracts.cshtml" />
+    <Content Include="Views\Flights\Partial\_ListingTopTabs.cshtml" />
+    <Content Include="Views\Flights\Partial\_PaymentContract.cshtml" />
+    <Content Include="Views\Flights\Partial\_PriceDetails.cshtml" />
+    <Content Include="Views\Emails\_EmailFooter.cshtml" />
+    <Content Include="Views\Emails\_EmailHeader.cshtml" />
+    <Content Include="Views\Emails\BookingReceiptDB.cshtml" />
+    <Content Include="Views\Flights\Partial\_ListingIdlePopup.cshtml" />
+    <Content Include="Views\Flights\Partial\_PaymentIdlePopup.cshtml" />
+    <Content Include="Views\Flights\Partial\_SearchHidden.cshtml" />
+    <Content Include="Views\Flights\Partial\_PriceIncreasePopup.cshtml" />
+    <Content Include="Views\Shared\_GtmContainer.cshtml" />
+    <Content Include="Views\Flights\Partial\_FlightListingSearchEngine.cshtml" />
+    <Content Include="Views\Flights\Partial\_FlightSearchEnginePopUp.cshtml" />
+    <Content Include="Views\Home\Partial\_TopDestination.cshtml" />
+    <Content Include="Views\Home\Partial\_Why.cshtml" />
+    <Content Include="Views\Shared\Partial\_FooterBlckStrip.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Error\Error403.cshtml" />
+    <Content Include="Views\Error\GenericHttpError.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\Partial\_BookingPathFooter.cshtml" />
+    <Content Include="Views\Flights\Partial\_BagProtection.cshtml" />
+    <Content Include="Views\Flights\Partial\_Mode.cshtml" />
+    <Content Include="Views\WebMode\Index.cshtml" />
+    <Content Include="Views\Home\Partial\_PopularDeals.cshtml" />
+    <Content Include="Views\Flights\Partial\_Availability.cshtml" />
+    <Content Include="Views\Flights\Partial\_AvailabilityRight.cshtml" />
+    <Content Include="Views\Flights\Partial\_contractdetails.cshtml" />
+    <Content Include="Views\Flights\Partial\_Matrix.cshtml" />
+    <Content Include="Views\Flights\AvailabilityLeft.cshtml" />
+    <Content Include="Views\Flights\Partial\_TravelProtection.cshtml" />
+    <Content Include="Views\Flights\Partial\_TravelProtectionPopup.cshtml" />
+    <Content Include="Views\Shared\_BlanklLayout.cshtml" />
+    <Content Include="Views\Shared\_LayoutWithEngine.cshtml" />
+    <Content Include="Views\Flights\Partial\_SearchEngine.cshtml" />
+    <Content Include="Views\Home\Partial\_OurOffer.cshtml" />
+    <Content Include="Views\Shared\_BookingConfirmationLayout.cshtml" />
+    <Content Include="Views\Shared\Partial\_BookingConfirmationHeader.cshtml" />
+    <Content Include="Views\Flights\Partial\_ExtendedCancellation.cshtml" />
+    <Content Include="Views\Flights\Mobile\Payment.cshtml" />
+    <Content Include="Views\Flights\Mobile\Availability.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_AvailabilityRight.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\TermsOfService.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\WebsiteTerm.cshtml" />
+    <Content Include="Views\Home\PaymentSecurity.cshtml" />
+    <Content Include="Views\Home\TermCondition.cshtml" />
+    <Content Include="Views\Flights\FindResult.cshtml" />
+    <Content Include="Views\Flights\Mobile\FindResult.cshtml" />
+    <Content Include="Views\Emails\BookingReceiptDBSelf.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Partial\_HomePagePopUp.cshtml" />
+    <Content Include="Views\Flights\Partial\_ListingInstancePopup.cshtml" />
+    <Content Include="Views\Deals\IndiaFlight.cshtml" />
+    <Content Include="Views\Airlines\UnitedAirline.cshtml" />
+    <Content Include="Views\Airlines\DeltaAirline.cshtml" />
+    <Content Include="Views\Airlines\AmericanAirline.cshtml" />
+    <Content Include="Views\Deals\ItalyFlight.cshtml" />
+    <Content Include="Views\Deals\DubaiFlight.cshtml" />
+    <Content Include="Views\Flights\Reservations.cshtml" />
+    <Content Include="Views\Airlines\Partial\_AirlineTitle.cshtml" />
+    <Content Include="Views\Airlines\AirCanadaAirline.cshtml" />
+    <Content Include="Views\Home\Partial\_CurrencyConverter.cshtml" />
+    <Content Include="Views\Flights\Search.cshtml" />
+    <Content Include="Views\Deals\CancunFlight.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_Travellers.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_ContactDetails.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_BillingDetails.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_PriceDetails.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_TravelProtection.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_ExtendedCancellation.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_PaymentContract.cshtml" />
+    <Content Include="Views\Deals\AmsterdamFlight.cshtml" />
+    <Content Include="Views\Deals\LondonFlight.cshtml" />
+    <Content Include="Views\Deals\SpainFlight.cshtml" />
+    <Content Include="Views\Deals\JapanFlight.cshtml" />
+    <Content Include="Views\Deals\BaliFlight.cshtml" />
+    <Content Include="Views\Deals\SanfranciscoFlight.cshtml" />
+    <Content Include="Views\Deals\SydneyFlight.cshtml" />
+    <Content Include="Views\Home\Mobile\Index.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_AffiliateFooterStrip.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_BookingPathHeader.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_Footer.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_FooterOffer.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_Header.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_PhoneStrip.cshtml" />
+    <Content Include="Views\Shared\Mobile\_BookingPathLayout.cshtml" />
+    <Content Include="Views\Shared\Mobile\_GeneralLayout.cshtml" />
+    <Content Include="Views\Shared\Mobile\_GeneralLayoutOffer.cshtml" />
+    <Content Include="Views\Shared\Mobile\_LayoutWithEngine.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_FlightSearchEngine.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_FlightSearchEnginePopUp.cshtml" />
+    <Content Include="Views\Home\Mobile\Partial\_HomeCenter.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_FlightListingSearchEngine.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_AirFilter.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_Contract.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_Contracts.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_ListingTopTabs.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_ListingTopTabsSecond.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_Availability.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_BookingPathFooter.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_contractdetails.cshtml" />
+    <Content Include="Views\Flights\Mobile\Confirmation.cshtml" />
+    <Content Include="Views\Home\Mobile\Partial\_HomeDeals.cshtml" />
+    <Content Include="Views\Home\Mobile\Partial\_CurrencyConverter.cshtml" />
+    <Content Include="Views\Flights\Mobile\Verification.cshtml" />
+    <Content Include="Views\Flights\Mobile\ReVerification.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_ListingIdlePopup.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_PriceIncreasePopup.cshtml" />
+    <Content Include="Views\Airlines\JetBlueAirline.cshtml" />
+    <Content Include="Views\Airlines\AlaskaAirline.cshtml" />
+    <Content Include="Views\Airlines\EmiratesAirline.cshtml" />
+    <Content Include="Views\Airlines\SouthwestAirline.cshtml" />
+    <Content Include="Views\Airlines\TurkishAirline.cshtml" />
+    <Content Include="Views\Airlines\EtihadAirline.cshtml" />
+    <Content Include="Views\Airlines\LufthansaAirline.cshtml" />
+    <Content Include="Views\Airlines\AeromexicoAirline.cshtml" />
+    <Content Include="Views\Airlines\AirFranceAirline.cshtml" />
+    <Content Include="Views\Deals\ArubaFlight.cshtml" />
+    <Content Include="Views\Airlines\Mobile\AeromexicoAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\AirCanadaAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\AirFranceAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\AlaskaAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\AmericanAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\DeltaAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\EmiratesAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\EtihadAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\FrontierAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\HawaiianAirlines.cshtml" />
+    <Content Include="Views\Airlines\Mobile\JetBlueAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\LufthansaAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\SouthwestAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\SpiritAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\TurkishAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\UnitedAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\WestJetAirline.cshtml" />
+    <Content Include="Views\Airlines\SwissAirline.cshtml" />
+    <Content Include="Views\Airlines\KlmAirline.cshtml" />
+    <Content Include="Views\Airlines\QatarAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\KlmAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\QatarAirline.cshtml" />
+    <Content Include="Views\Airlines\Mobile\SwissAirline.cshtml" />
+    <Content Include="Views\Deals\Mobile\TorontoFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\TopFlightDeals.cshtml" />
+    <Content Include="Views\Deals\Mobile\SydneyFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\SpainFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\SanfranciscoFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\LondonFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\JapanFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\ItalyFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\IndiaFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\DubaiFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\CancunFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\BaliFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\ArubaFlight.cshtml" />
+    <Content Include="Views\Deals\Mobile\AmsterdamFlight.cshtml" />
+    <Content Include="Views\Deals\BangkokFlight.cshtml" />
+    <Content Include="Views\Deals\CheapFlightIndia.cshtml" />
+    <Content Include="Views\Deals\DomesticFlightUnder99.cshtml" />
+    <Content Include="Views\Deals\FlightUnder49.cshtml" />
+    <Content Include="Views\Deals\InternationFlightUnder199.cshtml" />
+    <Content Include="Views\Deals\MadridFlight.cshtml" />
+    <Content Include="Views\Deals\ParisFlight.cshtml" />
+    <Content Include="Views\Home\Mobile\AboutUs.cshtml" />
+    <Content Include="Views\Home\Mobile\ContactUs.cshtml" />
+    <Content Include="Views\Home\Mobile\PaymentSecurity.cshtml" />
+    <Content Include="Views\Home\Mobile\privacypolicy.cshtml" />
+    <Content Include="Views\Home\Mobile\TermCondition.cshtml" />
+    <Content Include="Views\Home\Mobile\WebsiteTerm.cshtml" />
+    <Content Include="Views\Home\Partial\_Reviews.cshtml" />
+    <Content Include="Views\Home\Partial\_Deals.cshtml" />
+    <Content Include="Views\Home\Mobile\Partial\_Deals.cshtml" />
+    <Content Include="Views\Flights\Partial\_CallStrip.cshtml" />
+    <Content Include="Views\Flights\Mobile\Partial\_CallStrip.cshtml" />
+    <Content Include="Views\Flights\Partial\_SentItineraryPopup.cshtml" />
+    <Content Include="Views\Emails\SentItineraryEmail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\Mobile\trust\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{e9af5b3c-71ff-4890-99ac-3442125694fb}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{fa8c4573-d27e-490b-aaef-150faf05c048}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configration\Configration.csproj">
+      <Project>{4f7e4e84-c380-41ec-bdd4-a14c48ad433c}</Project>
+      <Name>Configration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{a4f39914-7ad7-43b5-9901-009dccdec39a}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57793</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57710/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:57710/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

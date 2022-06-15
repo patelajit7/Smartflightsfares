@@ -1,0 +1,149 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+
+@using Common;
+@using Infrastructure.HelpingModel.API
+@using Infrastructure.HelpingModel;
+@{
+
+    ViewBag.Title = "Airlines | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+
+
+<div id="bannerCntr" style="background-image:url(/images/airline-banner/dl.jpg)">
+    <div class="container z-index-relative">
+        <div class="row">
+            <div class="col-12">
+                <div class="tagline">The Cheapest Qatar Flights</div>
+            </div>
+        </div>
+        @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
+
+    </div>
+
+</div>
+
+<div id="contentCntr">
+
+    @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
+
+
+    <div class="container">
+
+        <!-- Content-->
+        <div class="contentBox">
+
+            <div class="row">
+               
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h3 class="page__title"><strong>Qatar Airways</strong> Flights </h3>
+                        <p>Longing to go on a vacation to a distant land is what everyone fantasizes about every once in a while, but when doing so one must make sure that they choose an airline service that takes care of their all around needs so that their airline flight booking experience is smooth and seamless. </p>
+                        <p>Book Qatar Airways Flights through Unpublished Farehub and get the chance to avail a huge variety of unmissable deals and discounts. Make your Qatar Airways reservations today and get the chance to avail flight services to multiple tourist favourite destinations all over the USA and also visit international destinations.</p>
+                        <p>Qatar Airways, headquartered at its base at Hamad Worldwide Airport and travels over 150 international locations spanning continents like Africa, Asia, Europe, the Americas, and Oceania. It maintains an extravagant fleet of over 200 aircrafts and employs over 43,000 individuals which makes sure that Qatar Airways reservations are always carried out in a smooth and seamless manner. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Book a flight with Qatar Airways</h4>
+                    <p>Book Qatar Airways Flights instantly. Give a call at our helpline no. ____ and make your Qatar Airways reservation today. Book a flight at zero additional cost. Enjoy a 24/7 customer support experience with wait times as low as 30 seconds. </p>
+                    <h4>How To Book A Flight With Qatar Airways and Unpublished Farehub</h4>
+                    <p>To make sure that your flight booking experience and simple and hassle free, we have created a short step by step guide. Read on and discover how to book your Qatar Airways flight quickly and get the best possible rates for your flight tickets. </p>
+                    <ul class="list w_50">
+                        <li>Login to your Unpublished Farehub account to enjoy the best possible experience and get upto 40% discounts on your tickets.</li>
+                        <li>Click on the Qatar Airways flight booking section and specify your departure location and final travel destination.</li>
+                        <li>We offer multiple travel choices to opt from. Choose one way, round trip or multi city, whichever serves your needs the best.</li>
+                        <li>Next, you will need to put in the dates at which you want to leave and return from your destination, and also a few other details like the no. of tickets to be booked.</li>
+                        <li>Finally, you will be shown the different Qatar Airways flights which are available according to your specifications.                        </li>
+                        <li>Pick and choose the Qatar Airways flight that best suits your budget and price requirements, and complete the billing process to confirm your Qatar Airways reservation. </li>
+                        <li>As you are booking a flight for Qatar Airways through Unpublished Farehub, you will have the option to avail multiple seasonal deals and discounts and cheap discounted fares at the click of a button.</li>
+                        <li>Complete the transaction process and instantly get your Qatar Airways flight tickets in your registered email address and phone no. </li>
+                    </ul>
+
+                    <h4>Tips for booking a flight with Qatar Airways</h4>
+                    <p>Unpublished Farehub aims to make your travel and flight booking experience with Qatar Airways a comfortable and memorable journey. Follow these guidelines and tips to get the best experience Unpublished Farehub has to offer.</p>
+                    <ul class="list w_50">
+                        <li>Sign up with Unpublished Farehub and turn your notifications on to make sure that you never miss out on the latest discount and seasonal offers on Qatar Airways Flight Tickets.</li>
+                        <li>Make sure to make your Qatar Airways reservations several weeks before the date of departure. This way you can avail the benefit of massively discounted rates when the demand for the flight is lesser, and travel at a fraction of the cost.</li>
+                        <li>Always try to get a seat in a flight leaving at dawn or during the early morning hours. These flights can be booked at the cheapest fares as a lesser number of passengers opt to travel during this time of the day.</li>
+                        <li>On booking a flight with Qatar Airways, dont miss out on the award winning lounge services and the in flight entertainment experience available along with the flight reservation. </li>
+                    </ul>
+                    <h4>Qatar Airways Cabin Services</h4>
+                    <p>Unpublished Farehub presents you with a variety of deals and offers for Qatar Airways flight booking services which would take you to one of the several cabin experiences available on making a Qatar Airways reservation. We assure you a 24/7 customer service experience for any issues that you may have during the flight booking process. We also offer in flight assistance and strive to make your journey comfortable throughout the flight.</p>
+                    <h5>Qatar Airways First Class Cabin Service</h5>
+                    <p>First-class customers on Qatar Airways get nearly 6.5 feet of legroom and chairs that fold out into flat beds with feather duvets. First-class seats have massage features as well as an entertainment system. </p>
+                    <p>On making a Qatar airways reservation on one of their A380s, first class passengers receive a 90-inch seat pitch that converts to a fully flat bed, as well as a wide range of entertainment options presented on individual 26-inch television screens, for the complete elite experience. </p>
+                    <h5>Qatar Airways Business Class Cabin Service </h5>
+                    <p>Booking a flight in the Qatar Airways business class provides the guests with entirely flat horizontal beds with direct aisle access.</p>
+                    <p>Along with that you will have the luxury of flatbed chairs that recline 180 degrees and massage amenities. This makes the entire Qatar Airways reservation and travel experience as something to be remembered as the experience of a lifetime and not just as a flight service that takes oneself from one place to another.</p>
+                    <h5>Qatar Airways Economy Class Cabin Service</h5>
+                    <p>When booking a flight with Qatar Airways, you can rest assured that the quality of the experience is not compromised no matter the flight class you opt for. </p>
+                    <p>In the 2009 and 2010 Skytrax Awards, Qatar Airways' economy class was awarded the best in the world.</p>
+                    <p>Passengers in Qatar Airways' economy class may expect a seat pitch of up to 34 inches. Individual seat-back TV displays are available. </p>
+                    <h4>Qatar Airways In Flight Entertainment and Lounge Services</h4>
+                    <p>Qatar Airways strives to make the flight booking and travelling experience a memorable one. Its in-flight entertainment system, Oryx One takes special care that the customers are thoroughly engaged throughout the flight.</p>
+                    <p> All flights have individual seat-back Info-tainment screens. The main screen multimedia system is installed on several Airbus A320 family aircraft.                    </p>
+                    <p>Onboard Connectivity Wi-Fi is also available aboard Qatar Airways, which lets customers send SMS and MMS, check email, and surf the internet.</p>
+                    <h4>Qatar Airways Flight Booking FAQs</h4>
+                    <h5>Can I change my flight within 24 hours of booking?</h5>
+                    <p>Unpublished Farehub makes changing flights a smooth and hassle free process. If your travel needs change or you need to modify the date of your tickets, Unpublished Farehub provides continuous assistance throughout this process and makes sure you do it at the cheapest possible cost.</p>
+                    <h5>Can I change my flight within 24 hours of booking?</h5>
+                    <p>You can change your flight details 24 hours before the departure date. A 24/7 helpline with guaranteed customer issue satisfaction and almost no waiting time makes sure that your Qatar Airways flight booking through Unpublished Farehub is a simple and non time consuming process.</p>
+                    <h5>How can I choose my Qatar Airways flight seats?</h5>
+                    <p>You can pick and choose your flight seats while making your Qatar Airways reservation. Log in through your Unpublished Farehub account and check your flight details through your assigned flight confirmation number. You will then be able to choose your seats and pay through cash or Miles. </p>
+                    <h5>Are Qatar Airways flights COVID safe?</h5>
+                    <p>Booking a flight through Qatar Airways is a safe and completely secure experience. Qatar airways take remarkable safety measures to ensure a convenient experience to its passengers. The aircraft is sanitised regularly and the air filters in the flight ensure that the insides of the flight remain unaffected. Apart from that each passenger is made to wear protective gear and provided with personal sanitizers.</p>
+                    <h5>How do I avail discounts for Qatar Airways flight booking?</h5>
+                    <p>Unpublished Farehub offers an incredible selection of seasonal deals and discounts of upto 40% on Qatar Airways flight booking and reservations. Subscribe to Unpublished Farehub’s email notifications to get the latest information about deals like Black Friday offers, Cyber Monday offers and much more. This will make sure that you stay up to date with the latest discounts and offers whenever you wish to book a flight with Qatar Airways and Unpublished Farehub.</p>
+                    <h4>Qatar Airways Domestic Flights Service</h4>
+                    <p>Qatar Airways has flight services operating to and from 12 destinations in the US. Some of our most visited and searched for flight booking destinations are listed below. Book through Unpublished Farehub and avail the most attractive discounts and season deals while booking a flight through Qatar Airways.</p>
+                    <ul class="list w_50">
+                        <li>Qatar Airways flights to Boston</li>
+                        <li>Qatar Airways flights to Chicago</li>
+                        <li>Qatar Airways flights to Dallas</li>
+                        <li>Qatar Airways flights to Houston</li>
+                        <li>Qatar Airways flights to Los Angeles</li>
+                        <li>Qatar Airways flights to Philadelphia</li>
+                        <li>Qatar Airways flights to New York</li>
+                        <li>Qatar Airways flights to San Francisco</li>
+                        <li>Qatar Airways flights to Seattle </li>
+                        <li>Qatar Airways flights to Washington</li>
+                        <li>Qatar Airways flights to Atlanta</li>
+                    </ul>
+                    <h4>Qatar Airways International Flights Service</h4>
+                    <p>Qatar Airways airlines travel over 150 international locations spanning continents like Africa, Asia, Europe, the Americas, and Oceania. It maintains an extravagant fleet of over 200 aircrafts to ensure quick and comfortable travel experience. A few of the most sought after domestic travel destinations and flights are listed below for your convenience.</p>
+                    <ul class="list w_50">
+                        <li>Qatar Airways flights to France</li>
+                        <li>Qatar Airways flights to Bahrain</li>
+                        <li>Qatar Airways flights to Athens</li>
+                        <li>Qatar Airways flights to Dublin</li>
+                        <li>Qatar Airways flights to Kuwait</li>
+                        <li>Qatar Airways flights to Lagos</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content-->
+
+    </div>
+
+
+    @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/searchengine")
+
+}
+
+
+
+
+

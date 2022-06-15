@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Infrastructure.HelpingModel.API.Contract>
+@using Infrastructure.HelpingModel.API;
+@if (Model != null && Model.Count() > 0)
+{
+    Contract minContract = Model.FirstOrDefault();
+    {
+        Html.RenderPartial("~/views/flights/partial/_ListingInstancePopup.cshtml", minContract);
+    }
+    int count = 0;
+    foreach (Contract item in Model)
+    {
+        {
+            Html.RenderPartial("~/views/flights/partial/_Contract.cshtml", item);
+
+            count++;
+        }
+        if (HttpContext.Current.Session["webmode"] != null)
+        {
+            Html.RenderPartial("~/views/flights/partial/_mode.cshtml", item);
+        }
+    }
+}
+else
+{
+    <div class="listing" id="containerListing">
+
+        <div id="flights-list" class="flight-data">
+            <section class="clearfix no-result">
+                <b class="no-results noRslts alert alert-help">
+                    No results match your selections. Please reset. <a onclick="contractFilter.resetFilter();" class="undertxt">Clear all filters</a>.
+                </b>
+            </section>
+        </div>
+    </div>
+}

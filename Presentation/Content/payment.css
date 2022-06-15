@@ -1,0 +1,1937 @@
+
+
+/* Payment Page Start Here */
+
+.coupnSection {
+    flex-flow: column;
+    display: flex;
+    padding: 10px 15px;
+    position: relative;
+    border-bottom: 1px dashed rgba(var(--black),.2);
+}
+.coupnSection h5 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+    .coupnSection .emailInput {
+        padding: 8px 147px 8px 14px;
+        border: 1px solid #ced4da;
+        background-color: #ffffff;
+        outline: none;
+        width: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        font-size: 14px;
+       text-transform:uppercase;
+    }
+
+    .coupnSection .applyBtn {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        background: rgba(var(--redcolor),1);
+        border: rgba(var(--redcolor),1);
+        color: #ffffff;
+        padding: 7px 36px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        transition: color, background 0.2s;
+        cursor: pointer;
+        outline: none;
+    }
+    .coupnSection .cancelBtn {
+        position: absolute;
+        left: 195px;
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #909090;
+        text-align: center;
+        line-height: 14px;
+        font-size: 10px;
+        top:22px;
+    }
+    .coupnSection .cancelBtnMbl {
+        position: absolute;
+        left: 247px;
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #909090;
+        text-align: center;
+        line-height: 14px;
+        font-size: 10px;
+        top: 22px;
+    }
+    .coupnSection .curPont {
+        cursor: pointer;
+        
+    }
+
+.couponsList ul{padding:0 20px; list-style:none;}
+.couponsList li {
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom:1px solid rgba(var(--black),.2); padding:10px 0;
+}
+
+.couponsList li:last-child {
+    border-bottom:none;
+}
+    .couponsList li span {
+        display: block;
+        font-size: 12px;
+        padding-left: 20px;
+        font-weight: 400;
+    }
+
+    .payment-price-info {
+        position: sticky;
+        top: 0px;
+    }
+
+
+.price-sticky{
+    position:sticky;    
+    top:90px;
+}
+.payment-price-wrapper{
+    border:1px solid rgba(var(--bodycolor),.2);
+    }
+.payment-price-wrapper .payment-head{
+    background:rgba(var(--primarycolor),1);
+    padding:10px 15px;
+}
+.payment-price-wrapper .payment-head h3{
+    margin:0px;
+    font-size:20px;
+    font-weight:600;
+    color:rgba(var(--white),1);
+
+}
+.payment-price-wrapper .price-inner{
+     background:rgba(var(--white),1)
+}
+
+.price-inner .price-head{
+    background:rgba(var(--primarycolor),.04);
+    padding:7px 15px;
+    font-weight:600;
+ }
+
+.price-inner .passenger-details{
+    display:flex;
+    justify-content:space-between;
+    padding:0px 15px;
+    align-items:center;
+}
+.price-inner .passenger-details span:last-child{
+    color:rgba(var(--black),.6);
+    font-weight:700;
+    font-size:18px
+}
+
+
+.price-inner .total-price{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px dashed rgba(var(--black),.2);
+    padding:7px 15px;
+    margin-top:5px;
+    align-items:center;
+    font-weight:700;
+}
+.price-inner .total-price span:last-child{ 
+    font-size:20px;
+    color:rgba(var(--redcolor),1);
+    
+}
+
+.price-dosclaimer{
+     background:rgba(var(--black),.06);
+}
+.price-dosclaimer p{
+    font-size:12px;
+    padding:5px 15px;
+}
+
+.payment-contact {
+    border:1px solid rgba(var(--bodycolor),0.2);
+    margin-bottom:30px;
+    box-shadow:0 0 4px 0 rgba(0, 0, 0,.1)
+}
+.payment-common-head h3 {
+    display:flex;
+    justify-content:space-between;
+    margin:0px;
+    background:rgba(var(--primarycolor),1);
+    font-size:20px;
+    padding:7px 15px;
+    color:rgba(var(--white),1);
+    align-items:center;
+}
+.payment-common-head h3 .gurante{
+    color:#eade06;
+    font-size:14px;
+}
+
+
+
+.payment-contact .payment-contact-inner{
+    padding:15px;
+}
+
+.payment-contact .payment-contact-inner label{
+    font-size:14px;
+    margin-bottom:0px;
+    color:rgba(var(--black),.7);
+    margin-right:0px;
+}
+.payment-contact .payment-contact-inner h5{
+    font-size:16px;
+    margin:0px;
+    color:rgba(var(--primarycolor),1);
+    font-weight:700;
+}
+.payment-contact .payment-important{
+    background:rgba(var(--redcolor),.06);
+    padding:10px;
+    font-size:14px;
+}
+.terms-condition .checkbox-mark{
+    border:1px solid rgba(var(--black),.2);
+    top: 5px;
+}
+
+.terms-condition.checkbox-wrap input:checked ~ .checkbox-mark{
+    border:1px solid rgba(var(--black),.2);
+}
+
+
+.travel-protection {
+    display:flex;
+}
+.travel-protection .para{
+    width:calc(100% - 100px);
+    padding-right:15px;
+}
+.travel-protection .para ul{
+    margin:0px; padding:0px;
+    margin-bottom:20px;
+}
+.travel-protection .para ul li{
+    list-style:none;
+    position:relative;
+    padding-left:15px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.travel-protection .para ul li:before{
+    content:"";
+    width:8px; 
+    height:8px; 
+    background:rgba(var(--primarycolor),1);
+    display: inline-block;
+    left: 0px;
+    position: absolute;
+    top: 6px;
+    border-radius: 100%;
+}
+
+
+.radio-tag-main-wrapper label{
+    border:1px solid rgba(var(--black),.2);
+        font-size: 14px;
+    margin-bottom: 0px;
+    color: rgba(var(--black),.7);
+    padding: 5px 10px 5px 30px;
+    min-width: 250px;
+    margin-bottom: 10px !important;
+    cursor:pointer;
+}
+
+.travel-protection .img-box {
+    width:100px
+}
+
+.travel-protection .img-box img{
+    width:100%
+}
+
+.radio-check-wrapper p{
+    margin:0px;
+}
+
+ 
+.flight-detail-dropdown {
+     border: 0px solid rgba(var(--primarycolor),.2); 
+    padding: 15px;
+     box-shadow: none; 
+   
+ }
+
+.radio-wrapper {
+   position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;   cursor: pointer;
+ 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radio-checkmark {
+  position: absolute;
+  top: 6px;
+    left: 8px;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--black),.2);
+}
+
+ 
+
+/* When the radio button is checked, add a blue background */
+.radio-wrapper input:checked ~ .radio-checkmark {
+  background-color: rgba(var(--white),1);
+  border:2px solid rgba(var(--redcolor),1)
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-wrapper input:checked ~ .radio-checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-wrapper .radio-checkmark:after {
+ 	top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(var(--redcolor),1);
+}
+
+
+
+.payment-top-strip{
+    display:flex;
+    align-items:center;
+    margin:10px 0px; 
+}
+
+.payment-top-strip a{
+    width:100px;
+
+}
+
+.payment-top-strip .reveiw-itenary{ 
+    width:calc(100% - 100px);
+    text-align:center;
+
+}
+.payment-top-strip .reveiw-itenary h3{
+        margin: 0px;
+    color: rgba(var(--primarycolor),1);
+    font-weight: 700;
+    margin-top: 18px;
+    margin-bottom: -5px;
+}
+.payment-top-strip .reveiw-itenary p {
+    color:rgba(var(--black),.6);
+    margin:0px;
+}
+
+.trust-logo{
+    display:flex;
+    align-items:center; justify-content:space-between;   
+
+}
+.trust-logo .trust-icons{
+    width:550px;
+}
+.trust-logo .trust-icons img{ 
+    width:100%;
+}
+.payment-congrats{
+    background: rgba(var(--redcolor),.2);
+    display: inline-block;
+    padding: 7px 15px;
+    border-bottom:4px solid rgba(var(--redcolor),1);
+    font-size:14px;
+    color:rgba(var(--black),.6);
+
+}
+.payment-congrats strong{
+    font-size:18px; 
+    color:rgba(var(--black),1);
+}
+
+
+.availble-seat-book{
+    display:flex;
+    justify-content:space-between;
+}
+
+.flex-date-flight {
+  
+    font-size: 12px;
+    background-color: #5ea201;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+}.flex-date-flight i {
+  
+    margin-right:5px;
+}
+.availble-seat-book .book-now{
+   background: rgba(var(--black),.1);
+    padding: 5px 13px;
+        font-size: 12px;
+}
+.availble-seat-book .book-now strong{
+   color: rgba(var(--redcolor),1);
+ }
+
+
+
+.why-wiz-price ul{margin:0px; padding:0px; list-style:none;}
+.why-wiz-price ul li{
+    padding:7px 15px;
+    
+}.why-wiz-price ul li i{
+    margin-right:5px;
+    
+}
+.why-wiz-price ul li:nth-child(even){
+    background:rgba(var(--black),.06);
+    
+}
+
+/* Payment Page Ends Here */
+
+ 
+
+
+@media   (max-width: 990px) { 
+
+.payment-inform{ order:2; }
+.payment-price-info{   order:1; position:static; margin-bottom:10px; }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+    .coupnSection .applyBtn{
+        font-size:16px    }
+    .radio-tag-main-wrapper label {
+        display: block;
+    }
+.trust-logo{
+    flex-direction:column;  
+} 
+
+ 
+.view-in-desktop{
+    display:none;
+}
+
+.payment-top-strip{
+    display:flex;
+}
+.payment-top-strip a {
+    width: 70px;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
+.payment-top-strip .reveiw-itenary h3 {
+    margin: 0px;
+    color: rgba(var(--primarycolor),1);
+    font-weight: 700;
+     margin-top: 0px;  
+      margin-bottom: 0px; 
+    font-size: 22px;
+}
+.payment-top-strip .reveiw-itenary p {
+     font-size: 14px;
+}
+
+
+
+.payment-top-strip .reveiw-itenary {
+    width: calc(100% - 70px);
+    text-align: center;
+    padding-left: 10px;
+}
+.airline-logo-seats{
+    display:flex;
+    justify-content:space-between;
+    align-content:center;
+}
+.airline-logo-seats .seats{
+    font-size:12px;
+    display:flex;
+    align-items:center;
+}
+.airline-logo-seats .seats span{
+    color:red;
+    font-style:italic;
+    font-weight:700;
+    margin-right:5px;
+ }
+
+ .flight-airline {
+     display:flex;
+    align-items: center;
+}
+
+.xs-flightInfo {
+    margin: 0;
+    list-style-type: none;
+    outline: none;
+    margin:0px;
+    padding:0px
+}
+ 
+.xs-flightInfo li {
+    color: #414141;
+     font-size: 12px;
+    display: inline-block;
+    width: 17%;
+    margin-right: 2%;
+}
+
+.xs-flightInfo li:first-child {
+    width: 59%;
+}
+
+.xs-flightInfo li strong {
+    color: #a6a6a6;
+}
+.xs-flightInfo li span.arrowIcon {
+    width: 15px;
+    display: inline-block;
+    height: 14px;
+    background-position: -28px -135px;
+
+}
+ .xs-flightInfo li:last-child {
+    margin-right: 0;
+    width: 16%;
+    text-align: right;
+}
+ .xs-flightInfo li:last-child {
+    font-size: 10px;
+}
+ .flight-segment {display:block}
+ 
+ .flight-inside {
+    box-shadow: 0 0 2px 0 rgb(0 0 0 / 10%);
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid rgba(var(--black).2);
+}
+
+ .flight-inside .flight-segment {
+    margin: 0px 0px 0px;
+}
+
+ .payment-contact{
+     box-shadow:none;
+     margin-bottom:5px;
+ }
+
+ .arrow-icon{margin:0px 5px}
+ .new-dis-text {
+    background: rgba(var(--redcolor),1);
+    font-size: 11px;
+    line-height: 14px;
+    padding: 2px 5px;
+    color: #fff;
+     font-weight: 500;
+    text-transform: capitalize;
+    margin-top: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+ .payment-common-head h3{
+    font-size:16px;
+    background:rgba(var(--black),.4)
+ }
+
+ .payment-contact .payment-contact-inner label{
+     font-size:12px;
+ }
+ .payment-contact .payment-important {
+   
+    font-size: 11px;
+}
+
+
+
+ .travel-protection .para ul li {
+ padding-left:10px;
+    font-size: 12px;
+ }
+
+
+ .travel-protection .para ul li:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+
+ }
+
+ .radio-checkmark {
+ 
+    height: 13px;
+    width: 13px;
+     
+}
+ .radio-wrapper .radio-checkmark:after {
+  
+    width: 5px;
+    height: 5px;
+    
+}
+ .payment-contact .payment-contact-inner p{
+     font-size:12px; 
+     text-align:justify;
+ }
+ .terms-condition .checkbox-mark {
+    border: 1px solid rgba(var(--black),.8);
+    top: 0px;
+}
+
+
+ .ped-left-5{
+     padding-left:5px;
+ } .ped-right-5{
+     padding-right:5px;
+ }
+   .flight-layover {
+    text-align: center;
+    margin: -2px 0px;
+}
+   .flight-layover span {
+    display: inline-flex;
+    border: 0px dashed rgba(var(--bodycolor),.2);
+    font-size: 11px;
+    padding: 0px 10px;
+      border-radius: 0px;  
+      background: none 
+}
+
+   .payment-contact .payment-important {
+     padding: 3px 10px;
+ }
+
+
+
+
+
+
+
+   
+
+ /* =========================================== Payment Mobile Page Start Here =========================================== */
+
+
+ .top-strip{display: flex;
+    align-items: center;
+    padding: 10px 0px;
+ }
+
+
+
+  .top-strip .back-icon {
+      width:35px;
+      height:35px;
+      margin-right:10px;
+  }
+  .top-strip .back-icon svg{
+      width:35px; height:35px;
+      fill:rgba(var(--black),.4)
+  }
+      
+.top-strip .desti-date{
+    width:calc(100% - 145px)
+}
+.top-strip .desti-date h3{
+    margin:0px;
+    line-height: 20px;
+}
+.top-strip .desti-date h3 .code{
+    color:rgba(var(--black),.8);
+    font-size:22px;
+    font-weight:700;
+}
+
+.top-strip .desti-date h3 .interchange{
+    display:inline-block;
+    margin:0px 10px;
+}
+.top-strip .desti-date h3 .interchange svg{
+    width:18px;
+    height:18px;
+}
+
+.top-strip .desti-date p{
+    margin:0px;
+    font-size:14px;
+     color:rgba(var(--black),.6);
+}
+.top-strip .passeng-count {
+    width:100px;
+}
+.top-strip .passeng-count p{
+margin:0px;
+text-align:right;
+}
+.top-strip .passeng-count p span{
+color:rgba(var(--black),.4)
+
+}
+
+
+
+.flight-itennary-hd {
+      background-color:rgba(var(--redcolor),1);
+      padding:5px 15px;
+      font-size:18px;
+     color:rgba(var(--white),1);
+     font-weight:600;
+     position:relative;
+}
+.flight-itennary-hd:after {
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(255,255,255,1)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: absolute;
+    right: 15px;
+    top:8px;
+}
+.flight-itennary-hd.menu-toggle:after {
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(255,255,255,1)" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg>');
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: absolute;
+    right: 15px;
+    top:8px;
+}
+ 
+
+
+
+.flight-itenary-detail {
+    padding:10px 0px 0px;
+    margin-bottom:20px;
+}
+.flight-itenary-detail .itnary-head {
+    display:flex;
+    align-items:center;
+}
+ .itnary-head .logo{
+    width:60px;
+    margin-right:10px;
+}
+ .itnary-head .logo img{
+    width:100%;
+}
+
+.itnary-head .airline-name{
+    width:calc(100% - 180px)
+}
+.itnary-head .airline-name h4{
+    margin:0px;
+    font-size:16px;
+    font-weight:700;
+    color:rgba(var(--black),.7)
+}
+
+.itnary-head .airline-name p{
+    margin:0px;
+    font-size:12px;
+    color:rgba(var(--black),.6)
+}
+.itnary-head .seats-left{
+    width:110px;
+    font-weight:700;
+    text-align:right;
+}
+.itnary-head .seats-left span{
+    color:rgba(var(--redcolor),1);
+}
+
+
+.flight-itenary-detail .depart-dest {
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0px;
+    align-items:center;
+}
+.flight-itenary-detail .depart-dest h4{
+    margin:0px;
+    margin-bottom:-5px;
+    font-weight:700;
+    color:rgba(var(--redcolor),1);
+
+}
+ .depart-dest .origin{
+    width:85px;
+}
+.flight-itenary-detail .depart-dest p{
+    font-weight:400;
+    color:rgba(var(--black),.6);
+    margin:0px;
+    font-size:12px;
+}
+
+.line-with-dots{
+    width:calc(100% - 170px);
+    height:2px;
+    background-color:rgba(var(--black),.1);
+    display:flex;
+    justify-content:space-around;
+    position:relative;
+}
+.line-with-dots span{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: #ddd;
+    border: 1px solid #b9b9b9;
+    border-radius: 100%;
+    position: relative;
+    top: -4px;
+}
+
+.line-with-dots p{
+    position:absolute;
+     color:rgba(var(--black),.4)
+}
+.line-with-dots p.stops{
+    position:absolute;
+    top:-25px;
+}
+
+.line-with-dots p.durantion{
+    position:absolute;
+    top:5px
+}
+
+
+.flight-itenary-detail .itenray-option{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}   
+.itenray-option .pasgger-beggage{
+    color:rgba(var(--black),.6);
+    font-size:14px;
+}
+.itenray-option .pasgger-beggage i{
+    color:rgba(var(--black),1);
+    font-size:14px;
+    margin-right:5px;
+}
+.itenray-option .detail-show-btn a{
+display: inline-block;
+    border: 1px solid rgba(var(--black),.4);
+    font-size: 13px;
+    padding: 3px 8px;
+    text-align: center;
+    color: rgba(var(--black),.6);
+    text-decoration: none;
+    font-weight: 600;
+}
+ 
+.itenray-option .detail-show-btn a:after{
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: relative;
+    top: 4px;
+    
+}
+.itenray-option .detail-show-btn a.menu-icon:after{
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg>'); 
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: relative;
+    top: 3px;
+     display: inline-block;
+ }
+
+.itenray-details{
+ display:none;
+
+}
+.itenray-details .itr-dtl-top-strp{
+   background-color: rgba(var(--black),.1);
+    padding: 5px 15px;
+    display: flex;
+ 
+}
+
+.itr-dtl-top-strp .loction .origin{
+    font-size:18px; font-weight:700;
+
+    }
+
+
+
+.itenray-details .itr-dtl-top-strp ul{
+    margin:0px;
+    padding:0px; list-style:none;
+    display:flex ;align-items:center;
+}
+
+.itenray-details .itr-dtl-top-strp ul li{
+        margin-left: 30px;
+    position: relative;
+    font-size: 14px;
+}
+.itenray-details .itr-dtl-top-strp ul li:before{
+   content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: rgba(var(--black),.4);
+    position: absolute;
+    left: -18px;
+    top: 7px;
+}
+
+
+
+.itr-dtl-top-strp .loction .icon svg{
+ width: 25px;
+    height: 25px;
+    fill: rgba(var(--black),.6);
+    margin: 0px 10px;
+    position: relative;
+    top: -3px;
+}
+
+.itr-cont-wrap .airlne-dtl{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+        padding: 15px 0px;    margin-bottom: 15px;
+}
+
+.itr-cont-wrap .airlne-dtl .airline-code{
+ display:flex; align-items:center;
+}
+
+ .airlne-dtl .airline-code .logo{
+    width: 50px;
+     display: inline-block;
+}
+
+
+.airlne-dtl .airline-code .logo img {
+    width: 100%;
+}
+
+ .airlne-dtl .airline-code .ar{
+    font-size:16px;
+    color:rgba(var(--black),.8);
+    margin:0px 15px;
+    position:relative;
+}
+ .airlne-dtl .airline-code .ar.air-name{
+   max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+ 
+ .airlne-dtl .airline-code .ar:before{
+    position:absolute;
+    content:"";
+    display:inline-block;
+    height:100%; 
+    width:1px;
+    background:rgba(var(--black),.8);
+    left:-15px
+}
+
+ 
+  .itr-cont-wrap .airlne-dtl .boing-dtl{
+    font-size:12px;
+    color:rgba(var(--black),.6)
+}
+
+
+   .terminal-detail .term-start-end {
+       display:flex;padding: 0px 40px;
+   }  
+   .terminal-detail .term-start-end.start-point {margin-bottom:70px;}
+   .terminal-detail .term-start-end.end-point {margin-bottom:20px;}
+   .terminal-detail .term-start-end .timing{
+      width:100px;
+      margin-right:70px;
+       text-align:right;
+  }
+ .term-start-end .timing h4{
+    margin:0px; color:rgba(var(--black),.8); font-size: 22px;
+  }
+
+ .term-start-end .timing p{
+    margin:0px; color:rgba(var(--black),.6)
+  }
+
+  .terminal-detail .term-start-end .terminal-name{
+      width:calc(100% - 170px);
+   }
+
+  .terminal-detail .term-start-end .terminal-name p{
+    font-size: 16px;
+    line-height: 21px; margin:0px;
+    color: rgba(var(--black),.7);
+  }
+  .terminal-detail .term-start-end .terminal-name span{
+    color: rgba(var(--black),.6);
+    font-size: 14px;
+  }
+
+  .terminal-detail {position:relative;}
+
+.terminal-detail .start-end-point-line{
+   position: absolute;
+    width: 2px;
+    background: rgba(var(--black),.2);
+    height: 100%;
+    left: 175px;
+}
+.terminal-detail .start-end-point-line:before, .terminal-detail .start-end-point-line:after {
+   position: absolute;
+   content:"";
+   display:inline-block;
+   width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: #ddd;
+    border: 1px solid #b9b9b9;
+    border-radius: 100%;
+    left:-4px;
+}
+
+.terminal-detail .start-end-point-line:before{top:0px}
+.terminal-detail .start-end-point-line:after{bottom:0px}
+
+
+.itr-cont-wrap{width:100%; padding:0px 15px}
+.itr-cont-wrap .layover-terminal{
+    border-top:2px dashed rgba(var(--black),.1);
+    border-bottom:2px dashed rgba(var(--black),.1);
+     position:relative;
+    left:-15px;
+    padding:5px 15px;
+    margin: 0px 0px 20px;
+    text-align:center;
+    width:calc(100% + 30px)
+}
+.itr-cont-wrap .layover-terminal span{
+    color:rgba(var(--redcolor),1);
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+
+
+.payment-common-head-mobile{
+     background-color: rgba(var(--black),.05);
+     padding: 10px 15px;
+ }
+.payment-common-head-mobile h3{
+    font-size:18px;
+    margin:0px;
+    font-weight: 700;
+    color: rgba(var(--black),.8);
+}
+.payment-common-head-mobile h3 i{
+    margin-right:10px;
+}
+
+.payment-form-inner-mbl h5{
+    font-weight:700;
+    color:rgba(var(--redcolor),1);
+
+}
+.payment-important{
+    margin-bottom:20px;
+    background-color:rgba(var(--black),.05);
+    padding:5px 10px;
+}
+.payment-important strong{
+   color:rgba(var(--redcolor),1);
+}
+
+
+
+.form-control-mbl{
+    border-radius:0px
+}
+
+select.form-control-select{
+    background-image: url("data:image/svg+xml,<svg width='1.2em' height='1.2em' viewBox='0 0 16 16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z' clip-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius:0px;
+}
+
+.mbl-next-btn, .mbl-next-btn:hover{
+   background-color: rgba(var(--primarycolor),1);
+    color: rgba(var(--white),1);
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    margin: 30px 15px;
+    padding: 7px 10px;
+    font-weight:700;
+    text-decoration:none;
+}
+.mbl-next-btn svg{
+     fill: rgba(var(--redcolor),1);
+     width:32px;
+     height:32px;
+     margin-left:0px;
+    
+}
+
+.payment-terms-condition p{
+    font-size:12px;
+    text-align:justify;
+    margin:0px;
+}
+.payment-terms-condition p.match-name{
+    background-color: rgba(var(--redcolor),.2);
+      padding: 8px 15px;
+    font-weight: 700;
+    margin-bottom:10px;
+}
+.payment-terms-condition  .terms-condition{
+      font-size: 12px;
+    margin-bottom: 0px;
+    color: rgba(var(--black),.7);
+    margin-right: 0px;
+    text-align: justify;
+    padding-left:30px;
+    margin-top:10px;
+}
+.payment-terms-condition .checkbox-wrap input:checked ~ .checkbox-mark::after {
+    transform: rotate(45deg) scale(1);
+    left: 7px;
+    top: 1px;
+    width: 5px;
+    height: 12px;
+}
+
+#payment-info{display:none}
+
+
+
+.total-price-short{
+     padding: 5px 15px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.total-price-short span{
+    font-weight:700;
+    font-size:18px;
+}
+.noted-price{
+     padding: 0px 15px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    font-size:12px;
+    align-items: center;
+}
+.noted-price a{
+      color:rgba(var(--redcolor),1);
+     font-size:14px;
+     text-decoration:underline;
+     font-weight:700;
+}
+
+.price-pop-wrapper .modal-body{
+    padding:0px;
+}
+
+
+.price-pop-wrapper .modal-content{
+   border-radius:0px;
+}
+.price-pop-wrapper .payment-head{
+   background:rgba(var(--primarycolor),1);
+   position:relative;
+}
+.price-pop-wrapper .payment-head h3{
+   color: rgba(var(--white),1);
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 15px;
+
+}
+.price-pop-wrapper .payment-head span{
+    position:absolute;
+    right:15px;
+    top:5px;
+}
+.price-pop-wrapper .payment-head span svg{
+    width:35px;
+    height:35px;
+    fill:rgba(var(--white),1)
+}
+.call_icon_mbl_ind{
+    display:none
+}
+
+.travel-protection h5{
+    font-size: 16px;
+    margin: 0px;
+    color: rgba(var(--primarycolor),1);
+    font-weight: 700;
+    margin-top:10px;
+}
+
+
+ /* =========================================== Payment Mobile Page  Ends Here =========================================== */
+
+
+
+
+
+
+
+
+}
+
+
+@media only screen and (min-width: 768px) {
+    .view-in-mobile{
+        display:none;
+    }
+}
+
+@media only screen and (max-width: 575px) { 
+.btn-fixed{
+  position: fixed;
+    bottom: 50px;
+    width: 100%;
+    left: 0px;
+    padding: 10px;
+    font-size: 20px;
+    z-index: 10;
+    border-bottom:1px solid rgba(var(--white),1);
+}
+
+
+
+
+ /* =========================================== Payment Small Mobile Page  Starts Here =========================================== */
+ .top-strip .back-icon {
+    width: 25px;
+    height: 25px;
+     margin-right: 0px; 
+}
+ .top-strip .back-icon svg {
+    width: 25px;
+    height: 25px;
+  
+}
+
+ .top-strip .desti-date {
+    width: calc(100% - 90px);
+}
+ .top-strip .desti-date h3 .code {
+    font-size: 18px;
+     
+}
+ .top-strip .desti-date p {
+     font-size: 11px;
+ }
+
+  
+
+ .top-strip .passeng-count {
+    width: 65px;
+    font-size: 11px;
+}
+
+
+ .flight-itennary-hd {
+ 
+    font-size: 14px;
+ 
+}
+
+.flight-itennary-hd:after {
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255,255,255,1)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    top:8px
+}
+.flight-itennary-hd.menu-toggle:after {
+     content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255,255,255,1)" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg>');
+    top:8px;
+}
+ 
+.itnary-head .logo {
+    width: 45px;
+ }
+
+.itnary-head .seats-left {
+    width: 75px;
+      font-size: 11px;
+}
+
+.itnary-head .airline-name {
+    width: calc(100% - 130px);
+}
+.itnary-head .airline-name h4 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size:14px;
+}
+
+.itnary-head .airline-name p {
+     font-size: 10px;
+ }
+.flight-itenary-detail .depart-dest h4 {
+    font-size: 18px;
+}
+
+.flight-itenary-detail .depart-dest p {
+    font-size: 11px;
+}
+
+.depart-dest .origin {
+    width: 55px;
+}
+
+.line-with-dots {
+    width: calc(100% - 130px);
+    height: 1px;
+  }
+
+.line-with-dots span {
+    width: 6px;
+    height: 6px;
+    top: -3px;
+}
+.line-with-dots p.stops {
+     top: -20px;
+}
+.itenray-option .pasgger-beggage {
+    color: rgba(var(--black),.6);
+    font-size: 11px;
+}
+
+.itenray-option .detail-show-btn a {
+    font-size: 10px;
+    padding: 1px 5px;
+ 
+}
+ 
+.itenray-option .detail-show-btn a:after{
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: relative;
+    top: 4px;
+    
+}
+.itenray-option .detail-show-btn a.menu-icon:after{
+     line-height: 0;
+    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg>'); 
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+    position: relative;
+    top: 3px;
+     display: inline-block;
+ }
+.flight-itenary-detail {
+     margin-bottom: 10px;
+}
+ 
+
+.itr-dtl-top-strp .loction .origin {
+    font-size: 12px;
+    font-weight: 700;
+}
+.itr-dtl-top-strp .loction .icon svg {
+    width: 20px;
+    height: 20px;
+    margin:0px;
+}
+.itenray-details .itr-dtl-top-strp ul li {
+    margin-left: 20px;
+    position: relative;
+    font-size: 11px;
+}
+.itenray-details .itr-dtl-top-strp ul li:before {
+     width: 5px;
+    height: 5px;
+    position: absolute;
+    left: -12px;
+    top: 6px;
+}
+
+.airlne-dtl .airline-code .logo {
+    width: 35px;
+ }
+
+.airlne-dtl .airline-code .ar {
+ 
+    font-size: 11px;
+        margin: 0px 4px;
+}
+
+.itr-cont-wrap .airlne-dtl .boing-dtl {
+    font-size: 10px;
+    color: rgba(var(--black),.6);
+    width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+.airlne-dtl .airline-code .ar:before {
+    left: -4px;
+}
+.itr-cont-wrap .airlne-dtl {
+    
+     margin-bottom: 15px;  
+}
+.terminal-detail .term-start-end {
+    display: flex;
+    padding: 0px;
+}
+.terminal-detail .term-start-end .timing {
+    width: 70px;
+    margin-right: 30px;
+    text-align: right;
+}
+
+.term-start-end .timing h4 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.term-start-end .timing p {
+ 
+    font-size: 11px;
+}
+.terminal-detail .term-start-end .terminal-name {
+    width: calc(100% - 100px);
+}
+.terminal-detail .term-start-end .terminal-name p {
+    font-size: 14px;
+    line-height: 18px;
+    
+}
+.terminal-detail .term-start-end .terminal-name span {
+     font-size: 12px;
+}
+
+.terminal-detail .start-end-point-line {
+    position: absolute;
+    width: 1px;
+    background: rgba(var(--black),.2);
+    height: 100%;
+    left: 85px;
+}
+.terminal-detail .start-end-point-line:before, .terminal-detail .start-end-point-line:after {
+    width: 8px;
+    height: 8px;
+    left: -4px;
+}
+.terminal-detail .term-start-end.start-point {
+    margin-bottom: 40px;
+}
+
+.itr-cont-wrap .layover-terminal {
+    font-size: 12px;
+}
+.payment-common-head-mobile h3 {
+    font-size: 14px;
+}
+.payment-common-head-mobile h3 i {
+    margin-right: 5px;
+}
+body {
+    font-size: 12px;
+}
+
+.payment-contact-mbl label, .payment-form-inner-mbl label{margin-bottom:0px;}
+.total-price-short span {
+     font-size: 16px;
+}
+
+
+.noted-price a {
+     font-size: 12px;
+ }
+.payment-important {
+    margin-bottom: 10px;
+ }
+.payment-form-inner-mbl h5 {
+      font-size: 14px;
+}
+.mbl-next-btn, .mbl-next-btn:hover {
+      font-size: 16px;
+     margin: 15px;
+    padding: 2px 6px;
+ }
+.price-inner .passenger-details span:last-child {
+ 
+    font-size: 14px;
+}
+.price-inner .total-price span:last-child {
+    font-size: 16px;
+ }
+.price-pop-wrapper .payment-head h3 {
+     font-size: 16px;
+}   
+.price-pop-wrapper .payment-head span {
+     right: 5px;
+    top: 2px;
+}
+.travel-protection h5 {
+    font-size: 14px;
+   
+ }
+.travel-protection {
+     align-items: center;
+}
+.travel-protection .para {
+    width: calc(100% - 60px);
+ }
+.travel-protection .img-box {
+    width: 60px;
+}
+.radio-tag-main-wrapper label {
+     font-size: 12px;
+ 
+}
+.terms-condition .checkbox-mark {
+    width: 16px;
+    height: 16px;
+}
+.terms-condition .checkbox-mark {
+     top: 3px;
+    width: 16px;
+    height: 16px;
+}
+.payment-terms-condition .checkbox-wrap input:checked ~ .checkbox-mark::after {
+    transform: rotate(45deg) scale(1);
+    left: 5px;
+    top: 0px;
+    width: 4px;
+    height: 11px;
+}
+
+.mbl-next-btn.submit-pay svg {
+    fill: rgba(var(--redcolor),1);
+    width: 18px;
+    height: 18px;
+    margin-left: 0px;
+}
+  /* =========================================== Payment Small Mobile Page  Ends Here =========================================== */
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------------------------------------------*/
+/*-----------PAYMENT PAGE OLD CSS CSS START ---------------*/
+/*---------------------------------------------------------*/
+
+.go-back-div {float: left;width: 100%;padding: 10px 15px;}
+.go-back-div a { float: left;background: #133d67;color: #fff;font-size:14px;border-radius: 3px;padding: 5px 10px;}
+.go-back-div a:hover{ color: #ee6221;}
+.go-back-div a i{ font-size: 14px;}
+.payment-page {background: #eee;width: 100%; float: left;}
+.payment-page .middle-search {width: 75%;margin: 0 15px;float: left;}
+
+
+.payment-page .ticket-desc-div h3 {background: #133d67; margin-top: 0;color: #FFFFFF;font-size:18px;padding: 12px 15px;font-weight: 600;margin-bottom: 14px;}
+.payment-page .departed {border-bottom: #eee solid 1px!important;color: #133B67;font-weight: 600!important;font-size: 15px!important;width: 100%;float: left;padding: 0 15px 10px;}
+.departed img {width: 20px;}
+.payment-page .airline-information {float: left;width: 100%;margin-top: 10px;font-size: 12px;padding: 0 15px;}
+.hide-toggle {float: right;border: #fff solid 1px;border-radius: 2px;padding: 3px 8px;font-weight: 300;font-size:13px;cursor: pointer;}
+.right-section {width: 20%;float: right;margin:0 15px;}
+.airline-information {float: left;width: 100%;margin-top: 10px;font-size: 12px;padding: 0 15px;}
+.colunm1 {float: left;width: 6%;padding-top: 10px;}
+.colunm2 {float: left;width: 23%;}
+.colunm3 {float: left;width: 29%;}
+.colunm4 {float: left;width: 28%;}
+.colunm5 {float: left;width: 10%;}
+.airline-information em {font-size: 20px;font-style: normal;font-weight: 500;}
+.grey-row {float: left;width: 100%;font-size: 12px;background: #efefef;margin: 10px 0;padding: 5px 15px;}
+.grey-row .first-scc {float: left;width: 40%;}
+.grey-row .second-scc {float: left;width: 30%;}
+.grey-row .third-scc {float: right;width: 18%;}
+.bagges-fees {float: left;width: 100%;color: #ee6221;font-size: 13px;font-weight: 500;padding: 0 15px 10px;}
+.contact-information{width:100%;float: left;padding-bottom: 15px;text-align: right;}
+.peassenger-inform{width: 100%;float: left;padding-bottom: 15px;}
+.peassenger-inform .important {background: #deefff;font-size: 12px;border-radius: 20px;margin: 20px 15px 15px;padding: 6px 15px;}
+.peassenger-inform h5 {padding: 0 15px;font-size: 14px;margin: 18px 0;color: #0688c4;font-weight: bold;}
+.passenger_details {width: 100%;display: inline-block;padding: 0 15px;}
+.pay_pax_detail {width: 21%;display: inline-block;}
+.pay_pax_gender {width: 10%;display: inline-block;padding-left: 6px;}
+.pay_pax_birth {padding-left: 3px;}
+.pay_pax_birth {width: 25%;display: inline-block;padding-left: 6px;}
+.payment-page label {font-weight: 400;font-size: 13px;margin-top: 5px;}
+.pay_pax_birth label {width: 100%;}
+.pay_pax_birth span {width: 32%;display: inline-block;}
+.policy-div {display: inline-block;width: 100%; padding: 10px 15px;}
+.payment-information{width:100%;  padding: 15px;}
+.safe-content {float: left;width: 100%; background: #deefff; border-radius: 5px;color: #009c06;font-size: 11px;text-transform: uppercase;
+    font-weight: 600;margin-bottom: 20px;padding: 10px;}
+.card-details {float: left;width: 100%;}
+.pay_page_card {width: 25%;float: left;margin-right: 10px;}
+.card-details label {float: left;width: 145px;}
+.pay_page_card input{width: 100%;float: left;}
+.card_expire_date {width: 24%;float: left;}
+.pay_page_expm {width: 49%;float: left;}
+.pay_page_cvv {width: 16%;float: left;margin-right: 8px;}
+.fixed-right { position: fixed; right: 15px; top:-157px;}
+.pay_page_name {width: 29%;float: left; }
+.ticket-desc-div {  width: 100%;     display: flex;
+    flex-direction: column; border: #ccc solid 1px;    background: #fff;padding: 10px;border-radius: 8px;box-shadow: 0 4px 10px rgb(0 0 0 / 12%); margin-bottom: 15px;}
+.payment-page label {font-weight: 400;font-size: 13px; margin-top: 5px;}
+.payment-page .form-control {border: 1px solid #d6d6d6;border-radius: 2px;margin-bottom: 15px; box-shadow: none;font-size: 12px;padding: 5px; }
+.billing_info{width:100%; float: left ; padding: 15px;}
+.destination_card {width: 100%;float: left; border: #ccc solid 1px;background: #fff;  position: relative;}
+.policy-text ul{ margin: 0; padding: 0; list-style-type: none;}
+.policy-text ul li i{ padding-right: 6px; color: #009c06;} 
+.policy-section{width: 100%;float: left;padding: 0 15px 15px 15px;}
+.policy-text{font-size: 13px; padding: 0;width: 60%;float: left;}
+.policy_price{width:10%;float: left;  text-align: center; padding: 40px 0;}
+.policy_price h5{font-size: 20px; font-weight: bold;color: #133B67;margin: 0;padding: 0;}
+.policy_price p{ font-size: 14px; color: #333;}
+.policy_icon{width: 30%;float: left; text-align: right;}
+.policy_icon img{width:50%;}
+.checkbox{width: 70%; float: left; padding: 6px;}
+.trip_to{ position: absolute;padding: 15px; color: #fff;}
+.trip_to p{ font-size: 16px; margin: 0;padding: 0;}
+.trip_to h5{ font-size: 18px; margin-top: 10px;}
+.destination_card img{width: 100%;height: 160px;}
+.price-section{ width: 100%; float: left;}
+.price-section h3 {background: #133d67;color: #fff;font-size: 13px; font-weight: 500; margin-top: 0; margin-bottom: 0;padding: 10px;}
+.price-section .pricing {background: #fff;border: #adadad dotted 1px;border-top: none;border-radius: 0 0 5px 5px;padding: 10px 15px;}
+.rate-amount {float: right;}
+.coupn-section h4 {background: #ee6221;color: #fff;font-size: 14px;padding: 10px 15px;font-weight: bold;width:100%; float:left;}
+.coupn-section h4 em {font-style: normal;float: right;}
+.coupn-section p {font-size: 10px;margin-bottom: 0;padding: 6px 15px;background: #fff; border: 1px solid #ccc;}
+.policy_review{padding: 10px;width: 100%; float: left;}
+.policy_review p{color: #333; font-size: 13px; line-height: 25px;}
+.review ul{border-bottom: #e7e7e7 solid 1px;padding-bottom: 10px;margin-top: 10px;font-size: 13px;}
+.booknow-bt{width: 100%;float: left;margin: 0 auto;text-align: center;}
+.booknow-bt input{padding: 8px 31px;color: #fff;background: #ee6221;border-radius: 6px;font-size: 16px;display: inline-block;margin-bottom: 15px;
+    font-weight: bold;text-decoration: none;border: none;}  
+.payment_div img{width:100%;}
+.pricing{float:left; width:100%;}
+.confirm_header{ width:100%; float:left; margin:0; padding:0; border-bottom:1px solid #ccc;}
+.header_conf{ width:100%; float:left;}
+.confirm_logo img{ width:10%; float:left;}
+.confirmation_con{ width:100%; float:left; margin-top:30px; padding:0;}
+.confirm_left{ width:72%; float:left;}
+
+.top_paragrph p{font-size:13px;font-weight: 500; text-align:left;}
+.booked_con{border: 1px solid#ccc;box-shadow: 2px 2px 2px #666;padding:10px;display:inline-block;width: 100%;}
+.booked_con h2{ font-size:22px; color:#000; margin:0; padding:0;}
+.booked_con p{ margin-top:20px; padding:0; font-size:13px;}
+.dept_text{ font-size:13px; color:#09F; font-weight:bold; margin-top:10px!important; padding:0;    width: 100%;
+    float: left;}
+.book_icon img{ padding-top:30px; float:left;}
+.book_flight_det { width: 28%;float: left; color: #333;font-weight: 500;}
+.book_flight_det span {
+    width: 76%;
+    float: right;
+}
+.book_flight_det img {
+    width: 20%;
+    float: left;
+    margin-top: 5px;
+}
+.book_flight_det p, .book_con_time p, .class_type p{margin: 0;
+    padding: 0;
+    font-size: 13px;}
+.book_flight_det p{ color:#000; font-weight:500;}
+.booked_con h4{padding: 6px;background: #143c67;font-size: 16px;color:#fff;margin-top: 15px;display: inline-block;   width: 100%;}
+.book_flight_det span,.book_con_time span{ font-size:12px; color:#333;}
+.depart_con{    width: 100%;
+    display: inline-block;}
+book_flight_det img {width: 20%;float: left; margin-top: 5px;}
+.book_flight_det span, .book_con_time span {
+    font-size: 13px;
+    color: #333;
+    display: inline-block;
+}
+.width_20{float: left; width:16.6%;}
+.confirm_passen {
+    width: 100%;
+    float: left;
+    border: 1px solid#ccc;
+    box-shadow: 2px 2px 2px #666;
+    margin-top: 20px;
+    border-radius: 6px 6px 0 0;
+}
+.confirm_passen h4 {
+    padding: 6px;
+    background:#103963;
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+}
+.booked_con_detail {width: 100%;float: left;padding: 15px 0;}
+.return_con{ width:100%; display:inline-block; margin-top:10px;}
+.booked_line{ padding:0;}
+.booked_line img{ padding-top:50px;}
+.class_type{ font-size: 12px;
+    color: #333;
+    text-align: center;display: inline-block;
+   }
+.book_con_time{width: 29%;
+    float: left;}
+.passen_ser{width: 100%;float: left;}
+.passen_ser div {
+    border: 1px solid #ccc;
+    font-size: 12px;
+    padding: 4px;
+}
+.seat_detail{ width:100%; display:inline-block;}
+.seat_detail p{ color:#09F; font-size:12px; font-weight:500; font-weight:bold;}
+.seat_con span{ font-size:12px; color:#333; width:100%; display:inline-block;}
+.confirm_right{ width:24%; float:right; border: 1px solid#ccc;box-shadow: 2px 2px 2px #666; padding:10px;}
+.card_detail{ width:100%; display:inline-block; text-align:center;}
+.card_detail h3,.card_holder h3,.card_nimber h3{ text-align:center; font-size:20px!important;color:#000; width:100%; margin:0; padding-top:10px;}
+.card_icon img{ width:30%; text-align:center;padding: 10px;}
+.card_icon,.card_holder,.card_nimber{ border-bottom:1px dashed #ccc; padding-bottom:15px;}
+.card_holder{ width:100%; display:inline-block; text-align:center;}
+.card_holder span{ font-size:16px; color:#333; padding:10px 0 20px 0; display:inline-block;}
+.card_nimber{ width:100%; display:inline-block; text-align:center;}
+.card_nimber span{font-size:16px; color:#333; padding:10px 0 20px 0; display:inline-block;}
+.pay_type{width:100%; display:inline-block; padding-top:20px;padding-bottom: 8px;}
+.payment_detail{border-bottom:1px dashed #ccc; padding-bottom:15px; display:inline-block; width:100%;}
+.pay_type span{ width:48%; display:inline-block; text-align:right;}
+.base_fare{ width:100%;display:inline-block;}
+.base_one{ width:48%; text-align:right; color:#333; font-size:13px;display: inline-block;}
+.base_two{width: 50%;display: inline-block;font-size: 13px;padding-left: 55px;}
+.travel_insur{ width:100%; display:inline-block; padding-top:20px;}
+.travel_insur h3{ font-size:19px; color:#0376cf; text-align:center;margin:0;padding: 0}
+.insuran_detail{ margin-top:15px; background:#eee; width:100%; display:inline-block; padding:15px 6px;}
+.insu_icon,.insu_mid{ width:31%; display:inline-block;text-align: center; font-size:11px;}
+.insu_code{width:33%; display:inline-block;text-align: center; font-size:11px;}
+.insu_mid b{ float: left;text-align: center;padding-bottom: 5px;padding-left: 15px;}
+.insu_code p{float: left;text-align: center;padding-bottom: 5px; margin:0;}
+.view_insu{ width:70%; float:right; padding-top:6px;}
+.view_insu p{ font-size:13px; color:#000; text-align:right;}
+.view_insu p a{ color:#F00; text-decoration:none;}
+.air_notes{width: 100%;float:left;padding:10px 10px 20px 10px;margin: 20px 0;    box-shadow: 2px 2px 2px #656262;
+    border: 1px solid #ccc;}
+.air_notes h4{ background:#143c67; color:#fff; padding:5px;}
+.air_notes h5{ font-size:16px; color:#000; margin-top:15px;}
+.air_notes p{ font-size:13px; margin:0; padding:0; line-height:20px;}
+.content_con{ width:100%; float:left; margin-top:20px; padding:15px; border:1px solid #ccc; box-shadow;}
+.content_img{ width:48%; display:inline-block;}
+.text_content{width: 49%;display: inline-block;text-align: left;float:right;font-size:13px;line-height: 25px;}
+.content_con h1{ color:#fff;width: 100%;background:#143c68;margin: 0;padding: 6px;display: inline-block;font-size: 20px;margin-bottom: 15px; text-transform:uppercase;}
+.content_text{ width:100%; margin-top:20px; display:inline-block;}
+.content_text p{font-size: 13px;line-height: 25px;}
+.confirm_extend {
+    width: 100%;
+    float: left;
+    box-shadow: 2px 2px 2px #656262;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+.confirm_extend h3 {
+    font-size: 20px;
+    padding: 10px 10px;
+    text-align: center;
+    background:#103963;
+    color: #fff;
+    margin: 0 0 20px 0;
+}
+.confirm_extend h3 p {
+    font-size: 13px;
+    margin: 4px 0;
+}
+.policy-section {
+    float: left;
+    width: 100%;
+    padding: 0 15px 15px;
+}
+.confirm_extend h3 img {
+    width: 4%;
+    margin-right: 10px;
+}
+.policy-section .policy-text {
+    float: left;
+    width: 80%;
+    font-size: 13px;
+    padding: 0;
+}
+.policy-text ol {
+    padding: 0;
+    list-style-type: none;
+    margin: 0 0 7px 20px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 10px;
+}
+.policy-text ol li i {
+    color: #069628;
+    padding-right: 7px;
+}
+.price_extend {
+    width: 20%;
+    float: right;
+}
+.policy-section p {
+    float: left;
+    font-size: 10px;
+    padding-top: 10px;
+}
+#BillingDetails_CardNumber{background-position: right 1px;background-image: url(/images/payment-card.png);background-repeat: no-repeat;background-size: 50px 368px; }
+/* --------------------------------------------------- Error Show Start Here  --------------------------------------------------- */
+.error-ui{background:rgba(254,209,208,.4);   }
+.error-ui span{display:block; color:#cc0205; display:none;padding: 5px;  }
+/* --------------------------------------------------- Error Show Ends Here  --------------------------------------------------- */
+
+/* ----------------------------------------------  Payment Price Alert Start Here   ---------------------------------------------- */
+
+.wpprPcIncPop .modal-dialog{  border-radius:0px;}
+.wpprPcIncPop .modal-content{border-radius:0px;}
+.wpprPcIncPop .pricIncPop h3 {font-size: 44px;margin-bottom: 20px;color: #5058DE;font-weight: 700;margin: 10px 0px;}
+.wpprPcIncPop .pricIncPop p{font-weight:700; color:#033369; font-size:20px;}
+.wpprPcIncPop .pricIncPop p strong {color: #5058de;font-size: 25px;position: relative;top: 2px;}
+.wpprPcIncPop .pricIncPop p a {text-decoration: none;color: #ff690f;}
+.wpprPcIncPop .pricIncPop button {background: #FF690F;border-radius:4px;padding: 10px 44px;color: #fff;margin-top: 20px;font-size: 20px;text-transform: uppercase;}
+.wpprPcIncPop .pricIncPop h5{margin-top:10px;}
+.wpprPcIncPop .pricIncPop h5 a {text-decoration: underline;color: #666;font-size: 13px;display: inline-block}
+/* ----------------------------------------------  Payment Price Alert Ends Here   ---------------------------------------------- */
+
+
+/*---------------------------------------------------------*/
+/*-----------PAYMENT PAGE OLD CSS CSS START ---------------*/
+/*---------------------------------------------------------*/

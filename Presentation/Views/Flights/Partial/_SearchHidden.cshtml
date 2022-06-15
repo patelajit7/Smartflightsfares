@@ -1,0 +1,25 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+
+@using (Html.BeginForm("searchengine", "flights", FormMethod.Post, new { @id = "flights" }))
+{
+    @Html.HiddenFor(o => o.Origin);
+    @Html.HiddenFor(o => o.Destination);
+
+    <input type="hidden" name="TripType" value="@((int)Model.TripType)" )>
+    <input type="hidden" id="OriginSearch" name="OriginSearch" value="@Model.OriginSearch">
+    <input type="hidden" id="DestinationSearch" name="DestinationSearch" value="@Model.DestinationSearch">
+    <input type="hidden" id="Departure" name="Departure" value="@Model.Departure.ToString("dd MMM yyyy")">
+    <input type="hidden" id="Return" name="Return" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return??DateTime.Now).ToString("dd MMM yyyy") : "")">
+    <input type="hidden" id="paxCounter" name="paxCounter" value="@string.Format("{0}",Model.TotalPax()) | @string.Format("{0}",Utility.GetEnumDescription(Model.Cabin))">
+    <input type="hidden" id="PreferredCarrier" name="PreferredCarrier" value="@string.Format("{0}",!string.IsNullOrEmpty(Model.PreferredCarrier)?Model.PreferredCarrier:"")">
+    <input type="hidden" id="IsDirectFlight" name="IsDirectFlight" value="@string.Format("{0}", Model.IsDirectFlight)">
+    <input type="hidden" id="Adult" name="Adult" value="@Model.Adult" />
+    <input type="hidden" id="Child" name="Child" value="@Model.Child" />
+    <input type="hidden" id="InfantOnLap" name="InfantOnLap" value="@Model.InfantOnLap" />
+    <input type="hidden" id="InfantOnSeat" name="InfantOnSeat" value="@Model.InfantOnSeat" />
+    <input type="hidden" id="Cabin" name="Cabin" value="@((int)Model.Cabin)" />
+}
+

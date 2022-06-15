@@ -1,0 +1,48 @@
+﻿@model Infrastructure.HelpingModel.API.ContractFacets
+@using Infrastructure.HelpingModel;
+@using Infrastructure.HelpingModel.API;
+@using Common;
+@using Infrastructure
+@{
+    CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
+}
+<h4 class="total_results">@Model.TotalContract Results Found</h4>
+<div class="apply_filter">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul>
+                <li>Non Stop <a href="#"><i class="bi bi-x-circle"></i></a></li>
+                <li>One Stop <a href="#"><i class="bi bi-x-circle"></i></a></li>
+                <li class="clear__all"><a href="#">Clear all </a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="sortingTabBox">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="flightTabs">
+                <li class="flights active" onclick="contractFilter.setTab(0);"><a> All Flights <span class="price chgcomplete" default-price="@Model.ActualMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.ActualMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                @if (Model.NearbyMinPrice > 0)
+                {
+                    <li class="NearByAirport" onclick="contractFilter.setTab(2);"><a> Nearby AIrport(s) <span class="price chgcomplete" default-price="@Model.NearbyMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.NearbyMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+                @if (Model.AlternameMinPrice > 0)
+                {
+                    <li class="AlternateDates" onclick="contractFilter.setTab(3);"><a> Alternate Dates <span class="price chgcomplete" default-price="@Model.AlternameMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.AlternameMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+                @if (Model.PhoneOnlyMinPrice > 0)
+                {
+                    <li class="PhoneOnly" onclick="contractFilter.setTab(5);"><a> Phone Only <span class="price chgcomplete" default-price="@Model.PhoneOnlyMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.PhoneOnlyMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+                @if (Model.ActualMinPrice > 0)
+                {
+                    <li class="ShotestFlight" onclick="contractFilter.setTab(1);"><a> Shortest/Direct Flights <span class="price chgcomplete" default-price="@Model.ActualMinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.ActualMinPrice * currencyMaster.CurrencyPrice)</span></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

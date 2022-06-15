@@ -1,0 +1,47 @@
+﻿@using Common;
+<div class="disc_text_wrapr">
+    <div class="container">
+       
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="bk_wt_wrppr">
+                    <div class="bk_wt_con">
+                        <h3>
+                            Book With Confidence
+                        </h3>
+                        <span></span>
+                    </div>
+                    <div class="trst_logos">
+                        <ul>
+                     
+                            <li>
+                                <a href="javascript:void(0)" class="sprite3 paypal"> </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="sprite3 visa"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="sprite3 mastercard"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="sprite3 amrcnExprss"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="sprite3 discvr"></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="text_cpy">
+                    <p>© 2016 - @DateTime.Now.ToString("yyyy") @Utility.PortalSettings.Domain, All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderPartial("~/views/shared/mobile/partial/_phonestrip.cshtml");}

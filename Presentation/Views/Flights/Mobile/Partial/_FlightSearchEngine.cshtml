@@ -1,0 +1,170 @@
+﻿@model Infrastructure.HelpingModel.API.FlightSearch
+@using Business;
+@using Common;
+@using Infrastructure;
+
+                  
+                    <ul class="tabBox">
+                        <li class="active"><img src="~/images/mobile/icons/flights-white.svg" alt="" />Flights</li>
+                    </ul>
+                    @using (Html.BeginForm("searchengine", "flights", FormMethod.Post, new { @id = "flights" }))
+                    {
+                        @Html.HiddenFor(o => o.SearchGuidId)
+                        @Html.HiddenFor(o => o.Origin);
+                        @Html.HiddenFor(o => o.Destination);
+                        @Html.HiddenFor(o => o.OriginSearch);
+                        @Html.HiddenFor(o => o.DestinationSearch);
+                        @Html.HiddenFor(o => o.InfantOnLap)
+                        @Html.HiddenFor(o => o.TripType)
+                        @Html.HiddenFor(o => o.Cabin)
+                        <input type="hidden" id="Departure" name="Departure" value="@(Model.Departure == DateTime.MinValue ? "" : Model.Departure.ToString("MMM dd yyyy"))" />
+                        <input type="hidden" id="Return" name="Return" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return == null || Model.Return == DateTime.MinValue) ? "" : (Model.Return ?? DateTime.Now).ToString("MMM dd yyyy") : "")" />
+                        @Html.HiddenFor(o => o.AffiliateId);
+                        <div class="mobile_searchBlock">
+
+                            <!-- Mobile Bar-->
+                            <div class="top_row">
+                                <div class="triptype_action">
+                                    <div class="click_div"><span class="triptypeval">Round Trip</span> <i class="arrow-icon bi bi-chevron-down"></i></div>
+                                    <!--Open block-->
+                                    <div class="Mobiletrip_type" style="display: none;">
+                                        <ul>
+                                            <li class="rondtrip active" onclick="searchengine.callme('RoundTrip');"><i class="bi bi-check-circle"></i> Round Trip</li>
+                                            <li class="oneway" onclick="searchengine.callme('OneWay');"><i class="bi bi-check-circle"></i> Oneway</li>
+                                        </ul>
+                                    </div>
+                                    <!--Open block End-->
+                                </div>
+
+                                <div class="traveler_action ">
+                                    <div class="click_div traveler">
+                                        <i class="person-icon bi bi-person"></i> <span id="paxCounterVal">@Model.TotalPax()</span> <i class="arrow-icon bi bi-chevron-down"></i>
+                                    </div>
+                                    <!--Open block-->
+                                    <div class="mobile_travelerBox" id="travelersPopup" style="display: none;">
+                                        <!--Adult-->
+                                        <div class="add-traveler">
+                                            <span class="travelers__options">
+                                                <a class="remove"><i class="bi bi-dash-circle" onclick="searchengine.decrement('Adult')"></i></a> <strong class="number Adult">@Model.Adult</strong><a class="add"><i class="bi bi-plus-circle" onclick="searchengine.increment('Adult')"></i></a>
+                                            </span> <input type="hidden" name="Adult" id="Adult" value="@Model.Adult" />Adult
+                                        </div>
+
+                                        <!--Child-->
+                                        <div class="add-traveler">
+                                            <span class="travelers__options">
+                                                <a class="remove"><i class="bi bi-dash-circle" onclick="searchengine.decrement('Child')"></i></a> <strong class="number Child">@Model.Child</strong><a class="add"><i class="bi bi-plus-circle" onclick="searchengine.increment('Child')"></i></a>
+                                            </span><input type="hidden" name="Child" id="Child" value="@Model.Child" />Child <small>(2 - 11)</small>
+                                        </div>
+
+                                        <!--Infant-->
+                                        @*<div class="add-traveler">
+                                                <span class="travelers__options">
+                                                    <a class="remove"><i class="bi bi-dash-circle"></i></a> <strong class="number">1</strong><a class="add"><i class="bi bi-plus-circle"></i></a>
+                                                </span> Infant <small>(on lap)</small>
+                                            </div>*@
+
+                                        <!--Infant-->
+                                        <div class="add-traveler">
+                                            <span class="travelers__options">
+                                                <a class="remove"><i class="bi bi-dash-circle" onclick="searchengine.decrement('InfantOnSeat')"></i></a> <strong class="number InfantOnSeat">@Model.InfantOnSeat</strong><a class="add"><i class="bi bi-plus-circle" onclick="searchengine.increment('InfantOnSeat')"></i></a>
+                                            </span> <input type="hidden" name="InfantOnSeat" id="InfantOnSeat" value="@Model.InfantOnSeat" /> Infant <small>(on seat)</small>
+                                        </div>
+
+                                        <div class="traveler_action_button">
+                                            <a href="javascript:void(0);" onclick="ResetTravelerBox()" class="done_Btn disable">Reset All</a>
+                                            <a href="javascript:void(0);" onclick="searchengine.hidePopup('travelersPopup')" class="done_Btn active">Done</a>
+                                        </div>
+
+                                    </div>
+                                    <!--Open block End-->
+
+                                </div>
+
+                                <div class="class_action search-common-popup">
+                                    <div class="click_div"><span class="classType">@Utility.GetEnumDescription(Model.Cabin)</span> <i class="arrow-icon bi bi-chevron-down"></i></div>
+
+                                    <!--Open block-->
+                                    <div class="Mobiletrip_type class-type" style="display: none;">
+                                        <ul>
+                                            <li onclick="searchengine.callClass('Economy');" class="economyCoach @string.Format("{0}", Model.Cabin == CabinType.Economy ? "active" : "")"><i class="bi bi-check-circle"></i> Economy</li>
+                                            <li onclick="searchengine.callClass('Business');" class="clsbusiness"><i class="bi bi-check-circle @string.Format("{0}", Model.Cabin == CabinType.Business ? "active" : "")"></i> Business</li>
+                                            <li onclick="searchengine.callClass('First');" class="clsFirst"><i class="bi bi-check-circle @string.Format("{0}", Model.Cabin == CabinType.First ? "active" : "")"></i> First class</li>
+                                        </ul>
+                                    </div>
+                                    <!--Open block End-->
+
+                                </div>
+
+                                <!--Mobile round trip -->
+
+                                <div class="mobile_overlay"> </div>
+                                <!--Mobile round trip -->
+
+                            </div>
+                            <!-- Mobile End-->
+                            <!-- Flight Search Engin Start here-->
+                            <div class="mobile_flightSearch">
+
+                                <!-- Departure-->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="box-shadow">
+                                            <div class="label full-w" onclick="searchengine.clickFrom()">
+                                                <input type="text" id="inputOrigin" class="inputField inputclick OriginSearchName @string.Format("{0}",!string.IsNullOrEmpty(Model.Origin)?"valid":"")" value="@Model.OriginSearch" />
+                                                <span class="label_name">Leaving From</span>
+                                                <span class="icons bi bi-geo-alt"></span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- REturn-->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="box-shadow">
+                                            <!-- Retrun-->
+                                            <div class="label full-w" onclick="searchengine.clickTo()">
+                                                <input type="text" id="inputDestination" class="inputField inputclick DestinationSearchName @string.Format("{0}",!string.IsNullOrEmpty(Model.Destination)?"valid":"")" value="@Model.DestinationSearch" />
+                                                <span class="label_name">Where To</span>
+                                                <span class="icons bi bi-geo-alt"></span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- date-->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="box-shadow">
+                                            <div class="label cursor brd" onclick="$('#departPopup').addClass('active');">
+                                                <input type="text" id="dateDeparture" class="inputField cursor calendarclick Departure @string.Format("{0}",Model.Departure == DateTime.MinValue ? "" : "valid")" value="@(Model.Departure == DateTime.MinValue ? "" : Model.Departure.ToString("MMM dd yyyy"))" readonly />
+                                                <span class="label_name">Depart</span>
+                                                <span class="icons bi bi-calendar3"></span>
+
+                                            </div>
+
+                                            <div id="DepartDate12" class="label cursor" onclick="$('#returnPopup').addClass('active');">
+                                                <input type="text" id="dateReturn" class="inputField cursor calendarclick Return @string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : "valid" : "")" value="@string.Format("{0}", Model.TripType == TripType.ROUNDTRIP ? (Model.Return==null || Model.Return==DateTime.MinValue)  ? "" : (Model.Return??DateTime.Now).ToString("MMM dd yyyy") : "")" readonly />
+                                                <span class="label_name">Return </span>
+                                                <span class="icons bi bi-calendar3"></span>
+
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <!-- Flight Search Engin End here-->
+                        </div>
+
+                        <button type="submit" class="mobilesearchButton">Search</button>
+                    }
+
+

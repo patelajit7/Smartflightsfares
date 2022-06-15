@@ -1,0 +1,112 @@
+	.hoteldealCntr {
+	    padding: 20px 0 70px 0;
+	    .deal_image {
+	        width: 100%;
+	    }
+	    .deal-block {
+	        border: 1px solid #ccc;
+	        padding: 0 20px;
+	        ul {
+	            padding: 0px;
+	            li {
+	                padding: 11px 0px;
+	                overflow: hidden;
+	                border-bottom: 1px solid #e4e4e4;
+	                &:last-child {
+	                    border: none;
+	                }
+	            }
+	        }
+	        h4 {
+	            font-size: 16px;
+	            margin: 0;
+	            white-space: nowrap;
+	            text-overflow: ellipsis;
+	            overflow: hidden;
+	        }
+	        .address {
+	            padding: 5px 0;
+	            white-space: nowrap;
+	            text-overflow: ellipsis;
+	            overflow: hidden;
+	        }
+	        .tripadvisor_div {
+	            white-space: nowrap;
+	            .advisor-image {
+	                background: url(../../images/trust/ratingReview.png) 0 0 no-repeat;
+	                padding-left: 38px;
+	                height: 21px;
+	            }
+	            .advisorCircle {
+	                background: url(../../images/trust/trip_rating.png) 0 -15px repeat-x;
+	                height: 16px;
+	                width: 80px;
+	                display: inline-block;
+	                cursor: pointer;
+	                position: relative;
+	                top: 3px;
+	                overflow: hidden;
+	                span {
+	                    position: absolute;
+	                    left: 0;
+	                    top: 0;
+	                    background: url(../../images/trust/trip_rating.png) 0 0 repeat-x;
+	                    display: block;
+	                    height: 16px;
+	                }
+	            }
+	            .trip-rating {
+	                border: 1px solid #eaeaea;
+	                padding: 2px 5px;
+	                color: #00a680;
+	            }
+	        }
+	        .starting {
+	            font-size: 12px;
+	        }
+	        .hotel-price {
+	            font-size: 20px;
+	            color: $primary;
+	            font-weight: 600;
+	        }
+	        .discount {
+	            padding: 2px;
+	            display: inline-block;
+	            font-size: 14px;
+	            color: #005dba;
+	        }
+	    }
+	}
+	/*Destination hotel deal*/
+	
+	.hotel_bottom_info {
+	    display: flex;
+	    align-items: self-start;
+	    justify-content: space-between;
+	    .price {
+	        font-size: 18px;
+	        color: #404040;
+	        font-weight: 600;
+	        text-align: right;
+	        small {
+	            font-size: 12px;
+	            display: block;
+	            font-weight: 300;
+	        }
+	    }
+	    .rating {
+	        margin-bottom: 5px;
+	        width: 93px;
+	        height: 15px;
+	        position: relative;
+	        background: url(../../images/gray-star.svg) left top no-repeat;
+	        span {
+	            width: 100%;
+	            height: 100%;
+	            position: absolute;
+	            left: 0px;
+	            top: 0px;
+	            background: url(../../images/yellow-star.png) left top no-repeat;
+	        }
+	    }
+	}

@@ -1,0 +1,49 @@
+﻿<div class="popup_Box" id="emailItin" style="display:none;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="promoBox flightEmail" id="sentBody">
+
+                <h4 class="textcenter">Please provide your Email ID</h4>
+
+                <div class="cuponBlock">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="hidden" id="itinGuid" value="" />
+                            <input type="hidden" id="emailcontractId" value="" />
+                            <label class="formlabel">Email</label>
+                            <input type="text" id="itniEmail" placeholder="Type your email id" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup-btn actionBtn">
+                    <button class="searchbtn" onclick="$('#emailItin').hide()">Cancel</button> 
+                    <button class="searchbtn contin" id="btnSentItin">Submit</button>
+
+                </div>
+            </div>
+
+            <div class="promoBox flightEmail" id="sentSuccess" style="display:none;">
+
+                <h4 class="textcenter">Thank you</h4>
+
+                <div class="cuponBlock">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Please check your email.</p>
+                            <div class="textcenter"> <img src="~/images/icons/check.png" alt="check" /></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup-btn">
+
+                    <button class="active searchbtn" onclick="$('#emailItin').hide()">Close</button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

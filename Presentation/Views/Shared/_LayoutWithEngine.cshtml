@@ -1,0 +1,56 @@
+﻿@using Common;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <meta name="Author" content="@Utility.PortalSettings.Domain">
+    <meta name="page-topic" content="@Utility.PortalSettings.Domain">
+    <meta name="Copyright" content="@string.Format("{0},  {1}", DateTime.Now.ToString("yyyy"), Utility.PortalSettings.Domain)">
+    <link rel="icon" href="@string.Format("{0}/favicon.ico", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="rating" content="Safe For Kids">
+    @Styles.Render("~/content/css")
+    <link rel="stylesheet" href="/content/jquery-ui.min.css">
+    @Styles.Render("~/content/searchengine")
+    @RenderSection("headerSection", required: false)
+    <!--[if (gte IE 5)&(lte IE 8)]>
+        <script type="text/javascript">
+            window.location = "/security-update";
+        </script>
+    <![endif]-->
+
+
+</head>
+<body>
+    @{Html.RenderPartial("~/views/shared/partial/_header.cshtml", null);}
+    <div class="eng-bg">
+        <div class="container">
+            <h3>Book Cheap Flights on Over 400 Airlines</h3>
+            @{Html.RenderPartial("~/views/flights/partial/_SearchEngine.cshtml", new Infrastructure.HelpingModel.API.FlightSearch()
+                {
+                    Adult = 1,
+                    Cabin = Infrastructure.CabinType.EconomyCoach,
+                    TripType = Infrastructure.TripType.ROUNDTRIP,
+                    OriginSearch = "",
+                    Destination = "",
+                    Departure = DateTime.MinValue,
+                    Return = DateTime.MinValue
+                });}
+        </div>
+    </div>
+
+    @RenderBody()
+    @{Html.RenderPartial("~/views/shared/partial/_footer.cshtml", null);}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script> DOMAIN_URL = "@Common.Utility.PortalSettings.DomainUrl";AFFILIATE_ID = parseInt("@ViewBag.AffiliateId", 10);</script>
+    @RenderSection("scripts", required: false)
+    @{Html.RenderPartial("~/views/shared/_gtmcontainer.cshtml");}
+</body>
+</html>
+
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundles/searchengine")
+    @Scripts.Render("~/bundles/listing")

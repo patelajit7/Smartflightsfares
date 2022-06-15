@@ -1,0 +1,52 @@
+.subscribeBox {
+    background: #f4f4f4;
+    padding: 50px 0 40px 0;
+    border-bottom: 2px solid #e6e6e6;
+    @include breakpoint(sm) {
+        padding: 20px 0;
+    }
+    .subscribe {
+        display: flex;
+		@include breakpoint(sm) {
+		    flex-direction: column;
+		}
+    }
+    p {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 0px;
+        @include breakpoint(md) {
+            font-size: 15px;
+        }
+        @include breakpoint(sm) {
+            padding-bottom: 20px;
+        }
+    }
+    .button {
+        width: 225px;
+        border: none;
+        padding: 14px;
+        font-size: 18px;
+        border-radius: 5px;
+        @include breakpoint(md) {
+            width: 130px;
+        }
+		 @include breakpoint(sm) {
+            width: 100%; margin-top: 15px;
+        }
+    }
+    .input {
+        width: calc(100% - 240px);
+        padding: 14px;
+        margin-right: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        @include breakpoint(md) {
+            width: calc(100% - 120px);
+        }
+		 @include breakpoint(sm) {
+            width: 100%;
+        }
+    }
+}
