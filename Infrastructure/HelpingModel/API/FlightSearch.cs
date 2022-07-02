@@ -32,6 +32,8 @@ namespace Infrastructure.HelpingModel.API
         public bool IsMobileDevice { get; set; }
         public int UserId { get; set; }
         public string UserAgent { get; set; }
+        public List<int> Providers { get; set; }
+        public int ResultFound { get; set; }
     }
     public class SearchUIExtend
     {

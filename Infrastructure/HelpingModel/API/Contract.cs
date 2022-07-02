@@ -65,7 +65,9 @@ namespace Infrastructure.HelpingModel.API
         public SignInToken AmadeusSessionToken { get; set; }
         public BookingStatus BookingStatus { get; set; }
         public float TotalBookingFee { get; set; }
+        public float FareDifference { get; set; }
         public int BaggageQuantity { get; set; }
+        public bool IsGhostBooking { get; set; }
         public Contract()
         {
             this.ContractType = ContractType.Actual;

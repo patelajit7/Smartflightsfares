@@ -895,36 +895,27 @@ namespace Presentation.Controllers
             {
                 string utmsource = string.Empty;
                 if (!string.IsNullOrEmpty(id) && cid > 0)
-                {
-                    if (HttpContext.Request != null && HttpContext.Request.QueryString != null)
-                    {
-                        string param = HttpContext.Request.QueryString.ToString();
-                        if (HttpContext.Request.QueryString["utm_source"] != null)
-                        {
-                            utmsource = HttpContext.Request.QueryString["utm_source"].ToString();
-                        }
-                        Utility.Logger.Debug("Meta Param|" + param);
-                    }
+                {                    
                     AirContext context = Utility.GetMediumMarketContext(id);
                     if (context != null)
                     {
-                        CampaignMasters campaign = Utility.PortalData.Campaigns.Where<CampaignMasters>(o => o.AffiliateId == context.Search.AffiliateId).FirstOrDefault<CampaignMasters>();
-                        if (campaign != null)
+                        if (context.Search != null)
                         {
-                            CampaignMasters _compaign = new CampaignMasters()
+                           var orignAirpor= Utility.Airports.Where(o => o.AirportCode.Equals(context.Search.Origin)).FirstOrDefault();
+                            if (orignAirpor != null)
                             {
-                                AffiliateId = context.Search.AffiliateId,
-                                UtmSource = !string.IsNullOrEmpty(utmsource) && utmsource.Equals("1030") ? "momondo-sponsor" : campaign.UtmSource,  //momondo-sponsor 1030 //utm_source=1030
-                                UtmCampaign = campaign.UtmCampaign,
-                                CampaignName = campaign.CampaignName,
-                                PortalID = campaign.PortalID,
-                                TollFreeNumber = campaign.TollFreeNumber
+                                context.Search.OriginSearch = string.Format("{0} - {1}, {2}, {3}", orignAirpor.AirportCode, orignAirpor.AirportName, orignAirpor.City, orignAirpor.CountryName);
+                                context.Search.OriginCountry = orignAirpor.CountryName;
+                                context.Search.OriginAirportName = orignAirpor.AirportName;
+                            }
+                            var DestAirpor = Utility.Airports.Where(o => o.AirportCode.Equals(context.Search.Destination)).FirstOrDefault();
+                            if (DestAirpor != null)
+                            {
+                                context.Search.DestinationSearch = string.Format("{0} - {1}, {2}, {3}", DestAirpor.AirportCode, DestAirpor.AirportName, DestAirpor.City, DestAirpor.CountryName);
+                                context.Search.DestCountry = DestAirpor.CountryName;
+                                context.Search.DestAirportName = DestAirpor.AirportName;
+                            }
 
-
-                            };
-                            //Common.CamapignInfo.SetTFNCampaignCookies(_compaign, HttpContext.Request);
-                            context.Search.UtmCampaign = campaign.UtmCampaign;
-                            context.Search.UtmSource = campaign.UtmSource;
                         }
 
                         Contract contract = context.Availability.Contracts.Where<Contract>(o => o.ContractId == cid).FirstOrDefault<Contract>();

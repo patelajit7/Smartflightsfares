@@ -19,12 +19,12 @@ namespace Database
                 {
                     lock (syncRoot)
                     {
-                        //if (instance == null)
-                        //{
-                        //    MongoClient client = new MongoClient(MongoDbConnectionString);
-                        //    MongoServer server=client.GetServer();
-                        //    instance = server.GetDatabase(MongoDatabase);
-                        //}
+                        if (instance == null)
+                        {
+                            MongoClient client = new MongoClient(MongoDbConnectionString);
+                            MongoServer server = client.GetServer();
+                            instance = server.GetDatabase(MongoDatabase);
+                        }
                     }
                 }
                return instance;

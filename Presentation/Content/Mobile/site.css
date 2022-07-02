@@ -19,8 +19,8 @@
     }
 
         #headerCntr .logo a {
-            width: 115px;
-            height: 30px;
+            width: 120px;
+            height: 35px;
             cursor: pointer;
             display: block;
             text-decoration: none;
@@ -2399,7 +2399,7 @@ body.payment-page .ui-datepicker td span, .ui-datepicker td a {
 .currencyBox {
     position: absolute;
     right: 65px;
-    top: 13px;
+    top: 5px;
 }
 
     .currencyBox ul {
@@ -3084,7 +3084,7 @@ td.highlight > a {
             .resultsBox .flight__row .leg-details .leg-points .stops {
                 font-size: 12px;
                 text-align: center;
-                width: 55px;
+                width: 70px;
                 display: inline-block;
                 margin-top: -10px;
                 line-height: 2em;

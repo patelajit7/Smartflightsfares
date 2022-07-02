@@ -90,8 +90,8 @@ ul{padding:0; margin:0;}
 }
 
 #headerCntr .logo a {
-    width: 132px;
-    height: 50px;
+    width: 160px;
+    height: 55px;
     cursor: pointer;
     display: block;
     text-decoration: none;
@@ -119,12 +119,12 @@ ul{padding:0; margin:0;}
     float: right;
     margin: -10px 0px 0 0;
     font-size: 20px;
-    padding: 12px 20px 12px 70px;
+    padding: 12px 0px 12px 70px;
     position: relative;
     color: #73cf3a;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    width: 285px
+    width: 225px
 }
 
     #headerCntr .call-tfn .bi-telephone {
@@ -143,9 +143,10 @@ ul{padding:0; margin:0;}
     }
 
     #headerCntr .call-tfn span {
-        font-size: 11px;
+        font-size: 13px;
         display: block;
-        color: gray
+        color: gray;
+        font-weight:600;
     }
 
 @media(max-width: 1199px) {
@@ -3597,7 +3598,13 @@ td.highlight > a {
     color: #fff;
     display: inline-block;
     border-top-left-radius: 3px;
-    border-top-right-radius: 3px
+    border-top-right-radius: 3px;
+    font-weight:700;
+}
+
+.chgcomplete {
+    color: #333;
+    font-size: 16px;
 }
 
 @media(max-width: 767px) {
