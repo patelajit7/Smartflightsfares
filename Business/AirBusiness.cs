@@ -344,7 +344,7 @@ namespace Business
                 switch (_request.Tab)
                 {
                     case 0:/*All flights*/
-                        listContracts = _context.Availability.Contracts.Where(o => (o.ContractType == ContractType.Actual || o.ContractType == ContractType.NearBy || o.ContractType == ContractType.NearByFlexi) && !o.IsPhoneOnly
+                        listContracts = _context.Availability.Contracts.Where(o => (o.ContractType == ContractType.Actual) && !o.IsPhoneOnly
                             && (_request.Stops == null || (_request.Stops != null && _request.Stops.Count == 0) || (_request.Stops != null && _request.Stops.Contains(o.GetStopType())))
                             && (_request.Price == null || (_request.Price != null && o.AdultFare.TotalFarePPax >= _request.Price.Min && o.AdultFare.TotalFarePPax <= _request.Price.Max))
                             && (_request.OutboundDepTime == null || (o.TripDetails.OutBoundSegment[0].DepartureTime >= _request.OutboundDepTime.Min && o.TripDetails.OutBoundSegment[0].DepartureTime <= _request.OutboundDepTime.Max))

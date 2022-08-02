@@ -299,7 +299,7 @@
                             $("#containerListing").html(response.HtmlResponse);
                             $("#cuurentCount").html(response.TotalResult);
                         }
-
+                        enablePricePopup();
                     }
                     else {
                         if (isScroll != null && isScroll == true) {
@@ -310,6 +310,7 @@
                             $("#cuurentCount").html(response.TotalResult);
 
                         }
+                        enablePricePopup();
                     }
                     if (response.IsScroll) {
                         HitMoreResult = true;
@@ -434,8 +435,37 @@
         this.getReturnAirports();
         this.applyFilter(this.Tab, false);
     },
+    resetOutboudDepartureTime: function () {
+        this.OutboundDepTime.Min = parseInt($("#onBoundTimeRange").attr("data-default-min"), 10);
+        this.OutboundDepTime.Max = parseInt($("#onBoundTimeRange").attr("data-default-max"), 10);
+        this.applyFilter(this.Tab, false);
+    },
+    resetInboundDepartureTime: function () {
+        if (this.TripType == this.EnumTripType.RoundTrip) {
+            this.InboundDepTime.Min = parseInt($("#inBoundTimeRange").attr("data-default-min"), 10);
+            this.InboundDepTime.Max = parseInt($("#inBoundTimeRange").attr("data-default-max"), 10);
+            this.applyFilter(this.Tab, false);
+        }
+    }
 };
+function enablePricePopup() {
+    $(".fare__detail").click(function () {
+        $(".fare_breakup_detail").hide();
+        $(this).next().slideDown();
+    });
+    $(".close_price_breakup").click(function () {
+        $(".fare_breakup_detail").slideUp();
+    });
 
+    $(document).on('click touch', function (event) {
+        if (!$(event.target).parents().addBack().is('.fare__detail')) {
+            $('.fare_breakup_detail').slideUp();
+        }
+    });
+    $('.fare_breakup_detail').on('click touch', function (event) {
+        event.stopPropagation();
+    });
+}
 function applyJquery() {
     //-------------------------------------------------------
     IsScrollEventFire = false;
@@ -463,11 +493,23 @@ function applyJquery() {
     });
 
     $('#departTimeFilter li').click(function (e) {
-        $(this).addClass('selected').siblings().removeClass('selected');
+        if ($(this).attr('class') == 'selected') {
+            $(this).removeClass('selected').siblings().removeClass('selected');
+            contractFilter.resetOutboudDepartureTime();
+        }
+        else {
+            $(this).addClass('selected').siblings().removeClass('selected');
+        }
+
     });
     $('#returnTimeFilter li').click(function (e) {
-
-        $(this).addClass('selected').siblings().removeClass('selected');
+        if ($(this).attr('class') == 'selected') {
+            $(this).removeClass('selected').siblings().removeClass('selected');
+            contractFilter.resetInboundDepartureTime();
+        }
+        else {
+            $(this).addClass('selected').siblings().removeClass('selected');
+        }
     });
 
     $("#onBoundSlider").slider({
@@ -786,22 +828,7 @@ function applyJquery() {
         ]
     });
 
-    $(".fare__detail").click(function () {
-        $(".fare_breakup_detail").hide();
-        $(this).next().slideDown();
-    });
-    $(".close_price_breakup").click(function () {
-        $(".fare_breakup_detail").slideUp();
-    });
-
-    $(document).on('click touch', function (event) {
-        if (!$(event.target).parents().addBack().is('.fare__detail')) {
-            $('.fare_breakup_detail').slideUp();
-        }
-    });
-    $('.fare_breakup_detail').on('click touch', function (event) {
-        event.stopPropagation();
-    });
+    enablePricePopup();
 
 }
 $(document).idle({
@@ -889,7 +916,7 @@ $("#btnSentItin").click(function () {
     }
     else {
         $.ajax(
-            {                
+            {
                 type: "POST",
                 url: DOMAIN_URL + "flights/sentitinerary",
                 data: {

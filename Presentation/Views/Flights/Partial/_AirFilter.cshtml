@@ -145,7 +145,7 @@
                             {
                                 <li>
                                     <label>
-                                        <input type="checkbox" name="Airlines" onclick="contractFilter.setAirlines();" value="@item.Code" id="@string.Format("Airlines{0}",item.Code)"><span class="text-overflow">@item.Name</span>
+                                        <input type="checkbox" name="Airlines" onclick="contractFilter.setAirlines();" value="@string.Format("{0}|{1}", item.Code, (item.IsMultiAirline ? 1 : 0))" id="@string.Format("Airlines{0}",item.Code)"><span class="text-overflow">@item.Name</span>
                                         @*<img src="~/Images/icons/multi-airlines.png" alt="multiple airlines" title="multiple airlines" class="multiairline" />*@
                                     </label>
                                     <span class="price chgWithCurrency" default-price="@item.MinPrice">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(item.MinPrice))<sup class="chgCurrencySub" default-price="@item.MinPrice">@String.Format("{0:#.00}", (item.MinPrice - Convert.ToSingle(Math.Truncate(item.MinPrice))))</sup></span>

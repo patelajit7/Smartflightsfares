@@ -12,6 +12,7 @@ namespace Infrastructure.HelpingModel.API
         public string Name { get; set; }
         public bool IsLowcost { get; set; }
         public float MinPrice { get; set; }
+        public bool IsMultiAirline { get; set; }
     }
     public class Airport
     {

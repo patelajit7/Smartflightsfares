@@ -24,7 +24,8 @@ namespace Infrastructure
         TRIPPRO = 2,
         MYSTIFLY = 3,
         SABRE = 4,
-        SABREOT = 5
+        SABREOT = 5,
+        AMADEUSSELFSERVICE = 6
 
     }
     public enum GDSType : int
