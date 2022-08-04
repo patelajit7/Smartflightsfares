@@ -725,7 +725,7 @@ namespace Presentation.Controllers
                 {
                     string partialView = string.Format("~/views/flights/{0}partial/_availability.cshtml", Utility.GetDeviceType(Request.UserAgent) ? "mobile/" : "");
                     string partialViewLeft = string.Format("~/views/flights/{0}partial/_airfilter.cshtml", Utility.GetDeviceType(Request.UserAgent) ? "mobile/" : "");
-                    
+
                     Availability availability = GetAvailability(id);
                     return Json(new { IsContextExist = (availability != null ? true : false), IsRequestCompleted = true, HtmlResponse = ShareUtility.RenderViewToString(this.ControllerContext, partialView, availability), HtmlResponseLeft = ShareUtility.RenderViewToString(this.ControllerContext, partialViewLeft, availability) }, JsonRequestBehavior.AllowGet);
                 }
@@ -895,13 +895,13 @@ namespace Presentation.Controllers
             {
                 string utmsource = string.Empty;
                 if (!string.IsNullOrEmpty(id) && cid > 0)
-                {                    
+                {
                     AirContext context = Utility.GetMediumMarketContext(id);
                     if (context != null)
                     {
                         if (context.Search != null)
                         {
-                           var orignAirpor= Utility.Airports.Where(o => o.AirportCode.Equals(context.Search.Origin)).FirstOrDefault();
+                            var orignAirpor = Utility.Airports.Where(o => o.AirportCode.Equals(context.Search.Origin)).FirstOrDefault();
                             if (orignAirpor != null)
                             {
                                 context.Search.OriginSearch = string.Format("{0} - {1}, {2}, {3}", orignAirpor.AirportCode, orignAirpor.AirportName, orignAirpor.City, orignAirpor.CountryName);
@@ -926,10 +926,19 @@ namespace Presentation.Controllers
                             context.Search.IP = Utility.GetClientIP(System.Web.HttpContext.Current);
                         }
                         Utility.SetAirContextCache(contract.SearchGuid, context);
+
+
+                        Task.Factory.StartNew(() =>
+                        {
+                            MetaClicks click = new MetaClicks() { PortalId = context.Search.PortalId, Origin = context.Search.Origin, Destination = context.Search.Destination, TripType = (int)context.Search.TripType, Departure = context.Search.Departure, Return = context.Search.Return, AffiliateId = context.Search.AffiliateId, IP = context.Search.IP };
+                            Operation.MetaClicks(click);
+                        });
+
                         Task.Factory.StartNew(() =>
                         {
                             new AirBusiness().CheckAvailavility(contract.SearchGuid, cid);
                         });
+
                         if (Utility.PortalSettings.IsCheckAvailability)
                         {
                             return Redirect(string.Format("{0}flights/verification/{1}", Utility.PortalSettings.DomainUrl, contract.SearchGuid));
@@ -2132,7 +2141,7 @@ namespace Presentation.Controllers
                     var result = new
                     {
                         IsSuccess = true,
-                        HtmlResponse = new { OriginSearch = sug, Origin = cityAirport.AirportCode, OriginAirportName = cityAirport.AirportName, OriginCountry = cityAirport.CountryCode,IsMobile= Utility.GetDeviceType(Request.UserAgent) }
+                        HtmlResponse = new { OriginSearch = sug, Origin = cityAirport.AirportCode, OriginAirportName = cityAirport.AirportName, OriginCountry = cityAirport.CountryCode, IsMobile = Utility.GetDeviceType(Request.UserAgent) }
                     };
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
@@ -2178,7 +2187,7 @@ namespace Presentation.Controllers
                                 if (contract != null)
                                 {
                                     string htmlMailString = ShareUtility.RenderViewToString(this.ControllerContext, "~/views/emails/SentItineraryEmail.cshtml", contract);
-                                    
+
                                     if (!string.IsNullOrEmpty(htmlMailString) && htmlMailString.Length > 1000)
                                     {
                                         Task.Factory.StartNew(() =>
@@ -2192,10 +2201,10 @@ namespace Presentation.Controllers
 
                                             };
                                             bool isMailSent = EmailHelper.SendMails(transaction);
-                                            RequestedItinerary requestedItinerary = new RequestedItinerary() {PortalId= context.Search.PortalId,Origin= context.Search.Origin,Destination= context.Search.Destination,TripType= (int)context.Search.TripType,Departure= context.Search.Departure, Return= context.Search.Return,Email=email,SentSuccess=isMailSent,IP= context.Search.IP };
+                                            RequestedItinerary requestedItinerary = new RequestedItinerary() { PortalId = context.Search.PortalId, Origin = context.Search.Origin, Destination = context.Search.Destination, TripType = (int)context.Search.TripType, Departure = context.Search.Departure, Return = context.Search.Return, Email = email, SentSuccess = isMailSent, IP = context.Search.IP };
                                             Operation.SentItineryDetails(requestedItinerary);
                                             Utility.Logger.Info(string.Format("Itinerary details|Email:{0} | {1}", email, isMailSent ? "MAIL SENT" : "UNABLE TO SENT MAIL"));
-                                            
+
                                         });
                                     }
                                 }

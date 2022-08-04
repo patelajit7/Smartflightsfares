@@ -1026,5 +1026,36 @@ namespace Database
             return response;
         }
 
+        public static void MetaClicks(MetaClicks request, string connectionString)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        request.Departure = new DateTime(2022, 08, 10);
+                        connection.Open();
+                        command.Connection = connection;
+                        command.CommandText = "MetaClicksInsert";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 3600;
+                        command.Parameters.AddWithValue("@PortalId", request.PortalId);
+                        command.Parameters.AddWithValue("@Origin", request.Origin);
+                        command.Parameters.AddWithValue("@Destination", request.Destination);
+                        command.Parameters.AddWithValue("@TripType", request.TripType);
+                        command.Parameters.AddWithValue("@Departure", request.Departure);
+                        command.Parameters.AddWithValue("@Return", request.Return != null ? request.Return : (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@IP", request.IP);
+                        command.Parameters.AddWithValue("@AffiliateId", request.AffiliateId);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

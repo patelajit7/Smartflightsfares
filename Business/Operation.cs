@@ -258,5 +258,17 @@ namespace Business
                 Utility.Logger.Error("SentItineryDetails UNABLE SAVE IN DATABASE|EXCEPTION:" + ex.ToString());
             }
         }
+
+        public static void MetaClicks(MetaClicks request)
+        {
+            try
+            {
+                BookingProcedures.MetaClicks(request, Utility.ConnString);
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("MetaClicks UNABLE SAVE IN DATABASE|EXCEPTION:" + ex.ToString());
+            }
+        }
     }
 }
