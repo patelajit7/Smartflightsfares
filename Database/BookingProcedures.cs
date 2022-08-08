@@ -1034,7 +1034,6 @@ namespace Database
                 {
                     using (SqlCommand command = new SqlCommand())
                     {
-                        request.Departure = new DateTime(2022, 08, 10);
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = "MetaClicksInsert";

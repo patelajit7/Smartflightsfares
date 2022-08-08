@@ -13,7 +13,7 @@ namespace Infrastructure.Interfaces
         void Delete<T>(Expression<Func<T, bool>> expression) where T : MongoEntity;
         bool Delete<T>(T item) where T : MongoEntity;
         void DeleteAll<T>() where T : MongoEntity;
-        T Single<T>(string id) where T : MongoEntity;
+        T Single<T>(Expression<Func<T, bool>> expression) where T : MongoEntity;
         List<T> Where<T>(Expression<Func<T, bool>> expression) where T : MongoEntity;
         IQueryable<T> All<T>() where T : MongoEntity;
         void Add<T>(T item) where T : MongoEntity;

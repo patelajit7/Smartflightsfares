@@ -102,7 +102,7 @@ namespace Business
                 smtp = new SmtpClient(Utility.PortalSettings.EmailServerInfo.Server);
                 smtp.EnableSsl = Convert.ToBoolean(Utility.PortalSettings.EmailServerInfo.IsEnableSsl);
                 smtp.Port = Convert.ToInt32(Utility.PortalSettings.EmailServerInfo.Port);
-                smtp.Credentials = new System.Net.NetworkCredential(Utility.PortalSettings.EmailServerInfo.User, Utility.PortalSettings.EmailServerInfo.Password);
+                smtp.Credentials = new System.Net.NetworkCredential("reservation@thewizfair.com", "bantuwiz@321");
 
                 ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;

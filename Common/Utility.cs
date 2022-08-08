@@ -29,6 +29,7 @@ using BBRibbon = Infrastructure.HelpingModel.BlueribbonbagsAPI;
 using Newtonsoft.Json;
 using Infrastructure.HelpingModel.BookingEntities;
 using Infrastructure.HelpingModel.Travelex;
+using MongoDB.Bson;
 
 namespace Common
 {
@@ -2036,7 +2037,7 @@ namespace Common
             AirContext airContext = null;
             try
             {
-                var contracts = Utility.MongoInstance.Single<Contracts>(_id);
+                var contracts = Utility.MongoInstance.Where<Contracts>(o=>o._id.Equals(new ObjectId(_id))).FirstOrDefault();
                 if (contracts != null)
                 {
                     airContext = new AirContext()

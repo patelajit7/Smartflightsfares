@@ -6,12 +6,12 @@ namespace Database
 {
     public class MongoDBContext
     {
-        private static MongoDatabase instance;
+        private static IMongoDatabase instance;
         private static object syncRoot = new Object();
         private MongoDBContext() { }
         private static string MongoDbConnectionString = ConfigurationManager.AppSettings["MongoDbConnection"].ToString();
         private static string MongoDatabase = ConfigurationManager.AppSettings["MongoDatabase"].ToString();
-        public static MongoDatabase Instance
+        public static IMongoDatabase Instance
         {
             get
             {
@@ -22,12 +22,11 @@ namespace Database
                         if (instance == null)
                         {
                             MongoClient client = new MongoClient(MongoDbConnectionString);
-                            MongoServer server = client.GetServer();
-                            instance = server.GetDatabase(MongoDatabase);
+                            instance = client.GetDatabase(MongoDatabase);
                         }
                     }
                 }
-               return instance;
+                return instance;
             }
         }
     }
