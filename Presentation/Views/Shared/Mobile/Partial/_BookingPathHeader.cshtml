@@ -4,15 +4,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="logo">
-
-                    <a href="/">SmartFlights Fares</a>
-
+                    <a href="/"><img src="~/Images/logo.png" alt="logo" /></a>
                 </div>
-
-                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn_mobile"> <i class="bi bi-telephone"></i> Call us </a>
-
                 @{Html.RenderPartial("~/views/home/mobile/partial/_CurrencyConverter.cshtml");}
-               
+                <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber" class="call-tfn_mobile"> <i class="bi bi-telephone"></i> </a>
             </div>
 
         </div>

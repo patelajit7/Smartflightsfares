@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,9 @@ namespace Infrastructure.HelpingModel.API
         public bool IsDepartDateHighlight { get; set; }
         public bool IsOriginHighlight { get; set; }
         public bool IsDestinationHighlight { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime Departure { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime Arrival { get; set; }
         public Airline MarketingCarrier { get; set; }
         public Airline OperatingCarrier { get; set; }

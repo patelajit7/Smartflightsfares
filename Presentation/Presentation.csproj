@@ -1472,6 +1472,8 @@
     <Content Include="Views\Flights\Mobile\Partial\_CallStrip.cshtml" />
     <Content Include="Views\Flights\Partial\_SentItineraryPopup.cshtml" />
     <Content Include="Views\Emails\SentItineraryEmail.cshtml" />
+    <Content Include="Views\Shared\Mobile\_BookingConfirmationLayout.cshtml" />
+    <Content Include="Views\Shared\Mobile\Partial\_bookingConfirmationHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

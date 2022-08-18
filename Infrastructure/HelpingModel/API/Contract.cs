@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,9 @@ namespace Infrastructure.HelpingModel.API
         public string DestinationCityName { get; set; }
         public string OriginSearch { get; set; }
         public string DestinationSearch { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime DepartureDate { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime ArrivalDate { get; set; }
         public TripDetails TripDetails { get; set; }
         public Airline ValidatingCarrier { get; set; }

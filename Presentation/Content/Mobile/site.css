@@ -1,18 +1,22 @@
 ﻿@import"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,500&display=swap";
 
 #headerCntr {
-    padding: 7px 0px;
+    padding: 3px 0px;
     background: #fff
 }
 
-    #headerCntr.fixed {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        z-index: 2;
-        box-shadow: 0 5px 10px #04040447
-    }
+#headerCntr .col-sm-12{
+    padding:0 5px;
+}
+
+#headerCntr.fixed {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 5px 10px #04040447
+}
 
     #headerCntr .logo {
         float: left
@@ -26,29 +30,25 @@
             text-decoration: none;
             text-indent: -99999px;
             background: url(../../images/logo.png) left top no-repeat;
-            background-size: 100%; margin-top:4px;
+            background-size: 100%; margin-top:0px;
         }
 
     #headerCntr .call-tfn_mobile {
         cursor: pointer;
-        padding: 7px 15px 7px 35px;
-        display: block;
-        margin-left: 20px;
-        position: relative;
-        font-weight: 700;
-        float: left;
-        font-size: 13px;
+        display: flex;
+        float: right;
         color: #fff;
         background: #73cf3a;
-        text-decoration: none;
-        border-radius: 30px
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-top:3px;
     }
 
         #headerCntr .call-tfn_mobile .bi-telephone {
-            font-size: 19px;
-            position: absolute;
-            left: 13px;
-            top: 3px
+            font-size: 15px;
         }
 
     #headerCntr .mobileMenu {
@@ -272,24 +272,24 @@
     color:#ffffff;
 }
 
+.disclaimerBox #more {
+    display: none;
+}
+
+#myBtn {
+    border: none;
+    outline: none;
+    color: #26aa7e;
+    font-size: 14px;
+    background: transparent;
+}
+
 @media(max-width: 1023px) {
     #footerCntr .hide-tablet {
         display: none
     }
 }
 
-@media(max-width: 767px) {
-    #footerCntr .hide-tablet {
-        display: block
-    }
-}
-
-@media(max-width: 767px) {
-    #footerCntr .mobile-bg {
-        padding: 10px;
-        color:#ffffff;
-    }
-}
 
 .footer_call {
     width: 100%;
@@ -974,11 +974,11 @@
     }
 
 .page__title {
-    font-size: 20px;
+    font-size: 16px;
     color: #303030;
-    margin-bottom: 26px;
     position: relative;
     font-weight: 500;
+    padding:10px 0;
 }
 
 
@@ -1376,21 +1376,10 @@
 .flight__itenaryBox .head {
     padding: 1px 30px 2px 20px;
     position: relative;
-    background: #efefef;
     margin: 0px -15px 10px -15px
 }
 
-.flight__itenaryBox .page__title {
-    font-size: 18px;
-    margin:15px 0;
-}
 
-@media(max-width: 767px) {
-    .flight__itenaryBox .page__title.flight_detail_title {
-        padding-top: 10px;
-        margin-bottom: 10px
-    }
-}
 
 .flight__itenaryBox .page__title:after {
     bottom: -9px;
@@ -1410,18 +1399,26 @@
     }
 
     .flight__itenaryBox .flightDetail h4 {
-        font-size: 16px;
+        font-size: 14px;
         color: #393939;
         border-bottom: 1px solid #ccc;
-        padding-bottom: 12px;
-        margin-bottom: 0px
+        padding-bottom: 5px;
+        margin-bottom: 0px;
+        font-weight:400;
+    }
+
+    .flight__itenaryBox .flightDetail .cityName {
+        font-size: 14px;
+        font-weight: 500;
+        color: #303030;
+        padding-top: 5px;
     }
 
     .flight__itenaryBox .flightDetail .devider_line {
         height: 8px;
-        background: #f5f5f8;
+        background: #cccccc;
         border: none;
-        margin: 20px -20px
+        margin: 15px -20px;
     }
 
 .flight__itenaryBox .flighttab {
@@ -1506,10 +1503,10 @@
 }
 
 .flight__itenaryBox .airlines__details {
-    padding-top: 26px;
+    padding-top: 0px;
     font-size: 13px;
     line-height: 1.5em;
-    color: #949494
+    color: #949494;
 }
 
     .flight__itenaryBox .airlines__details .air-name {
@@ -1518,27 +1515,29 @@
     }
 
     .flight__itenaryBox .airlines__details img {
-        width: 32px;
+        width: 40px;
         float: left;
-        margin-right: 10px
+        margin-right: 10px;
+        outline: 3px solid #fff;
+        outline-offset: -2px;
     }
 
     .flight__itenaryBox .airlines__details .detail {
         width: calc(100% - 45px);
-        float: left
+        float: left;
     }
 
 .flight__itenaryBox .route__info {
     padding: 40px 0;
     font-size: 13px;
-    position: relative
+    position: relative;
 }
 
 @media(max-width: 767px) {
     .flight__itenaryBox .route__info {
         padding: 0 20px;
-        margin: 15px 0 35px 0;
-        border-left: 2px dashed #ccc
+        margin: 15px 0;
+        border-left: 2px dashed #ccc;
     }
 
         .flight__itenaryBox .route__info:after, .flight__itenaryBox .route__info:before {
@@ -1551,12 +1550,12 @@
             left: -6px;
             top: 0px;
             border-radius: 100%;
-            background: #fff
+            background: #fff;
         }
 
         .flight__itenaryBox .route__info:before {
             top: inherit;
-            bottom: 0px
+            bottom: 0px;
         }
 }
 
@@ -1564,7 +1563,7 @@
     font-size: 14px;
     color: #484848;
     font-weight: 600;
-    margin-top: 28px
+    margin-top: 28px;
 }
 
 @media(max-width: 767px) {
@@ -1656,11 +1655,11 @@
 }
 
 .flight__itenaryBox .class__type {
-    padding-top: 26px
+    padding-top: 5px
 }
 
 .flight__itenaryBox .layover {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     padding: 8px 20px;
     font-size: 12px;
     color: #787878;
@@ -1684,7 +1683,7 @@
     box-shadow: 0 4px 5px #0000000F;
     background: #fff;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 20px;
     margin-left: -7px;
     margin-right: -7px
@@ -1756,18 +1755,15 @@
     }
 
 .securebooking__Box {
-    border-radius: 8px;
-    box-shadow: 0 4px 5px #0000000F;
-    background: #fff;
-    margin-top: 20px;
-    padding: 15px
+    border-radius: 0px;
+    box-shadow: 0px 4px 5px #0000000A;
+    border: 1px solid #e8e8e8;
+    background: #c8e7cc;
+    padding: 5px 0;
+    font-size: 14px;
+    margin: 0 -16px;
 }
 
-@media(max-width: 767px) {
-    .securebooking__Box {
-        margin: 0 -7px 0px -7px
-    }
-}
 
 .securebooking__Box h4 {
     padding-bottom: 10px;
@@ -1819,33 +1815,26 @@
     border-radius: 8px;
     box-shadow: 0 4px 5px #0000000F;
     background: #fff;
-    padding: 20px
+    margin: 0px -7px 0 -7px;
+    padding: 0 15px;
+    margin-bottom:15px;
 }
 .backtoresults {
     padding: 15px 0;
     display: block;
-}
-@media(max-width: 767px) {
-    .payment__wrapper {
-        margin: 0px -7px 0 -7px;
-        padding: 0 15px
-    }
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.payment__wrapper .payment__stepBox {
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px
-}
 
-@media(max-width: 767px) {
     .payment__wrapper .payment__stepBox {
         background: #ecf0ff;
         width: auto;
         margin: 0 -15px;
-        padding: 10px 10px 0 10px
+        border-bottom: 1px solid #ccc;
+        padding: 0 5px;
     }
-}
+
 
 .payment__wrapper .payment__stepBox ul {
     list-style: none;
@@ -1857,18 +1846,16 @@
 }
 
     .payment__wrapper .payment__stepBox ul li {
-        font-size: 16px;
+        font-size: 14px;
         color: #878787;
         cursor: pointer;
-        padding-bottom: 8px;
-        position: relative
+        padding: 5px 8px;
+        background: #ecf0ff;
+        border-radius: 0px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     }
 
-@media(max-width: 767px) {
-    .payment__wrapper .payment__stepBox ul li {
-        font-size: 14px
-    }
-}
 
 .payment__wrapper .payment__stepBox ul li i {
     position: relative;
@@ -1885,24 +1872,25 @@
     transition: all .5s;
     width: 0px;
     display: block;
-    background: #73cf3a;
 }
 
 .payment__wrapper .payment__stepBox ul li.active:before {
     width: 100%;
-    color: #71b1ea
+    color: #71b1ea;
 }
 
-.payment__wrapper .payment__stepBox ul li:hover, .payment__wrapper .payment__stepBox ul li.active {
-    color: #005aab
-}
+        .payment__wrapper .payment__stepBox ul li:hover, .payment__wrapper .payment__stepBox ul li.active {
+            color: #ffffff;
+            background: #1b7387;
+        }
 
-.payment__wrapper .payment__stepBox ul li.complete {
-    color: #005aab
-}
+        .payment__wrapper .payment__stepBox ul li.complete {
+            color: #ffffff;
+            background: #73cf3a;
+        }
 
     .payment__wrapper .payment__stepBox ul li.complete:hover:before {
-        width: 0px
+        width: 0px;
     }
 
 .payment__wrapper .bottom__row {
@@ -2061,7 +2049,47 @@
     margin-bottom: 11px;
     color: #4b4b4b
 }
+.card__zoom {
+    position: relative;
+    font-size: 11px;
+    padding-top: 0px;
+    font-weight: 500;
+display:block;
+text-align:right;
+}
 
+    .card__zoom i {
+        color: #ccc;
+        padding-right: 5px;
+    }
+
+    .card__zoom:hover .cardInfoTooltip {
+        display: block;
+    }
+
+    .card__zoom .cardInfoTooltip {
+        position: absolute;
+        right: 0;
+        width: 510px;
+        background: #fff;
+        z-index: 1;
+        box-shadow: 0 0 6px #00000029;
+        padding: 13px;
+        top: 46px;
+        font-size: 10px;
+        display: none;
+    }
+
+        .card__zoom .cardInfoTooltip strong {
+            display: block;
+            padding: 10px 0;
+            min-height: 42px;
+            font-weight: 600;
+        }
+
+        .card__zoom .cardInfoTooltip p {
+            font-weight: 500;
+        }
 .payment__wrapper select::-ms-expand {
     display: none
 }
@@ -2089,16 +2117,11 @@
     }
 
 .payment__wrapper .form__block .form-control {
-    padding: 12px;
-    border-radius: 0px;
+    padding: 10px 12px;
+    border-radius: 5px;
     background: #fff
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .form__block .form-control {
-        padding: 9px 12px
-    }
-}
 
 .payment__wrapper .form__block .form-control:focus {
     border-color: #005aab;
@@ -2127,15 +2150,41 @@
 
 .payment__wrapper .bottom_text {
     font-size: 13px;
-    padding: 20px 0;
+    padding-bottom: 20px;
     color: #6b6b6b;
     line-height: 21px
 }
 
+    .payment__wrapper .bottom_text #more {
+        display: none;
+    }
     .payment__wrapper .bottom_text p a {
         color: #005aab;
         text-decoration: none
     }
+
+
+    .payment__wrapper .bottom_text h5 {
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 15px;
+        color: #303030;
+    }
+
+    .payment__wrapper .bottom_text b {
+        font-weight: 700;
+    }
+
+    .payment__wrapper .bottom_text p {
+        margin: 0;
+    }
+
+    .payment__wrapper .bottom_text ul {
+        margin: 10px 0;
+        padding: 0 0 0 30px;
+    }
+
+
 
     .payment__wrapper .bottom_text label {
         float: left
@@ -2213,16 +2262,10 @@
     border-right: 1px solid #ccc
 }
 
-@media(max-width: 767px) {
-    .form-group {
-        margin-bottom: 0px
-    }
-
-    .formlabel {
-        margin-top: 12px;
+    .payment-page .formlabel {
+        margin-top: 5px;
         margin-bottom: 3px
     }
-}
 
 body.payment-page .ui-datepicker.ui-widget {
     width: 332px;
@@ -2387,7 +2430,7 @@ body.payment-page .ui-datepicker td span, .ui-datepicker td a {
 
 .hr-line {
     padding: 0px 0 10px 0;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     margin:15px 0;
 }
 
@@ -3031,7 +3074,9 @@ td.highlight > a {
 
         .resultsBox .flight__row .airline_logo {
             float: left;
-            width: 32px
+            width: 40px;
+            outline: 3px solid #fff;
+            outline-offset: -2px;
         }
 
         .resultsBox .flight__row .leg-details .city {
@@ -4721,8 +4766,10 @@ slider {
     }
 
     .results_body .currencyBox {
-        right: 20px
+        right: 90px;
+        top: 10px;
     }
+
 
 #resultsCntr {
     width: 100%;
@@ -5022,20 +5069,22 @@ slider {
     height: 50px
 }
 
+#conformation .tfnmobile {
+    top:0;
+}
+#conformation .logo img{
+    width:140px;
+    padding:5px 0;
+}
 .confirmation__Box {
     border-radius: 8px;
     box-shadow: 0 4px 5px #0000000F;
     background: #fff;
     padding: 20px 15px;
-    margin-bottom: 20px;
+    margin: 15px 0;
     position: relative
 }
 
-@media(max-width: 767px) {
-    .confirmation__Box {
-        margin: 0 -7px 20px -7px
-    }
-}
 
 .confirmation__Box h4 {
     font-size: 18px;
@@ -5072,6 +5121,12 @@ slider {
         color: #73cf3a;
     }
 
+    .confirmation__Box a {
+        font-size: 16px;
+        color: #73cf3a;
+        text-decoration: none;
+        font-weight: 600;
+    }
 .print_button {
     background: #73cf3a;
     padding: 7px 14px;
@@ -5503,3 +5558,111 @@ container__badge-list {
 }
 
 .required_star{ color:red;}
+
+@media print {
+    @page {
+        size: auto;
+        margin: 2mm;
+        page-break-inside: inherit;
+        -webkit-print-color-adjust: exact !important
+    }
+
+    .print_itinerary, .print_button {
+        display: none;
+    }
+
+    .payment__wrapper, .confirmation__information, .confirmation__Box {
+        box-shadow: none;
+        border: none;
+    }
+
+    a[href]:after {
+        content: none
+    }
+
+
+    #footerCntr {
+        display: none;
+    }
+
+    .full-col {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%
+    }
+
+    .visible-print {
+        display: block !important
+    }
+
+    table.visible-print {
+        display: table !important
+    }
+
+    tr.visible-print {
+        display: table-row !important
+    }
+
+    td.visible-print,
+    th.visible-print {
+        display: table-cell !important
+    }
+}
+
+
+.freeCancel {
+    color: #137720;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+}
+
+    .freeCancel:hover .tooltipBox {
+        display: block;
+    }
+
+    .freeCancel .tooltipBox {
+        display: none;
+        width: 340px;
+        position: absolute;
+        top: 37px;
+        left: -25%;
+        background: #fff;
+        padding: 10px 12px;
+        font-weight: 400;
+        font-size: 12px;
+        color: #919192;
+        border-radius: 2px;
+        z-index: 1;
+        box-shadow: 0px 0px 6px #00000033;
+        text-align: left;
+        transform: translateX(21%);
+    }
+
+        .freeCancel .tooltipBox ul {
+            margin: 0 0 0 10px;
+            text-align: left;
+        }
+
+            .freeCancel .tooltipBox ul li {
+                margin-bottom: 5px;
+            }
+
+                .freeCancel .tooltipBox ul li::marker {
+                    color: #137720;
+                }
+
+        .freeCancel .tooltipBox:after, .freeCancel .tooltipBox:before {
+            content: "";
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: -10px;
+            left: 50%;
+            border-bottom: 10px solid #ccc;
+        }
+
+        .freeCancel .tooltipBox:after {
+            border-bottom: 11px solid #fff;
+            z-index: 1;
+        }

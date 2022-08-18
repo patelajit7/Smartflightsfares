@@ -247,7 +247,9 @@ namespace Infrastructure
         [Description("Payment Confirmation")]
         PaymentConfirmation = 5,
         [Description("Itinery Details")]
-        ItineryDetails = 6
+        ItineryDetails = 6,
+        [Description("Self Booking")]
+        SelefBooking = 7
     }
 
     public enum PageBannerType

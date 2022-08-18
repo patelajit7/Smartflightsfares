@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,9 @@ namespace Infrastructure.HelpingModel.API
         public TripType TripType { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime Departure { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local, Representation = BsonType.String)]
         public DateTime? Return { get; set; }
         public int Adult { get; set; }
         public int Senior { get; set; }

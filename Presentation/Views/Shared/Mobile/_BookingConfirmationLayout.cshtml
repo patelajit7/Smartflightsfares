@@ -5,25 +5,22 @@
     <title>@ViewBag.Title</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="key, words" />
+    <meta name="description" content="Website description" />
+    <meta name="robots" content="" />
+    <!-- change into index, follow -->
+    <link rel="shortcut icon" href="@string.Format("{0}images/favicon.png?v=1234", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
     <meta name="Author" content="@Utility.PortalSettings.Domain">
     <meta name="page-topic" content="@Utility.PortalSettings.Domain">
     <meta name="Copyright" content="@string.Format("{0},  {1}", DateTime.Now.ToString("yyyy"), Utility.PortalSettings.Domain)">
-    <link rel="icon" href="@string.Format("{0}/favicon.ico", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
-    <meta name="robots" content="" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="rating" content="Safe For Kids">
+    <meta http-equiv="content-language" content="en-us">
+    <link rel="alternate" href="@Utility.PortalSettings.DomainUrl" hreflang="en" />
+    @Styles.Render("~/content/m-css")
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    @Styles.Render("~/content/css")
-    @Scripts.Render("~/bundles/js")
     @RenderSection("headerSection", required: false)
-    <script>
-        window.history.forward();
-        function noBack() {
-            window.history.forward();
-        }
-    </script>
-    <!-- Begin Inspectlet Asynchronous Code -->
+<!-- Begin Inspectlet Asynchronous Code -->
 <script type="text/javascript">
 (function() {
 window.__insp = window.__insp || [];
@@ -35,18 +32,20 @@ setTimeout(ldinsp, 0);
 </script>
 <!-- End Inspectlet Asynchronous Code -->
 </head>
-
-<body onLoad="noBack();" id="target" onpageshow="if (event.persisted) noBack();" onUnload="">
+<body>
     <div id="wrapper">
+
         <div id="mainCntr">
-            @{Html.RenderPartial("~/views/shared/partial/_BookingConfirmationHeader.cshtml", null);}
+            @{Html.RenderPartial("~/Views/Shared/Mobile/Partial/_bookingConfirmationHeader.cshtml");}
             @RenderBody()
-            @{Html.RenderPartial("~/views/shared/partial/_BookingPathFooter.cshtml", null);}
+          
         </div>
     </div>
+
+    @Scripts.Render("~/bundles/m-js")
+
     @RenderSection("scripts", required: false)
+
 </body>
 
 </html>
-
-

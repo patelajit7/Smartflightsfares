@@ -73,31 +73,37 @@
                                 <!-- connecting block-->
                                 <div class="connnecting-block">
                                     <div class="leg-points">
-
-                                        <div class="stops">
-                                            <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration)</div>
-                                            <i></i>
-                                            <br>
-                                            @if (Model.TripDetails.OutBoundSegment.Count > 1)
+                                        @if (Model.TripDetails.OutBoundSegment.Count > 1)
+                                        {
+                                            for (int i = 0; i <= Model.TripDetails.OutBoundSegment.Count - 1; i++)
                                             {
-                                                <b>@Utility.GetTotalStops(Model.TripDetails.OutBoundSegment) Stops</b>
-                                            }
-                                            else
-                                            {
-                                                <b>Non Stop</b>
-                                            }
+                                                Segments item = Model.TripDetails.OutBoundSegment[i];
+                                                if (i != 0)
+                                                {
+                                                    DateTime arrivalTime = new DateTime(Model.TripDetails.OutBoundSegment[i - 1].Arrival.Year, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Month, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Day, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Minutes, 0);
+                                                    TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
+                                                    if (layoverTime != TimeSpan.MinValue)
+                                                    {
+                                                        @*<div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>*@
+                                                        <div class="stops">
+                                                            <div class="layovertime">@Utility.GetDuration(layoverTime) </div>
 
-                                        </div>
+                                                            <span class="d-block">@item.Origin</span>
+                                                        </div>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            <div class="noneStop">
+                                                <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration) </div>
+                                                <span class="d-block">Non Stop</span>
+                                            </div>
+                                        }
 
                                     </div>
-
-                                    <!-- Tooltip-->
-                                    @*<div class="tooltip-new">
-                                            <div class="text-center">
-                                                46m layover, O'Hare International Airport
-                                            </div>
-                                        </div>*@
-                                    <!-- Tooltip-->
 
                                 </div>
                                 <!-- Connecting block end-->
@@ -138,30 +144,37 @@
                                     <div class="connnecting-block">
                                         <div class="leg-points">
 
-                                            <div class="stops">
-                                                <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration)</div>
-                                                <i></i>
-                                                <br>
-                                                @if (Model.TripDetails.InBoundSegment.Count > 1)
+                                            @if (Model.TripDetails.InBoundSegment.Count > 1)
+                                            {
+                                                for (int i = 0; i <= Model.TripDetails.InBoundSegment.Count - 1; i++)
                                                 {
-                                                    <b>@Utility.GetTotalStops(Model.TripDetails.InBoundSegment) Stops</b>
+                                                    Segments item = Model.TripDetails.InBoundSegment[i];
+                                                    if (i != 0)
+                                                    {
+                                                        DateTime arrivalTime = new DateTime(Model.TripDetails.InBoundSegment[i - 1].Arrival.Year, Model.TripDetails.InBoundSegment[i - 1].Arrival.Month, Model.TripDetails.InBoundSegment[i - 1].Arrival.Day, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Minutes, 0);
+                                                        TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
+                                                        if (layoverTime != TimeSpan.MinValue)
+                                                        {
+                                                            @*<div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>*@
+                                                            <div class="stops">
+                                                                <div class="layovertime">@Utility.GetDuration(layoverTime) </div>
+                                                                <span class="d-block">@item.Origin</span>
+                                                            </div>
+                                                        }
+                                                    }
                                                 }
-                                                else
-                                                {
-                                                    <b>Non Stop</b>
-                                                }
+                                            }
+                                            else
+                                            {
 
-                                            </div>
+                                                <div class="noneStop">
+                                                    <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration) </div>
+                                                    <span>Non Stop</span>
+                                                </div>
+                                            }
 
                                         </div>
 
-                                        <!-- Tooltip-->
-                                        @*<div class="tooltip-new">
-                                                <div class="text-center">
-                                                    46m layover, O'Hare International Airport
-                                                </div>
-                                            </div>*@
-                                        <!-- Tooltip-->
                                     </div>
                                     <!-- Connecting block end-->
 

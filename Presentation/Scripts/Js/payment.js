@@ -88,14 +88,14 @@ p = {
                     p = this.validatePaymentMethod();
                     b = this.validateBillingDtails();
                     var tnc = true;
-                    //if ($("#TermCondition").prop("checked") != true) {
-                    //    $("#error_TermCondition").css("display", "block");
-                    //    this.setFocusId($("#TermCondition"));
-                    //    tnc = false;
-                    //}
-                    //else {
-                    //    $("#error_TermCondition").css("display", "none");
-                    //}
+                    if ($("#TermCondition").prop("checked") != true) {
+                        $("#error_TermCondition").css("display", "block");
+                        this.setFocusId($("#TermCondition"));
+                        tnc = false;
+                    }
+                    else {
+                        $("#error_TermCondition").css("display", "none");
+                    }
                     if ((!t || !p || !b || !c || !tnc) && focusId != null) {
                         $(focusId).focus();
                         isSuccess = false;
@@ -1506,3 +1506,4 @@ $(document).idle({
     },
     idle: 900000
 })
+

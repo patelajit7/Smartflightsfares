@@ -58,6 +58,19 @@ namespace Business
                             emailTemplate.Subject = emailTemplate.Subject;
                             isMailSent = IsMailSent(emailTemplate);
                             break;
+                        case EmailType.SelefBooking:
+                            emailTemplate = new EmailTemplate()
+                            {
+                                EmailPass = emails.BookingReceipt.EmailPass,
+                                EmailUserId = emails.BookingReceipt.EmailUserId,
+                                IsHtml = emails.BookingReceipt.IsHtml,
+                                Subject = emails.BookingReceipt.Subject,
+                                MailRecipient = transaction.MailRecipient,
+                                Body = transaction.MailBody
+                            };
+                            emailTemplate.Subject = emailTemplate.Subject.Replace("####", transaction.TransactionId.ToString());
+                            isMailSent = IsMailSent(emailTemplate);
+                            break;
 
                     }
                     return isMailSent;
@@ -102,7 +115,7 @@ namespace Business
                 smtp = new SmtpClient(Utility.PortalSettings.EmailServerInfo.Server);
                 smtp.EnableSsl = Convert.ToBoolean(Utility.PortalSettings.EmailServerInfo.IsEnableSsl);
                 smtp.Port = Convert.ToInt32(Utility.PortalSettings.EmailServerInfo.Port);
-                smtp.Credentials = new System.Net.NetworkCredential("reservation@thewizfair.com", "bantuwiz@321");
+                smtp.Credentials = new System.Net.NetworkCredential(Utility.PortalSettings.EmailServerInfo.User, Utility.PortalSettings.EmailServerInfo.Password);
 
                 ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;

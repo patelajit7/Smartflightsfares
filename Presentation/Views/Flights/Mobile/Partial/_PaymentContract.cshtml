@@ -16,15 +16,8 @@
 }
 
 <div class="flightDetail">
-    <ul class="flighttab">
-        <li><a id="departTab" class="tabclick active" onclick="clickTabShow('departTabcontent','departTab');">Departure</a></li>
-        @if (Model.Contract.TripType == TripType.ROUNDTRIP)
-        {
-            <li><a id="returnTab" class="tabclick" onclick="clickTabShow('returnTabcontent','returnTab');">Return</a></li>
-        }
-
-    </ul>
-    <div class="clearfix"></div>
+    <h4>Departure</h4>
+    <div class="cityName">@Utility.GetAirportCity(oItem.Origin)  (@dItem.Origin) - @Utility.GetAirportCity(dItem.Destination)  (@dItem.Destination)</div>
     <div class="tab-content">
         <div id="departTabcontent">
             @for (int i = 0; i <= Model.Contract.TripDetails.OutBoundSegment.Count - 1; i++)
@@ -57,7 +50,7 @@
 
                     <div class="col-3 col-sm-1 order-md-3 pl-0">
                         <div class="class__type">
-                            Class: <br> @Utility.GetEnumDescription(item.CabinType)
+                            @Utility.GetEnumDescription(item.CabinType)
                         </div>
                     </div>
 
@@ -127,7 +120,10 @@
 
         @if (Model.Contract.TripType == TripType.ROUNDTRIP)
         {
-            <div id="returnTabcontent" style="display:none;">
+            <div id="returnTabcontent">
+                <hr class="devider_line"></hr>
+                <h4>Retrun</h4>
+                <div class="cityName">@Utility.GetAirportCity(ReturnoItem.Origin)  (@ReturnoItem.Origin) - @Utility.GetAirportCity(ReturndItem.Destination)  (@ReturndItem.Destination)</div>
                 @for (int i = 0; i <= Model.Contract.TripDetails.InBoundSegment.Count - 1; i++)
                 {
                     Segments item = Model.Contract.TripDetails.InBoundSegment[i];
@@ -158,7 +154,7 @@
 
                         <div class="col-3 col-sm-1 order-md-3 pl-0">
                             <div class="class__type">
-                                Class: <br> @Utility.GetEnumDescription(item.CabinType)
+                                @Utility.GetEnumDescription(item.CabinType)
                             </div>
                         </div>
 

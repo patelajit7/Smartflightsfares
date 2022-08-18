@@ -890,7 +890,6 @@ namespace Presentation.Controllers
         }
         [Route("flights/contract-verification/{id}-{cid}")]
         public ActionResult GetContract(string id, int cid)
-
         {
             try
             {
@@ -1249,7 +1248,7 @@ namespace Presentation.Controllers
                                     {
                                         EmailTransaction transaction = new EmailTransaction()
                                         {
-                                            EmailType = EmailType.BookingReceipt,
+                                            EmailType = EmailType.SelefBooking,
                                             MailBody = htmlMailStringForSelf,
                                             PortalId = bookingDetails.Transaction.PortalId,
                                             MailRecipient = Utility.PortalSettings.SelfBookingMail,
