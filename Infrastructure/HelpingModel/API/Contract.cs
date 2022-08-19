@@ -72,6 +72,7 @@ namespace Infrastructure.HelpingModel.API
         public float FareDifference { get; set; }
         public int BaggageQuantity { get; set; }
         public bool IsGhostBooking { get; set; }
+        public BaggageInformation BaggageDetails { get; set; }
         public Contract()
         {
             this.ContractType = ContractType.Actual;
@@ -187,4 +188,22 @@ namespace Infrastructure.HelpingModel.API
         public int quantity { get; set; }
     }
     #endregion
+
+    public class BaggageInformation
+    {
+        public BaggageTripType OutboundBaggage { get; set; }
+        public BaggageTripType InboundBaggage { get; set; }
+    }
+    public class BaggageTripType
+    {
+        public BaggageInfoType PesonalItem { get; set; }
+        public BaggageInfoType CarryOn { get; set; }
+        public BaggageInfoType Checkin { get; set; }
+    }
+    public class BaggageInfoType
+    {
+        public bool IsAllowed { get; set; }
+        public string Description { get; set; }
+        public int Quantity { get; set; }
+    }
 }

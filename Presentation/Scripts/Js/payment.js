@@ -798,7 +798,7 @@ var validation = {
 
 $(document).idle({
     onIdle: function () {
-        $('#PaymentIdlePopup').modal('show');
+        $('#PaymentIdlePopup').show();
     },
     idle: 900000
 })
@@ -1500,10 +1500,5 @@ $(document).ready(function () {
     });
 });
 
-$(document).idle({
-    onIdle: function () {
-        $('#ListingIdlePopup').show();
-    },
-    idle: 900000
-})
+
 

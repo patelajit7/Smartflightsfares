@@ -338,6 +338,7 @@
     <Content Include="Images\airline-banner\b6.jpg" />
     <Content Include="Images\airline-banner\dl.jpg" />
     <Content Include="Images\airline-banner\ek.jpg" />
+    <Content Include="Images\airline-banner\klm.jpg" />
     <Content Include="Images\airline-banner\m\aa.jpg" />
     <Content Include="Images\airline-banner\m\as.jpg" />
     <Content Include="Images\airline-banner\m\b6.jpg" />
@@ -363,6 +364,11 @@
     <Content Include="Images\airlines\lh.png" />
     <Content Include="Images\airlines\nk.png" />
     <Content Include="Images\airlines\ua.png" />
+    <Content Include="Images\american_card-image.png" />
+    <Content Include="Images\bag.svg" />
+    <Content Include="Images\bag1.svg" />
+    <Content Include="Images\bag2.svg" />
+    <Content Include="Images\baggage-included.svg" />
     <Content Include="Images\banners\about-banner.jpg" />
     <Content Include="Images\banners\about-us.jpg" />
     <Content Include="Images\banners\contact-banner.jpg" />
@@ -397,6 +403,8 @@
     <Content Include="Images\city-banner\m\spn.jpg" />
     <Content Include="Images\city-banner\spn.jpg" />
     <Content Include="Images\clear_field.png" />
+    <Content Include="Images\close-icon.svg" />
+    <Content Include="Images\close-icon1.svg" />
     <Content Include="Images\confirmation-icon.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\filter-load.jpg" />
@@ -413,6 +421,7 @@
     <Content Include="Images\google.png" />
     <Content Include="Images\google_comment.png" />
     <Content Include="Images\home-banner.jpg" />
+    <Content Include="Images\home-banner1.jpg" />
     <Content Include="Images\home\about-image.jpg" />
     <Content Include="Images\home\amsterdam.png" />
     <Content Include="Images\home\aruba.jpg" />
@@ -463,6 +472,7 @@
     <Content Include="Images\icons\support.svg" />
     <Content Include="Images\layover-image.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\master_card-image.png" />
     <Content Include="Images\mobile-banner.jpg" />
     <Content Include="Images\Mobile\airlines\aa.png" />
     <Content Include="Images\Mobile\airlines\ac.png" />
@@ -516,9 +526,13 @@
     <Content Include="Images\payment\discover.png" />
     <Content Include="Images\payment\master.png" />
     <Content Include="Images\payment\visa.png" />
+    <Content Include="Images\pm-bg.svg" />
+    <Content Include="Images\price.png" />
     <Content Include="Images\results-load.jpg" />
+    <Content Include="Images\secure.png" />
     <Content Include="Images\sprite.png" />
     <Content Include="Images\stars.png" />
+    <Content Include="Images\support.png" />
     <Content Include="Images\trustpilot-logo.png" />
     <Content Include="Images\trust\ratingReview.png" />
     <Content Include="Images\trust\stars-4.5.svg" />
@@ -529,6 +543,7 @@
     <Content Include="Images\ua.png" />
     <Content Include="Images\user-icon.jpg" />
     <Content Include="Images\watch.png" />
+    <Content Include="Images\why-bg.png" />
     <Content Include="Images\yellow-star.png" />
     <Content Include="logos\0B.gif" />
     <Content Include="logos\1X.gif" />
@@ -1239,6 +1254,7 @@
     <Content Include="fonts\Mobile\bootstrap-icons.woff2" />
     <Content Include="fonts\bootstrap-icons.woff" />
     <Content Include="fonts\bootstrap-icons.woff2" />
+    <Content Include="Images\tp-full-info.webp" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\html5.js" />

@@ -3,6 +3,9 @@ a {
     cursor: pointer
 }
 ul{padding:0; margin:0;}
+.pl-0 {
+    padding-left: 0px;
+}
 
 .transparent_header {
     z-index: 1;
@@ -3513,44 +3516,119 @@ td.highlight > a {
 
     .resultsBox .price_list .select__btn:hover {
         background: #46a60a;
-        text-decoration: none
+        text-decoration: none;
     }
 
 .resultsBox .price_list .seat_left {
-    font-weight: 400
+    font-weight: 400;
 }
 
-@media(max-width: 767px) {
-    .resultsBox .price_list .seat_left {
-        white-space: nowrap;
-        font-size: 11px;
-        margin-top: 0px !important
-    }
-}
 
 .resultsBox .results_bottom {
     padding: 6px 0;
-    border-top: 1px solid #ccc
+    border-top: 1px solid #ccc;
 }
 
-    .resultsBox .results_bottom .bagguage_fees {
-        font-size: 13px;
-        padding-left: 22px;
-        display: inline-block;
+    .bagguage_fees {
         color: #6b6b6b;
-        text-decoration: none;
-        background: #fff url(../../images/icons/baggage.svg) left center no-repeat
+        position:relative;
+        display:inline-block;
     }
+        .bagguage_fees ul{
+            display:flex; list-style:none;
+        }
+           .bagguage_fees ul li{
+                margin-right:15px;
+                position:relative;
+            }
 
-        .resultsBox .results_bottom .bagguage_fees:hover {
-            color: #73cf3a
+                .bagguage_fees ul li.check {
+                    justify-content: flex-end;
+                    font-family: "bootstrap-icons";
+                    color: #3ab54a;
+                }
+                    .bagguage_fees ul li.check:before {
+                        content: "";
+                        position: absolute;
+                        top: -1px;
+                        left: 10px;
+                        background: url(/Images/baggage-included.svg) no-repeat;
+                        height: 15px;
+                        width: 15px;
+                        background-size: cover;
+                    }
+               .bagguage_fees ul li.noCheck:before {
+                    content: "";
+                    position: absolute;
+                    top: -1px;
+                    left: 10px;
+                    background: url(/Images/close-icon.svg) no-repeat;
+                    height: 15px;
+                    width: 15px;
+                    background-size: cover;
+                }
+        .bagguage_fees:hover .tooltipBox {
+            display: block;
         }
 
-    .resultsBox .results_bottom .flight_detail_btn {
-        color: #00728c;
-        text-decoration: none;
-        float: right
-    }
+        .bagguage_fees .tooltipBox {
+            width: 330px;
+            font-weight: 600;
+            left:-85%;
+        }
+
+            .bagguage_fees .tooltipBox .baggesInfo {
+                flex-direction: column;
+                padding-left: 28px;
+            }
+                .bagguage_fees .tooltipBox .baggesInfo li {
+                    width: 100%;
+                    margin: 0;
+                    padding: 3px 0;
+                    text-transform: lowercase;
+                }
+                }
+
+                .bagguage_fees .tooltipBox:after, .bagguage_fees .tooltipBox:before {
+                    left: 18%;
+                }
+.bagguage_fees .tooltipBox .row {
+    padding-bottom: 10px;
+}
+                .bagguage_fees .tooltipBox .row:last-child{
+                    padding-bottom:5px;
+                }
+            .bagguage_fees .tooltipBox .leftSec {
+                color: #303030;
+                font-size: 13px;
+                padding-left: 40px;
+                position: relative;
+            }
+            .bagguage_fees .tooltipBox .bag {
+                width: 20px;
+                position: absolute;
+                left: 10px;
+                top: 0;
+            }
+                .bagguage_fees .tooltipBox .bag.last{
+                    height:22px;
+                }
+                .bagguage_fees .tooltipBox p {
+                    margin: 0;
+                    font-weight: normal;
+                    color: #919192;
+                    font-size: 12px;
+                    line-height: 1.3;
+                }
+            .bagguage_fees .tooltipBox .included {
+                color: #73cf3a;
+            }
+
+            .resultsBox .results_bottom .flight_detail_btn {
+                color: #00728c;
+                text-decoration: none;
+                float: right
+            }
 
         .resultsBox .results_bottom .flight_detail_btn i {
             position: relative;
@@ -3727,7 +3805,7 @@ td.highlight > a {
         bottom: -9px
     }
 
-.flightDetailWrapper .flightDetail_popup .bagguage_fees {
+/*.flightDetailWrapper .flightDetail_popup .bagguage_fees {
     float: left;
     margin-top: 10px;
     font-size: 13px;
@@ -3740,7 +3818,7 @@ td.highlight > a {
 
     .flightDetailWrapper .flightDetail_popup .bagguage_fees:hover {
         color: #73cf3a
-    }
+    }*/
 
 .flightDetailWrapper .flightDetail_popup .detail_footer {
     position: fixed;
@@ -5545,11 +5623,27 @@ slider {
     font-weight: 700;
 }
 
-
-.flight__itenaryBox .page__title:after {
-    bottom: -9px;
-    display: none
+.payment__wrapper .bagguage_fees{
+    padding-bottom:10px;
 }
+
+.payment__wrapper .bagguage_fees ul {
+    justify-content: flex-end;
+}
+
+.payment__wrapper .bagguage_fees .tooltipBox {
+    left: inherit;
+    right: 7%;
+}
+
+    .payment__wrapper .bagguage_fees .tooltipBox:after, .payment__wrapper .bagguage_fees .tooltipBox:before{
+        left:75%;
+    }
+
+    .flight__itenaryBox .page__title:after {
+        bottom: -9px;
+        display: none
+    }
 
 .flight__itenaryBox .page__title strong {
     display: inline-block
@@ -6059,11 +6153,6 @@ slider {
         position: relative
     }
 
-@media(max-width: 767px) {
-    .payment__wrapper .payment__stepBox ul li {
-        font-size: 14px
-    }
-}
 
 .payment__wrapper .payment__stepBox ul li i {
     position: relative;
@@ -6097,11 +6186,6 @@ slider {
     color: #00c29b
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .payment__stepBox ul li.complete {
-        color: #6074d4
-    }
-}
 
 .payment__wrapper .payment__stepBox ul li.complete:hover:before {
     width: 0px
@@ -6176,11 +6260,6 @@ slider {
     margin-bottom: 10px
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .adultType {
-        margin-bottom: 0px
-    }
-}
 
 .payment__wrapper .adultType li {
     display: inline-block;
@@ -6197,11 +6276,6 @@ slider {
     padding-top: 20px
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .travelerBox {
-        padding-top: 0px
-    }
-}
 
 .payment__wrapper .travelerBox h4 {
     font-size: 18px;
@@ -6229,13 +6303,6 @@ slider {
     padding-top: 30px
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .travelerBox .traveler_block {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-bottom: 0px
-    }
-}
 
 .payment__wrapper .travelerBox .traveler_block:first-child {
     border: none;
@@ -6247,11 +6314,6 @@ slider {
     padding-top: 20px
 }
 
-@media(max-width: 767px) {
-    .payment__wrapper .paymentBox {
-        padding-top: 0px
-    }
-}
 
 .payment__wrapper .paymentBox h4 {
     font-size: 18px;
@@ -8632,4 +8694,39 @@ padding:30px 0;
     th.visible-print {
         display: table-cell !important
     }
+}
+
+.timerSec {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    flex-direction:column;
+}
+    .timerSec p{
+        font-size:16px;
+        font-weight:600;
+        color:#000000;
+    }
+    #timerCount {
+        width: 150px;
+        height: 150px;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #303030;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+        border: 5px solid #5fc61f;
+        text-align: center;
+        flex-direction: column;
+    }
+#timerCount span{
+    display:block;
+    font-weight:500;
+    text-transform:uppercase;
 }

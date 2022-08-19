@@ -14,13 +14,11 @@
         <ul class="adultType inputSet">
             <li><label>@Html.RadioButtonFor(model => model.Travellers[i].Gender, "1", new { @checked = "true" })<span>Male</span> </label></li>
             <li><label>@Html.RadioButtonFor(model => model.Travellers[i].Gender, "2")<span>Female</span> </label></li>
-
-
         </ul>
 
         <div class="form__block">
-            <div class="row form-group">
-                <div class="col-sm-6">
+            <div class="row form-group travelInfo">
+                <div class="col-sm-4 width22">
                     <label class="formlabel">First name <i class="required_star">*</i></label>
                     <div id="div_error_FirstName_@i">
                         @Html.TextBoxFor(model => model.Travellers[i].FirstName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "onBlurValidateTraveller(this,'firstname');", @maxlength = 30, @class = "form-control", placeholder = "First Name" })
@@ -29,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-4 width20">
                     <label class="formlabel">Middle name</label>
                     <div id="div_error_MiddleName_@i">
                         @Html.TextBoxFor(model => model.Travellers[i].MiddleName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "getValidPaxName(this);", @maxlength = 30, @class = "form-control", placeholder = "Middle Name" })
@@ -38,10 +36,7 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="row form-group">
-                <div class="col-sm-6">
+                <div class="col-sm-4 width22">
                     <label class="formlabel">Last name <i class="required_star">*</i></label>
                     <div id="div_error_LastName_@i">
                         @Html.TextBoxFor(model => model.Travellers[i].LastName, new { @onkeypress = "return lettersWithSpaceOnly(this)", @onblur = "onBlurValidateTraveller(this,'lastname');", @maxlength = 30, @class = "form-control", placeholder = "Last Name" })
@@ -51,7 +46,7 @@
 
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6 width36">
                     <label class="formlabel">Date of Birth <i class="required_star">*</i></label>
                     <div class="row">
                         <div class="col">
@@ -80,6 +75,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

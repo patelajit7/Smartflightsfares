@@ -1,24 +1,17 @@
-﻿<div class="mod_wrapp">
-    <div id="PaymentIdlePopup" class="modal fade flgihtpopo" role="dialog" data-backdrop="static">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="list_popup">
-                    <div class="hd_pop">
-                        <p><i class="icon-clock"></i></p>
-                    </div>
-                    <div class="cont_pop">
-                        <h3>Your Search Expired !</h3>
-                        <p>Seems like there is no activity on this page from more than 20 minutes </p>
-                        <div class="srch_btn">
-                            <a href="javascript:void(0)" class="NewSearch">Start New Search</a>
-                            <a href="javascript:void(0)" class="relaunchSearch">Refresh Result</a>
-                        </div>
+﻿
 
-                    </div>
+@using Common
+<div class="popup_Box" id="PaymentIdlePopup" style="display:none;">
+    <div class="center-block">
+        <div class="outer">
+            <div class="session__expire text-center">
+                <img src="~/images/mobile/icons/session-expire.svg" alt="" class="clock_tym" />
+                <h3>Your Session has Expired.</h3>
+                <p> Flight prices may change frequently owing to demand & availability. Start a new search to view the best deals.</p>
+                <div class="popup-btn">
+                    <button class="active searchbtn NewSearch">Go to Home</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

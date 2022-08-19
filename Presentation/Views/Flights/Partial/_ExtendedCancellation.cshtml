@@ -7,29 +7,30 @@
 {
     CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);    
 
-    <div class="cancelPolicy hr-line" id="ExtendedCancellation">
-        <h2 class="page__title"><strong>Extended</strong> Cancellation Policy</h2>
-        <h3>Why do you need Travel Protection?</h3>
-        <ul>
-            <li>Cancel or Re-book You Booking For Any Reason Within 24 Hours</li>
-            <li>Only Applicable for US Departures</li>
-            <li>If you wish to cancel, kindly email us at</li>
-        </ul>
+<div class="cancelPolicy hr-line" id="ExtendedCancellation">
+    <h2 class="page__title"><strong>Extended</strong> Cancellation Policy</h2>
+    <h3>Take advantage of our policy and enjoy benefits on your flight tickets!</h3>
+    <ul>
+        <li>Cancel or re-book your flight tickets within 24 hour during anytime of the day as per your convenience.</li>
+        <li>Call us at any hour to cancel or re-book your flight. You can also email us or text us.</li>
+        <li>To know more about our policy or for further queries, contact us.</li>
+        <li>Please note that this policy is only applicable on US departures.</li>
+    </ul>
 
-        <div class="radio-check">
-            <label class="radioOption">
-                <input type="radio" class="radioComm radio_cmmn" id="ExtenCan1" name="ExtendedCancellationOption" value="true">
-                Yes, I’d like to take advantage of the Extended Cancellation Policy benefits!
-                <span class="perPax chgcomplete" default-price="@Utility.GetExtendedCancelPricePerPax(Model.Contract)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Utility.GetExtendedCancelPricePerPax(Model.Contract) * currencyMaster.CurrencyPrice))</span> <small>Per Pax</small>
-                <span class="radioCheck"></span>
-            </label>
-            <label class="radioOption">
-                <input type="radio" class="radioComm radio_cmmn" id="ExtenCan2" name="ExtendedCancellationOption" value="false" checked>
-                No thanks, I just want 2 hours free Cancellation.
-                <span class="radioCheck"></span>
-            </label>
-        </div>
-
-        <img src="~/Images/cancel-icon.png" class="cancelPic" alt="cancel policy" />
+    <div class="radio-check">
+        <label class="radioOption">
+            <input type="radio" class="radioComm radio_cmmn" id="ExtenCan1" name="ExtendedCancellationOption" value="true">
+            Yes, I’d like to take advantage of the Extended Cancellation Policy benefits!
+            <span class="perPax chgcomplete" default-price="@Utility.GetExtendedCancelPricePerPax(Model.Contract)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Utility.GetExtendedCancelPricePerPax(Model.Contract) * currencyMaster.CurrencyPrice))</span> <small>Per Pax</small>
+            <span class="radioCheck"></span>
+        </label>
+        <label class="radioOption">
+            <input type="radio" class="radioComm radio_cmmn" id="ExtenCan2" name="ExtendedCancellationOption" value="false" checked>
+            No thanks, I just want 2 hours free Cancellation.
+            <span class="radioCheck"></span>
+        </label>
     </div>
+
+    <img src="~/Images/cancel-icon.png" class="cancelPic" alt="cancel policy" />
+</div>
 }

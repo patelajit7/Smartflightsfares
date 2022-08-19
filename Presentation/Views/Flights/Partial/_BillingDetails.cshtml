@@ -8,7 +8,7 @@
     CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
 }
 
-<div class="payment_block hr-line">
+<div class="payment_block hr-line position-relative">
     <h2 class="page__title"><strong>Payment</strong> Details</h2>
 
     <p>All card information is fully encrypted, secure and protected.</p>
@@ -23,26 +23,6 @@
                     <div class=" mt-2" id="error_CardNumber"></div>
                 </div>
             </div>
-
-            <div class="col-sm-6">
-                <label class="mt-sm-1 mb-sm-0">Available payment methods</label>
-                <img src="~/images/mobile/payment/card.png" alt="" class="mt-1" />
-            </div>
-
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-6">
-                <label class="formlabel">Card holder’s name <i class="required_star">*</i></label>
-                <div id="div_error_CCHolderName">
-                    @Html.TextBoxFor(model => model.BillingDetails.CCHolderName, new { placeholder = "Card Holder's Name", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @onkeydown = "return lettersWithSpaceWithApostOnly(event);", @onblur = "getValidPaxName(this);onBlurPaymentDetails(this,'ccholdername');", @maxlength = 50 })
-                    <i id="i_error_CCHolderName"></i>
-                    <div class=" mt-2" id="error_CCHolderName"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row form-group">
             <div class="col-sm-6">
                 <div class="row">
                     <div class="col">
@@ -88,9 +68,27 @@
                             <div class=" mt-2" id="error_CVVNumber"></div>
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
+            <div class="paymentCard">
+                <label class="mt-sm-1 mb-sm-0 d-none">Available payment methods</label>
+                <img src="~/images/mobile/payment/card.png" alt="" class="mt-1" />
+            </div>
+
+        </div>
+
+        <div class="row form-group">
             <div class="col-sm-6">
+
+                <label class="formlabel">Card holder’s name <i class="required_star">*</i></label>
+                <div id="div_error_CCHolderName">
+                    @Html.TextBoxFor(model => model.BillingDetails.CCHolderName, new { placeholder = "Card Holder's Name", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @onkeydown = "return lettersWithSpaceWithApostOnly(event);", @onblur = "getValidPaxName(this);onBlurPaymentDetails(this,'ccholdername');", @maxlength = 50 })
+                    <i id="i_error_CCHolderName"></i>
+                    <div class=" mt-2" id="error_CCHolderName"></div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 text-right">
                 <div class="card__zoom">
                     <i class="bi bi-exclamation-circle icon"></i> 3-4 Digit Number on your card
                     <div class="cardInfoTooltip">
@@ -128,7 +126,7 @@
     <p>As per Bank records or credit card company</p>
     <div class="form__block">
         <div class="row form-group">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div id="div_error_ExpiryYear"></div>
                 <label class="formlabel"> Country <i class="required_star">*</i></label>
                 <div id="div_error_ExpiryYear">
@@ -138,10 +136,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label class="formlabel">Address <i class="required_star">*</i></label>
                 <div id="div_error_BillingDetails_AddressLine1">
                     @Html.TextBoxFor(m => m.BillingDetails.AddressLine1, new { @onblur = "onBlurValidateBilling(this,'addressline1');", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @maxlength = 100 })
@@ -150,7 +145,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label class="formlabel">City town <i class="required_star">*</i></label>
                 <div id="div_error_BillingDetails_City">
                     @Html.TextBoxFor(m => m.BillingDetails.City, new { placeholder = "City town", @AutoComplete = "off", @class = "form-control", @onblur = "getValidPaxName(this);onBlurValidateBilling(this,'city');", @maxlength = 70 })
@@ -161,8 +156,10 @@
 
         </div>
 
+
+
         <div class="row form-group">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label class="formlabel">State/Province <i class="required_star">*</i></label>
                 <div id="div_error_BillingDetails_State">
                     <div class="select-class" id="divState">
@@ -174,7 +171,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label class="formlabel">Postal Code <i class="required_star">*</i></label>
                 <div id="div_error_BillingDetails_ZipCode">
                     @Html.TextBoxFor(m => m.BillingDetails.ZipCode, new { @onkeydown = "return lettersWithCharOnly(event);", @onblur = "onBlurValidateBilling(this,'zipcode');", placeholder = "Zip", @AutoCompleteType = "None", @AutoComplete = "off", @class = "form-control", @maxlength = "10" })
