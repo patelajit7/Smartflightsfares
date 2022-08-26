@@ -133,6 +133,23 @@ namespace Business
                     {
                         Utility.Logger.Info(string.Format("BOOKING UNABLE  SAVE IN DATABASE|PNR:{0}|BOOKING INFO:{1}", bookingDetails.Transaction.PNR, JsonConvert.SerializeObject(bookingDetails)));
                     }
+                    if (tid > 0)
+                    {
+                        //Save User Location
+                        Task.Factory.StartNew(() =>
+                        {
+                            try
+                            {
+                                string location = AirBusiness.GetUserLocationByIP(bookingDetails.FlightSearch.IP);
+                                if (!string.IsNullOrEmpty(location))
+                                {
+                                    Operation.UpdateBookingUserLocation(tid, location);
+                                }
+                            }
+                            catch
+                            { }
+                        });
+                    }
                 }
                 else
                 {

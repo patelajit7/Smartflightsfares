@@ -391,7 +391,7 @@ namespace Business
                                         listContracts.Insert(0, contract);
                                         totalResult = totalResult + 1;
                                     }
-                                }                                
+                                }
                             }
 
 
@@ -667,6 +667,30 @@ namespace Business
                 Utility.Logger.Debug("BOOKING SOLDOUT-PRICECHANGE|BOOKINGDetails:" + JsonConvert.SerializeObject(_bookingDetail) + "|BOOKINF_RS" + JsonConvert.SerializeObject(response));
                 Utility.Logger.Error("AirBusiness.BookingLogsSoldoutPriceChange|Exception:" + ex.ToString());
             }
+        }
+
+        public static string GetUserLocationByIP(string ip)
+        {
+            string response = null;
+            try
+            {
+
+                IATAGeoLocation iATAGeoLocation = Business.GeoLocation.GetAirportCode(ip);
+                if (iATAGeoLocation != null && !string.IsNullOrEmpty(iATAGeoLocation.IATACode))
+                {
+                    string fromCode = iATAGeoLocation.IATACode;
+                    var cityAirport = Utility.Airports.Where<Airports>(o => o.AirportCode.Equals(fromCode, StringComparison.OrdinalIgnoreCase)).OrderBy(o => o.PriorityIndex).FirstOrDefault();
+                    if (cityAirport != null)
+                    {
+                        response = string.Format("{0}, {1}", cityAirport.City, cityAirport.CountryName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("AirBusiness.GetUserLocationByIP|Exception:" + ex.ToString());
+            }
+            return response;
         }
     }
 }

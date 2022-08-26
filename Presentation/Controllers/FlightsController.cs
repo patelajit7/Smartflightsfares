@@ -1217,6 +1217,22 @@ namespace Presentation.Controllers
 
                         if (bookingDetails != null)
                         {
+                            //Save User Location
+                            Task.Factory.StartNew(() =>
+                            {
+                                try
+                                {
+                                    string location = AirBusiness.GetUserLocationByIP(context.BookingDetailRQ.FlightSearch.IP);
+                                    if (!string.IsNullOrEmpty(location))
+                                    {
+                                        Operation.UpdateBookingUserLocation(context.BookingDetailRQ.Transaction.Id, location);
+                                    }
+                                }
+                                catch 
+                                {  }                                
+                            });
+
+
                             if (context.IsSendBookingMail)
                             {
                                 //PurchaseInSurance(bookingDetails, context);

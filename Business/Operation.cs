@@ -12,6 +12,8 @@ namespace Business
 {
     public class Operation
     {
+        private static object syncPoolRoot = new Object();
+        private static object syncPoolRoot1 = new Object();
         public static DocuSignsVM GetDocuSigns(int _id, int _filterType, int _docuSignVM)
         {
             DocuSignsVM response = null;
@@ -236,7 +238,7 @@ namespace Business
                 dataRow["To"] = item.To;
                 dataRow["PortalId"] = item.PortalId;
                 dataRow["AffiliateId"] = item.AffiliateId;
-                dataRow["IsMobile"] = item.IsMobile;                
+                dataRow["IsMobile"] = item.IsMobile;
                 tblcontact.Rows.Add(dataRow);
                 tblcontact.AcceptChanges();
 
@@ -247,7 +249,7 @@ namespace Business
             }
         }
 
-        public static void SentItineryDetails(RequestedItinerary request) 
+        public static void SentItineryDetails(RequestedItinerary request)
         {
             try
             {
@@ -263,11 +265,29 @@ namespace Business
         {
             try
             {
-                BookingProcedures.MetaClicks(request, Utility.ConnString);
+                lock (syncPoolRoot)
+                {
+                    BookingProcedures.MetaClicks(request, Utility.ConnString);
+                }
             }
             catch (Exception ex)
             {
                 Utility.Logger.Error("MetaClicks UNABLE SAVE IN DATABASE|EXCEPTION:" + ex.ToString());
+            }
+        }
+
+        public static void UpdateBookingUserLocation(int _bookingId, string _location)
+        {
+            try
+            {
+                lock (syncPoolRoot1)
+                {
+                    BookingProcedures.UpdateBookingUserLocation(_bookingId, _location, Utility.ConnString);
+                }
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("Booking User Location unable to save in database|EXCEPTION:" + ex.ToString());
             }
         }
     }

@@ -1056,5 +1056,30 @@ namespace Database
                 throw ex;
             }
         }
+
+        public static void UpdateBookingUserLocation(int bookingId, string location, string connectionString)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        connection.Open();
+                        command.Connection = connection;
+                        command.CommandText = "BookingsUserLocationUpdate";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 3600;
+                        command.Parameters.AddWithValue("@BookingId", bookingId);
+                        command.Parameters.AddWithValue("@UserLocation", location);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
