@@ -5863,7 +5863,7 @@ slider {
     border-top: 2px solid #dfdfdf;
     position: absolute;
     left: 0px;
-    top: 50px;
+    top: 55px;
 }
 
     .flight__itenaryBox .route__info .connecting__bar:before {
@@ -6813,11 +6813,6 @@ slider {
     }
 
 
-
-
-
-
-
 #footerCntr {
     background: #007488;
     color: #fff
@@ -6828,17 +6823,7 @@ slider {
         padding: 55px 0 20px 0
     }
 
-@media(max-width: 767px) {
-    #footerCntr .footer__linkBox {
-        padding: 20px 0 0 0
-    }
-}
 
-@media(max-width: 767px) {
-    #footerCntr .footer__linkBox img {
-        display: block
-    }
-}
 
 #footerCntr .footer__linkBox h4 {
     font-size: 20px;
@@ -6853,12 +6838,6 @@ slider {
     padding: 0px
 }
 
-@media(max-width: 767px) {
-    #footerCntr .footer__linkBox ul {
-        border-bottom: 1px dashed #c1c1c1;
-        padding-bottom: 15px
-    }
-}
 
 #footerCntr .footer__linkBox ul li {
     display: block
@@ -6935,6 +6914,91 @@ slider {
 #footerCntr .footer__linkBox .email:hover {
     color: #73cf3a
 }
+
+
+
+
+#footerCntr .footIcons {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+    #footerCntr .footIcons li {
+        list-style: none;
+        padding: 0 10px;
+    }
+        #footerCntr .footIcons li .visa {
+            background-position: 1px 0;
+            height: 40px;
+            width: 100px;
+            display: inline-block;
+        }
+.iconsSec {
+    background: url(/Images/fotter-logo.webp) no-repeat;
+}
+
+#footerCntr .footIcons li .mster {
+    background-position: -135px 0;
+    height: 43px;
+    width: 70px;
+    display: inline-block;
+}
+#footerCntr .footIcons li .disc {
+    background-position: -242px 0;
+    height: 40px;
+    width: 132px;
+    display: inline-block;
+}
+#footerCntr .footIcons li .arc {
+    background-position: -415px 0;
+    height: 40px;
+    width: 85px;
+    display: inline-block;
+}
+#footerCntr .footIcons li .bbb {
+    background-position: -950px -4px;
+    height: 40px;
+    width: 100px;
+    display: inline-block;
+}
+#footerCntr .footIcons li .club {
+    background-position: -555px 0;
+    height: 40px;
+    width: 75px;
+    display: inline-block;
+}
+
+#footerCntr .footIcons li .amexp {
+    background-position: -670px 0;
+}
+#footerCntr .footIcons li .amexp, .footIcons li .stripe {
+    height: 40px;
+    width: 102px;
+    display: inline-block;
+}
+
+#footerCntr .footIcons li .stripe {
+    background-position: -828px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #footerCntr .footer__logoBox {
     padding: 10px 0;

@@ -113,12 +113,12 @@
         width: 100%;
         padding: 20px 0 0 0
     }
-
-@media(max-width: 767px) {
-    #footerCntr .footer__linkBox img {
-        display: block
-    }
-}
+        #footerCntr .footer__linkBox .footerCall a {
+            color: #73cf3a;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
 
 #footerCntr .footer__linkBox h4 {
     font-size: 20px;
@@ -229,7 +229,8 @@
     padding: 15px 0;
     font-size: 13px;
     color: #ffffff;
-    overflow: hidden
+    overflow: hidden;
+    padding-bottom:40px;
 }
 
     #footerCntr .footer__copyrightBox p {
@@ -270,6 +271,7 @@
     font-size: 11px;
     line-height: 20px;
     color:#ffffff;
+    padding:10px 0;
 }
 
 .disclaimerBox #more {
@@ -5666,3 +5668,4 @@ container__badge-list {
             border-bottom: 11px solid #fff;
             z-index: 1;
         }
+

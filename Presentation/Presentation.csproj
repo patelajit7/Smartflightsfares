@@ -376,6 +376,7 @@
     <Content Include="Images\banners\privacy.jpg" />
     <Content Include="Images\banners\terms-cond.jpg" />
     <Content Include="Images\banners\terms-use.jpg" />
+    <Content Include="Images\by-wizfair.png" />
     <Content Include="Images\call-icon.png" />
     <Content Include="Images\call-icon12.png" />
     <Content Include="Images\call.png" />
@@ -408,6 +409,7 @@
     <Content Include="Images\confirmation-icon.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\filter-load.jpg" />
+    <Content Include="Images\flight-flow.jpg" />
     <Content Include="Images\footer\affirm.jpg" />
     <Content Include="Images\footer\arc.jpg" />
     <Content Include="Images\footer\asta.jpg" />
@@ -471,6 +473,7 @@
     <Content Include="Images\icons\session-expire.svg" />
     <Content Include="Images\icons\support.svg" />
     <Content Include="Images\layover-image.png" />
+    <Content Include="Images\logo-old.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\master_card-image.png" />
     <Content Include="Images\mobile-banner.jpg" />
@@ -1255,6 +1258,7 @@
     <Content Include="fonts\bootstrap-icons.woff" />
     <Content Include="fonts\bootstrap-icons.woff2" />
     <Content Include="Images\tp-full-info.webp" />
+    <Content Include="Images\fotter-logo.webp" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\html5.js" />
