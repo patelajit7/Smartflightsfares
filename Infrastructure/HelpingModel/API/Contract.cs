@@ -73,6 +73,7 @@ namespace Infrastructure.HelpingModel.API
         public int BaggageQuantity { get; set; }
         public bool IsGhostBooking { get; set; }
         public BaggageInformation BaggageDetails { get; set; }
+        public MetaFixedPrice MetaFixedPrice { get; set; }
         public Contract()
         {
             this.ContractType = ContractType.Actual;
@@ -205,5 +206,14 @@ namespace Infrastructure.HelpingModel.API
         public bool IsAllowed { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
+    }
+    public class MetaFixedPrice
+    {
+        public bool IsFixedPrice { get; set; }
+        public FareDetails AdultFare { get; set; }
+        public FareDetails ChildFare { get; set; }
+        public FareDetails InfantOnSeatFare { get; set; }
+        public FareDetails InfantOnLapFare { get; set; }
+        public FareDetails SeniorFare { get; set; }
     }
 }

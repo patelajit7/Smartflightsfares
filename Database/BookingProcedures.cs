@@ -886,6 +886,7 @@ namespace Database
                         command.Parameters.AddWithValue("@tblPriceDetails", bookingDetail["PriceDetails"]);
                         command.Parameters.AddWithValue("@tblBillingDetails", bookingDetail["BillingDetails"]);
                         command.Parameters.AddWithValue("@tblBookingExtras", bookingDetail["BookingExtras"]);
+                        command.Parameters.AddWithValue("@tblMetaFixedPriceDetails", bookingDetail["MetaFixedPriceDetails"]);
                         tid = (int)command.ExecuteScalar();
                     }
                 }

@@ -122,7 +122,7 @@ namespace Business
             try
             {
                 Dictionary<string, DataTable> tables = PrepareBookingDetailsTables(bookingDetails);
-                if (tables != null && tables.Count == 8)
+                if (tables != null && tables.Count == 9)
                 {
                     tid = BookingProcedures.SaveBookingDetails(tables, Utility.ConnString);
                     if (tid == 0)
@@ -177,6 +177,7 @@ namespace Business
                 bookingTables.Add("BillingDetails", BillingDetailsDataTbl(bookingDetails));
                 bookingTables.Add("BookingExtras", BookingExtrasDataTbl(bookingDetails));
                 bookingTables.Add("BookingCoupons", BookingCouponsTbl(bookingDetails));
+                bookingTables.Add("MetaFixedPriceDetails", MetaFixedFlightPriceDetailsDataTbl(bookingDetails));
             }
             catch (Exception ex)
             {
@@ -354,7 +355,36 @@ namespace Business
             }
             return flightSegments;
         }
-
+        private static DataTable MetaFixedFlightPriceDetailsDataTbl(BookingDetail bookingDetails)
+        {
+            DataTable flightPriceDetails = new DataTable();
+            try
+            {
+                flightPriceDetails.Columns.Add("FareBaseCode", typeof(string));
+                flightPriceDetails.Columns.Add("PaxType", typeof(int));
+                flightPriceDetails.Columns.Add("Currency", typeof(int));
+                flightPriceDetails.Columns.Add("PaxCount", typeof(int));
+                flightPriceDetails.Columns.Add("BaseFare", typeof(decimal));
+                flightPriceDetails.Columns.Add("Tax", typeof(decimal));
+                flightPriceDetails.Columns.Add("Markup", typeof(decimal));
+                flightPriceDetails.Columns.Add("SupplierFee", typeof(decimal));
+                flightPriceDetails.Columns.Add("Discount", typeof(decimal));
+                flightPriceDetails.Columns.Add("IsSellInsurance", typeof(bool));
+                flightPriceDetails.Columns.Add("InsuranceAmount", typeof(decimal));
+                flightPriceDetails.Columns.Add("TotalAmount", typeof(decimal));
+                flightPriceDetails.Columns.Add("IsSellBaggageInsurance", typeof(bool));
+                flightPriceDetails.Columns.Add("BaggageInsuranceAmount", typeof(decimal));
+                flightPriceDetails.Columns.Add("IsExtendedCancellation", typeof(bool));
+                flightPriceDetails.Columns.Add("ExtendedCancellationAmount", typeof(decimal));
+                flightPriceDetails.Columns.Add("BookingFee", typeof(decimal));
+                MetaFixedPopulateFlightPriceDetails(bookingDetails, ref flightPriceDetails);
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("EasyPro.Business.FlightPriceDetails|EXception:", ex.ToString());
+            }
+            return flightPriceDetails;
+        }
 
 
         /// <summary>
@@ -430,7 +460,109 @@ namespace Business
             }
             return flightPriceDetails;
         }
+        private static void MetaFixedPopulateFlightPriceDetails(BookingDetail bookingDetails, ref DataTable flightPriceDetails)
+        {
+            try
+            {
+                if (bookingDetails.Contract.MetaFixedPrice != null && bookingDetails.Contract.MetaFixedPrice.IsFixedPrice)
+                {
+                    List<FareDetails> lstFareDetail = new List<FareDetails>();
+                    int paxCount = 0;
+                    if (bookingDetails.Contract.MetaFixedPrice.AdultFare != null && bookingDetails.Contract.Adult > 0)
+                    {
+                        lstFareDetail.Add(bookingDetails.Contract.MetaFixedPrice.AdultFare);
+                        paxCount = paxCount + bookingDetails.Contract.Adult;
+                    }
+                    if (bookingDetails.Contract.MetaFixedPrice.SeniorFare != null && bookingDetails.Contract.Senior > 0)
+                    {
+                        lstFareDetail.Add(bookingDetails.Contract.MetaFixedPrice.SeniorFare);
+                        paxCount = paxCount + bookingDetails.Contract.Senior;
+                    }
+                    if (bookingDetails.Contract.MetaFixedPrice.ChildFare != null && bookingDetails.Contract.Child > 0)
+                    {
+                        lstFareDetail.Add(bookingDetails.Contract.MetaFixedPrice.ChildFare);
+                        paxCount = paxCount + bookingDetails.Contract.Child;
+                    }
+                    if (bookingDetails.Contract.MetaFixedPrice.InfantOnSeatFare != null && bookingDetails.Contract.InfantOnSeat > 0)
+                    {
+                        lstFareDetail.Add(bookingDetails.Contract.MetaFixedPrice.InfantOnSeatFare);
+                        paxCount = paxCount + bookingDetails.Contract.InfantOnSeat;
+                    }
+                    if (bookingDetails.Contract.MetaFixedPrice.InfantOnLapFare != null && bookingDetails.Contract.InfantOnLap > 0)
+                    {
+                        lstFareDetail.Add(bookingDetails.Contract.MetaFixedPrice.InfantOnLapFare);
+                        paxCount = paxCount + bookingDetails.Contract.InfantOnLap;
+                    }
 
+                    if (lstFareDetail != null && lstFareDetail.Count > 0)
+                    {
+                        bool isBaggageInsurance = false;
+                        decimal baggageAmount = 0.0M;
+                        if (bookingDetails.BagInsuranc != null && bookingDetails.BagInsuranc.BagInsuranceType != BagInsuranceType.NONE)
+                        {
+                            isBaggageInsurance = true;
+                            baggageAmount = bookingDetails.BagInsuranc.PPaxPrice;
+                        }
+                        bool isTravelInsurance = false;
+                        decimal travelAmount = 0.0M;
+                        if (bookingDetails.TravelerInsurance != null && bookingDetails.TravelerInsurance.IsTravelProtected)
+                        {
+                            isTravelInsurance = true;
+                            travelAmount = bookingDetails.TravelerInsurance.PPaxPrice;
+                        }
+
+                        bool isExtendedCancellation = false;
+                        decimal ExtendedCancellationAmount = 0.0M;
+                        if (bookingDetails.ExtendedCancellation != null && bookingDetails.ExtendedCancellation.IsExtendedCancellation)
+                        {
+                            isExtendedCancellation = true;
+                            ExtendedCancellationAmount = bookingDetails.ExtendedCancellation.PPaxPrice;
+                        }
+
+
+                        double discountAmountPP = 0.0;
+                        if (bookingDetails.CouponDetails != null && bookingDetails.CouponDetails.Status)
+                        {
+                            discountAmountPP = Math.Round(Convert.ToDouble(bookingDetails.CouponDetails.TotalAmount) / paxCount, 2);
+                        }
+
+                        DataRow dataRow;
+                        foreach (FareDetails item in lstFareDetail)
+                        {
+                            dataRow = flightPriceDetails.NewRow();
+                            dataRow["FareBaseCode"] = item.FareBaseCode;
+                            dataRow["PaxType"] = (int)item.PaxType;
+                            dataRow["Currency"] = (int)item.CurrencyType;
+                            dataRow["PaxCount"] = item.PaxCount;
+                            dataRow["BaseFare"] = item.BaseFare;
+                            dataRow["Tax"] = item.Tax;
+                            dataRow["Markup"] = item.Markup;
+                            dataRow["SupplierFee"] = item.SupplierFee;
+                            dataRow["Discount"] = discountAmountPP;
+                            item.InsuranceAmount = Convert.ToSingle(travelAmount);
+                            item.IsSellInsurance = isTravelInsurance;
+                            dataRow["IsSellInsurance"] = isTravelInsurance;
+                            dataRow["InsuranceAmount"] = travelAmount;
+                            dataRow["TotalAmount"] = item.TotalFareV2;
+                            item.BaggageInsuranceAmount = Convert.ToSingle(baggageAmount);
+                            item.IsSellBaggageInsurance = isBaggageInsurance;
+                            dataRow["IsSellBaggageInsurance"] = isBaggageInsurance;
+                            dataRow["BaggageInsuranceAmount"] = baggageAmount;
+                            item.IsExtendedCancellation = isExtendedCancellation;
+                            dataRow["IsExtendedCancellation"] = isExtendedCancellation;
+                            dataRow["ExtendedCancellationAmount"] = ExtendedCancellationAmount;
+                            dataRow["BookingFee"] = item.BookingFee;
+                            flightPriceDetails.Rows.Add(dataRow);
+                            flightPriceDetails.AcceptChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("EasyPro.Business.PopulateFlightPriceDetails|EXception:", ex.ToString());
+            }
+        }
 
         /// <summary>
         /// This method is used to Create data table for BillingDetails table
@@ -635,7 +767,15 @@ namespace Business
                         dataRow["MiddleName"] = item.MiddleName;
                         dataRow["LastName"] = item.LastName;
                         dataRow["Gender"] = item.Gender;
-                        dataRow["DOB"] = new DateTime(item.DOBYear ?? 0, item.DOBMonth, item.DOBDay ?? 0);
+                        if(item.DOBYear==null || item.DOBDay == null)
+                        {
+                            dataRow["DOB"] = DateTime.MinValue;
+                        }
+                        else
+                        {
+                            dataRow["DOB"] = new DateTime(item.DOBYear ?? 0, item.DOBMonth, item.DOBDay ?? 0);
+                        }
+                        
                         dataRow["AirlineConfirmationNo"] = null;
                         dataRow["TicketNo"] = null;
                         dataRow["FrequentFlyerNumber"] = null;
@@ -648,7 +788,6 @@ namespace Business
                         {
                             dataRow["PassportExpireDate"] = item.PassportExpiryDate;
                         }
-
                         dataRow["PassportIssuedBy"] = item.PassportIssuingCountry;
                         dataRow["Email"] = null;
                         dataRow["MealPreference"] = null;
