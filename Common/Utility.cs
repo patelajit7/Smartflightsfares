@@ -46,6 +46,7 @@ namespace Common
         public static int PortalId = Convert.ToInt32(ConfigurationManager.AppSettings["PortalId"].ToString());
         public static List<Airports> Airports { get; set; }
         public static List<string> MultiAirportCityCode { get; set; }
+        public static List<string> MultiAirportCityName { get; set; }
         public static List<Airlines> Airlines { get; set; }
         public static PortalStaticData PortalData { get; set; }
         public static MemoryCache GLobalCache = MemoryCache.Default;
@@ -85,7 +86,7 @@ namespace Common
                         };
                                 Task.WaitAll(lstTasks.ToArray());
                                 IsApplicationLoaded = true;
-                                Task.Factory.StartNew(() => SetMultiAirportCityCode());
+                                Task.Factory.StartNew(() => { SetMultiAirportCityCode(); SetMultiAirportCityName(); });
                             }
 
                         }
@@ -262,6 +263,34 @@ namespace Common
                         foreach (var item in multiAirportCity)
                         {
                             Utility.MultiAirportCityCode.Add(item.Key.ToString().ToUpper());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Logger.Error("SetMultiAirportCityCode:EXCEPTION|" + ex.ToString());
+            }
+        }
+
+        private static void SetMultiAirportCityName()
+        {
+            try
+            {
+                if (Utility.Airports != null)
+                {
+                    var multiAirportCity =
+                 from airport in Utility.Airports
+                 group airport by airport.City into newGroup
+                 where newGroup.Count() > 1
+                 select newGroup;
+                    if (multiAirportCity != null)
+                    {
+                        Utility.MultiAirportCityName = new List<string>();
+                        foreach (var item in multiAirportCity)
+                        {
+                            Utility.MultiAirportCityName.Add(item.Key.ToString().ToUpper());
                         }
                     }
                 }

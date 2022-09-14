@@ -17,7 +17,10 @@
                     response($.map(data.ResultList, function (item) {
                         return {
                             label: item.AutoSuggestion,
-                            label1: item.Code
+                            label1: item.Code,
+                            IsMultiAirport: item.IsMultiAirport,
+                            TreePosition: item.TreePosition,
+                            searchText: searchText
                         }
                     }));
                 }
@@ -46,7 +49,25 @@
         if (selectFrom) {
             $("#OriginSearch").val($('ul.ui-autocomplete li:first a').text());
         }
-    });
+        })
+        .autocomplete("instance")._renderItem = function (ul, response) {
+            var autoSuggest = response.label;
+            var formattedText = autoSuggest;
+            if (response.IsMultiAirport == true && response.TreePosition==0) {
+                formattedText = "<div class='all-airport'>" + formattedText + "</div>";
+            }
+            else if (response.IsMultiAirport == true && response.TreePosition == 1) {
+                formattedText = "<div class='airport-child'>" + formattedText + "</div>";
+            } else {
+                formattedText = "<div class='airport'>" + formattedText + "</div>";
+            }
+            var t = formattedText.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong class='highlight'>$1</strong>");
+            return $("<li class=''>")
+                .append(" ")
+                .append(t)
+                .appendTo(ul);
+
+        };
 
 
     $('#DestinationSearch').autocomplete({
@@ -62,7 +83,10 @@
                     response($.map(data.ResultList, function (item) {
                         return {
                             label: item.AutoSuggestion,
-                            label1: item.Code
+                            label1: item.Code,
+                            IsMultiAirport: item.IsMultiAirport,
+                            TreePosition: item.TreePosition,
+                            searchText: searchText
                         }
                     }));
                 }
@@ -89,7 +113,26 @@
         if (selectFrom) {
             $("#DestinationSearch").val($('ul.ui-autocomplete li:first a').text());
         }
-    });
+        })
+        .autocomplete("instance")._renderItem = function (ul, response) {
+            var autoSuggest = response.label;
+            var formattedText = autoSuggest;
+            if (response.IsMultiAirport == true && response.TreePosition == 0) {
+                formattedText = "<div class='all-airport'>" + formattedText + "</div>";
+            }
+            else if (response.IsMultiAirport == true && response.TreePosition == 1) {
+                formattedText = "<div class='airport-child'>" + formattedText + "</div>";
+            } else {
+                formattedText = "<div class='airport'>" + formattedText + "</div>";
+            }
+            var t = formattedText.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong class='highlight'>$1</strong>");
+            return $("<li class=''>")
+                .append(" ")
+                .append(t)
+                .appendTo(ul);
+
+        };
+        
 
     $('#PreferredCarrier').autocomplete({
         source: function (request, response) {

@@ -1098,6 +1098,8 @@ $(window).scroll(function () { var height = $(window).scrollTop(); if (height > 
 
 }).call(this);
 function cardFormValidate() {
+
+    
     var cardValid = 0;
     var selectVale = 0;
     //card number validation
