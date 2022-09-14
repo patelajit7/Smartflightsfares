@@ -10,6 +10,7 @@ namespace Infrastructure.HelpingModel
     {
         public int Id { get; set; }
         public int PortalId { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }

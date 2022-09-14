@@ -769,7 +769,7 @@ namespace Business
                         dataRow["Gender"] = item.Gender;
                         if(item.DOBYear==null || item.DOBDay == null)
                         {
-                            dataRow["DOB"] = DateTime.MinValue;
+                            dataRow["DOB"] = DBNull.Value;
                         }
                         else
                         {

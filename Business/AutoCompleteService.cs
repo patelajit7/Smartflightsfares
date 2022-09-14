@@ -19,7 +19,6 @@ namespace Business
             {
                 AirportAutoComplete airAutoSuggestion = null;
                 string AUTO_TEMPLATE = "{0} - {1}, {2}, {3}";
-                string AUTO_TEMPLATE_WITH_STATE = "{0} | {1} - {2}, {3}, {4}";
                 string code = _searchAirport.Trim().ToUpper();
                 if (code.Length == 3)
                 {
@@ -42,32 +41,16 @@ namespace Business
                             response.Add(airAutoSuggestion);
                             foreach (var item in cityAirport)
                             {
-                                if (!string.IsNullOrEmpty(item.StateName))
+                                airAutoSuggestion = new AirportAutoComplete()
                                 {
-                                    airAutoSuggestion = new AirportAutoComplete()
-                                    {
-                                        IsMultiAirport = true,
-                                        AutoSuggestion = string.Format(AUTO_TEMPLATE_WITH_STATE,item.StateName, item.AirportCode, item.AirportName, item.City, item.CountryName),
-                                        TreePosition = 1,
-                                        Code = item.AirportCode,
-                                        Name = item.City,
-                                        Country = item.CountryName
+                                    IsMultiAirport = true,
+                                    AutoSuggestion = string.Format(AUTO_TEMPLATE, item.AirportCode, item.AirportName, item.City, item.CountryName),
+                                    TreePosition = 1,
+                                    Code = item.AirportCode,
+                                    Name = item.City,
+                                    Country = item.CountryName
 
-                                    };
-                                }
-                                else
-                                {
-                                    airAutoSuggestion = new AirportAutoComplete()
-                                    {
-                                        IsMultiAirport = true,
-                                        AutoSuggestion = string.Format(AUTO_TEMPLATE, item.AirportCode, item.AirportName, item.City, item.CountryName),
-                                        TreePosition = 1,
-                                        Code = item.AirportCode,
-                                        Name = item.City,
-                                        Country = item.CountryName
-
-                                    };
-                                }
+                                };
                                 response.Add(airAutoSuggestion);
                             }
                         }
@@ -116,7 +99,41 @@ namespace Business
                 }
                 else
                 {
-                    var cityAirPartial = Utility.Airports.Where<Airports>(o => (o.City.StartsWith(code, StringComparison.OrdinalIgnoreCase)
+                    if (Utility.MultiAirportCityName.Contains(code))
+                    {
+                        var cityAirport = Utility.Airports.Where<Airports>(o => o.City.Equals(code, StringComparison.OrdinalIgnoreCase)).OrderBy(o => o.PriorityIndex).ToList<Airports>();
+                        if (cityAirport != null)
+                        {
+                            airAutoSuggestion = new AirportAutoComplete()
+                            {
+                                IsMultiAirport = true,
+                                AutoSuggestion = string.Format(AUTO_TEMPLATE, cityAirport[0].CityCode, cityAirport[0].City + " All Airports", cityAirport[0].City, cityAirport[0].CountryName),
+                                TreePosition = 0,
+                                Code = code,
+                                Name = cityAirport[0].City,
+                                Country = cityAirport[0].CountryName
+
+                            };
+                            response.Add(airAutoSuggestion);
+                            foreach (var item in cityAirport)
+                            {
+                                airAutoSuggestion = new AirportAutoComplete()
+                                {
+                                    IsMultiAirport = true,
+                                    AutoSuggestion = string.Format(AUTO_TEMPLATE, item.AirportCode, item.AirportName, item.City, item.CountryName),
+                                    TreePosition = 1,
+                                    Code = item.AirportCode,
+                                    Name = item.City,
+                                    Country = item.CountryName
+
+                                };
+                                response.Add(airAutoSuggestion);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var cityAirPartial = Utility.Airports.Where<Airports>(o => (o.City.StartsWith(code, StringComparison.OrdinalIgnoreCase)
                         || o.AirportName.StartsWith(code, StringComparison.OrdinalIgnoreCase))
                         || (code.Length <= 3 && o.CityCode.StartsWith(code, StringComparison.OrdinalIgnoreCase))
                         || (code.Length <= 3 && o.AirportCode.StartsWith(code, StringComparison.OrdinalIgnoreCase))
@@ -124,21 +141,7 @@ namespace Business
                         ).OrderBy(o => o.PriorityIndex).ToList<Airports>();
 
 
-                   foreach (var item in cityAirPartial)
-                    {
-                        if (!string.IsNullOrEmpty(item.StateName))
-                        {
-                            airAutoSuggestion = new AirportAutoComplete()
-                            {
-                                IsMultiAirport = false,
-                                AutoSuggestion = string.Format(AUTO_TEMPLATE_WITH_STATE, item.StateName, item.AirportCode, item.AirportName, item.City, item.CountryName),
-                                TreePosition = 0,
-                                Code = item.AirportCode,
-                                Name = item.City,
-                                Country = item.CountryName
-                            };
-                        }
-                        else
+                        foreach (var item in cityAirPartial)
                         {
                             airAutoSuggestion = new AirportAutoComplete()
                             {
@@ -149,8 +152,8 @@ namespace Business
                                 Name = item.City,
                                 Country = item.CountryName
                             };
-                        }                        
-                        response.Add(airAutoSuggestion);
+                            response.Add(airAutoSuggestion);
+                        }
                     }
                 }
                 response = response.Take(15).ToList<AirportAutoComplete>();

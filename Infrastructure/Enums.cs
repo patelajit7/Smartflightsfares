@@ -249,7 +249,9 @@ namespace Infrastructure
         [Description("Itinery Details")]
         ItineryDetails = 6,
         [Description("Self Booking")]
-        SelefBooking = 7
+        SelefBooking = 7,
+        [Description("Call Requested")]
+        ACallRequested = 8
     }
 
     public enum PageBannerType

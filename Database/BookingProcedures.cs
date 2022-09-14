@@ -332,6 +332,37 @@ namespace Database
                 throw ex;
             }
         }
+        public static void RequestACallDetails(RequestedItinerary request, string connectionString)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        connection.Open();
+                        command.Connection = connection;
+                        command.CommandText = "RequestedCallInsert";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 3600;
+                        command.Parameters.AddWithValue("@PortalId", request.PortalId);
+                        command.Parameters.AddWithValue("@Phone", request.Phone);
+                        command.Parameters.AddWithValue("@Origin", request.Origin);
+                        command.Parameters.AddWithValue("@Destination", request.Destination);
+                        command.Parameters.AddWithValue("@TripType", request.TripType);
+                        command.Parameters.AddWithValue("@Departure", request.Departure);
+                        command.Parameters.AddWithValue("@Return", request.Return != null ? request.Return : (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@IP", request.IP);
+                        command.Parameters.AddWithValue("@SentSuccess", request.SentSuccess);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static bool IsSaveFlightSearches(DataTable _flightSearchDetail, string _connectionString)
         {
             bool isSave = false;

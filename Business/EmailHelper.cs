@@ -71,6 +71,20 @@ namespace Business
                             emailTemplate.Subject = emailTemplate.Subject.Replace("####", transaction.TransactionId.ToString());
                             isMailSent = IsMailSent(emailTemplate);
                             break;
+						case EmailType.ACallRequested:
+                            emailTemplate = new EmailTemplate()
+                            {
+                                AdminMailBcC = emails.BookingReceipt.AdminMailBcC,
+                                EmailPass = emails.BookingReceipt.EmailPass,
+                                EmailUserId = emails.BookingReceipt.EmailUserId,
+                                IsHtml = emails.BookingReceipt.IsHtml,
+                                Subject = string.Format("{0}: A call requested", transaction.MailRecipient),
+                                MailRecipient = Utility.PortalSettings.SelfBookingMail,
+                                Body = transaction.MailBody
+                            };
+                            emailTemplate.Subject = emailTemplate.Subject;
+                            isMailSent = IsMailSent(emailTemplate);
+                            break;
 
                     }
                     return isMailSent;
