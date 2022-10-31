@@ -395,6 +395,12 @@
         this.getStops();
         this.applyFilter(this.Tab, false);
     },
+
+    //removeTimeFilter: function (_id) {
+    //    $('#' + _id).prop('checked', false);
+    //    this.getTimes();
+    //    this.applyFilter(this.Tab, false);
+    //},
     resetDepartureAirports: function () {
         $("input:checkbox[name=DepartureAirports]:checked").each(function () {
             $(this).prop('checked', false);

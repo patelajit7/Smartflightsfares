@@ -10,9 +10,9 @@ using Infrastructure.HelpingModel.Operations;
 
 namespace Database
 {
-    public class OptProcedure
+   public class OptProcedure
     {
-        public static DocuSignsVM GetDocuSign(int _id, int _filterType, int _docuSignVM, string _connectionString)
+        public static DocuSignsVM GetDocuSign(int _id, int _filterType,int _docuSignVM, string _connectionString)
         {
             DocuSignsVM docuSigns = null;
             try
