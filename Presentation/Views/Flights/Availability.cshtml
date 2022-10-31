@@ -9,13 +9,14 @@
 <div class="all_results" style="display:block;">
     @{Html.RenderPartial("~/views/flights/partial/_FlightListingSearchEngine.cshtml", Model.Factes.Search);}
     <div class="clearfix"></div>
-    <div id="resultsCntr">
+    <div id="resultsCntr" class="clsContentCenter">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12" id="GetContract">
+
+                <div class="row" id="GetContract">
+
                     @{Html.RenderPartial("~/views/flights/partial/_AvailabilityRight.cshtml", Model.Factes.Search);}
                 </div>
-            </div>
+        
         </div>
     </div>
 

@@ -322,6 +322,7 @@
                 complete: function (data) {
                     IsScrollEventFire = false;
                     $("#loadingDiv").css('display', "none");
+                    scroll_sidebar();
                 },
                 beforeSend: function () {
                     $("#loadingDiv").css('display', "block");
@@ -945,3 +946,40 @@ function openSentItin(guid, contractId) {
     $('#sentSuccess').hide();
 
 }
+
+
+function scroll_sidebar() {
+
+    var ww = $(window).width() || $(document).width();
+    if (ww >= 768) {
+        var scroll = $(window).scrollTop() || $(document).scrollTop();
+        var top = $(".fixedSec").offset().top;
+        var sidebarHeight = $(".fixedSec > *").height();
+        var catContentSec = $(".clsContentCenter").height();
+        var bottom = top + catContentSec - sidebarHeight;
+        var sidebarWidth = $(".fixedSec").width();
+        $(".fixedSec > *").css("width", sidebarWidth);
+
+        if (scroll >= top && scroll <= bottom) {
+            $(".fixedSec > *").addClass("leftBar").css({
+                position: "fixed",
+                top: "0"
+            });
+        } else if (scroll >= bottom) {
+            $(".fixedSec > *").addClass("leftBar").css({
+                position: "absolute",
+                top: catContentSec - sidebarHeight - 40 + "px"
+            });
+        }
+        else {
+            $(".fixedSec > *").removeClass("leftBar").css({
+                position: "absolute",
+                top: "0"
+            });
+        }
+    }
+    if (ww <= 767) {
+        $(".fixedSec > *").removeAttr("style");
+    }
+}
+$(window).on("load scroll resize", scroll_sidebar);

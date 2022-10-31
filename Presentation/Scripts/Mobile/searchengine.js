@@ -147,7 +147,7 @@
         // Get the Login Name value and trim it
         var Origin = $.trim($('#OriginSearch').val());
         var Destination = $.trim($('#DestinationSearch').val());
-        var trip_type = $('input[name=TripType]:checked').val();
+        var trip_type = $('#TripType').val();
         var DepartDate = $.trim($('#Departure').val());
         var ReturnDate = $.trim($('#Return').val());
       //Show popup for invalid date search
@@ -177,7 +177,7 @@
         }
         else if (trip_type != "") 
         {
-                if (trip_type === "1") {
+            if (trip_type === "ONEWAY") {
 
                     if (DepartDate === '') {
                         $(".error-div").show().html("Select a <b>'Depart Date'</b>");

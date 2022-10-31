@@ -9,7 +9,7 @@
     <meta name="description" content="Website description" />
     <meta name="robots" content="" />
     <!-- change into index, follow -->
-    <link rel="shortcut icon" href="@string.Format("{0}images/favicon.png?v=1234", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
+    <link rel="icon" href="@string.Format("{0}/favicon.ico", Utility.PortalSettings.DomainUrl)" type="image/x-icon" />
     <meta name="Author" content="@Utility.PortalSettings.Domain">
     <meta name="page-topic" content="@Utility.PortalSettings.Domain">
     <meta name="Copyright" content="@string.Format("{0},  {1}", DateTime.Now.ToString("yyyy"), Utility.PortalSettings.Domain)">
@@ -19,18 +19,58 @@
     <link rel="alternate" href="@Utility.PortalSettings.DomainUrl" hreflang="en" />
 
     @RenderSection("headerSection", required: false)
-    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/content/mobile/jquery-ui.css" rel="stylesheet" />
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/content/mobile/font-awesome.min.css" rel="stylesheet" type="text/css" />
     @Styles.Render("~/content/m-css")
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/scripts/mobile/jquery.min.js"></script>
+    <script src="~/scripts/mobile/jquery-ui.js"></script>
+
+    <script src="~/scripts/mobile/bootstrap.min.js"></script>
+
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N7S3NK6');</script>
+    <!-- End Google Tag Manager -->
+    <!--Start of Tawk.to Script-->
+
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "d5zxdvf6ag");
+    </script>
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1551021027891495"
+            crossorigin="anonymous"></script>
 
 </head>
 <body class="results_body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7S3NK6"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script type="text/javascript">
+        window._mfq = window._mfq || [];
+        (function () {
+            var mf = document.createElement("script");
+            mf.type = "text/javascript"; mf.defer = true;
+            mf.src = "//cdn.mouseflow.com/projects/dc47f3ce-32c1-4603-9418-84cb00dfc03f.js";
+            document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+    </script>
     <div id="wrapper">
         <div id="mainCntr">
             @{Html.RenderPartial("~/views/shared/mobile/partial/_BookingPathHeader.cshtml");}
@@ -172,8 +212,9 @@
             });
 
         });
-    </script>
 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </body>
 
 </html>

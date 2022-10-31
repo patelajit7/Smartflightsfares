@@ -1296,25 +1296,6 @@ var disableSelection = $.fn.extend( {
 } );
 
 
-/*!
- * jQuery UI Effects 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
-
-//>>label: Effects Core
-//>>group: Effects
-// jscs:disable maximumLineLength
-//>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
-// jscs:enable maximumLineLength
-//>>docs: http://api.jqueryui.com/category/effects-core/
-//>>demos: http://jqueryui.com/effect/
-
-
-
 var dataSpace = "ui-effects-",
 	dataSpaceStyle = "ui-effects-style",
 	dataSpaceAnimated = "ui-effects-animated",
@@ -1329,12 +1310,11 @@ $.effects = {
 
 /*!
  * jQuery Color Animations v2.1.2
- * https://github.com/jquery/jquery-color
+
  *
  * Copyright 2014 jQuery Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
- *
+
  * Date: Wed Jan 16 08:47:09 2013 -0600
  */
 ( function( jQuery, undefined ) {

@@ -16,6 +16,12 @@ $(document).ready(function () {
     $(".mobile_head .close").click(function () {
         $(".mobileMenuBox").hide().css("left", "-200%");
     });
+
+
+
+
+
+
     //Traveler home and Results
 
     $(document).on('click touch', function (event) {

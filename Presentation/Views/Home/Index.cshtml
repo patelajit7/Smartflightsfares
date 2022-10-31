@@ -4,8 +4,8 @@
 @using Infrastructure.HelpingModel;
 
 @{
-ViewBag.Title = "Affordable Flight Tickets, Discounted Airfare | " + Utility.PortalSettings.PortalDetails.BrandName;
-Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+    ViewBag.Title = "Affordable Flight Tickets, Discounted Airfare | " + Utility.PortalSettings.PortalDetails.BrandName;
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
 }
 @section headerSection{
     <meta name="description" content="Get low-cost airline tickets for domestic and international destinations at @Utility.PortalSettings.Domain.Replace("www.", ""). Call us toll free at @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber for discounted airfares. Save Big">
@@ -22,16 +22,15 @@ Layout = "~/Views/Shared/_GeneralLayout.cshtml";
             </div>
         </div>
         @{Html.RenderPartial("~/views/flights/partial/_FlightSearchEngine.cshtml", Model);}
-   
+
     </div>
 </div>
 <div id="contentCntr">
     @{Html.RenderPartial("~/views/home/partial/_Why.cshtml");}
     @{Html.RenderPartial("~/views/home/partial/_TopDestination.cshtml");}
-    
+
     @{Html.RenderPartial("~/views/home/partial/_PopularDeals.cshtml"); }
 
-  
 </div>
 <div class="subscribeBox">
     <div class="container">
@@ -53,6 +52,67 @@ Layout = "~/Views/Shared/_GeneralLayout.cshtml";
     </div>
 
 </div>
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+</button>-->
+
+<!-- Modal -->
+<!--<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered callpopUp">
+        <div class="modal-content">
+
+
+            <button type="button" class="btnClose" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#ffffff" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
+            <div class="modal-body">
+              <div class="banerSec">
+                 <img src="~/Images/call-support.jpg" alt="call support" />
+              </div>
+
+              <div class="contentSec">
+                  <div class="popUphead">
+                      <h1 class="heading">Amazing Deals On Westjet Airlines</h1>
+                      <p class="subheading">Find unpublished airfares by calling us <b>NOW</b>.</p>
+                  </div>
+                  <div class="calltextSec">
+                      <div class="airfare">Fly with Great Airfares!</div>
+                      <div class="off">Enjoy UP TO 30% OFF</div>
+                      <div class="callSupport">Call 24x7 Expert Support</div>
+                      <a class="callUp" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber"> <img src="~/Images/call-up.png" alt="callup" /> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                      <div class="callOnly">*Unpublished call-only deals</div>
+
+                      <div class="whyBookSec">
+                          <div class="whyBok">Why book phone-only airfares?</div>
+                          <div class="whyOption d-flex">
+                              <div class="sec">
+                                  <img src="~/Images/icons/plane-red.svg" alt="plane" />
+                                  <p>Great Bargained Airfares</p>
+                              </div>
+                              <div class="sec">
+                                  <img src="~/Images/icons/support.svg" alt="plane" />
+                                  <p>World-class Book Service</p>
+                              </div>
+                              <div class="sec">
+                                  <img src="~/Images/icons/best-price.svg" alt="plane" />
+                                  <p>Time Saving & Efficient</p>
+                              </div>
+                          </div>
+
+                      </div>
+                      <p class="tncApp">*T&Cs apply</p>
+                  </div>
+
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>-->
 
 
 @section scripts{

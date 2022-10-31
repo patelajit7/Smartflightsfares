@@ -244,7 +244,7 @@
                 <div>
                     <div class="price chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))<sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>
 
-                    <div class="fare__breakup">
+                    @*<div class="fare__breakup">
                         <a href="javascript:void(0);" class="fare__detail">
                             Fare Detail
                             <span>(incl. taxes)</span>
@@ -271,7 +271,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div>*@
 
                 </div>
                 <a href="javascript:void(0)" class="select__btn" @string.Format("{0}", Model.BookingStatus == BookingStatus.SoldOutOrUnavailable ? "" : " onclick=contractFilter.setVerificationContract(\"" + Model.SearchGuid + "\",\"" + Model.ContractId + "\",\"" + ((int)Model.ContractType) + "\");")>Continue <i class="bi bi-chevron-right ml-2" aria-hidden="true"></i></a>

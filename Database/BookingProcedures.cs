@@ -207,7 +207,7 @@ namespace Database
                                                     traveller.MiddleName = row["MiddleName"] == DBNull.Value ? string.Empty : Convert.ToString(row["MiddleName"]);
                                                     traveller.LastName = row["LastName"] == DBNull.Value ? string.Empty : Convert.ToString(row["LastName"]);
                                                     traveller.Gender = Convert.ToInt32(row["Gender"]);
-                                                    traveller.DOB = Convert.ToDateTime(row["DOB"]);
+                                                    traveller.DOB = row["DOB"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["DOB"]);
                                                     traveller.TicketsNo = row["TicketNo"] == DBNull.Value ? string.Empty : Convert.ToString(row["TicketNo"]);
                                                     response.Travellers.Add(traveller);
                                                 }
@@ -320,7 +320,7 @@ namespace Database
                         command.Parameters.AddWithValue("@Destination", request.Destination);
                         command.Parameters.AddWithValue("@TripType", request.TripType);
                         command.Parameters.AddWithValue("@Departure", request.Departure);
-                        command.Parameters.AddWithValue("@Return", request.Return!=null? request.Return:(object)DBNull.Value);
+                        command.Parameters.AddWithValue("@Return", request.Return != null ? request.Return : (object)DBNull.Value);
                         command.Parameters.AddWithValue("@IP", request.IP);
                         command.Parameters.AddWithValue("@SentSuccess", request.SentSuccess);
                         command.ExecuteNonQuery();
@@ -1008,14 +1008,14 @@ namespace Database
                                         case 0://Reviews
                                             if (ds.Tables[i] != null && ds.Tables[i].Rows.Count > 0)
                                             {
-                                                
+
                                                 foreach (DataRow row in ds.Tables[i].Rows)
                                                 {
                                                     response.Id = Convert.ToInt32(row["Id"]);
                                                     response.Name = row["Name"] == DBNull.Value ? string.Empty : Convert.ToString(row["Name"]);
                                                     response.Address = row["Address"] == DBNull.Value ? string.Empty : Convert.ToString(row["Address"]);
                                                     response.Rating = Convert.ToDecimal(row["Rating"]);
-                                                    response.Reviews = Convert.ToInt32(row["Reviews"]);                                                    
+                                                    response.Reviews = Convert.ToInt32(row["Reviews"]);
                                                     response.Created = DateTime.SpecifyKind(Convert.ToDateTime(row["Created"]), DateTimeKind.Utc);
                                                     break;
                                                 }
@@ -1027,7 +1027,8 @@ namespace Database
                                                 response.GoogleSubReviews = new List<GoogleSubReviews>();
                                                 foreach (DataRow row in ds.Tables[i].Rows)
                                                 {
-                                                    response.GoogleSubReviews.Add(new GoogleSubReviews() {
+                                                    response.GoogleSubReviews.Add(new GoogleSubReviews()
+                                                    {
                                                         Id = row["Id"] == DBNull.Value ? 0 : Convert.ToInt32(row["Id"]),
                                                         ReviewId = row["ReviewId"] == DBNull.Value ? 0 : Convert.ToInt32(row["ReviewId"]),
                                                         UserName = row["UserName"] == DBNull.Value ? string.Empty : Convert.ToString(row["UserName"]),
@@ -1039,10 +1040,10 @@ namespace Database
                                                         ReviewSummary = row["ReviewSummary"] == DBNull.Value ? string.Empty : Convert.ToString(row["ReviewSummary"]),
                                                         Created = row["Created"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["Created"])
                                                     });
-                                                   
+
                                                 }
                                             }
-                                            break;                                        
+                                            break;
                                     }
                                 }
                             }

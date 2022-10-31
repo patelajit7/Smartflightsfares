@@ -38,9 +38,8 @@
                     <div class="confirmation__Box text-center">
                         <img src="/images/icons/booking_confirmed.svg" alt="">
                         <h4 class="mb-4">Thank you for your booking</h4>
-                        <p class="text-sm-start mb-2">For choosing @Utility.PortalSettings.PortalDetails.BrandName and for trusting your travel plans with us. </p>
-						<p class="text-sm-start mb-2">This is your booking request acknowledgement. Your payment has been submitted and we are handling your request, Your e-ticket will be issued shortly once your debit/credit card verification has been completed.</p>                        
-						<p class="text-sm-start mb-2"><b>Note:</b>-Fares are not guaranteed until ticketed in rare event fares may increase. You will receive a call from our travel advisor if fare may expire, debit/credit card declines. </p>
+			<p class="text-sm-start mb-2">This is your booking request acknowledgement. Your payment has been submitted and we are handling your request, Your e-ticket will be issued shortly once your debit/credit card verification has been completed.</p>                        
+			<p class="text-sm-start mb-2"><b>Note:</b>-Fares are not guaranteed until ticketed in rare event fares may increase. You will receive a call from our travel advisor if fare may expire, debit/credit card declines. </p>
                         <p class="text-sm-start">For immediate Assistance on your booking, please call us at <a href="@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber">@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a></p>
                         <div class="airline_confirmation">Your Airline Confirmation Number: <strong>@Model.Transaction.PNR</strong> and Booking Id is <strong class="refrance__number">@Model.Transaction.Id</strong></div>
                     </div>
@@ -92,6 +91,8 @@
 
                                                             <div class="connecting__bar d-none d-md-block">
                                                                 <div class="duretion_time">
+                                                                    <span>--</span>
+                                                                    <img src="/images/icons/plane2.svg" alt="icon" />
                                                                 </div>
                                                             </div>
 
@@ -301,29 +302,11 @@
                                     discount = discount + (item.Discount * item.PaxCount);
 
                                     <li>
-                                        <div class="row accordian_toggle">
-                                            <div class="col-8">@item.PaxCount @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) </div> <div class="col-4 text-right">@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</div>
+                                        <div class="row">
+                                           <div class="col-8"> @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) (@item.PaxCount x @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee)) * currencyPrice))</div> 
+                                            <div class="col-4 text-right">@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</div>
                                         </div>
-                                        <div class="accordian-slide">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    Flight Charges
-                                                </div>
-                                                <div class="col-4 text-right">
-                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare * item.PaxCount)) * currencyPrice)
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    Taxes & Fees
-                                                </div>
-                                                <div class="col-4 text-right">
-                                                     @String.Format("{0}{1:0.00}", currencySymbol, ((item.Tax + item.Markup + item.SupplierFee) * item.PaxCount) * currencyPrice)
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        
                                     </li>
                                 }
                             }

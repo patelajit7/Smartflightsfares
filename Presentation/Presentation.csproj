@@ -410,12 +410,16 @@
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\filter-load.jpg" />
     <Content Include="Images\flight-flow.jpg" />
+    <Content Include="Images\footer\24x7.png" />
     <Content Include="Images\footer\affirm.jpg" />
     <Content Include="Images\footer\arc.jpg" />
     <Content Include="Images\footer\asta.jpg" />
     <Content Include="Images\footer\bbb.jpg" />
     <Content Include="Images\footer\card-icon.jpg" />
     <Content Include="Images\footer\card-icon.png" />
+    <Content Include="Images\footer\happy.png" />
+    <Content Include="Images\footer\iata.png" />
+    <Content Include="Images\footer\stars.svg" />
     <Content Include="Images\footer\trust.jpg" />
     <Content Include="Images\footer\trustpilot-logo.png" />
     <Content Include="Images\godady.png" />
@@ -1259,6 +1263,7 @@
     <Content Include="fonts\bootstrap-icons.woff2" />
     <Content Include="Images\tp-full-info.webp" />
     <Content Include="Images\fotter-logo.webp" />
+    <Content Include="Images\footer\trust-pilot.webp" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\html5.js" />
@@ -1283,7 +1288,6 @@
     <Content Include="Scripts\Mobile\slick.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\widget.js" />
-    <Content Include="Views\sitemap.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1494,6 +1498,7 @@
     <Content Include="Views\Emails\SentItineraryEmail.cshtml" />
     <Content Include="Views\Shared\Mobile\_BookingConfirmationLayout.cshtml" />
     <Content Include="Views\Shared\Mobile\Partial\_bookingConfirmationHeader.cshtml" />
+    <Content Include="Views\Flights\ConfirmationV2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

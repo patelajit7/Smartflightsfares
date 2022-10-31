@@ -7,8 +7,16 @@
     float totalFare = 0;
     CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
     totalFare = Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice;
+    BaggageInfoType personal = null, carryon = null, checkin = null;
+    if (Model != null && Model.BaggageDetails != null && Model.BaggageDetails.OutboundBaggage != null)
+    {
+        personal = Model.BaggageDetails.OutboundBaggage.PesonalItem;
+        carryon = Model.BaggageDetails.OutboundBaggage.CarryOn;
+        checkin = Model.BaggageDetails.OutboundBaggage.Checkin;
+
+    }
 }
-<div class="repeat_results" @string.Format("{0}", Model.BookingStatus == BookingStatus.SoldOutOrUnavailable ? "" : " onclick=GetContractDetails(\"" + Model.SearchGuid + "\",\"" + Model.ContractId + "\");")>
+<div class="repeat_results">
 
     <div class="resultsBox">
         <div class="row">
@@ -22,10 +30,54 @@
 
                         <div class="price_list">
                             <div class="price chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))<sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>
-                            @if (Model.BookingStatus != BookingStatus.SoldOutOrUnavailable)
-                            {
-                                <div class="seat_left highlight mt-3">Hurry!! Only @string.Format("{0}", Model.MinSeatAvailableForContract > 1 ? Model.MinSeatAvailableForContract.ToString() : "Few") @String.Format("{0}", Model.MinSeatAvailableForContract > 1 ? "Seats" : "Seat") left</div>
-                            }
+                            <div class="bagguage_fees">
+                                <ul>
+                                    <li class="@string.Format("{0}", personal!=null && personal.IsAllowed ? "check":"noCheck")"> <img src="~/Images/bag.svg" alt="bag" /> </li>
+                                    <li class="@string.Format("{0}", carryon!=null && carryon.IsAllowed ? "check":"noCheck")"><img src="~/Images/bag1.svg" alt="bag" /></li>
+                                    <li class="@string.Format("{0}", checkin!=null && checkin.IsAllowed? "check":"noCheck")"><img src="~/Images/bag2.svg" alt="bag" /></li>
+                                </ul>
+                                <div class="tooltipBox">
+                                    <div class="row">
+                                        <div class="col-8 leftSec">
+                                            <img src="~/Images/bag.svg" alt="bag" class="bag" /> Personal Item
+                                        </div>
+                                        <div class="col-4 text-right @string.Format("{0}", personal!=null && personal.IsAllowed ? "included":"") pl-0"><i class="bi @string.Format("{0}", personal!=null && personal.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", personal != null && personal.IsAllowed ? "Included" : "Not Included") </div>
+                                        <div class="col-12">
+                                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", personal != null && !string.IsNullOrEmpty(personal.Description) ? personal.Description : "Purse, small backpack, briefcase"))</ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-8 leftSec">
+                                            <img src="~/Images/bag1.svg" alt="bag" class="bag" /> Carry-on Bag
+
+                                        </div>
+                                        <div class="col-4 text-right @string.Format("{0}", carryon!=null && carryon.IsAllowed ? "included":"") pl-0">
+                                            <span><i class="bi @string.Format("{0}", carryon!=null && carryon.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", carryon != null && carryon.IsAllowed ? "Included" : "Not Included")</span>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", carryon != null && !string.IsNullOrEmpty(carryon.Description) ? carryon.Description : ""))</ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-8 leftSec">
+                                            <img src="~/Images/bag2.svg" alt="bag" class="bag last" /> Checked Bag
+
+                                        </div>
+                                        <div class="col-4 text-right @string.Format("{0}", checkin!=null && checkin.IsAllowed ? "included":"") pl-0">
+                                            <i class="bi @string.Format("{0}", checkin!=null && checkin.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", checkin != null && checkin.IsAllowed ? "Included" : "Not Included")
+                                        </div>
+
+                                        <div class="col-12">
+                                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", checkin != null && !string.IsNullOrEmpty(checkin.Description) ? checkin.Description : ""))</ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
                         </div>
                         @if (Model.BookingStatus == BookingStatus.SoldOutOrUnavailable)
                         {
@@ -33,7 +85,7 @@
                         }
                         else
                         {
-                            <button type="button" onclick="GetContractDetails(@Model.SearchGuid ,@Model.ContractId" class="selectBtn">Select</button>
+                            <button type="button" onclick="GetContractDetails('@Model.SearchGuid' ,@Model.ContractId)" class="selectBtn">Select</button>
                         }
 
                     </div>
@@ -73,37 +125,31 @@
                                 <!-- connecting block-->
                                 <div class="connnecting-block">
                                     <div class="leg-points">
-                                        @if (Model.TripDetails.OutBoundSegment.Count > 1)
-                                        {
-                                            for (int i = 0; i <= Model.TripDetails.OutBoundSegment.Count - 1; i++)
+
+                                        <div class="stops">
+                                            <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration)</div>
+                                            <i></i>
+                                            <br>
+                                            @if (Model.TripDetails.OutBoundSegment.Count > 1)
                                             {
-                                                Segments item = Model.TripDetails.OutBoundSegment[i];
-                                                if (i != 0)
-                                                {
-                                                    DateTime arrivalTime = new DateTime(Model.TripDetails.OutBoundSegment[i - 1].Arrival.Year, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Month, Model.TripDetails.OutBoundSegment[i - 1].Arrival.Day, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.OutBoundSegment[i - 1].ArrivalTime.Minutes, 0);
-                                                    TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
-                                                    if (layoverTime != TimeSpan.MinValue)
-                                                    {
-                                                        @*<div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>*@
-                                                        <div class="stops">
-                                                            <div class="layovertime">@Utility.GetDuration(layoverTime) </div>
-
-                                                            <span class="d-block">@item.Origin</span>
-                                                        </div>
-                                                    }
-                                                }
+                                                <b>@Utility.GetTotalStops(Model.TripDetails.OutBoundSegment) Stops</b>
                                             }
-                                        }
-                                        else
-                                        {
+                                            else
+                                            {
+                                                <b>Non Stop</b>
+                                            }
 
-                                            <div class="noneStop">
-                                                <div class="layovertime">@Utility.GetDuration(Model.TotalOutBoundFlightDuration) </div>
-                                                <span class="d-block">Non Stop</span>
-                                            </div>
-                                        }
+                                        </div>
 
                                     </div>
+
+                                    <!-- Tooltip-->
+                                    @*<div class="tooltip-new">
+                                            <div class="text-center">
+                                                46m layover, O'Hare International Airport
+                                            </div>
+                                        </div>*@
+                                    <!-- Tooltip-->
 
                                 </div>
                                 <!-- Connecting block end-->
@@ -144,37 +190,30 @@
                                     <div class="connnecting-block">
                                         <div class="leg-points">
 
-                                            @if (Model.TripDetails.InBoundSegment.Count > 1)
-                                            {
-                                                for (int i = 0; i <= Model.TripDetails.InBoundSegment.Count - 1; i++)
+                                            <div class="stops">
+                                                <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration)</div>
+                                                <i></i>
+                                                <br>
+                                                @if (Model.TripDetails.InBoundSegment.Count > 1)
                                                 {
-                                                    Segments item = Model.TripDetails.InBoundSegment[i];
-                                                    if (i != 0)
-                                                    {
-                                                        DateTime arrivalTime = new DateTime(Model.TripDetails.InBoundSegment[i - 1].Arrival.Year, Model.TripDetails.InBoundSegment[i - 1].Arrival.Month, Model.TripDetails.InBoundSegment[i - 1].Arrival.Day, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Hours, Model.TripDetails.InBoundSegment[i - 1].ArrivalTime.Minutes, 0);
-                                                        TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
-                                                        if (layoverTime != TimeSpan.MinValue)
-                                                        {
-                                                            @*<div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>*@
-                                                            <div class="stops">
-                                                                <div class="layovertime">@Utility.GetDuration(layoverTime) </div>
-                                                                <span class="d-block">@item.Origin</span>
-                                                            </div>
-                                                        }
-                                                    }
+                                                    <b>@Utility.GetTotalStops(Model.TripDetails.InBoundSegment) Stops</b>
                                                 }
-                                            }
-                                            else
-                                            {
+                                                else
+                                                {
+                                                    <b>Non Stop</b>
+                                                }
 
-                                                <div class="noneStop">
-                                                    <div class="layovertime">@Utility.GetDuration(Model.TotalInBoundFlightDuration) </div>
-                                                    <span>Non Stop</span>
-                                                </div>
-                                            }
+                                            </div>
 
                                         </div>
 
+                                        <!-- Tooltip-->
+                                        @*<div class="tooltip-new">
+                                                <div class="text-center">
+                                                    46m layover, O'Hare International Airport
+                                                </div>
+                                            </div>*@
+                                        <!-- Tooltip-->
                                     </div>
                                     <!-- Connecting block end-->
 

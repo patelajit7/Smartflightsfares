@@ -5,8 +5,8 @@
 
 <div class="loadingCntr">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="leftCntr">
+   
+            <div class="col-lg-3 leftCntr">
                 <div class="holder">
                     <div class="tab-content">
                         <div class="filterBox">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rightCntr">
+            <div class="col-lg-9 rightCntr">
                 <div class="resultsBox midResults">
                     <div class="results-skeleton-content"></div>
                     <div class="mid__loading">
@@ -56,14 +56,17 @@
                             @if (Model.TripType == TripType.ROUNDTRIP)
                             {
                                 <div class="right">
-                                    @Model.Departure.ToString("ddd, MMM dd") - @((Model.Return ?? DateTime.Now).ToString("ddd, MMM dd")) @Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)
+                                    <span class="d-block">@Model.Departure.ToString("ddd, MMM dd") - @((Model.Return ?? DateTime.Now).ToString("ddd, MMM dd"))</span>
+                                    <span class="d-block">@Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)</span>
                                 </div>
                             }
                             else
                             {
                                 <div class="right">
-                                    @Model.Departure.ToString("ddd, MMM dd"), @Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)
+                                    <span class="d-block"> @Model.Departure.ToString("ddd, MMM dd")</span>
+                                    <span class="d-block"> @Model.TotalPax() Traveler(s), @Utility.GetEnumDescription(Model.Cabin)</span>
                                 </div>
+
                             }
                         </div>
                         <div class="results-skeleton-content"></div>
@@ -81,7 +84,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-        </div>
+      
     </div>
 </div>
 

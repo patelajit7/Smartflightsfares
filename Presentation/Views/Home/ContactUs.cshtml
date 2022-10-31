@@ -25,6 +25,7 @@
         <!--  / contact form box \ -->
         <div class="contact__formBox">
             <div class="row">
+
                 <div class="col-md-12">
 
                     <h3 class="page__title">Get in touch with us!</h3>
@@ -34,29 +35,40 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="input_set">
-                                <input type="text" placeholder="Name" class="form-control" />
-                                <span class="star">*</span>
+                        <form needs-validation" novalidate>
+                            <div class="col-md-12">
+                                <div class="input_set">
+                                    <input type="text" placeholder="Name" class="form-control" />
+                                    <span class="star">*</span>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please type your name.
+                                    </div>
+                                </div>
+
+                                <div class="input_set">
+                                    <input type="text" placeholder="Email" class="form-control" />
+                                    <span class="star">*</span>
+                                    <div class="valid-feedback"></div>
+                                    <div class="invalid-feedback"> Please provide valid email.</div>
+                                </div>
+
+                                <div class="input_set">
+                                    <input type="text" placeholder="Phone" class="form-control" />
+                                    <span class="star">*</span>
+                                    <div class="valid-feedback"></div>
+                                    <div class="invalid-feedback"> Please provide phone number.</div>
+                                </div>
+
                             </div>
 
-                            <div class="input_set">
-                                <input type="text" placeholder="Email" class="form-control" />
-                                <span class="star">*</span>
+                            <div class="col-md-12">
+                                <textarea cols="5" rows="4" class="textarea" placeholder="Description"></textarea>
+                                <button type="submit" class="button">Submit</button>
                             </div>
+                        </form>
 
-                            <div class="input_set">
-                                <input type="text" placeholder="Phone" class="form-control" />
-                                <span class="star">*</span>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <textarea cols="5" rows="4" class="textarea" placeholder="Description"></textarea>
-
-                            <button type="submit" class="button">Submit</button>
-                        </div>
                     </div>
 
                 </div>

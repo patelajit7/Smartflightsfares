@@ -287,26 +287,13 @@
                             totalBookingFee = totalBookingFee + (item.BookingFee * item.PaxCount);
                             discount = discount + (item.Discount * item.PaxCount);
 
-                            <li>
-                                <div class="row accordian_toggle">
-                                    <div class="col-8">@item.PaxCount @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) </div> <div class="col-4 text-right">@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</div>
-                                </div>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-8"> @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) (@item.PaxCount x @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee)) * currencyPrice))</div>
+                                                <div class="col-4 text-right">@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</div>
+                                            </div>
 
-                                <div class="accordian-slide">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            Flight Charges <br>
-                                            Taxes & Fees
-                                        </div>
-
-                                        <div class="col-4 text-right">
-                                            @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare * item.PaxCount)) * currencyPrice) <br>
-                                            @String.Format("{0}{1:0.00}", currencySymbol, ((item.Tax + item.Markup + item.SupplierFee) * item.PaxCount) * currencyPrice)
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
+                                        </li>
                         }
                     }
                     @if (extendedCancelFee > 0)

@@ -1302,6 +1302,31 @@ namespace Presentation.Controllers
             return View();
         }
 
+        [Route("flights/confirmationv2/{id}")]
+        public ActionResult ConfirmationV2(string id)
+        {
+            try
+            {
+                BookingDetails bookingDetails = null;
+                if (Utility.IsValidGuid(id))
+                {
+                    bookingDetails = BookingInformation.GetBookingDetailsGuid(id);
+                    if (bookingDetails != null)
+                    {
+                        return View(bookingDetails);
+                    }
+                }
+                else
+                {
+                    return Redirect("/");
+                }
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error(string.Format("Flight.ConfirmationV2|id:{0}|Exception:", id, ex.ToString()));
+            }
+            return View();
+        }
         private static void PurchaseInSurance(BookingDetails bookingDetails, AirContext context)
         {
             try

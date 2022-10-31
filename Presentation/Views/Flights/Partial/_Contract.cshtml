@@ -313,34 +313,34 @@
                 <div class="price_list">
                     <div class="class_type">@string.Format("{0}", Model.TripDetails != null && Model.TripDetails.InBoundSegment != null && Model.TripDetails.InBoundSegment.Count > 0 ? Utility.GetEnumDescription(Model.TripDetails.InBoundSegment[0].CabinType) : "Economy")</div>
                     <div class="price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
-                    <div class="fare__breakup">
+                    @*<div class="fare__breakup">
                         <a href="javascript:void(0);" class="fare__detail">
                             Fare Detail
                             <span>(incl. taxes)</span>
                         </a>
-                        <div class="fare_breakup_detail">
-                            <a href="javascript:void(0);" class="close_price_breakup">X</a>
-                            <ul>
-                                <li>
-                                    <div class="traveler">
-                                        Flight Price
-                                        <span>Per person</span>
-                                    </div>
-                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalbaseFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0:#.00}", (totalbaseFare - Convert.ToSingle(Math.Truncate(totalbaseFare))))</sup></div>
-                                </li>
-
-                                <li>
-                                    <div class="traveler">Taxes & Fees</div>
-                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalTaxFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0:#.00}", (totalTaxFare - Convert.ToSingle(Math.Truncate(totalTaxFare))))</sup></div>
-                                </li>
-
-                                <li class="total__price">
-                                    <div class="traveler">Total</div>
-                                    <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
-                                </li>
-                            </ul>
+                       <div class="fare_breakup_detail">
+                <a href="javascript:void(0);" class="close_price_breakup">X</a>
+                <ul>
+                    <li>
+                        <div class="traveler">
+                            Flight Price
+                            <span>Per person</span>
                         </div>
-                    </div>
+                        <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalbaseFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.BaseFarePPax">@String.Format("{0:#.00}", (totalbaseFare - Convert.ToSingle(Math.Truncate(totalbaseFare))))</sup></div>
+                    </li>
+
+                    <li>
+                        <div class="traveler">Taxes & Fees</div>
+                        <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalTaxFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TaxPPax">@String.Format("{0:#.00}", (totalTaxFare - Convert.ToSingle(Math.Truncate(totalTaxFare))))</sup></div>
+                    </li>
+
+                    <li class="total__price">
+                        <div class="traveler">Total</div>
+                        <div class="breakup_price"><span class="chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))</span><sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup></div>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
                     @if (Model.BookingStatus == BookingStatus.SoldOutOrUnavailable)
                     {
                         <a href="#" class="select__btn d-none d-md-block disabled" style="background: gray;cursor: no-drop;">Soldout <i class="bi bi-chevron-right ml-2" aria-hidden="true"></i></a>

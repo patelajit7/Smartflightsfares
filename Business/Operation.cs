@@ -275,7 +275,7 @@ namespace Business
                 Utility.Logger.Error("MetaClicks UNABLE SAVE IN DATABASE|EXCEPTION:" + ex.ToString());
             }
         }
-public static void ACallRequested(RequestedItinerary request)
+        public static void ACallRequested(RequestedItinerary request)
         {
             try
             {

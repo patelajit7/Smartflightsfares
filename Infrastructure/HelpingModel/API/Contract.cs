@@ -82,7 +82,7 @@ namespace Infrastructure.HelpingModel.API
         public ContractMystiflyExtension MystiflyExt { get; set; }
 
         public AmaduesSelfServiceExtension AmaduesSelfServiceExtension { get; set; }
-
+        public ContractTraveloMatixExtension TraveloMatixExt { get; set; }
         //only Use client App
         public int GetStopType()
         {
@@ -136,6 +136,10 @@ namespace Infrastructure.HelpingModel.API
     public class ContractTripProExtension
     {
         public string ItineraryId { get; set; }
+    }
+    public class ContractTraveloMatixExtension
+    {
+        public string ResultToken { get; set; }
     }
     public class ContractMystiflyExtension
     {

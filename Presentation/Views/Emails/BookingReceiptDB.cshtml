@@ -133,7 +133,7 @@
                                     {
                                         foreach (Travellers item in Model.Travellers)
                                         {
-                                            <tr>
+                                            <tr style="border-bottom: 1px solid #e7e7e7; padding:5px 0;">
                                                 <td>@Utility.GetTitleCase(string.Format("{0}{1}{2}", item.FirstName, string.IsNullOrEmpty(item.MiddleName) ? " " : string.Format(" {0} ", item.MiddleName), item.LastName).ToLower())</td>
                                                 <td>@Utility.GetEnumDescription((GenderType)item.Gender)</td>
                                                 <td>@string.Format("{0}", item.DOB == null ? "--" : (item.DOB ?? DateTime.Now).ToString("dd MMM yyyy"))</td>
@@ -345,19 +345,13 @@
                                                         discount = discount + (item.Discount * item.PaxCount);
 
                                                         <tr>
-                                                            <td>
-                                                                <strong>@item.PaxCount @Utility.GetEnumDescription((TravellerPaxType)item.PaxType)</strong>
-                                                                <div style="color:#888888; padding:5px 0; ">
-                                                                    Flight Charges<br />
-                                                                    Taxes &amp; Fees
-                                                                </div>
+                                                            <td style="padding-top:5px; padding-bottom:5px;">
+                                                                @Utility.GetEnumDescription((TravellerPaxType)item.PaxType) (@item.PaxCount x @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee)) * currencyPrice))
+
                                                             </td>
-                                                            <td style="text-align:right;">
-                                                                <strong>@String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)</strong>
-                                                                <div style="color:#888888; padding:5px 0;">
-                                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare * item.PaxCount)) * currencyPrice) <br />
-                                                                    @String.Format("{0}{1:0.00}", currencySymbol, ((item.Tax + item.Markup + item.SupplierFee) * item.PaxCount) * currencyPrice)
-                                                                </div>
+                                                            <td style="text-align: right; padding-top: 5px; padding-bottom: 5px;">
+                                                                @String.Format("{0}{1:0.00}", currencySymbol, ((item.BaseFare + item.Tax + item.Markup + item.SupplierFee + item.BookingFee) * item.PaxCount) * currencyPrice)
+
                                                             </td>
                                                         </tr>
 
@@ -384,6 +378,11 @@
                                                     <tr><td colspan="2" style="height:1px; background:#e8e8e8; padding:0px;"></td></tr>
                                                     { totalFare = totalFare + extendedCancelFee; }
                                                 }
+
+                                                <tr>
+                                                    <td colspan="2" height="10"></td>
+                                                </tr>
+
                                                 <tr>
                                                     <td style="color:#005aab; font-weight:700;">
                                                         Total Price (@currecnyType)
@@ -427,8 +426,9 @@
                                     <tr><td height="20"></td></tr>
 
                                     <tr>
-                                        <td style="color:#00236c; text-align:center; text-decoration:underline;">
+                                        <td style="color:#00236c; text-align:center;text-decoration:underline;">
                                             @Utility.PortalSettings.PortalDetails.BrandName is part of WIZFAIR.
+
                                         </td>
                                     </tr>
 

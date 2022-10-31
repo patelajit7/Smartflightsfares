@@ -14,8 +14,16 @@
                 <ul>
                     @foreach (KeyValueData item in Model.Stops)
                     {
-                        <li id="@string.Format("f-{0}",item.Key)" style="display:none;">@item.Value <a href="javascript:void(0)" onclick="contractFilter.removeStopFilter('@string.Format("Stops{0}",item.Key)')"><i class="bi bi-x-circle"></i></a></li>                        
-                    }                    
+                        <li id="@string.Format("f-{0}",item.Key)" style="display:none;">@item.Value <a href="javascript:void(0)" onclick="contractFilter.removeStopFilter('@string.Format("Stops{0}",item.Key)')"><i class="bi bi-x-circle"></i></a></li>
+
+                    }
+
+                    @*@foreach (KeyValueData item in Model.Times)
+                    {
+                        <li id="@string.Format("f-{0}",item.Key)" style="display:none;">@item.Value <a href="javascript:void(0)" onclick="contractFilter.removeTimeFilter('@string.Format("Times{0}",item.Key)')"><i class="bi bi-x-circle"></i></a></li>
+
+                    }*@
+
                     <li class="clear__all" id="clear__all" style="display:none;"><a href="javascript:void(0)" onclick="contractFilter.resetStops();">Clear all </a></li>
                 </ul>
 

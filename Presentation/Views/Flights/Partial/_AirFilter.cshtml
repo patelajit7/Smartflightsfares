@@ -9,7 +9,7 @@
     ContractFacets facet = Model.Factes;
     AirMatrixMain airlines = Model.AirlineMatrixMain;
     CurrencyMaster currencyMaster = Presentation.Controllers.ShareUtility.GetCurrency(Request);
-    <div class="leftCntr">
+    <div class="col-lg-3 leftCntr">
         <!--Mobile tab -->
         <div class="mobile_filter_tab">
             <h4>Filters</h4>
@@ -22,7 +22,7 @@
             </ul>
         </div>
         <!--Mobile tab -->
-        <div class="holder">
+        <div class="holder fixedSec">
             <div class="tab-content">
                 @if (facet != null && facet.Stops.Count > 0)
                 {

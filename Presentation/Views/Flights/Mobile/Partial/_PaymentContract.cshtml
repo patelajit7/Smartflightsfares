@@ -8,10 +8,28 @@
     Segments dItem = Model.Contract.TripDetails.OutBoundSegment[Model.Contract.TripDetails.OutBoundSegment.Count - 1];
     Segments ReturnoItem = null;
     Segments ReturndItem = null;
+    BaggageInfoType personal = null, carryon = null, checkin = null;
+    BaggageInfoType Retpersonal = null, Retcarryon = null, Retcheckin = null;
+    if (Model != null && Model.Contract.BaggageDetails != null && Model.Contract.BaggageDetails.OutboundBaggage != null)
+    {
+        personal = Model.Contract.BaggageDetails.OutboundBaggage.PesonalItem;
+        carryon = Model.Contract.BaggageDetails.OutboundBaggage.CarryOn;
+        checkin = Model.Contract.BaggageDetails.OutboundBaggage.Checkin;
+
+    }
+
     if (Model.Contract.TripType == TripType.ROUNDTRIP)
     {
         ReturnoItem = Model.Contract.TripDetails.InBoundSegment[0];
         ReturndItem = Model.Contract.TripDetails.InBoundSegment[Model.Contract.TripDetails.InBoundSegment.Count - 1];
+
+        if (Model != null && Model.Contract.BaggageDetails != null && Model.Contract.BaggageDetails.InboundBaggage != null)
+        {
+            Retpersonal = Model.Contract.BaggageDetails.InboundBaggage.PesonalItem;
+            Retcarryon = Model.Contract.BaggageDetails.InboundBaggage.CarryOn;
+            Retcheckin = Model.Contract.BaggageDetails.InboundBaggage.Checkin;
+
+        }
     }
 }
 
@@ -117,110 +135,212 @@
                 </div>
             </div>
         </div>
+        <div class="relative toolPopup">
+            <div class="bagguage_fees">
+                <ul>
+                    <li class="@string.Format("{0}", personal!=null && personal.IsAllowed ? "check":"noCheck")"> <img src="~/Images/bag.svg" alt="bag" /> </li>
+                    <li class="@string.Format("{0}", carryon!=null && carryon.IsAllowed ? "check":"noCheck")"><img src="~/Images/bag1.svg" alt="bag" /></li>
+                    <li class="@string.Format("{0}", checkin!=null && checkin.IsAllowed? "check":"noCheck")"><img src="~/Images/bag2.svg" alt="bag" /></li>
+                </ul>
+                <div class="tooltipBox">
+                    <div class="row">
+                        <div class="col-8 leftSec">
+                            <img src="~/Images/bag.svg" alt="bag" class="bag" /> Personal Item
+                        </div>
+                        <div class="col-4 text-right @string.Format("{0}", personal!=null && personal.IsAllowed ? "included":"") pl-0"><i class="bi @string.Format("{0}", personal!=null && personal.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", personal != null && personal.IsAllowed ? "Included" : "Not Included") </div>
+                        <div class="col-12">
+                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", personal != null && !string.IsNullOrEmpty(personal.Description) ? personal.Description : "Purse, small backpack, briefcase"))</ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8 leftSec">
+                            <img src="~/Images/bag1.svg" alt="bag" class="bag" /> Carry-on Bag
+
+                        </div>
+                        <div class="col-4 text-right @string.Format("{0}", carryon!=null && carryon.IsAllowed ? "included":"") pl-0">
+                            <span><i class="bi @string.Format("{0}", carryon!=null && carryon.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", carryon != null && carryon.IsAllowed ? "Included" : "Not Included")</span>
+
+                        </div>
+                        <div class="col-12">
+                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", carryon != null && !string.IsNullOrEmpty(carryon.Description) ? carryon.Description : ""))</ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8 leftSec">
+                            <img src="~/Images/bag2.svg" alt="bag" class="bag last" /> Checked Bag
+
+                        </div>
+                        <div class="col-4 text-right @string.Format("{0}", checkin!=null && checkin.IsAllowed ? "included":"") pl-0">
+                            <i class="bi @string.Format("{0}", checkin!=null && checkin.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", checkin != null && checkin.IsAllowed ? "Included" : "Not Included")
+                        </div>
+
+                        <div class="col-12">
+                            <ul class="baggesInfo">@Html.Raw(string.Format("{0}", checkin != null && !string.IsNullOrEmpty(checkin.Description) ? checkin.Description : ""))</ul>
+                        </div>
+                    </div>
+                    @*<a href="javascript:void(0);" class="close_tooltip"><i class="bi bi-x-circle"></i> </a>*@
+                </div>
+          
+            </div>
+        </div>
 
         @if (Model.Contract.TripType == TripType.ROUNDTRIP)
         {
-            <div id="returnTabcontent">
-                <hr class="devider_line"></hr>
-                <h4>Retrun</h4>
-                <div class="cityName">@Utility.GetAirportCity(ReturnoItem.Origin)  (@ReturnoItem.Origin) - @Utility.GetAirportCity(ReturndItem.Destination)  (@ReturndItem.Destination)</div>
-                @for (int i = 0; i <= Model.Contract.TripDetails.InBoundSegment.Count - 1; i++)
+    <div id="returnTabcontent">
+        <hr class="devider_line"></hr>
+        <h4>Retrun</h4>
+        <div class="cityName">@Utility.GetAirportCity(ReturnoItem.Origin)  (@ReturnoItem.Origin) - @Utility.GetAirportCity(ReturndItem.Destination)  (@ReturndItem.Destination)</div>
+        @for (int i = 0; i <= Model.Contract.TripDetails.InBoundSegment.Count - 1; i++)
+        {
+            Segments item = Model.Contract.TripDetails.InBoundSegment[i];
+            if (i != 0)
+            {
+                DateTime arrivalTime = new DateTime(Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Year, Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Month, Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Day, Model.Contract.TripDetails.InBoundSegment[i - 1].ArrivalTime.Hours, Model.Contract.TripDetails.InBoundSegment[i - 1].ArrivalTime.Minutes, 0);
+                TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
+                if (layoverTime != TimeSpan.MinValue)
                 {
-                    Segments item = Model.Contract.TripDetails.InBoundSegment[i];
-                    if (i != 0)
-                    {
-                        DateTime arrivalTime = new DateTime(Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Year, Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Month, Model.Contract.TripDetails.InBoundSegment[i - 1].Arrival.Day, Model.Contract.TripDetails.InBoundSegment[i - 1].ArrivalTime.Hours, Model.Contract.TripDetails.InBoundSegment[i - 1].ArrivalTime.Minutes, 0);
-                        TimeSpan layoverTime = new DateTime(item.Departure.Year, item.Departure.Month, item.Departure.Day, item.DepartureTime.Hours, item.DepartureTime.Minutes, 0) - arrivalTime;
-                        if (layoverTime != TimeSpan.MinValue)
-                        {
-                            <div class="row">
-                                <div class="col-sm-8 offset-sm-4">
-                                    <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
-                                </div>
-                            </div>
-                        }
-                    }
                     <div class="row">
-                        <div class="col-9 col-sm-4">
-                            <div class="airlines__details">
-                                <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCarrier.Code)" alt="@item.MarketingCarrier.Code">
-                                <div class="detail">
-                                    <div class="air-name" title="@item.MarketingCarrier.Name">@item.MarketingCarrier.Name</div>
-                                    <div class="flight__info">@item.FlightNumber | @item.MarketingCarrier.Code-@item.FlightNumber</div>
-                                    <div class="oprated_by">Operated by: @item.OperatingCarrier.Name</div>
-                                </div>
-                            </div>
+                        <div class="col-sm-8 offset-sm-4">
+                            <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
                         </div>
-
-                        <div class="col-3 col-sm-1 order-md-3 pl-0">
-                            <div class="class__type">
-                                @Utility.GetEnumDescription(item.CabinType)
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7">
-                            <!--  route-->
-                            <div class="route__info">
-
-                                <div class="connecting__bar d-none d-md-block">
-                                    <div class="duretion_time">
-                                        <span>@Utility.GetDuration(item.FlightDuration)</span>
-                                        <img src="~/images/mobile/icons/plane2.svg" alt="icon" />
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="destinationName">
-                                            <div class="date">
-                                                <div class="@string.Format("{0}",item.IsDepartDateHighlight?"highlight":"")">@item.Departure.ToString("ddd, MMM dd, yyyy")</div>
-                                                @if ((Model.Contract.ContractType == ContractType.Flexi || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsDepartDateHighlight)
-                                                {
-                                                    <small class="message_display ">Alternate Date</small>
-                                                }
-                                            </div>
-                                            <div class="time">@DateTime.Today.Add(item.DepartureTime).ToString("hh:mm tt")</div>
-                                            <div class="destination_fullname">
-                                                <div class="text-overflow @string.Format("{0}",item.IsOriginHighlight?"highlight":"")" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
-                                                @if ((Model.Contract.ContractType == ContractType.NearBy || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsOriginHighlight)
-                                                {
-                                                    <small class="message_display ">Nearby Airport</small>
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="TripTime  d-md-none d-block">Trip Time : @Utility.GetDuration(item.FlightDuration)</div>
-
-                                    <div class="col-sm-6">
-                                        <div class="destinationName">
-                                            <div class="date"><span>@item.Arrival.ToString("ddd, MMM dd, yyyy")</span> </div>
-                                            <div class="time">@DateTime.Today.Add(item.ArrivalTime).ToString("hh:mm tt")</div>
-                                            <div class="destination_fullname">
-                                                <div class="@string.Format("{0}",item.IsDestinationHighlight?"highlight":"")"> <div class="text-overflow" title="@Utility.GetAirportCity(item.Destination)  (@item.Destination)">@Utility.GetAirportCity(item.Destination)  (@item.Destination)</div></div>
-                                                @if ((Model.Contract.ContractType == ContractType.NearBy || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsDestinationHighlight)
-                                                {
-                                                    <small class="message_display ">Nearby Airport</small>
-                                                }
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
                 }
+            }
+            <div class="row">
+                <div class="col-9 col-sm-4">
+                    <div class="airlines__details">
+                        <img src="@string.Format(Utility.PortalSettings.AirlineLogoLocation, item.MarketingCarrier.Code)" alt="@item.MarketingCarrier.Code">
+                        <div class="detail">
+                            <div class="air-name" title="@item.MarketingCarrier.Name">@item.MarketingCarrier.Name</div>
+                            <div class="flight__info">@item.FlightNumber | @item.MarketingCarrier.Code-@item.FlightNumber</div>
+                            <div class="oprated_by">Operated by: @item.OperatingCarrier.Name</div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="row">
-                    <div class="col-sm-8 offset-sm-4">
-                        <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.Contract.TotalInBoundFlightDuration) </div>
+                <div class="col-3 col-sm-1 order-md-3 pl-0">
+                    <div class="class__type">
+                        @Utility.GetEnumDescription(item.CabinType)
+                    </div>
+                </div>
+
+                <div class="col-sm-7">
+                    <!--  route-->
+                    <div class="route__info">
+
+                        <div class="connecting__bar d-none d-md-block">
+                            <div class="duretion_time">
+                                <span>@Utility.GetDuration(item.FlightDuration)</span>
+                                <img src="~/images/mobile/icons/plane2.svg" alt="icon" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="destinationName">
+                                    <div class="date">
+                                        <div class="@string.Format("{0}",item.IsDepartDateHighlight?"highlight":"")">@item.Departure.ToString("ddd, MMM dd, yyyy")</div>
+                                        @if ((Model.Contract.ContractType == ContractType.Flexi || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsDepartDateHighlight)
+                                        {
+                                            <small class="message_display ">Alternate Date</small>
+                                        }
+                                    </div>
+                                    <div class="time">@DateTime.Today.Add(item.DepartureTime).ToString("hh:mm tt")</div>
+                                    <div class="destination_fullname">
+                                        <div class="text-overflow @string.Format("{0}",item.IsOriginHighlight?"highlight":"")" title="@Utility.GetAirportName(item.Origin) (@item.Origin)">@Utility.GetAirportName(item.Origin) (@item.Origin)</div>
+                                        @if ((Model.Contract.ContractType == ContractType.NearBy || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsOriginHighlight)
+                                        {
+                                            <small class="message_display ">Nearby Airport</small>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="TripTime  d-md-none d-block">Trip Time : @Utility.GetDuration(item.FlightDuration)</div>
+
+                            <div class="col-sm-6">
+                                <div class="destinationName">
+                                    <div class="date"><span>@item.Arrival.ToString("ddd, MMM dd, yyyy")</span> </div>
+                                    <div class="time">@DateTime.Today.Add(item.ArrivalTime).ToString("hh:mm tt")</div>
+                                    <div class="destination_fullname">
+                                        <div class="@string.Format("{0}",item.IsDestinationHighlight?"highlight":"")"> <div class="text-overflow" title="@Utility.GetAirportCity(item.Destination)  (@item.Destination)">@Utility.GetAirportCity(item.Destination)  (@item.Destination)</div></div>
+                                        @if ((Model.Contract.ContractType == ContractType.NearBy || Model.Contract.ContractType == ContractType.NearByFlexi) && item.IsDestinationHighlight)
+                                        {
+                                            <small class="message_display ">Nearby Airport</small>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
+
+        }
+
+        <div class="row">
+            <div class="col-sm-8 offset-sm-4">
+                <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.Contract.TotalInBoundFlightDuration) </div>
+            </div>
+        </div>
+
+        <div class="bagguage_fees">
+            <ul>
+                <li class="@string.Format("{0}", Retpersonal!=null && Retpersonal.IsAllowed ? "check":"noCheck")"> <img src="~/Images/bag.svg" alt="bag" /> </li>
+                <li class="@string.Format("{0}", Retcarryon!=null && Retcarryon.IsAllowed ? "check":"noCheck")"><img src="~/Images/bag1.svg" alt="bag" /></li>
+                <li class="@string.Format("{0}", Retcheckin!=null && Retcheckin.IsAllowed? "check":"noCheck")"><img src="~/Images/bag2.svg" alt="bag" /></li>
+            </ul>
+            <div class="tooltipBox">
+                <div class="row">
+                    <div class="col-8 leftSec">
+                        <img src="~/Images/bag.svg" alt="bag" class="bag" /> Personal Item
+                    </div>
+                    <div class="col-4 text-right @string.Format("{0}", Retpersonal!=null && Retpersonal.IsAllowed ? "included":"") pl-0"><i class="bi @string.Format("{0}", Retpersonal!=null && Retpersonal.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", Retpersonal != null && Retpersonal.IsAllowed ? "Included" : "Not Included") </div>
+                    <div class="col-12">
+                        <ul class="baggesInfo">@Html.Raw(string.Format("{0}", Retpersonal != null && !string.IsNullOrEmpty(Retpersonal.Description) ? Retpersonal.Description : "Purse, small backpack, briefcase"))</ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8 leftSec">
+                        <img src="~/Images/bag1.svg" alt="bag" class="bag" /> Carry-on Bag
+
+                    </div>
+                    <div class="col-4 text-right @string.Format("{0}", Retcarryon!=null && Retcarryon.IsAllowed ? "included":"") pl-0">
+                        <span><i class="bi @string.Format("{0}", Retcarryon!=null && Retcarryon.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", Retcarryon != null && Retcarryon.IsAllowed ? "Included" : "Not Included")</span>
+
+                    </div>
+                    <div class="col-12">
+                        <ul class="baggesInfo">@Html.Raw(string.Format("{0}", Retcarryon != null && !string.IsNullOrEmpty(Retcarryon.Description) ? Retcarryon.Description : ""))</ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8 leftSec">
+                        <img src="~/Images/bag2.svg" alt="bag" class="bag last" /> Checked Bag
+
+                    </div>
+                    <div class="col-4 text-right @string.Format("{0}", Retcheckin!=null && Retcheckin.IsAllowed ? "included":"") pl-0">
+                        <i class="bi @string.Format("{0}", Retcheckin!=null && Retcheckin.IsAllowed ? "bi-check2":"bi-x")"></i> @string.Format("{0}", Retcheckin != null && Retcheckin.IsAllowed ? "Included" : "Not Included")
+                    </div>
+
+                    <div class="col-12">
+                        <ul class="baggesInfo">@Html.Raw(string.Format("{0}", Retcheckin != null && !string.IsNullOrEmpty(Retcheckin.Description) ? Retcheckin.Description : ""))</ul>
+                    </div>
+                </div>
+
+                @*<a href="javascript:void(0);" class="close_tooltip"><i class="bi bi-x-circle"></i> </a>*@
+
+            </div>
+
+        </div>
+
+
+    </div>
         }
     </div>
 </div>

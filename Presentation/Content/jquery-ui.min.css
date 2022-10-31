@@ -1,5 +1,9 @@
 
-
+#ui-id-1{
+	max-height:320px;
+	overflow:hidden;
+	overflow-y:scroll;
+}
 /* Layout helpers
 ----------------------------------*/
 .ui-helper-hidden {
@@ -119,11 +123,10 @@
 	margin: 0;
 	cursor: pointer;
 	/* support: IE10, see #8844 */
-	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
 .ui-menu .ui-menu-item-wrapper {
 	position: relative;
-	padding: 3px 1em 3px .4em;
+	padding: 5px 10px;
 }
 .ui-menu .ui-menu-divider {
 	margin: 5px 0;
@@ -379,11 +382,11 @@ button.ui-button::-moz-focus-inner {
 	font-weight: bold;
 	border: 0;
 }
-.ui-datepicker td {
-	border: 0;
-	padding: 1px;
-	border: 1px solid #e8e8e8;
-}
+	.ui-datepicker td {
+		border: 0;
+		padding: 1px;
+		border: 1px solid transparent;
+	}
 
 
 
@@ -393,7 +396,7 @@ button.ui-button::-moz-focus-inner {
 	padding: 7px 7px;
 	text-align: right;
 	text-decoration: none;
-	font-size: 14px; font-weight: 600 !important; text-align:center;
+	font-size: 14px;text-align:center;
 }
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
@@ -889,9 +892,9 @@ body .ui-tooltip {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1em;
-	padding: 10px;
+	padding: 0px;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -920,9 +923,7 @@ body .ui-tooltip {
 	color: #000;
 	font-weight: bold;
 }
-.ui-widget-header a {
-	color: #333333;
-}
+
 
 /* Interaction states
 ----------------------------------*/
@@ -938,7 +939,6 @@ html .ui-button.ui-state-disabled:active {
 	/* border: 1px solid #c5c5c5; */
 	background: #fff;
 	font-weight: normal;
-	color: #454545;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -986,16 +986,22 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-    border: 1px solid #00728c;
-    background: #00728c;
-    font-weight: normal;
-    color: #ffffff;
+	border: 1px solid #d4e4ff;
+	background: #d4e4ff;
+	font-weight: normal;
 }
-.ui-icon-background,
-.ui-state-active .ui-icon-background {
-	border: #003eff;
-	background-color: #ffffff;
+
+.ui-datepicker-calendar .ui-state-default.ui-state-active {
+	background: #025cb5;
+	color: #ffffff;
+	border: 1px solid #025cb5;
 }
+
+	.ui-icon-background,
+	.ui-state-active .ui-icon-background {
+		border: #003eff;
+		background-color: #ffffff;
+	}
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
@@ -1317,13 +1323,13 @@ a.ui-button:active,
 	box-shadow: 0px 0px 5px #666666;
 }
 
-thead { background:#efefef; color: #000;	}
-.ui-state-default:hover {
-    background: #73cf3a;
-    color: #fff;
+thead {
+	background: transparent;
 }
-
-.holiday a{background-color:#f9cb0b !important;color:#fff !important;}
+.ui-state-default:hover {
+	background: #025cb5;
+	color: #fff;
+}
 
 
 .ui-datepicker.ui-datepicker-multi { width: 43em!important}
@@ -1338,4 +1344,51 @@ thead { background:#efefef; color: #000;	}
 
 .ui-datepicker .ui-datepicker-next:before {
     content: "\f105"; font-family:'FontAwesome';
+}
+
+
+.ui-menu .all-airport, .ui-menu .airport {
+	padding-left: 35px;
+	position: relative;
+}
+
+.ui-menu .airport-child {
+	padding-left: 50px;
+	position:relative;
+}
+
+.ui-menu .all-airport:before {
+	position: absolute;
+	top: 5px;
+	content: "";
+	left: 10px;
+	background: url(/Images/multi-airlines.png) no-repeat;
+	height: 20px;
+	width: 20px;
+	background-size: contain;
+}
+
+.ui-menu .airport:before {
+	position: absolute;
+	top: 3px;
+	content: "\F3E8";
+	font-size: 16px;
+	font-family: "bootstrap-icons";
+	left: 10px;
+	color: #025cb5;
+}
+
+.ui-menu .airport-child:before {
+	position: absolute;
+	top: 3px;
+	content: "\F132";
+	font-size: 16px;
+	font-family: "bootstrap-icons";
+	left: 30px;
+	color: #025cb5;
+}
+
+.ui-menu .highlight {
+	color: #025cb5;
+	font-weight: 600;
 }

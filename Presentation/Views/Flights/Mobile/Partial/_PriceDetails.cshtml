@@ -16,40 +16,19 @@
         @if (Model.Contract.Adult > 0 && Model.Contract.AdultFare != null)
         {
             <li>
-                <div class="row accordian_toggle">
-                    <div class="col-8">@Model.Contract.Adult Adult <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.AdultFare.TotalBaseFare + Model.Contract.AdultFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.AdultFare.TotalBaseFare + Model.Contract.AdultFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
+                <div class="row">
+                    <div class="col-8">Adult (@Model.Contract.Adult x <span class="chgcomplete" default-price="@(Model.Contract.AdultFare.BaseFarePPax + Model.Contract.AdultFare.TaxPPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.AdultFare.BaseFarePPax + Model.Contract.AdultFare.TaxPPax) * currencyMaster.CurrencyPrice)</span>)</div>
+                    <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.AdultFare.TotalBaseFare + Model.Contract.AdultFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.AdultFare.TotalBaseFare + Model.Contract.AdultFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
                 </div>
-                <div class="accordian-slide">
-                    <div class="row">
-                        <div class="col-8">
-                            Flight Charges <br>
-                            Taxes & Fees
-                        </div>
-                        <div class="col-4 text-right">
-                            <span class="chgcomplete" default-price="@Model.Contract.AdultFare.TotalBaseFare">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.AdultFare.TotalBaseFare * currencyMaster.CurrencyPrice)</span><br>
-                            <span class="chgcomplete" default-price="@Model.Contract.AdultFare.TotalTax">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.AdultFare.TotalTax * currencyMaster.CurrencyPrice)</span>
-                        </div>
-                    </div>
-                </div>
+
             </li>
         }
         @if (Model.Contract.Adult > 0 && Model.Contract.ChildFare != null)
         {
             <li>
-                <div class="row accordian_toggle">
-                    <div class="col-8">@Model.Contract.Child Child <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.ChildFare.TotalBaseFare + Model.Contract.ChildFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.ChildFare.TotalBaseFare + Model.Contract.ChildFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
-                </div>
-                <div class="accordian-slide">
-                    <div class="row">
-                        <div class="col-8">
-                            Flight Charges <br>
-                            Taxes & Fees
-                        </div>
-                        <div class="col-4 text-right">
-                            <span class="chgcomplete" default-price="@Model.Contract.ChildFare.TotalBaseFare">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.ChildFare.TotalBaseFare * currencyMaster.CurrencyPrice)</span><br>
-                            <span class="chgcomplete" default-price="@Model.Contract.ChildFare.TotalTax">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.ChildFare.TotalTax * currencyMaster.CurrencyPrice)</span>
-                        </div>
-                    </div>
+                <div class="row">
+                    <div class="col-8">Child (@Model.Contract.Child x <span class="chgcomplete" default-price="@(Model.Contract.ChildFare.BaseFarePPax + Model.Contract.ChildFare.TaxPPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.ChildFare.BaseFarePPax + Model.Contract.ChildFare.TaxPPax) * currencyMaster.CurrencyPrice)</span>) </div>
+                    <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.ChildFare.TotalBaseFare + Model.Contract.ChildFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.ChildFare.TotalBaseFare + Model.Contract.ChildFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
                 </div>
             </li>
         }
@@ -57,20 +36,9 @@
         @if (Model.Contract.Adult > 0 && Model.Contract.InfantOnLapFare != null)
         {
             <li>
-                <div class="row accordian_toggle">
-                    <div class="col-8">@Model.Contract.InfantOnLap Infant Lap <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.InfantOnLapFare.TotalBaseFare + Model.Contract.InfantOnLapFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnLapFare.TotalBaseFare + Model.Contract.InfantOnLapFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
-                </div>
-                <div class="accordian-slide">
-                    <div class="row">
-                        <div class="col-8">
-                            Flight Charges <br>
-                            Taxes & Fees
-                        </div>
-                        <div class="col-4 text-right">
-                            <span class="chgcomplete" default-price="@Model.Contract.InfantOnLapFare.TotalBaseFare">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.InfantOnLapFare.TotalBaseFare * currencyMaster.CurrencyPrice)</span><br>
-                            <span class="chgcomplete" default-price="@Model.Contract.InfantOnLapFare.TotalTax">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.InfantOnLapFare.TotalTax * currencyMaster.CurrencyPrice)</span>
-                        </div>
-                    </div>
+                <div class="row">
+                    <div class="col-8">Infant Lap (@Model.Contract.InfantOnLap x <span class="chgcomplete" default-price="@(Model.Contract.InfantOnLapFare.BaseFarePPax + Model.Contract.InfantOnLapFare.TaxPPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnLapFare.BaseFarePPax + Model.Contract.InfantOnLapFare.TaxPPax) * currencyMaster.CurrencyPrice)</span>) </div>
+                    <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.InfantOnLapFare.TotalBaseFare + Model.Contract.InfantOnLapFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnLapFare.TotalBaseFare + Model.Contract.InfantOnLapFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
                 </div>
             </li>
         }
@@ -78,28 +46,20 @@
         @if (Model.Contract.Adult > 0 && Model.Contract.InfantOnSeatFare != null)
         {
             <li>
-                <div class="row accordian_toggle">
-                    <div class="col-8">@Model.Contract.InfantOnSeat Infant Seat <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.InfantOnSeatFare.TotalBaseFare + Model.Contract.InfantOnSeatFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnSeatFare.TotalBaseFare + Model.Contract.InfantOnSeatFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
+                <div class="row">
+                    <div class="col-8">Infant Seat (@Model.Contract.InfantOnSeat x <span class="chgcomplete" default-price="@(Model.Contract.InfantOnSeatFare.BaseFarePPax + Model.Contract.InfantOnSeatFare.TaxPPax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnSeatFare.BaseFarePPax + Model.Contract.InfantOnSeatFare.TaxPPax) * currencyMaster.CurrencyPrice)</span>)</div>
+                    <div class="col-4 text-right chgcomplete" default-price="@(Model.Contract.InfantOnSeatFare.TotalBaseFare + Model.Contract.InfantOnSeatFare.TotalTax)">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.Contract.InfantOnSeatFare.TotalBaseFare + Model.Contract.InfantOnSeatFare.TotalTax) * currencyMaster.CurrencyPrice)</div>
                 </div>
-                <div class="accordian-slide">
-                    <div class="row">
-                        <div class="col-8">
-                            Flight Charges <br>
-                            Taxes & Fees
-                        </div>
-                        <div class="col-4 text-right">
-                            <span class="chgcomplete" default-price="@Model.Contract.InfantOnSeatFare.TotalBaseFare">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.InfantOnSeatFare.TotalBaseFare * currencyMaster.CurrencyPrice)</span><br>
-                            <span class="chgcomplete" default-price="@Model.Contract.InfantOnSeatFare.TotalTax">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, Model.Contract.InfantOnSeatFare.TotalTax * currencyMaster.CurrencyPrice)</span>
-                        </div>
-                    </div>
-                </div>
+
             </li>
         }
         @if (Model.ExtendedCancellation != null && Model.ExtendedCancellation.IsExtendedCancellation)
         {
+
             <li>
                 <div class="row accordian_toggle">
-                    <div class="col-8">Extended Cancel. <i class="fa fa-angle-down"></i></div> <div class="col-4 text-right chgcomplete" default-price="@Model.ExtendedCancellation.TotalPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Convert.ToSingle(Model.ExtendedCancellation.TotalPrice) * currencyMaster.CurrencyPrice))</div>
+                    <div class="col-8">Extended Cancel <i class="fa fa-angle-down"></i></div>
+                    <div class="col-4 text-right chgcomplete" default-price="@Model.ExtendedCancellation.TotalPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Convert.ToSingle(Model.ExtendedCancellation.TotalPrice) * currencyMaster.CurrencyPrice))</div>
                 </div>
                 <div class="accordian-slide">
                     <div class="row">
@@ -116,12 +76,17 @@
         }
         @if (Model.CouponDetails != null && Model.CouponDetails.Status == true)
         {
-            <li class="noborder">
+            <li>
                 <div class="row disscount--price">
                     <div class="col-8">Discount</div> <div class="col-4 text-right chgdiscount" default-price="@Model.CouponDetails.TotalAmount">-@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, (Model.CouponDetails.TotalAmount * currencyMaster.CurrencyPrice))</div>
                 </div>
             </li>
         }
+        @*<li class="cuponBlock">
+                <div class="row">
+                    <div class="col-12"><input type="text" placeholder="Enter coupon Code here" class="inputText" /><button class="submit">Apply</button></div>
+                </div>
+            </li>*@
     </ul>
     <div class="total_price">
         <div class="row">

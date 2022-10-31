@@ -6,7 +6,7 @@
 @if (Model != null && Model.Contracts != null && Model.Contracts.Count > 0)
 {
     
-<div class="rightCntr">
+<div class="col-lg-9">
     <h4 class="total_results"><span id="cuurentCount">@Model.Factes.TotalContract</span> Results Found</h4>
     @{ Html.RenderPartial("~/views/flights/partial/_Matrix.cshtml", Model.AirlineMatrixMain); }
     @if (Utility.Settings.IsListingPhoneStripEnable)
@@ -37,22 +37,28 @@
 else
 {
 
-    <div class="no_resultsBox">
-        <div class="container">
-            <div class="block">
-                <div class="head">Oops! Result not found</div>
-                <p>No flights match to your search, Let our agents help you find the best flight options</p>
-                <img src="/images/icons/no-results.svg" class="img-fluid" alt="image">
 
-                <div class="buttons text-center">
-                    <button type="button" class="btn backbutton button" onclick="window.location.assign('@Utility.PortalSettings.DomainUrl')" style="margin: 20px 0;">Back to Home </button>
+        <div class="container ">
+
+            <div class="no_resultsBox">
+                <div class="block">
+                    <div class="head">Oops! Result not found. Don't Worry!</div>
+                    <p>No flights match to your search, Let our agents help you find the best flight options</p>
+                    <img src="/images/icons/no-results.svg" class="img-fluid" alt="image">
+                    <div class="callUs">Call our agents</div>
+                    <a class="noResultTfn" href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber"> <i class="bi bi-telephone"></i> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
+                    @*<div class="buttons text-center">
+                <button type="button" class="btn backbutton button" onclick="window.location.assign('@Utility.PortalSettings.DomainUrl')" style="margin: 20px 0;">Back to Home </button>
+            </div>*@
+                    <div class="call">
+                        <span>Our agents are available 24x7</span>
+
+                    </div>
                 </div>
-                <div class="call">
-                    <span>Call our agents 24 X 7</span>
-                    <a href="tel:@Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber"> @Utility.PortalSettings.PortalDetails.DefaultTollFreeNumber</a>
-                </div>
+
             </div>
-        </div>
+            
+
     </div>
 
 }

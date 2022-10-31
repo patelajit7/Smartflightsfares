@@ -400,23 +400,23 @@ $(document).ready(function () {
     })
 });
 
-function getReviews() {
+//function getReviews() {
 
-    var url = DOMAIN_URL + "flights/getreviews";
-    $.ajax({
-        type: "POST",
-        url: url,
-        success: function (response) {
-            if (response.IsSuccess) {
-                $("#gReview").html(response.HtmlResponse);
-                readMoetext();
-            }
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-}
+//    var url = DOMAIN_URL + "flights/getreviews";
+//    $.ajax({
+//        type: "POST",
+//        url: url,
+//        success: function (response) {
+//            if (response.IsSuccess) {
+//                $("#gReview").html(response.HtmlResponse);
+//                readMoetext();
+//            }
+//        },
+//        error: function (error) {
+//            console.log(error);
+//        }
+//    });
+//}
 
 function getDeals() {
     var url = DOMAIN_URL + "flights/getdeals";
@@ -481,7 +481,7 @@ function getNearByAirport() {
 $(document).ready(function () {
     getNearByAirport();
     getCurrency();
-    getReviews();
+    //getReviews();
     getDeals();
 });
 

@@ -238,7 +238,7 @@
                 </div>
 
             </div>
-            <a href="javascript:void(0)" class="bagguage_fees d-block d-md-none">@Model.BaggageQuantity Baggage</a>
+          
             <div class="price_list">
                 <div>
                     <div class="price chgWithCurrency" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0}{1:0}", currencyMaster.CurrencySymbol, Math.Truncate(totalFare))<sup class="chgCurrencySub" default-price="@Model.AdultFare.TotalFarePPax">@String.Format("{0:#.00}", (totalFare - Convert.ToSingle(Math.Truncate(totalFare))))</sup> </div>

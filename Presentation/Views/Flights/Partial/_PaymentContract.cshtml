@@ -129,7 +129,7 @@
         </div>
 
     }
-    <div class="row">
+    <div class="relative">
         <div class="bagguage_fees">
             <ul>
                 <li class="@string.Format("{0}", personal!=null && personal.IsAllowed ? "check":"noCheck")"> <img src="~/Images/bag.svg" alt="bag" /> </li>
@@ -178,8 +178,11 @@
             </div>
 
         </div>
-
     </div>
+
+        
+
+
     @if (Model.Contract.TripType == TripType.ROUNDTRIP)
     {
         <div class="retureSec">
@@ -275,7 +278,7 @@
 
             }
 
-            <div class="row">
+    
                 <div class="bagguage_fees">
                     <ul>
                         <li class="@string.Format("{0}", Retpersonal!=null && Retpersonal.IsAllowed ? "check":"noCheck")"> <img src="~/Images/bag.svg" alt="bag" /> </li>
@@ -325,7 +328,7 @@
 
                 </div>
 
-            </div>
+     
 
         </div>
     }

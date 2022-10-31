@@ -358,7 +358,7 @@ width:140px;
     bottom: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, .3)
+    background: rgba(0, 0, 0, 0);
 }
 
 #bannerCntr .z-index-relative {
@@ -371,7 +371,8 @@ width:140px;
     color: #fff;
     font-weight: 600;
     line-height: 30px;
-    padding: 20px 0 20px 0
+    padding: 20px 0 20px 0;
+    text-shadow: 1px 1px 3px #333;
 }
 
 @media(max-width: 767px) {
@@ -571,16 +572,11 @@ width:140px;
 .searchBox .searchBlock {
     background: #fff;
     max-width: 460px;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 15px 20px 20px 20px;
     position: relative
 }
 
-@media(max-width: 767px) {
-    .searchBox .searchBlock {
-        padding: 10px
-    }
-}
 
 .searchBox .flightSearch {
     display: block
@@ -622,6 +618,11 @@ width:140px;
     position: relative;
     border: 1px solid #ccc
 }
+
+    .searchBox .flightSearch .label.inputReturn{
+        margin-right:0px;
+        width:50%;
+    }
 
     .searchBox .flightSearch .label.roundtrip {
         display: none
@@ -672,8 +673,8 @@ width:140px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 14px;
-    font-weight: 400;
-    color: #787878;
+    font-weight: 500;
+    color: #393939;
     border: none;
     outline: none;
     width: 100%;
@@ -689,12 +690,6 @@ width:140px;
     }
 }
 
-@media(max-width: 767px) {
-    .searchBox .flightSearch .label .inputField {
-        padding-left: 37px;
-        border-radius: 6px
-    }
-}
 
 .searchBox .flightSearch .label.traveller {
     width: 100%;
@@ -709,10 +704,7 @@ width:140px;
     position: absolute;
     left: 13px;
     top: 15px;
-    line-height: 20px;
-    display: block;
-    pointer-events: none;
-    font-size: 20px
+    color: #025cb5;
 }
 
 @media(max-width: 1199px) {
@@ -736,7 +728,7 @@ width:140px;
 .searchBox .flightSearch .searchButton {
     width: 100%;
     display: inline-block;
-    background: #73cf3a;
+    background: #025cb5;
     border: none;
     font-size: 16px;
     color: #fff;
@@ -746,19 +738,7 @@ width:140px;
     padding: 12px 12px 8px 12px;
     margin-top: 12px;
     outline: none;
-    border-bottom: 4px solid #46a60a
-}
-
-@media(max-width: 767px) {
-    .searchBox .flightSearch .searchButton {
-        width: 100%;
-        background: #73cf3a;
-        margin-top: 20px
-    }
-}
-
-.searchBox .flightSearch .searchButton:hover {
-    background: #46a60a
+    border-bottom: 4px solid #025cb5;
 }
 
 .mobile_dsearchButton {
@@ -776,11 +756,6 @@ width:140px;
     outline: none
 }
 
-@media(max-width: 767px) {
-    .mobile_dsearchButton {
-        display: block
-    }
-}
 
 .mobile_dsearchButton:hover {
     background: #46a60a
@@ -799,11 +774,6 @@ width:140px;
     
 }
 
-@media(max-width: 767px) {
-    .travllerBox {
-        width: 100%
-    }
-}
 
 .travllerBox .head {
     padding: 10px 0 20px 0;
@@ -817,16 +787,6 @@ width:140px;
     border-right: 1px solid #ccc
 }
 
-@media(max-width: 767px) {
-    .travllerBox .guestBox {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px dashed #ccc;
-        padding-bottom: 15px;
-        margin-bottom: 10px;
-        padding-right: 0px
-    }
-}
 
 .travllerBox .guestBox .add-traveler {
     font-size: 16px;
@@ -857,8 +817,8 @@ width:140px;
         }
 
         .travllerBox .guestBox .add-traveler a:hover {
-            color: #73cf3a;
-            border-color: #73cf3a
+            color: #025cb5;
+            border-color: #025cb5;
         }
 
         .travllerBox .guestBox .add-traveler a.disable {
@@ -872,7 +832,7 @@ width:140px;
         width: 100px;
         display: flex;
         justify-content: center;
-        align-items: center
+        align-items: flex-start;
     }
 
     .travllerBox .guestBox .add-traveler .number {
@@ -887,9 +847,6 @@ width:140px;
             font-weight: 700
         }
 
-.travllerBox .unaccompined_block {
-    width: 330px
-}
 
 .travllerBox .unaccompined {
     padding-top: 10px;
@@ -897,16 +854,14 @@ width:140px;
     position: relative
 }
 
-@media(max-width: 767px) {
-    .travllerBox .unaccompined {
-        float: left
+    .travllerBox .unaccompined:hover .tooltipBox{
+        display:block;
     }
-}
 
-.travllerBox .unaccompined a {
-    color: #333;
-    text-decoration: none
-}
+    .travllerBox .unaccompined a {
+        color: #333;
+        text-decoration: none
+    }
 
     .travllerBox .unaccompined a i {
         position: relative;
@@ -927,21 +882,21 @@ width:140px;
         padding-bottom: 10px
     }
 
-.travllerBox .done_Btn {
-    float: right;
-    margin: 10px 20px 0 0;
-    background: #73cf3a;
-    color: #fff;
-    padding: 10px 30px;
-    text-align: center;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
-    width: 120px;
-    cursor: pointer
-}
+    .travllerBox .done_Btn {
+        float: right;
+        margin: 10px 20px 0 0;
+        background: #025cb5;
+        color: #fff;
+        padding: 10px 30px;
+        text-align: center;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
+        width: 120px;
+        cursor: pointer
+    }
 
 .switch {
     position: absolute;
@@ -1420,7 +1375,7 @@ input:checked + .slider:before {
 
 .inputSet label input[type=radio] ~ span::after {
     border-radius: 100%;
-    border: 2px solid #5e5e5e;
+    border: 2px solid #528ac1;
     content: "";
     height: 20px;
     width: 20px;
@@ -1429,26 +1384,26 @@ input:checked + .slider:before {
     top: 0
 }
 
-.inputSet label input[type=radio]:checked ~ span {
+/*.inputSet label input[type=radio]:checked ~ span {
     color: #73cf3a;
     transition: all .5s
+}*/
+
+.inputSet label input[type=radio]:checked ~ span::after {
+    border: 2px solid #025cb5;
 }
 
-    .inputSet label input[type=radio]:checked ~ span::after {
-        border: 2px solid #73cf3a
-    }
-
-    .inputSet label input[type=radio]:checked ~ span::before {
-        border-radius: 100%;
-        background: #73cf3a;
-        content: "";
-        display: block;
-        height: 8px;
-        width: 8px;
-        left: 6px;
-        position: absolute;
-        top: 6px
-    }
+.inputSet label input[type=radio]:checked ~ span::before {
+    border-radius: 100%;
+    background: #025cb5;
+    content: "";
+    display: block;
+    height: 8px;
+    width: 8px;
+    left: 6px;
+    position: absolute;
+    top: 6px
+}
 
 .page__title {
     font-size: 35px;
@@ -1500,8 +1455,6 @@ input:checked + .slider:before {
 
 .serviceBox {
     width: 100%;
-    background: #0da0a3;
-    color: #fff;
     position: relative
 }
 
@@ -1519,45 +1472,22 @@ input:checked + .slider:before {
     }
 }
 
-@media(max-width: 767px) {
-    .serviceBox h5 {
-        font-size: 20px;
-        margin-bottom: 3px
-    }
-}
 
 .serviceBox p {
     font-size: 15px;
-    color: #fff;
     margin-bottom: 0px
 }
 
-@media(max-width: 1023px) {
-    .serviceBox p {
-        font-size: 13px
-    }
-}
 
-@media(max-width: 767px) {
-    .serviceBox p {
-        font-size: 15px
-    }
-}
+
 
 .serviceBox .icons {
     display: flex;
-    border: 2px solid #fff;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
     text-align: center;
     justify-content: center;
     margin: 0px auto
 }
 
-.serviceBox .icon {
-    width: 50px
-}
 
 @media(max-width: 1023px) {
     .serviceBox .icon {
@@ -1565,40 +1495,55 @@ input:checked + .slider:before {
     }
 }
 
-@media(max-width: 767px) {
-    .serviceBox .icon {
-        width: 60px
-    }
-}
 
 .serviceBox .detail {
     padding-top: 8px;
     text-align: center
 }
 
-.serviceBox .service_block {
-    width: 33.3%;
-    float: left;
-    padding: 25px
+.service_block a{ text-decoration:none; color:#303030;}
+
+.service_block .detail.trust h3 {
+    color: #303030;
+}
+.service_block .detail.trust img{
+    width:40%;
+    padding-bottom:5px;
+}
+.service_block .icons.happy img {
+    width: 30%;
+    padding-bottom:10px;
+}
+.service_block .detail.travel h3 {
+    color: #303030;
+    font-weight: 700;
+    font-size: 30px;
+}
+.service_block .detail.travel p {
+    font-size: 18px;
+    font-weight: 700;
 }
 
-@media(max-width: 767px) {
+
+
     .serviceBox .service_block {
-        width: 100%
+        width: 33.3%;
+        float: left;
+        padding: 20px 50px;
     }
-}
 
-.serviceBox .service_block:nth-child(2) {
-    background: #007488;
-    color: #fff
-}
+    .serviceBox .service_block h3 {
+        color: #025cb5;
+        font-size: 18px;
+        font-weight: 600;
+    }
 
-.aboutBox {
-    width: 100%;
-    padding: 50px 0;
-    font-weight: 300;
-    line-height: 27px
-}
+    .aboutBox {
+        width: 100%;
+        padding: 50px 0;
+        font-weight: 300;
+        line-height: 27px
+    }
 
 @media(max-width: 1023px) {
     .aboutBox {
@@ -2669,11 +2614,6 @@ a.des-morelink {
     color: red
 }
 
-.modifySearchBox input[type=text]:focus ~ .icons,
-.modifySearchBox .valid ~ .icons,
-.modifySearchBox .ng-valid ~ .icons {
-    color: #73cf3a
-}
 
 .modifySearchBox .icons {
     position: absolute;
@@ -2681,7 +2621,8 @@ a.des-morelink {
     top: 10px;
     display: block;
     pointer-events: none;
-    font-size: 20px
+    font-size: 20px;
+    color: #025cb5;
 }
 
     .modifySearchBox .icons.person-icon {
@@ -2740,7 +2681,7 @@ a.des-morelink {
 
 .modifySearchBox .searchButton {
     width: 100%;
-    background: #73cf3a;
+    background: #025cb5;
     border: none;
     font-size: 15px;
     color: #fff;
@@ -3500,7 +3441,7 @@ td.highlight > a {
 }
 
 .resultsBox .price_list .select__btn {
-    background: #73cf3a;
+    background: #025cb5;
     padding: 7px 35px 10px 35px;
     color: #fff;
     font-size: 16px;
@@ -3515,7 +3456,7 @@ td.highlight > a {
     }
 
     .resultsBox .price_list .select__btn:hover {
-        background: #46a60a;
+        background: #025cb5;
         text-decoration: none;
     }
 
@@ -3839,11 +3780,6 @@ td.highlight > a {
     padding: 15px 30px 15px 30px
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .bottom {
-        padding: 10px
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .price_list {
     display: flex;
@@ -3853,7 +3789,6 @@ td.highlight > a {
 
     .flightDetailWrapper .flightDetail_popup .price_list .price {
         font-size: 22px;
-        color: #3851c6;
         font-weight: bold;
         position: relative;
         line-height: 21px;
@@ -3862,12 +3797,7 @@ td.highlight > a {
         text-align: center
     }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .price_list .price {
-        font-size: 16px;
-        margin-right: 25px
-    }
-}
+
 
 .flightDetailWrapper .flightDetail_popup .price_list .price sup {
     font-size: .75rem
@@ -3881,7 +3811,7 @@ td.highlight > a {
 }
 
 .flightDetailWrapper .flightDetail_popup .price_list .select__btn {
-    background: #73cf3a;
+    background: #025cb5;
     padding: 7px 25px 10px 35px;
     color: #fff;
     font-size: 16px;
@@ -3889,30 +3819,13 @@ td.highlight > a {
     text-decoration: none
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .price_list .select__btn {
-        padding: 7px 6px 7px 17px;
-        font-size: 14px
-    }
-}
 
-@media(max-width: 479px) {
-    .flightDetailWrapper .flightDetail_popup .price_list .select__btn {
-        padding: 7px 6px 7px 8px;
-        font-size: 14px
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .price_list .select__btn i {
     position: relative;
     top: 0px
 }
 
-@media(max-width: 479px) {
-    .flightDetailWrapper .flightDetail_popup .price_list .select__btn i {
-        margin-left: 2px !important
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .price_list .select__btn:hover {
     background: #46a60a;
@@ -3924,12 +3837,6 @@ td.highlight > a {
     display: flex;
     align-items: center;
     justify-content: flex-start
-}
-
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flight_left {
-        display: none
-    }
 }
 
 .flightDetailWrapper .flightDetail_popup .flight_left .citycode {
@@ -3953,12 +3860,6 @@ td.highlight > a {
     overflow-x: hidden
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flightDetail {
-        padding: 0 10px;
-        height: 80%
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .flighttab {
     list-style: none;
@@ -3969,33 +3870,13 @@ td.highlight > a {
     border-bottom: 1px solid #dfdfdf
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flighttab {
-        margin: 10px 0;
-        width: auto;
-        overflow: hidden;
-        float: none;
-        border-bottom: none
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .flighttab li {
     float: left;
     margin-right: 30px
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flighttab li {
-        width: 45%;
-        margin-right: 15px
-    }
-}
 
-@media(max-width: 479px) {
-    .flightDetailWrapper .flightDetail_popup .flighttab li {
-        width: 43%
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .flighttab li a {
     font-size: 16px;
@@ -4007,19 +3888,6 @@ td.highlight > a {
     cursor: pointer
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flighttab li a {
-        font-size: 14px;
-        padding: 4px 10px;
-        border: 2px solid #ccc;
-        text-align: center;
-        border-radius: 5px
-    }
-
-        .flightDetailWrapper .flightDetail_popup .flighttab li a.active {
-            border-color: #2b4ded
-        }
-}
 
 .flightDetailWrapper .flightDetail_popup .flighttab li a:before {
     content: "";
@@ -4033,11 +3901,6 @@ td.highlight > a {
     background: #73cf3a
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .flighttab li a:before {
-        display: none
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .flighttab li a.active,
 .flightDetailWrapper .flightDetail_popup .flighttab li a.active:before {
@@ -4051,12 +3914,6 @@ td.highlight > a {
     color: #949494
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .airlines__details {
-        font-size: 11px;
-        line-height: 17px
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .airlines__details .air-name {
     font-size: 14px;
@@ -4080,32 +3937,6 @@ td.highlight > a {
     position: relative
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .route__info {
-        padding: 0 20px;
-        margin: 15px 0 35px 0;
-        border-left: 2px dashed #ccc
-    }
-
-        .flightDetailWrapper .flightDetail_popup .route__info:after,
-        .flightDetailWrapper .flightDetail_popup .route__info:before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            display: block;
-            border: 2px solid #73cf3a;
-            position: absolute;
-            left: -6px;
-            top: 0px;
-            border-radius: 100%;
-            background: #fff
-        }
-
-        .flightDetailWrapper .flightDetail_popup .route__info:before {
-            top: inherit;
-            bottom: 0px
-        }
-}
 
 .flightDetailWrapper .flightDetail_popup .route__info .time {
     font-size: 14px;
@@ -4114,11 +3945,6 @@ td.highlight > a {
     margin-top: 28px
 }
 
-@media(max-width: 767px) {
-    .flightDetailWrapper .flightDetail_popup .route__info .time {
-        margin-top: 2px
-    }
-}
 
 .flightDetailWrapper .flightDetail_popup .route__info .date {
     position: relative
@@ -4244,11 +4070,6 @@ td.highlight > a {
     margin-bottom: 20px
 }
 
-@media(max-width: 767px) {
-    .matrixBox {
-        margin-bottom: 10px
-    }
-}
 
 .matrixBox .matrix__wrap {
     position: relative;
@@ -4268,11 +4089,6 @@ td.highlight > a {
     z-index: 1
 }
 
-@media(max-width: 767px) {
-    .matrixBox .matrix__aside {
-        width: 110px
-    }
-}
 
 .matrixBox .matrix__aside .matrix__box {
     padding-left: 10px;
@@ -4290,11 +4106,6 @@ td.highlight > a {
     width: 86%
 }
 
-@media(max-width: 767px) {
-    .matrixBox .matrix__slider {
-        width: calc(100% - 110px)
-    }
-}
 
 .matrixBox .matrix__slider .items {
     width: 200px;
@@ -4402,9 +4213,6 @@ td.highlight > a {
 .matrixBox .learn-more {
     color: #00728c
 }
-
-
-
 
 
 .tooltip_block {
@@ -4664,50 +4472,29 @@ td.highlight > a {
     margin: 0px auto;
     background: #fff;
     padding: 20px;
-    position: relative
+    position: relative;
 }
 
-@media(max-width: 767px) {
-    .baggage__fees {
-        width: 420px;
-        padding: 15px
-    }
-}
 
-@media(max-width: 479px) {
-    .baggage__fees {
-        width: 95%
-    }
-}
 
 .baggage__fees h3 {
     font-size: 19px;
     font-weight: 600;
     margin: 14px 0 20px 0;
-    padding-bottom: 5px
+    padding-bottom: 5px;
 }
 
-@media(max-width: 767px) {
-    .baggage__fees h3 {
-        font-size: 16px
-    }
-}
 
 .baggage__fees .baggage_block {
     padding: 8px 15px;
     background: #edeef3;
-    margin: 10px 0
+    margin: 10px 0;
 }
 
-@media(max-width: 767px) {
-    .baggage__fees .baggage_block {
-        margin: 10px -15px
-    }
-}
 
 .baggage__fees .baggage_block img {
     width: 40px;
-    margin-right: 10px
+    margin-right: 10px;
 }
 
 .baggage__fees .baggage_block a {
@@ -4719,27 +4506,27 @@ td.highlight > a {
     padding: 5px 10px;
     border-radius: 2px;
     white-space: nowrap;
-    font-size: 13px
+    font-size: 13px;
 }
 
 .baggage__fees .small_text {
     font-size: 12px;
     position: relative;
-    padding-left: 17px
+    padding-left: 17px;
 }
 
     .baggage__fees .small_text i {
         position: absolute;
         left: 0px;
-        top: 0px
+        top: 0px;
     }
 
 .baggage__fees .text-link {
-    color: #73cf3a
+    color: #73cf3a;
 }
 
 .baggage__fees .baggage_banner {
-    width: 100%
+    width: 100%;
 }
 
 .mid_page__loading {
@@ -4748,19 +4535,13 @@ td.highlight > a {
     background: #fff;
     position: relative;
     padding: 18px;
-    overflow: hidden
+    overflow: hidden;
 }
 
-@media(max-width: 479px) {
-    .mid_page__loading {
-        width: 95%;
-        padding: 15px
-    }
-}
 
 .mid_page__loading img {
     float: left;
-    width: 131px
+    width: 131px;
 }
 
 .mid_page__loading p {
@@ -4770,7 +4551,7 @@ td.highlight > a {
     margin: 0px;
     border-left: 1px solid #ccc;
     padding: 0 0 0 20px;
-    margin-left: 20px
+    margin-left: 20px;
 }
 
 .mid_page__loading .dot span {
@@ -4779,7 +4560,7 @@ td.highlight > a {
     animation-name: blink;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
-    animation-fill-mode: both
+    animation-fill-mode: both;
 }
 
     .mid_page__loading .dot span:nth-child(2) {
@@ -4809,7 +4590,7 @@ td.highlight > a {
     display: table-cell;
     vertical-align: middle;
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 
     .mobilecall_fullwindow .title {
@@ -4817,21 +4598,21 @@ td.highlight > a {
         text-transform: capitalize;
         font-size: 33px;
         padding-bottom: 13px;
-        padding-top: 10px
+        padding-top: 10px;
     }
 
     .mobilecall_fullwindow .callBannerBox {
         background: #2139ac;
         color: #fff;
-        text-align: center
+        text-align: center;
     }
 
     .mobilecall_fullwindow .image-responsive {
-        width: 100%
+        width: 100%;
     }
 
     .mobilecall_fullwindow .content_popup {
-        padding: 20px 0
+        padding: 20px 0;
     }
 
     .mobilecall_fullwindow .call_button {
@@ -4846,7 +4627,7 @@ td.highlight > a {
         border-radius: 3px;
         padding: 14px;
         outline: none;
-        display: block
+        display: block;
     }
 
     .mobilecall_fullwindow h2 {
@@ -4854,7 +4635,7 @@ td.highlight > a {
         font-weight: 400;
         padding: 22px;
         margin: 0px;
-        line-height: 32px
+        line-height: 32px;
     }
 
 .increasefare {
@@ -4863,29 +4644,18 @@ td.highlight > a {
     background: #fff;
     padding: 25px;
     position: relative;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
     .increasefare h4 {
-        font-size: 21px
+        font-size: 21px;
     }
 
-@media(max-width: 767px) {
-    .increasefare h4 {
-        font-size: 16px
-    }
-}
 
-@media(max-width: 479px) {
-    .increasefare {
-        width: 95%;
-        padding: 15px
-    }
-}
 
 .increasefare small {
     display: block;
-    padding-top: 20px
+    padding-top: 20px;
 }
 
 .increasefare .icons {
@@ -4899,7 +4669,7 @@ td.highlight > a {
     justify-content: center;
     line-height: 40px;
     margin-bottom: 15px;
-    font-size: 27px
+    font-size: 27px;
 }
 
 .promoBox {
@@ -4915,26 +4685,20 @@ td.highlight > a {
         font-size: 18px
     }
 
-@media(max-width: 479px) {
-    .promoBox {
-        width: 95%;
-        padding: 15px
-    }
-}
 
 .promoBox .couponList {
     list-style: none;
-    padding: 10px 0
+    padding: 10px 0;
 }
 
     .promoBox .couponList li {
         font-size: 11px;
         border-bottom: 1px solid #ececec;
-        padding: 11px 0
+        padding: 11px 0;
     }
 
         .promoBox .couponList li p {
-            margin: 0px
+            margin: 0px;
         }
 
 .promoBox .promo-key {
@@ -4946,17 +4710,17 @@ td.highlight > a {
     font-weight: 600;
     margin-bottom: 5px;
     min-width: 85px;
-    text-align: center
+    text-align: center;
 }
 
 .promoBox .save {
     color: #db9a00;
     margin-left: 5px;
-    font-size: 14px
+    font-size: 14px;
 }
 
 .loaderBox img {
-    width: 100%
+    width: 100%;
 }
 
 .loading-icon {
@@ -4966,7 +4730,7 @@ td.highlight > a {
     line-height: 90px;
     border-radius: 50%;
     margin: 0 auto;
-    position: relative
+    position: relative;
 }
 
 .loading-circle {
@@ -4977,89 +4741,60 @@ td.highlight > a {
     height: 90px;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
-    border-width: 5px
+    border-width: 5px;
 }
 
 .mid__loading {
-    padding: 0 0 50px 0
+    padding: 0 0 50px 0;
 }
 
     .mid__loading .head {
         padding: 10px 0;
-        font-size: 22px
+        font-size: 22px;
     }
 
-@media(max-width: 479px) {
-    .mid__loading .head {
-        font-size: 17px
-    }
-}
 
 .mid__loading .block {
     padding: 5px 0px 40px;
     overflow: hidden;
     max-width: 420px;
-    margin: 0px auto
+    margin: 0px auto;
 }
 
-@media(max-width: 479px) {
-    .mid__loading .block {
-        text-align: center
-    }
-}
 
 .mid__loading .block .left {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px
+    padding: 10px;
 }
 
-@media(max-width: 479px) {
-    .mid__loading .block .left {
-        display: block
-    }
-}
 
 .mid__loading .block .left .city__code {
     width: 50%;
     font-size: 18px;
     color: #484848;
-    font-weight: 600
+    font-weight: 600;
 }
 
-@media(max-width: 479px) {
-    .mid__loading .block .left .city__code {
-        width: auto
-    }
-}
 
 .mid__loading .block .left .city__code small {
-    display: block
+    display: block;
 }
 
-@media(max-width: 479px) {
-    .mid__loading .block .left .city__code small {
-        display: inline-block
-    }
-}
 
 .mid__loading .block .left .flight__icon {
-    padding: 0 20px
+    padding: 0 20px;
 }
 
-.mid__loading .block .right {
-    padding: 3px 10px 0 10px;
-    position: relative
-}
-
-@media(max-width: 479px) {
     .mid__loading .block .right {
-        width: 100%;
-        padding: 0 10px
+        padding: 3px 10px 0 10px;
+        position: relative;
+        color: #4f8ffc;
+        font-size:16px;
     }
-}
+
 
 .mid__loading .block .right .arrow {
     color: #73cf3a;
@@ -5068,71 +4803,80 @@ td.highlight > a {
     top: 0px;
     font-size: 27px;
     padding: 5px;
-    line-height: 27px
+    line-height: 27px;
 }
 
 .no_resultsBox {
     padding: 50px 0;
     text-align: center;
-    background: #fff
+
 }
 
     .no_resultsBox .buttons .backbutton {
         padding: 10px 20px;
         border: none;
         margin: 10px;
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .no_resultsBox .block {
         max-width: 500px;
+        margin: 0px auto;
+        background: #fff;
+        padding:15px;
+        box-shadow:0 0 6px rgba(0,0,0,.2)
+    }
+
+    .no_resultsBox .head {
+        font-size: 26px;
+        font-weight: 600;
+        color: #025cb5;
+        margin-bottom: 10px;
+    }
+
+
+.no_resultsBox p {
+    font-size: 18px;
+    color: #333333;
+    font-weight:600;
+}
+    .no_resultsBox .callUs {
+        color: #4f8ffc;
+        display: block;
+        margin: 15px 0;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .no_resultsBox .call {
+        padding-top: 30px;
+        width: 310px;
         margin: 0px auto
     }
 
-    .no_resultsBox .head {
-        font-size: 33px;
-        font-weight: 600
+    .no_resultsBox .noResultTfn {
+        background: #3ab54a;
+        color: #fff;
+        font-size: 24px;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 700;
+        display: inline-block;
+        text-decoration: none;
     }
 
-@media(max-width: 767px) {
-    .no_resultsBox .head {
-        font-size: 23px
-    }
+.no_resultsBox .call .call_icon {
+    width: 50px;
+    margin-top: 10px
 }
-
-.no_resultsBox p {
-    font-size: 16px;
-    color: #636363
-}
-
-@media(max-width: 767px) {
-    .no_resultsBox p {
-        font-size: 13px
-    }
-}
-
-.no_resultsBox .call {
-    padding-top: 30px;
-    width: 310px;
-    margin: 0px auto
-}
-
-    .no_resultsBox .call .call_icon {
-        width: 50px;
-        margin-top: 10px
-    }
 
     .no_resultsBox .call span {
         display: block;
         font-size: 18px;
-        color: #4863db
+        color: #000;
+        font-weight: 500;
     }
 
-@media(max-width: 767px) {
-    .no_resultsBox .call span {
-        font-size: 14px
-    }
-}
 
 .no_resultsBox .call a {
     font-size: 30px;
@@ -5142,11 +4886,6 @@ td.highlight > a {
     white-space: nowrap
 }
 
-@media(max-width: 767px) {
-    .no_resultsBox .call a {
-        font-size: 23px
-    }
-}
 
 .no_resultsBox .call a:hover {
     text-decoration: none;
@@ -5277,16 +5016,10 @@ slider {
     }
 }
 
-@media(max-width: 767px) {
-    #resultsCntr {
-        padding-top: 0px
-    }
-}
 
 #resultsCntr .leftCntr {
     padding-right: 20px;
-    width: 280px;
-    float: left
+
 }
 
 @media(max-width: 1199px) {
@@ -5321,8 +5054,7 @@ slider {
     }
 
 #resultsCntr .rightCntr {
-    width: calc(100% - 280px);
-    float: left
+
 }
 
 @media(max-width: 1199px) {
@@ -5469,16 +5201,9 @@ slider {
     list-style: none;
     margin: 0px;
     padding: 0px;
-    overflow: hidden
+    overflow: hidden;
 }
 
-@media(max-width: 767px) {
-    .sortingTabBox ul {
-        white-space: nowrap;
-        display: flex;
-        overflow: inherit
-    }
-}
 
 .sortingTabBox ul li {
     padding: 7px 18px;
@@ -5488,7 +5213,7 @@ slider {
     font-weight: 700;
     border-left: 1px solid #ccc;
     position: relative;
-    min-height: 41px
+    min-height: 41px;
 }
 
     .sortingTabBox ul li:after {
@@ -5499,42 +5224,37 @@ slider {
         position: absolute;
         left: 0px;
         bottom: 0px;
-        transition: all .5s
+        transition: all .5s;
     }
 
     .sortingTabBox ul li a {
         text-decoration: none;
-        cursor: pointer
+        cursor: pointer;
     }
 
     .sortingTabBox ul li .price {
         color: #6b6b6b;
         font-weight: normal;
-        display: block
+        display: block;
     }
 
     .sortingTabBox ul li.active a,
     .sortingTabBox ul li.active .price {
-        color: #73cf3a
+        color: #73cf3a;
     }
 
     .sortingTabBox ul li.active:after {
-        width: 100%
+        width: 100%;
     }
 
     .sortingTabBox ul li:hover {
-        background: #ecf0ff
+        background: #ecf0ff;
     }
 
     .sortingTabBox ul li:first-child {
-        border: none
+        border: none;
     }
 
-@media(max-width: 767px) {
-    .sortingTabBox ul li {
-        width: auto
-    }
-}
 
 .text-link-red {
     color: #73cf3a !important;
@@ -5542,18 +5262,13 @@ slider {
 }
 
 .apply_filter {
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
 
-@media(max-width: 767px) {
-    .apply_filter {
-        display: none
-    }
-}
 
 .apply_filter ul {
     list-style: none;
-    padding: 0px
+    padding: 0px;
 }
 
     .apply_filter ul li {
@@ -5565,7 +5280,7 @@ slider {
         border: 1px solid #d9dade;
         color: #73cf3a;
         font-weight: 500;
-        background: #fafafa
+        background: #fafafa;
     }
 
         .apply_filter ul li a {
@@ -5574,11 +5289,11 @@ slider {
             top: -2px;
             margin-left: 6px;
             float: right;
-            line-height: 12px
+            line-height: 12px;
         }
 
             .apply_filter ul li a:hover {
-                color: #73cf3a
+                color: #73cf3a;
             }
 
         .apply_filter ul li.clear__all a {
@@ -5587,7 +5302,7 @@ slider {
             top: 0px;
             margin: 0px;
             line-height: 20px;
-            text-decoration: none
+            text-decoration: none;
         }
 
 .loadmore {
@@ -5598,24 +5313,19 @@ slider {
     text-decoration: none;
     font-weight: 500;
     border-radius: 5px;
-    margin-top: 15px
+    margin-top: 15px;
 }
 
-@media(max-width: 767px) {
-    .loadmore {
-        display: block
-    }
-}
 
 .loadmore:hover {
     background: #46a60a;
     color: #fff;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .flight__itenaryBox .head {
     padding: 0px 30px 0px 0px;
-    position: relative
+    position: relative;
 }
 
 .payment__wrapper .page__title {
@@ -5624,7 +5334,9 @@ slider {
 }
 
 .payment__wrapper .bagguage_fees{
-    padding-bottom:10px;
+    position:absolute;
+    bottom:10px;
+    right:0;
 }
 
 .payment__wrapper .bagguage_fees ul {
@@ -5633,7 +5345,7 @@ slider {
 
 .payment__wrapper .bagguage_fees .tooltipBox {
     left: inherit;
-    right: 7%;
+    right: 50%;
 }
 
     .payment__wrapper .bagguage_fees .tooltipBox:after, .payment__wrapper .bagguage_fees .tooltipBox:before{
@@ -5650,7 +5362,8 @@ slider {
 }
 
 .flight__itenaryBox .flightDetail {
-    color: #8a8a8a
+    color: #8a8a8a;
+    position:relative;
 }
 .flightDetail .subTittile {
     font-size: 15px;
@@ -5787,7 +5500,7 @@ slider {
 }
 
 .flight__itenaryBox .airlines__details {
-    padding-top: 20px;
+    padding-top: 5px;
     font-size: 13px;
     line-height: 1.5em;
     color: #949494
@@ -5813,7 +5526,7 @@ slider {
     }
 
 .flight__itenaryBox .route__info {
-    padding: 15px 0;
+    padding: 10px 0;
     font-size: 13px;
     position: relative
 }
@@ -5823,7 +5536,7 @@ slider {
     font-size: 15px;
     color: #484848;
     font-weight: 600;
-    margin-top: 28px;
+    margin-top: 20px;
 }
 
 
@@ -5863,7 +5576,7 @@ slider {
     border-top: 2px solid #dfdfdf;
     position: absolute;
     left: 0px;
-    top: 55px;
+    top: 40px;
 }
 
     .flight__itenaryBox .route__info .connecting__bar:before {
@@ -5923,7 +5636,7 @@ slider {
 
 
 .flight__itenaryBox .class__type {
-    padding-top: 26px;
+    padding-top: 5px;
     text-align:right;
 }
 
@@ -6010,7 +5723,6 @@ slider {
 
             .price__Box ul li {
                 padding: 8px 0px;
-                border-top: 1px solid #e1e1e1;
                 border-bottom: 1px solid #e1e1e1;
                 font-size: 13px;
                 color: #4b4b4b;
@@ -6721,7 +6433,7 @@ slider {
 .confirmation__information h4 {
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 11px;
+    margin-bottom: 20px;
     color: #303030
 }
 
@@ -6733,11 +6445,11 @@ slider {
 
 .confirmation__information .detail {
     padding: 10px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .spacer {
-    height: 50px
+    height: 50px;
 }
 
 .confirmation__Box {
@@ -6747,7 +6459,17 @@ slider {
     background: #fff;
     padding: 20px 15px;
     margin-bottom: 20px;
-    position: relative
+    position: relative;
+}
+
+
+#departTabcontent .route__info .connecting__bar, #returnTabcontent .route__info .connecting__bar {
+    width: 68%;
+    height: 2px;
+    border-top: 2px solid #dfdfdf;
+    position: absolute;
+    left: 0px;
+    top: 60px;
 }
 
 
@@ -6981,23 +6703,14 @@ slider {
 #footerCntr .footIcons li .stripe {
     background-position: -828px 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#footerCntr .footIcons li .iata {
+    height: 45px;
+    width: 65px;
+    display: inline-block;
+}
+#footerCntr .footIcons li .iata {
+    background-position: -1082px -4px;
+}
 
 
 #footerCntr .footer__logoBox {
@@ -7100,7 +6813,7 @@ slider {
 
 
 .currencyBox {
-    margin: 15px 30px 0 0;
+    margin: 12px 30px 0 0;
     float: right;
     position: relative
 }
@@ -7970,7 +7683,7 @@ container__badge-list {
 }
 .call-container__main {
     flex-grow: 1;
-    background: #fff url(/images/pm-bg.svg) 0% 50% no-repeat;
+/*    background: #fff url(/images/pm-bg.svg) 0% 50% no-repeat;*/
     padding: 0px 16px 18px;
     position: relative;
     left: -20px;
@@ -8071,7 +7784,7 @@ container__badge-list {
     min-height: 35px;
     display: block;
     cursor: pointer;
-    padding: 10px 0;
+    padding: 0;
 }
 .requestCall {
     font-weight: 600;
@@ -8561,7 +8274,7 @@ container__badge-list {
 
 .hr-line {
     border-top: 1px solid #dfdfdf;
-padding:30px 0;
+padding:15px 0 5px;
 }
 
 .card__zoom {
@@ -8765,7 +8478,7 @@ padding:30px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    padding: 20px 0;
     flex-direction:column;
 }
     .timerSec p{
@@ -8774,10 +8487,10 @@ padding:30px 0;
         color:#000000;
     }
     #timerCount {
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        height:50px;
         background: #ffffff;
-        border-radius: 50%;
+        border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -8785,12 +8498,308 @@ padding:30px 0;
         font-size: 20px;
         font-weight: 700;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-        border: 5px solid #5fc61f;
+        border: 2px solid #5fc61f;
         text-align: center;
-        flex-direction: column;
+        padding:10px 0;
     }
 #timerCount span{
-    display:block;
+    display:inline-block;
     font-weight:500;
-    text-transform:uppercase;
+    text-transform:uppercase; padding-left:10px;
 }
+
+.reviewSec {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #00000029;
+    border: 1px solid #b5b5b5;
+    background: #fff;
+    padding: 15px;
+}
+.accrBusin {
+    display: flex;
+    padding-top: 15px;
+    text-align: center;
+}
+.accrBusin span{ width:33.3%; padding:0 8px; display:inline-flex; align-items:center;}
+    .accrBusin span img {
+        width: 100%;
+        filter: grayscale(100%);
+    }
+    .accrBusin span img:hover{filter:inherit;}
+
+/* Pop up */
+.callpopUp{max-width:1024px;}
+
+    .callpopUp .modal-body {
+        display: flex;
+        padding: 0;
+        background: #eef2fb;
+    }
+        .callpopUp .modal-body .contentSec{
+            position:relative; width:100%;
+        }
+        .callpopUp .modal-body .banerSec img{
+            height:100%;
+        }
+        .callpopUp .popUphead {
+            background: #361d6f;
+            color: #ffffff;
+            padding: 5px 20px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 1px;
+            width: calc(100% - 1px);
+        }
+        .callpopUp .popUphead .heading {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+    .callpopUp .popUphead .subheading{
+        font-size:22px;
+        margin:0;
+    }
+.calltextSec{
+    display:flex; align-items:center; flex-direction:column;
+    justify-content:center; height:100%;
+}
+
+.contentSec .airfare {
+    font-size: 30px;
+    color: #090909;
+    padding-top: 90px;
+    font-weight: 600;
+}
+
+.contentSec .off {
+    color: #e30036;
+    font-size: 36px;
+    font-weight: 700;
+}
+.contentSec .callSupport {
+    color: #090909;
+    font-size:20px;
+    font-weight:500;
+}
+
+.contentSec .callUp {
+    background: #e30036;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 5px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 40px;
+    margin:10px 0;
+}
+
+.contentSec .callUp img {
+    width: 50px;
+    padding-right: 5px;
+}
+.contentSec .callOnly{
+    font-size:18px;
+    font-weight:600;
+    color:#090909;
+    padding-bottom:10px;
+}
+
+.whyBookSec {
+    border-top: 1px solid #bdbdbd;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+    .whyBookSec .whyBok {
+        font-size: 30px;
+        color: #090909;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+
+.whyOption .sec {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+}
+    .whyOption .sec img {
+        width: 45px;
+        padding-bottom: 5px;
+    }
+    .whyOption .sec p {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+    }
+.callpopUp .btnClose {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 25px;
+    height: 25px;
+    background: #090909;
+    border-radius: 50%;
+    z-index: 1;
+    border: 1px solid #fff;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tncApp {
+    font-size: 10px;
+    text-align: right;
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/*@media{
+
+    .callpopUp .popUphead {
+        background: #361d6f;
+        color: #ffffff;
+        padding: 5px 20px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0px;
+        width: calc(100% - 0px);
+    }
+        .callpopUp .popUphead .heading {
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .callpopUp .popUphead .subheading {
+            font-size: 14px;
+            margin: 0;
+        }
+    .contentSec .airfare {
+        font-size: 24px;
+        color: #090909;
+        padding-top: 90px;
+        font-weight: 600;
+    }
+
+    .contentSec .off {
+        color: #e30036;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    .contentSec .callSupport {
+        color: #090909;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .contentSec .callUp {
+        background: #e30036;
+        color: #ffffff;
+        font-weight: 700;
+        padding: 5px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 24px;
+        display: inline-flex;
+        margin: 10px 0;
+    }
+
+    .contentSec .callUp {
+        background: #e30036;
+        color: #ffffff;
+        font-weight: 700;
+        padding: 5px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+        .contentSec .callUp img {
+            width: 32px;
+            padding-right: 5px;
+        }
+
+    .contentSec .callOnly {
+        font-size: 15px;
+        font-weight: 600;
+        color: #090909;
+        padding-bottom: 10px;
+    }
+    .whyBookSec .whyBok {
+        font-size: 20px;
+        color: #090909;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+    .whyOption .sec img {
+        width: 30px;
+    }
+    .whyOption .sec p {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+        padding-top: 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+}
+*/
+
+
+.fixedSec {
+    position: relative;
+    width:300px;
+}
+    .fixedSec .leftBar {
+        height: 100vh;
+        overflow-y: auto;
+    }
+        .fixedSec .leftBar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+/* Track */
+        .fixedSec .leftBar::-webkit-scrollbar-track {
+            border-radius: 2px;
+        }
+
+/* Handle */
+        .fixedSec .leftBar::-webkit-scrollbar-thumb {
+            background: #a9a9a9;
+            border-radius: 2px;
+        }
+
+    /* Handle on hover */
+            .fixedSec .leftBar::-webkit-scrollbar-thumb:hover {
+                background: #888888;
+            }
+.clearAllFilter {
+    background: #fff2cc;
+    border: 1px solid #ffde80;
+    border-left: 2px solid #664c00;
+    color: #332600;
+    padding: 10px 10px 10px 40px;
+    position: relative;
+    border-radius: 3px;
+}
+.clearAllFilter svg{position:absolute; top:12px; left:15px;}
+.clearAllFilter a {font-weight: 700;color: #332600;}

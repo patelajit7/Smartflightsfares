@@ -10,9 +10,9 @@ using Infrastructure.HelpingModel.Operations;
 
 namespace Database
 {
-   public class OptProcedure
+    public class OptProcedure
     {
-        public static DocuSignsVM GetDocuSign(int _id, int _filterType,int _docuSignVM, string _connectionString)
+        public static DocuSignsVM GetDocuSign(int _id, int _filterType, int _docuSignVM, string _connectionString)
         {
             DocuSignsVM docuSigns = null;
             try
@@ -39,28 +39,28 @@ namespace Database
                             DocuSigns response = null;
                             foreach (DataRow row in ds.Tables[0].Rows)
                             {
-                            response = new DocuSigns();
-                            response.Id = Convert.ToInt32(row["Id"]);
-                            response.BookingId = Convert.ToInt32(row["BookingId"]);
-                            response.CardId = Convert.ToInt32(row["CardId"]);
-                            response.AgentId = Convert.ToInt32(row["AgentId"]);
-                            response.PortalId = Convert.ToInt32(row["PortalId"]);
-                            response.AcceptedAmount = Convert.ToDouble(row["AcceptedAmount"]);
-                            response.BookingAmount = Convert.ToDouble(row["BookingAmount"]);
-                            response.CardNumber = row["CardNumber"].ToString();
+                                response = new DocuSigns();
+                                response.Id = Convert.ToInt32(row["Id"]);
+                                response.BookingId = Convert.ToInt32(row["BookingId"]);
+                                response.CardId = Convert.ToInt32(row["CardId"]);
+                                response.AgentId = Convert.ToInt32(row["AgentId"]);
+                                response.PortalId = Convert.ToInt32(row["PortalId"]);
+                                response.AcceptedAmount = Convert.ToDouble(row["AcceptedAmount"]);
+                                response.BookingAmount = Convert.ToDouble(row["BookingAmount"]);
+                                response.CardNumber = row["CardNumber"].ToString();
                                 response.EmailId = row["EmailId"].ToString();
                                 response.CCHolderName = row["CCHolderName"].ToString();
-                            response.IP = row["IP"].ToString();
-                            if (row["IsAccepted"] != DBNull.Value)
-                            {
-                                response.IsAccepted = Convert.ToBoolean(row["IsAccepted"]);
-                            }
-                            if (row["AcceptedDate"] != DBNull.Value)
-                            {
-                                response.AcceptedDate = Convert.ToDateTime(row["AcceptedDate"]);
-                            }
-                            response.Created =  Convert.ToDateTime(row["Created"]);
-                            response.IsActive = Convert.ToBoolean(row["IsActive"]);
+                                response.IP = row["IP"].ToString();
+                                if (row["IsAccepted"] != DBNull.Value)
+                                {
+                                    response.IsAccepted = Convert.ToBoolean(row["IsAccepted"]);
+                                }
+                                if (row["AcceptedDate"] != DBNull.Value)
+                                {
+                                    response.AcceptedDate = Convert.ToDateTime(row["AcceptedDate"]);
+                                }
+                                response.Created = Convert.ToDateTime(row["Created"]);
+                                response.IsActive = Convert.ToBoolean(row["IsActive"]);
                                 response.Status = row["Status"] != DBNull.Value ? Convert.ToInt32(row["Status"]) : 0;
                                 response.EnvelopeId = row["EnvelopeId"] != DBNull.Value ? Convert.ToString(row["EnvelopeId"]) : "-";
                                 response.SendIP = row["SendIP"] != DBNull.Value ? Convert.ToString(row["SendIP"]) : "-";
@@ -111,7 +111,7 @@ namespace Database
                         command.Parameters.AddWithValue("@Status", _status);
                         command.Parameters.AddWithValue("@IP", _ip);
                         command.Parameters.Add("@U_ID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
-                         command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
                         int tid = (int)command.Parameters["@U_ID"].Value;
                         if (tid > 0)
                         {
@@ -128,7 +128,7 @@ namespace Database
         }
 
         public static void SaveContactSegmentDatails(Dictionary<string, DataTable> contactSegmentTbl, string _connectionString)
-        {            
+        {
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -143,7 +143,7 @@ namespace Database
                         command.CommandTimeout = 3600;
                         command.Parameters.AddWithValue("@tblContacts", contactSegmentTbl["tblContacts"]);
                         command.Parameters.AddWithValue("@tblSegments", contactSegmentTbl["tblSegments"]);
-                        command.ExecuteNonQuery();  
+                        command.ExecuteNonQuery();
                     }
                 }
             }
@@ -177,7 +177,7 @@ namespace Database
                 throw ex;
             }
         }
-        public static void SaveBagInsurance(float _totalPrice, string _serviceNumber, bool _status, string _statusCode, string _errors, int _bookingId, int _productId,string ProductName, string _connectionString)
+        public static void SaveBagInsurance(float _totalPrice, string _serviceNumber, bool _status, string _statusCode, string _errors, int _bookingId, int _productId, string ProductName, string _connectionString)
         {
             try
             {
@@ -225,7 +225,7 @@ namespace Database
                         command.Parameters.AddWithValue("@RefNumber", _travelInsurance.RefNumber);
                         command.Parameters.AddWithValue("@GroupNumber", _travelInsurance.GroupNumber);
                         command.Parameters.AddWithValue("@TotalPrice", _travelInsurance.TotalPrice);
-                        command.Parameters.AddWithValue("@Warnings", !string.IsNullOrEmpty(_travelInsurance.Warnings)? _travelInsurance.Warnings: "");
+                        command.Parameters.AddWithValue("@Warnings", !string.IsNullOrEmpty(_travelInsurance.Warnings) ? _travelInsurance.Warnings : "");
                         command.ExecuteNonQuery();
                     }
                 }
