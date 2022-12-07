@@ -408,7 +408,7 @@
         this.applyFilter(this.Tab, false);
     },
     getDepartureAirports: function () {
-        debugger;
+        
         var depAirportsArr = [];
         $("input:checkbox[name=DepartureAirports]:checked").each(function () {
             depAirportsArr.push($(this).val());

@@ -279,7 +279,7 @@
             request.InboundArrTime = contractFilter.InboundArrTime;
             request.InboundDuration = contractFilter.InboundDuration
         }
-
+        
         return request;
     },
     scrollVerticalPosition: function () {
