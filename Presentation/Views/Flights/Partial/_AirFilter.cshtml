@@ -22,7 +22,7 @@
             </ul>
         </div>
         <!--Mobile tab -->
-        <div class="holder fixedSec">
+        <div class="holder">
             <div class="tab-content">
                 @if (facet != null && facet.Stops.Count > 0)
                 {
@@ -31,10 +31,10 @@
                         <ul class="filter__list inputSet">
                             @foreach (KeyValueData item in facet.Stops)
                             {
-                                <li>
-                                    <label><input type="checkbox" onclick="contractFilter.setStops();" name="Stops" value="@item.Key" id="@string.Format("Stops{0}",item.Key)"><span>@item.Value</span> </label>
-                                    <span class="price chgWithCurrency" default-price="@item.MinPrice">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(item.MinPrice))<sup class="chgCurrencySub" default-price="@item.MinPrice">@String.Format("{0:#.00}", (item.MinPrice - Convert.ToSingle(Math.Truncate(item.MinPrice))))</sup></span>
-                                </li>
+                            <li>
+                                <label><input type="checkbox" onclick="contractFilter.setStops();" name="Stops" value="@item.Key" id="@string.Format("Stops{0}",item.Key)"><span>@item.Value</span> </label>
+                                <span class="price chgcomplete" default-price="@item.MinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, item.MinPrice * currencyMaster.CurrencyPrice)</span>
+                            </li>
                             }
                         </ul>
                     </div>
@@ -143,14 +143,14 @@
                         <ul class="filter__list inputSet">
                             @foreach (Airline item in Model.UniqueAirlineList)
                             {
-                                <li>
-                                    <label>
-                                        <input type="checkbox" name="Airlines" onclick="contractFilter.setAirlines();" value="@string.Format("{0}|{1}", item.Code, (item.IsMultiAirline ? 1 : 0))" id="@string.Format("Airlines{0}",item.Code)"><span class="text-overflow">@item.Name</span>
-                                        @*<img src="~/Images/icons/multi-airlines.png" alt="multiple airlines" title="multiple airlines" class="multiairline" />*@
-                                    </label>
-                                    <span class="price chgWithCurrency" default-price="@item.MinPrice">@String.Format("{0}{1:0}.", currencyMaster.CurrencySymbol, Math.Truncate(item.MinPrice))<sup class="chgCurrencySub" default-price="@item.MinPrice">@String.Format("{0:#.00}", (item.MinPrice - Convert.ToSingle(Math.Truncate(item.MinPrice))))</sup></span>
-                                </li>
-                            }
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="Airlines" onclick="contractFilter.setAirlines();" value="@string.Format("{0}|{1}", item.Code, (item.IsMultiAirline ? 1 : 0))" id="@string.Format("Airlines{0}",item.Code)"><span class="text-overflow">@item.Name</span>
+
+                                </label>                                
+                                <span class="price chgcomplete" default-price="@item.MinPrice">@String.Format("{0}{1:0.00}", currencyMaster.CurrencySymbol, item.MinPrice * currencyMaster.CurrencyPrice)</span>
+                            </li>
+                        }
                         </ul>
                     </div>
                 </div>
