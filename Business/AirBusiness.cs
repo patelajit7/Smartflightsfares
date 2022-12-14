@@ -103,21 +103,7 @@ namespace Business
                                 context.IsRequestCompleted = true;
                                 Utility.SetAirContextCache(context.Search.SearchGuidId, context);
                             }
-                            if (response == null || (response != null && response.TransactionStatus == null) || (response != null && response.TransactionStatus != null && !response.TransactionStatus.IsSuccess))
-                            {
-                                Task.Factory.StartNew(() =>
-                                {
-                                    try
-                                    {
-                                        BookingProcedures.LogsContractSoldout(context.SelectedContract, context.Search, Utility.ConnString);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Utility.Logger.Error("LogsContractSoldout|" + ex.ToString());
-                                    }
-                                });
-                            }
-
+                            
                         }
                         else
                         {

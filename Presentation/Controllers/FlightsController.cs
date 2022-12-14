@@ -888,6 +888,7 @@ namespace Presentation.Controllers
             }
             return Json(new { IsContextExist = false }, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         [Route("flights/contract-verification/{id}-{cid}")]
         public ActionResult GetContract(string id, int cid)
         {
@@ -915,6 +916,7 @@ namespace Presentation.Controllers
                                 context.Search.DestCountry = DestAirpor.CountryName;
                                 context.Search.DestAirportName = DestAirpor.AirportName;
                             }
+                            context.Search.IsMobileDevice = Utility.GetDeviceType(Request.UserAgent);
 
                         }
 
@@ -927,11 +929,10 @@ namespace Presentation.Controllers
                         }
                         Utility.SetAirContextCache(contract.SearchGuid, context);
 
-
                         Task.Factory.StartNew(() =>
                         {
-                            MetaClicks click = new MetaClicks() { PortalId = context.Search.PortalId, Origin = context.Search.Origin, Destination = context.Search.Destination, TripType = (int)context.Search.TripType, Departure = context.Search.Departure, Return = context.Search.Return, AffiliateId = context.Search.AffiliateId, IP = context.Search.IP };
-                            Operation.MetaClicks(click);
+                            MetaClicks click = new MetaClicks() { PortalId = context.Search.PortalId, Origin = context.Search.Origin, Destination = context.Search.Destination, TripType = (int)context.Search.TripType, Departure = context.Search.Departure, Return = context.Search.Return, AffiliateId = context.Search.AffiliateId, IP = context.Search.IP,IsMobile = context.Search.IsMobileDevice , Airline = contract.ValidatingCarrier.Code};
+                            Operation.MetaClicks(click, contract.SearchGuid);
                         });
 
                         Task.Factory.StartNew(() =>
@@ -1163,9 +1164,13 @@ namespace Presentation.Controllers
                         contextBook.BookingDetailRQ.Transaction = transaction;
                         context.FlightBookingRS = null;
                         Utility.SetAirContextCache(tguid, contextBook);
+
+
                         try
                         {
                             Task.Factory.StartNew(() => Utility.RemoveAirContextCache(id));
+                            Task.Factory.StartNew(() => Operation.UpdateBookingIsMeta(transaction.Id,context.MetaClickId, context.Search.IsMobileDevice));
+                            
                         }
                         catch (Exception ex)
                         {
@@ -1249,7 +1254,6 @@ namespace Presentation.Controllers
                                             PortalId = bookingDetails.Transaction.PortalId,
                                             MailRecipient = bookingDetails.BillingDetails.Email,
                                             TransactionId = bookingDetails.Transaction.Id
-
                                         };
                                         bool isMailSent = EmailHelper.SendMails(transaction);
                                         Utility.Logger.Info(string.Format("BOOKING RECEIPT|Guid:{0}| TID:{1}|{2}", id, context.BookingDetailRQ.Transaction.Id, isMailSent ? "MAIL SENT" : "UNABLE TO SENT MAIL"));

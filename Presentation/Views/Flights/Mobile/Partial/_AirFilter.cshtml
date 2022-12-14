@@ -4,7 +4,7 @@
 @using Common;
 @model Infrastructure.HelpingModel.API.Availability
 
-@if (Model != null)
+@if (Model != null && Model.Contracts != null && Model.Contracts.Count > 0)
 {
     ContractFacets facet = Model.Factes;
     AirMatrixMain airlines = Model.AirlineMatrixMain;

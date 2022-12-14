@@ -261,13 +261,20 @@ namespace Business
             }
         }
 
-        public static void MetaClicks(MetaClicks request)
+        public static void MetaClicks(MetaClicks request, string Guid)
         {
             try
             {
                 lock (syncPoolRoot)
                 {
-                    BookingProcedures.MetaClicks(request, Utility.ConnString);
+                   int MetaclikId =  BookingProcedures.MetaClicks(request, Utility.ConnString);
+
+                    AirContext context = Utility.GetAirContextCache(Guid);
+                    if (context != null)
+                    {
+                        context.MetaClickId = MetaclikId;
+                        Utility.SetAirContextCache(Guid, context);
+                    }
                 }
             }
             catch (Exception ex)
@@ -298,6 +305,20 @@ namespace Business
             catch (Exception ex)
             {
                 Utility.Logger.Error("Booking User Location unable to save in database|EXCEPTION:" + ex.ToString());
+            }
+        }
+        public static void UpdateBookingIsMeta(int bookingId, int metaClickId, bool isMobile)
+        {
+            try
+            {
+                lock (syncPoolRoot1)
+                {
+                    BookingProcedures.UpdateBookingIsMeta(bookingId, metaClickId, isMobile, Utility.ConnString);
+                }
+            }
+            catch (Exception ex)
+            {
+                Utility.Logger.Error("Booking IsMeta to save in database|EXCEPTION:" + ex.ToString());
             }
         }
     }

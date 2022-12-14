@@ -1059,8 +1059,9 @@ namespace Database
             return response;
         }
 
-        public static void MetaClicks(MetaClicks request, string connectionString)
+        public static int MetaClicks(MetaClicks request, string connectionString)
         {
+            int tid = 0;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -1080,7 +1081,13 @@ namespace Database
                         command.Parameters.AddWithValue("@Return", request.Return != null ? request.Return : (object)DBNull.Value);
                         command.Parameters.AddWithValue("@IP", request.IP);
                         command.Parameters.AddWithValue("@AffiliateId", request.AffiliateId);
-                        command.ExecuteNonQuery();
+                        command.Parameters.AddWithValue("@Airline", request.Airline);
+                        command.Parameters.AddWithValue("@IsMobile", request.IsMobile);
+                        var res= command.ExecuteScalar();
+                        if (res != null)
+                        {
+                            tid = Convert.ToInt32(res);
+                        }
                     }
                 }
             }
@@ -1088,6 +1095,7 @@ namespace Database
             {
                 throw ex;
             }
+            return tid;
         }
 
         public static void UpdateBookingUserLocation(int bookingId, string location, string connectionString)
@@ -1105,6 +1113,32 @@ namespace Database
                         command.CommandTimeout = 3600;
                         command.Parameters.AddWithValue("@BookingId", bookingId);
                         command.Parameters.AddWithValue("@UserLocation", location);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void UpdateBookingIsMeta(int bookingId, int metaClickId, bool isMobile, string connectionString)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        connection.Open();
+                        command.Connection = connection;
+                        command.CommandText = "BookingsIsMetaUpdate";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandTimeout = 3600;
+                        command.Parameters.AddWithValue("@BookingId", bookingId);
+                        command.Parameters.AddWithValue("@MetaClickId", metaClickId);
+                        command.Parameters.AddWithValue("@IsMobile", isMobile);
                         command.ExecuteNonQuery();
                     }
                 }

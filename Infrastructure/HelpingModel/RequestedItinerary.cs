@@ -33,5 +33,7 @@ namespace Infrastructure.HelpingModel
         public string IP { get; set; }
         public int AffiliateId { get; set; }
         public DateTime Created { get; set; }
+        public string Airline { get; set; }
+        public bool IsMobile { get; set; }
     }
 }
