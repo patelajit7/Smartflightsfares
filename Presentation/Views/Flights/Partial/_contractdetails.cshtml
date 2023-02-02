@@ -11,6 +11,7 @@
     totalFare = Model.AdultFare.TotalFarePPax * currencyMaster.CurrencyPrice;
     totalTaxFare = Model.AdultFare.TaxPPax * currencyMaster.CurrencyPrice;
     totalbaseFare = Model.AdultFare.BaseFarePPax * currencyMaster.CurrencyPrice;
+    TimeSpan totalLayoverTime = TimeSpan.Zero;
 }
 
 <div class="flightDetailWrapper">
@@ -41,6 +42,7 @@
                             if (layoverTime != TimeSpan.MinValue)
                             {
                                 <div class="layover"> <i class="bi bi-stopwatch"></i> Layover : @Utility.GetDuration(layoverTime) </div>
+                                totalLayoverTime = totalLayoverTime + layoverTime;
                             }
                         }
                         <div class="row">
@@ -119,7 +121,7 @@
                         </div>
 
                     }
-                    <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.TotalOutBoundFlightDuration) </div>
+                    <div class="layover"> <i class="bi bi-stopwatch"></i> Total Trip Time : @Utility.GetDuration(Model.TotalOutBoundFlightDuration + totalLayoverTime) </div>
                 </div>
 
                 @if (Model.TripType == TripType.ROUNDTRIP)

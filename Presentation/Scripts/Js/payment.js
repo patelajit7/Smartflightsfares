@@ -1102,6 +1102,7 @@ function cardFormValidate() {
     var selectVale = 0;
     //card number validation
     $('#BillingDetails_CardNumber').validateCreditCard(function (result) {
+        
         var cardType = (result.card_type == null) ? '' : result.card_type.name;
         if (result.valid && result.length_valid && result.luhn_valid && cardType != "") {
 
